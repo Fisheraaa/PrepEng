@@ -13,10 +13,10 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
-import { sampleCET4Reading } from "@/lib/exam-data"
+import { getAvailablePapers, getExamPaper } from "@/lib/exam-data"
 import { saveMistake } from "@/lib/storage"
 import { SocraticChat } from "@/components/socratic-chat"
-import type { ChoiceQuestion, Section, ExamType } from "@/types/exam"
+import type { ChoiceQuestion, ExamPaper, Section, ExamType } from "@/types/exam"
 
 // ============================================================
 // 自动存档工具
@@ -25,7 +25,7 @@ import type { ChoiceQuestion, Section, ExamType } from "@/types/exam"
 interface ReadProgress {
   paperId: string
   sectionIdx: number
-  answers: Record<string, string> // questionId → selected letter
+  answers: Record<string, string>
   submitted: boolean
   savedAt: number
 }
@@ -39,14 +39,9 @@ function saveReadProgress(examType: string, progress: ReadProgress) {
   } catch {}
 }
 
-function loadReadProgress(
-  examType: string,
-  paperId: string
-): ReadProgress | null {
+function loadReadProgress(examType: string, paperId: string): ReadProgress | null {
   try {
-    const raw = localStorage.getItem(
-      `read-progress-${examType}-${paperId}`
-    )
+    const raw = localStorage.getItem(`read-progress-${examType}-${paperId}`)
     return raw ? JSON.parse(raw) : null
   } catch {
     return null
@@ -78,45 +73,46 @@ type Phase = "select" | "reading" | "review"
 
 export default function ReadPage() {
   const pathname = usePathname()
-  const examType = pathname.split("/")[1] || "cet4"
+  const examType = (pathname.split("/")[1] || "cet4") as ExamType
 
   const [phase, setPhase] = useState<Phase>("select")
+  const [selectedPaperId, setSelectedPaperId] = useState<string | null>(null)
   const [currentSectionIdx, setCurrentSectionIdx] = useState(0)
-  const [selectedAnswers, setSelectedAnswers] = useState<
-    Record<string, string>
-  >({})
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
   const [socraticQuestionId, setSocraticQuestionId] = useState<string | null>(null)
 
   const { size: fontSize, increase, decrease } = useFontSize()
 
-  const paper = sampleCET4Reading
-  const sections = paper.sections.filter((s) => s.type === "reading")
+  const availablePapers = getAvailablePapers(examType)
+  const paper = selectedPaperId ? getExamPaper(examType, selectedPaperId) : null
+  const sections = paper?.sections.filter((s) => s.type === "reading") ?? []
   const currentSection = sections[currentSectionIdx]
   const questions = (currentSection?.questions ?? []) as ChoiceQuestion[]
 
   // 自动恢复进度
   useEffect(() => {
-    const saved = loadReadProgress(examType, paper.id)
+    if (!selectedPaperId) return
+    const saved = loadReadProgress(examType, selectedPaperId)
     if (saved && !saved.submitted) {
       setCurrentSectionIdx(saved.sectionIdx)
       setSelectedAnswers(saved.answers)
       setPhase("reading")
     }
-  }, [examType, paper.id])
+  }, [examType, selectedPaperId])
 
-  // 自动存档（每次选答案时）
+  // 自动存档
   useEffect(() => {
-    if (phase === "reading" && !submitted) {
+    if (phase === "reading" && !submitted && selectedPaperId) {
       saveReadProgress(examType, {
-        paperId: paper.id,
+        paperId: selectedPaperId,
         sectionIdx: currentSectionIdx,
         answers: selectedAnswers,
         submitted: false,
         savedAt: Date.now(),
       })
     }
-  }, [phase, selectedAnswers, currentSectionIdx, submitted, examType, paper.id])
+  }, [phase, selectedAnswers, currentSectionIdx, submitted, examType, selectedPaperId])
 
   const handleSelectAnswer = useCallback(
     (questionId: string, letter: string) => {
@@ -127,8 +123,8 @@ export default function ReadPage() {
   )
 
   const handleSubmit = useCallback(() => {
+    if (!paper) return
     setSubmitted(true)
-    // 标记存档为已提交
     saveReadProgress(examType, {
       paperId: paper.id,
       sectionIdx: currentSectionIdx,
@@ -144,7 +140,7 @@ export default function ReadPage() {
         saveMistake({
           question_id: q.id,
           paper_id: paper.id,
-          exam_type: examType as ExamType,
+          exam_type: examType,
           section_type: "reading",
           question_content: q.content,
           options: q.options,
@@ -153,12 +149,12 @@ export default function ReadPage() {
           correct_answer: q.answer,
           wrong_count: 1,
           last_reviewed: now,
-          next_review: now + 24 * 60 * 60 * 1000, // 1天后复习
+          next_review: now + 24 * 60 * 60 * 1000,
           mastery: "red",
         }).catch(() => {})
       }
     })
-  }, [selectedAnswers, currentSectionIdx, examType, paper.id, questions])
+  }, [selectedAnswers, currentSectionIdx, examType, paper, questions])
 
   const handleNextSection = useCallback(() => {
     if (currentSectionIdx < sections.length - 1) {
@@ -171,32 +167,43 @@ export default function ReadPage() {
   }, [currentSectionIdx, sections.length])
 
   const handleRestart = useCallback(() => {
+    if (!paper) return
     setCurrentSectionIdx(0)
     setSelectedAnswers({})
     setSubmitted(false)
     setPhase("reading")
     clearReadProgress(examType, paper.id)
-  }, [examType, paper.id])
+  }, [examType, paper])
 
-  const handleGoToSection = useCallback(
-    (idx: number) => {
-      setCurrentSectionIdx(idx)
-      setSelectedAnswers({})
-      setSubmitted(false)
-      setPhase("reading")
-    },
-    []
-  )
+  const handleGoToSection = useCallback((idx: number) => {
+    setCurrentSectionIdx(idx)
+    setSelectedAnswers({})
+    setSubmitted(false)
+    setPhase("reading")
+  }, [])
+
+  const handleSelectPaper = useCallback((paperId: string) => {
+    setSelectedPaperId(paperId)
+    setCurrentSectionIdx(0)
+    setSelectedAnswers({})
+    setSubmitted(false)
+    setPhase("reading")
+  }, [])
+
+  const handleBackToList = useCallback(() => {
+    setSelectedPaperId(null)
+    setPhase("select")
+    setCurrentSectionIdx(0)
+    setSelectedAnswers({})
+    setSubmitted(false)
+  }, [])
 
   // 统计
   const correctCount = questions.filter(
     (q) => selectedAnswers[q.id] === q.answer
   ).length
   const answeredCount = Object.keys(selectedAnswers).length
-  const totalQuestions = sections.reduce(
-    (acc, s) => acc + s.questions.length,
-    0
-  )
+  const totalQuestions = sections.reduce((acc, s) => acc + s.questions.length, 0)
 
   // --- 选卷页面 ---
   if (phase === "select") {
@@ -205,31 +212,40 @@ export default function ReadPage() {
         <div className="space-y-2">
           <h1 className="text-2xl font-bold">📖 阅读理解</h1>
           <p className="text-muted-foreground">
-            选一套真题开始练习。所有题目一次放完，整篇提交。
+            选择一套真题开始练习。所有题目一次放完，整篇提交。
           </p>
         </div>
 
-        <Card
-          className="cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors"
-          onClick={() => setPhase("reading")}
-        >
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle>{paper.title} — 阅读</CardTitle>
-              <Badge variant="outline">
-                {sections.length} 篇 · {totalQuestions} 题
-              </Badge>
-            </div>
-            <CardDescription>
-              仔细阅读 · 建议 25 分钟
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              主题：{sections.map((s) => getPassageTopic(s)).join(" / ")}
-            </p>
-          </CardContent>
-        </Card>
+        {availablePapers.length === 0 ? (
+          <Card className="bg-muted/50">
+            <CardContent className="pt-6 pb-4 text-center">
+              <span className="text-4xl">📭</span>
+              <p className="text-muted-foreground mt-2">
+                还没有{examType === "cet4" ? "四级" : "六级"}阅读题。
+              </p>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="space-y-3">
+            {availablePapers.map((p) => (
+              <Card
+                key={p.id}
+                className="cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors"
+                onClick={() => handleSelectPaper(p.id)}
+              >
+                <CardContent className="pt-4 pb-3 px-4 flex items-center justify-between">
+                  <div>
+                    <p className="font-medium">{p.title}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {p.questionCount} 题 · 仔细阅读
+                    </p>
+                  </div>
+                  <Badge variant="outline">开始</Badge>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
     )
   }
@@ -240,7 +256,7 @@ export default function ReadPage() {
       <div className="p-8 max-w-4xl mx-auto space-y-6">
         <div className="space-y-2">
           <h1 className="text-2xl font-bold">📊 练习完成</h1>
-          <p className="text-muted-foreground">{paper.title} — 阅读理解</p>
+          <p className="text-muted-foreground">{paper?.title} — 阅读理解</p>
         </div>
 
         {/* 总分 */}
@@ -248,36 +264,10 @@ export default function ReadPage() {
           <CardContent className="pt-6">
             <div className="text-center space-y-2">
               <div className="text-5xl font-bold">
-                {totalQuestions > 0
-                  ? Math.round(
-                      (sections.reduce(
-                        (acc, s) =>
-                          acc +
-                          s.questions.filter(
-                            (q) =>
-                              selectedAnswers[(q as ChoiceQuestion).id] ===
-                              (q as ChoiceQuestion).answer
-                          ).length,
-                        0
-                      ) /
-                        totalQuestions) *
-                        100
-                    )
-                  : 0}
-                %
+                {totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0}%
               </div>
               <p className="text-muted-foreground">
-                {sections.reduce(
-                  (acc, s) =>
-                    acc +
-                    s.questions.filter(
-                      (q) =>
-                        selectedAnswers[(q as ChoiceQuestion).id] ===
-                        (q as ChoiceQuestion).answer
-                    ).length,
-                  0
-                )}{" "}
-                / {totalQuestions} 题正确
+                {correctCount} / {totalQuestions} 题正确
               </p>
             </div>
           </CardContent>
@@ -308,38 +298,20 @@ export default function ReadPage() {
                       key={q.id}
                       className={cn(
                         "p-3 rounded-lg border text-sm",
-                        isCorrect
-                          ? "border-emerald-500/20 bg-emerald-500/5"
-                          : "border-destructive/20 bg-destructive/5"
+                        isCorrect ? "border-emerald-500/20 bg-emerald-500/5" : "border-destructive/20 bg-destructive/5"
                       )}
                     >
                       <div className="flex items-start gap-2">
-                        <span className="shrink-0">
-                          {isCorrect ? "✅" : "❌"}
-                        </span>
+                        <span className="shrink-0">{isCorrect ? "✅" : "❌"}</span>
                         <div className="space-y-1 flex-1">
-                          <p className="font-medium">
-                            Q{qIdx + 1}. {q.content}
-                          </p>
+                          <p className="font-medium">Q{qIdx + 1}. {q.content}</p>
                           {!isCorrect && (
                             <div className="text-xs space-y-0.5">
-                              <p>
-                                <span className="text-destructive">
-                                  你的：
-                                </span>
-                                {userAns ?? "未作答"}
-                              </p>
-                              <p>
-                                <span className="text-emerald-400">
-                                  正确：
-                                </span>
-                                {q.answer}
-                              </p>
+                              <p><span className="text-destructive">你的：</span>{userAns ?? "未作答"}</p>
+                              <p><span className="text-emerald-400">正确：</span>{q.answer}</p>
                             </div>
                           )}
-                          <p className="text-muted-foreground text-xs mt-1">
-                            {q.explanation}
-                          </p>
+                          <p className="text-muted-foreground text-xs mt-1">{q.explanation}</p>
                           {!isCorrect && (
                             <Button
                               size="sm"
@@ -373,9 +345,7 @@ export default function ReadPage() {
 
         <div className="flex gap-3">
           <Button onClick={handleRestart}>再做一遍</Button>
-          <Button variant="outline" onClick={() => setPhase("select")}>
-            换一套
-          </Button>
+          <Button variant="outline" onClick={handleBackToList}>换一套</Button>
         </div>
       </div>
     )
@@ -386,39 +356,21 @@ export default function ReadPage() {
     <div className="flex h-screen">
       {/* 左侧：文章 + 字号控制 */}
       <div className="w-1/2 border-r border-border overflow-y-auto p-6 space-y-4">
-        {/* 标题栏 + 字号 */}
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">{currentSection?.title}</h2>
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={decrease}
-              className="h-7 w-7 p-0"
-            >
-              A
+            <Button variant="ghost" size="sm" onClick={handleBackToList} className="h-7 px-2">
+              ← 返回
             </Button>
-            <span className="text-xs text-muted-foreground w-8 text-center">
-              {fontSize}
-            </span>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={increase}
-              className="h-7 w-7 p-0 text-base"
-            >
-              A
-            </Button>
+            <h2 className="text-lg font-semibold">{currentSection?.title}</h2>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={decrease} className="h-7 w-7 p-0">A</Button>
+            <span className="text-xs text-muted-foreground w-8 text-center">{fontSize}</span>
+            <Button variant="outline" size="sm" onClick={increase} className="h-7 w-7 p-0 text-base">A</Button>
           </div>
         </div>
-
         <Separator />
-
-        {/* 文章正文 */}
-        <div
-          className="leading-relaxed whitespace-pre-wrap"
-          style={{ fontSize: `${fontSize}px` }}
-        >
+        <div className="leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
           {currentSection?.passage}
         </div>
       </div>
@@ -428,9 +380,7 @@ export default function ReadPage() {
         {/* 顶部：选题目录面板 */}
         <div className="border-b border-border px-4 py-3 space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground">
-              篇目导航
-            </span>
+            <span className="text-xs font-medium text-muted-foreground">篇目导航</span>
             <span className="text-xs text-muted-foreground">
               {answeredCount}/{questions.length} 已答
             </span>
@@ -438,31 +388,25 @@ export default function ReadPage() {
           <div className="flex gap-1.5 flex-wrap">
             {sections.map((s, idx) => {
               const sQuestions = s.questions as ChoiceQuestion[]
-              const sAnswered = sQuestions.filter(
-                (q) => selectedAnswers[q.id]
-              ).length
+              const sAnswered = sQuestions.filter((q) => selectedAnswers[q.id]).length
               return (
                 <button
                   key={idx}
                   onClick={() => handleGoToSection(idx)}
                   className={cn(
                     "px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
-                    idx === currentSectionIdx
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-accent"
+                    idx === currentSectionIdx ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"
                   )}
                 >
                   篇{idx + 1}
-                  <span className="ml-1 opacity-60">
-                    {sAnswered}/{sQuestions.length}
-                  </span>
+                  <span className="ml-1 opacity-60">{sAnswered}/{sQuestions.length}</span>
                 </button>
               )
             })}
           </div>
         </div>
 
-        {/* 题目区域（一次放完） */}
+        {/* 题目区域 */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {questions.map((q, qIdx) => (
             <QuestionBlock
@@ -490,9 +434,7 @@ export default function ReadPage() {
               </Button>
             ) : (
               <Button onClick={handleNextSection} className="w-full">
-                {currentSectionIdx < sections.length - 1
-                  ? "下一篇 →"
-                  : "查看结果"}
+                {currentSectionIdx < sections.length - 1 ? "下一篇 →" : "查看结果"}
               </Button>
             )}
           </div>
@@ -526,12 +468,8 @@ function QuestionBlock({
   return (
     <div className="space-y-3">
       <div className="flex items-start gap-3">
-        <Badge variant="secondary" className="mt-0.5 shrink-0">
-          Q{index + 1}
-        </Badge>
-        <p className="font-medium" style={{ fontSize: `${fontSize}px` }}>
-          {question.content}
-        </p>
+        <Badge variant="secondary" className="mt-0.5 shrink-0">Q{index + 1}</Badge>
+        <p className="font-medium" style={{ fontSize: `${fontSize}px` }}>{question.content}</p>
       </div>
 
       <div className="space-y-2 ml-10">
@@ -550,13 +488,8 @@ function QuestionBlock({
                 "hover:border-primary/50 hover:bg-accent/50",
                 "disabled:cursor-not-allowed",
                 isSelected && !submitted && "border-primary bg-primary/10",
-                submitted &&
-                  isOptionCorrect &&
-                  "border-emerald-500 bg-emerald-500/10",
-                submitted &&
-                  isSelected &&
-                  !isOptionCorrect &&
-                  "border-destructive bg-destructive/10",
+                submitted && isOptionCorrect && "border-emerald-500 bg-emerald-500/10",
+                submitted && isSelected && !isOptionCorrect && "border-destructive bg-destructive/10",
                 !isSelected && !submitted && "border-border"
               )}
               style={{ fontSize: `${fontSize - 1}px` }}
@@ -567,46 +500,24 @@ function QuestionBlock({
         })}
       </div>
 
-      {/* 提交后显示结果 */}
       {submitted && (
         <div className="ml-10">
-          <Card
-            className={cn(
-              isCorrect ? "border-emerald-500/30" : "border-destructive/30"
-            )}
-          >
+          <Card className={cn(isCorrect ? "border-emerald-500/30" : "border-destructive/30")}>
             <CardContent className="pt-3 pb-2 px-4">
               <div className="flex items-center gap-2 mb-1">
                 {isCorrect ? (
-                  <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">
-                    ✅ 正确
-                  </Badge>
+                  <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">✅ 正确</Badge>
                 ) : (
                   <Badge variant="destructive" className="text-xs">
                     ❌ 错误 · 你的：{selected ?? "未答"} · 正确：{question.answer}
                   </Badge>
                 )}
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {question.explanation}
-              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{question.explanation}</p>
             </CardContent>
           </Card>
         </div>
       )}
     </div>
   )
-}
-
-// ============================================================
-// 辅助函数
-// ============================================================
-
-function getPassageTopic(section: Section): string {
-  const text = section.passage ?? ""
-  if (text.includes("AI") || text.includes("artificial intelligence"))
-    return "AI 与教育"
-  if (text.includes("sleep") || text.includes("Sleep")) return "睡眠科学"
-  if (text.includes("high-speed") || text.includes("高铁")) return "中国高铁"
-  return "阅读理解"
 }

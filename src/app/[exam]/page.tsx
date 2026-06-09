@@ -13,6 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { getMistakes } from "@/lib/storage"
+import { getAvailablePapers } from "@/lib/exam-data"
 import type { ExamType } from "@/types/exam"
 
 const examInfo: Record<
@@ -136,13 +137,17 @@ export default function ExamDashboard() {
 
   const [mistakeCount, setMistakeCount] = useState(0)
   const [dueCount, setDueCount] = useState(0)
+  const [paperCount, setPaperCount] = useState(0)
 
   useEffect(() => {
-    getMistakes(examType as ExamType).then((m) => {
+    const et = examType as ExamType
+    getMistakes(et).then((m) => {
       setMistakeCount(m.length)
       const now = Date.now()
       setDueCount(m.filter((x) => x.next_review <= now).length)
     }).catch(() => {})
+    const papers = getAvailablePapers(et)
+    setPaperCount(papers.length)
   }, [examType])
 
   return (
@@ -158,9 +163,9 @@ export default function ExamDashboard() {
       {/* Quick Stats */}
       <div className="grid grid-cols-4 gap-4">
         {[
+          { label: "题库套数", value: String(paperCount), icon: "📚" },
           { label: "错题数", value: String(mistakeCount), icon: "📝" },
           { label: "正确率", value: mistakeCount > 0 ? `${Math.max(0, 100 - mistakeCount * 5)}%` : "--", icon: "✅" },
-          { label: "连续天数", value: "0", icon: "🔥" },
           { label: "待复习", value: String(dueCount), icon: "🔄" },
         ].map((stat) => (
           <Card key={stat.label}>
