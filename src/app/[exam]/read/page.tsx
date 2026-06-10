@@ -16,6 +16,8 @@ import { cn } from "@/lib/utils"
 import { getAvailablePapers, getExamPaper } from "@/lib/exam-data"
 import { saveMistake } from "@/lib/storage"
 import { SocraticChat } from "@/components/socratic-chat"
+import { BankedCloze } from "@/components/banked-cloze"
+import { MatchingSection } from "@/components/matching-section"
 import type { ChoiceQuestion, ExamPaper, Section, ExamType } from "@/types/exam"
 
 // ============================================================
@@ -417,7 +419,30 @@ export default function ReadPage() {
 
         {/* 题目区域 */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
-          {questions.map((q, qIdx) => (
+          {/* Section A: 选词填空 */}
+          {currentSection?.subtype === "banked_cloze" && currentSection.passage && (
+            <BankedCloze
+              passage={currentSection.passage}
+              bank={(currentSection as any).bank || []}
+              blanks={questions.map((q, i) => ({
+                num: 26 + i,
+                answer: q.answer || ""
+              }))}
+            />
+          )}
+
+          {/* Section B: 信息匹配 */}
+          {currentSection?.subtype === "matching" && (
+            <MatchingSection
+              questions={questions}
+              selectedAnswers={selectedAnswers}
+              submitted={submitted}
+              onSelect={handleSelectAnswer}
+            />
+          )}
+
+          {/* Section C: 仔细阅读 */}
+          {currentSection?.subtype === "careful_reading" && questions.map((q, qIdx) => (
             <QuestionBlock
               key={q.id}
               question={q}
@@ -429,24 +454,26 @@ export default function ReadPage() {
             />
           ))}
 
-          {/* 提交按钮 */}
-          <div className="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-4 pb-2">
-            {!submitted ? (
-              <Button
-                onClick={handleSubmit}
-                disabled={answeredCount < questions.length}
-                className="w-full"
-              >
-                {answeredCount < questions.length
-                  ? `还有 ${questions.length - answeredCount} 题未答`
-                  : "提交全部答案"}
-              </Button>
-            ) : (
-              <Button onClick={handleNextSection} className="w-full">
-                {currentSectionIdx < sections.length - 1 ? "下一篇 →" : "查看结果"}
-              </Button>
-            )}
-          </div>
+          {/* 提交按钮（仅 Section C） */}
+          {currentSection?.subtype === "careful_reading" && (
+            <div className="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-4 pb-2">
+              {!submitted ? (
+                <Button
+                  onClick={handleSubmit}
+                  disabled={answeredCount < questions.length}
+                  className="w-full"
+                >
+                  {answeredCount < questions.length
+                    ? `还有 ${questions.length - answeredCount} 题未答`
+                    : "提交全部答案"}
+                </Button>
+              ) : (
+                <Button onClick={handleNextSection} className="w-full">
+                  {currentSectionIdx < sections.length - 1 ? "下一篇 →" : "查看结果"}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
