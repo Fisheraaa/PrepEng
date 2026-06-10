@@ -28,6 +28,14 @@ export default function ListenPage() {
 
   const papers = getListeningPapers(examType)
 
+  // 获取有听力题目的 paper IDs
+  const examPapersAll = getExamPapers(examType)
+  const papersWithQuestions = new Set(
+    examPapersAll
+      .filter((p) => p.sections.some((s) => s.type === "listening" && s.questions.length > 0))
+      .map((p) => p.id)
+  )
+
   // 按年份分组
   const grouped = papers.reduce<Record<number, ListeningPaper[]>>((acc, p) => {
     if (!acc[p.year]) acc[p.year] = []
@@ -213,7 +221,14 @@ export default function ListenPage() {
                       </p>
                     </div>
                   </div>
-                  <Badge variant="outline" className="text-xs">▶ 播放</Badge>
+                  <div className="flex items-center gap-2">
+                    {papersWithQuestions.has(paper.id) && (
+                      <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">
+                        有题
+                      </Badge>
+                    )}
+                    <Badge variant="outline" className="text-xs">▶ 播放</Badge>
+                  </div>
                 </CardContent>
               </Card>
             ))}
