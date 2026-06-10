@@ -17,12 +17,10 @@ export default function ListenPage() {
   const examType = (pathname.split("/")[1] || "cet4") as "cet4" | "cet6"
 
   const [selected, setSelected] = useState<ListeningPaper | null>(null)
-  const [submitted, setSubmitted] = useState(false)
+  const [submittedSections, setSubmittedSections] = useState<Set<number>>(new Set())
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({})
 
   const papers = getListeningPapers(examType)
-
-  // 按年份分组
   const grouped = papers.reduce<Record<number, ListeningPaper[]>>((acc, p) => {
     if (!acc[p.year]) acc[p.year] = []
     acc[p.year].push(p)
@@ -38,27 +36,30 @@ export default function ListenPage() {
       if (p.id === selected.id) {
         for (const s of p.sections) {
           if (s.type === "listening") {
-            listenSections.push({
-              title: s.title || "听力",
-              questions: s.questions as ChoiceQuestion[]
-            })
+            listenSections.push({ title: s.title || "听力", questions: s.questions as ChoiceQuestion[] })
           }
         }
         break
       }
     }
   }
-  const questions = listenSections.flatMap((s) => s.questions)
 
   const handleSelect = useCallback((qId: string, letter: string) => {
-    if (submitted) return
     setSelectedAnswers((prev) => ({ ...prev, [qId]: letter }))
-  }, [submitted])
+  }, [])
 
-  const handleSubmit = useCallback(() => { setSubmitted(true) }, [])
-  const handleReset = useCallback(() => { setSelectedAnswers({}); setSubmitted(false) }, [])
+  const handleSubmitSection = useCallback((sIdx: number) => {
+    setSubmittedSections((prev) => new Set([...prev, sIdx]))
+  }, [])
 
-  const correctCount = questions.filter((q) => selectedAnswers[q.id] === q.answer).length
+  const handleReset = useCallback(() => {
+    setSelectedAnswers({})
+    setSubmittedSections(new Set())
+  }, [])
+
+  const allQuestions = listenSections.flatMap((s) => s.questions)
+  const totalCorrect = allQuestions.filter((q) => selectedAnswers[q.id] === q.answer).length
+  const allSubmitted = submittedSections.size === listenSections.length
 
   // --- 播放界面 ---
   if (selected) {
@@ -69,7 +70,7 @@ export default function ListenPage() {
             <h1 className="text-2xl font-bold">🎧 听力练习</h1>
             <p className="text-sm text-muted-foreground">{selected.title}</p>
           </div>
-          <Button variant="outline" size="sm" onClick={() => { setSelected(null); setSubmitted(false); setSelectedAnswers({}); }}>
+          <Button variant="outline" size="sm" onClick={() => { setSelected(null); setSubmittedSections(new Set()); setSelectedAnswers({}); }}>
             返回列表
           </Button>
         </div>
@@ -82,14 +83,16 @@ export default function ListenPage() {
 
         {listenSections.length > 0 ? (
           <>
-            {/* 分 section 显示 */}
             {listenSections.map((section, sIdx) => {
+              const isSubmitted = submittedSections.has(sIdx)
               const sectionCorrect = section.questions.filter((q) => selectedAnswers[q.id] === q.answer).length
+              const sectionAnswered = section.questions.filter((q) => selectedAnswers[q.id]).length
+
               return (
                 <div key={sIdx} className="space-y-3">
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm font-semibold">{section.title}</h2>
-                    {submitted && <Badge variant="outline">{sectionCorrect}/{section.questions.length}</Badge>}
+                    {isSubmitted && <Badge variant="outline">{sectionCorrect}/{section.questions.length}</Badge>}
                   </div>
 
                   <div className="space-y-4">
@@ -105,14 +108,14 @@ export default function ListenPage() {
                               <button
                                 key={opt}
                                 onClick={() => handleSelect(q.id, letter)}
-                                disabled={submitted}
+                                disabled={isSubmitted}
                                 className={cn(
                                   "w-full text-left p-2.5 rounded border text-sm transition-all",
                                   "hover:border-primary/50 hover:bg-accent/50",
-                                  isSelected && !submitted && "border-primary bg-primary/10",
-                                  submitted && isCorrect && "border-emerald-500 bg-emerald-500/10",
-                                  submitted && isSelected && !isCorrect && "border-destructive bg-destructive/10",
-                                  !isSelected && !submitted && "border-border"
+                                  isSelected && !isSubmitted && "border-primary bg-primary/10",
+                                  isSubmitted && isCorrect && "border-emerald-500 bg-emerald-500/10",
+                                  isSubmitted && isSelected && !isCorrect && "border-destructive bg-destructive/10",
+                                  !isSelected && !isSubmitted && "border-border"
                                 )}
                               >
                                 {opt}
@@ -120,7 +123,7 @@ export default function ListenPage() {
                             )
                           })}
                         </div>
-                        {submitted && (
+                        {isSubmitted && (
                           <p className="text-xs text-muted-foreground">
                             {selectedAnswers[q.id] === q.answer ? "✅ 正确" : `❌ 正确答案：${q.answer}`}
                           </p>
@@ -129,28 +132,38 @@ export default function ListenPage() {
                     ))}
                   </div>
 
+                  {/* 每个 section 单独提交 */}
+                  {!isSubmitted ? (
+                    <Button
+                      onClick={() => handleSubmitSection(sIdx)}
+                      disabled={sectionAnswered < section.questions.length}
+                      className="w-full"
+                      size="sm"
+                    >
+                      {sectionAnswered < section.questions.length
+                        ? `还有 ${section.questions.length - sectionAnswered} 题未答`
+                        : `提交 ${section.title}`}
+                    </Button>
+                  ) : (
+                    <div className="text-center text-xs text-muted-foreground py-1">
+                      ✅ {sectionCorrect}/{section.questions.length} 正确
+                    </div>
+                  )}
+
                   {sIdx < listenSections.length - 1 && <Separator />}
                 </div>
               )
             })}
 
-            {/* 提交/重做按钮 */}
-            <div className="flex gap-3 pt-4">
-              {!submitted ? (
-                <Button onClick={handleSubmit} disabled={Object.keys(selectedAnswers).length < questions.length} className="w-full">
-                  {Object.keys(selectedAnswers).length < questions.length
-                    ? `还有 ${questions.length - Object.keys(selectedAnswers).length} 题未答`
-                    : "提交答案"}
-                </Button>
-              ) : (
-                <div className="w-full space-y-2">
-                  <div className="text-center text-sm font-medium">
-                    总分：{correctCount}/{questions.length} 正确
-                  </div>
-                  <Button variant="outline" onClick={handleReset} className="w-full">重做</Button>
+            {/* 总分（所有 section 提交后） */}
+            {allSubmitted && (
+              <div className="text-center space-y-3 pt-4 border-t">
+                <div className="text-2xl font-bold">
+                  {totalCorrect}/{allQuestions.length} 正确
                 </div>
-              )}
-            </div>
+                <Button variant="outline" onClick={handleReset} className="w-full">全部重做</Button>
+              </div>
+            )}
           </>
         ) : (
           <Card className="bg-muted/30">
@@ -185,38 +198,26 @@ export default function ListenPage() {
         <p className="text-muted-foreground">选择一套真题听力开始练习。支持调速、快进快退。</p>
       </div>
 
-      {/* 有题目标记 */}
       {(() => {
         const papersWithQ = new Set(
-          examPapers
-            .filter((p) => p.sections.some((s) => s.type === "listening" && s.questions.length > 0))
-            .map((p) => p.id)
+          examPapers.filter((p) => p.sections.some((s) => s.type === "listening" && s.questions.length > 0)).map((p) => p.id)
         )
-
         return years.map((year) => (
           <div key={year}>
             <h2 className="text-sm font-semibold text-muted-foreground mb-2">{year} 年</h2>
             <div className="grid gap-2 md:grid-cols-2">
               {grouped[year].map((paper) => (
-                <Card
-                  key={paper.id}
-                  className="cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors"
-                  onClick={() => setSelected(paper)}
-                >
+                <Card key={paper.id} className="cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors" onClick={() => setSelected(paper)}>
                   <CardContent className="pt-4 pb-3 px-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="text-xl">🎧</span>
                       <div>
                         <p className="text-sm font-medium">{paper.title}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {paper.month}月{paper.session ? ` · 第${paper.session}套` : ""}
-                        </p>
+                        <p className="text-xs text-muted-foreground">{paper.month}月{paper.session ? ` · 第${paper.session}套` : ""}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      {papersWithQ.has(paper.id) && (
-                        <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">有题</Badge>
-                      )}
+                      {papersWithQ.has(paper.id) && <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">有题</Badge>}
                       <Badge variant="outline" className="text-xs">▶ 播放</Badge>
                     </div>
                   </CardContent>

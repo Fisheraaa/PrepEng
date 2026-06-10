@@ -146,8 +146,29 @@ export function BankedCloze({ passage, bank, blanks, onSubmit }: BankedClozeProp
 
       {/* 结果 */}
       {submitted && (
-        <div className="text-sm text-muted-foreground">
-          正确 {blanks.filter((b) => filledBlanks[b.num] === b.answer).length} / {blanks.length}
+        <div className="space-y-3">
+          <div className="text-sm font-medium">
+            正确 {blanks.filter((b) => filledBlanks[b.num] === b.answer).length} / {blanks.length}
+          </div>
+          {/* 显示正确答案 */}
+          <div className="space-y-1">
+            {blanks.map((blank) => {
+              const userAns = filledBlanks[blank.num]
+              const isCorrect = userAns === blank.answer
+              return (
+                <div key={blank.num} className="text-xs flex items-center gap-2">
+                  <span className={isCorrect ? "text-emerald-400" : "text-destructive"}>
+                    {isCorrect ? "✅" : "❌"}
+                  </span>
+                  <span className="text-muted-foreground">第 {blank.num} 题：</span>
+                  {!isCorrect && (
+                    <span className="text-destructive">你填 {userAns?.replace(/^[A-Z]\)/, "") || "未填"}</span>
+                  )}
+                  <span className="text-emerald-400">正确答案 {blank.answer?.replace(/^[A-Z]\)/, "")}</span>
+                </div>
+              )
+            })}
+          </div>
         </div>
       )}
     </div>
