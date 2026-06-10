@@ -9,21 +9,52 @@ from docx import Document
 
 
 def clean_text(text):
-    """清理文本"""
-    # 合并断行单词
+    """清理文本中的页码、水印、广告等残留"""
+    # 合并断行单词（如 "enviro-\nnment" -> "environment"）
     text = re.sub(r'(\w)-\s*\n\s*(\w)', r'\1\2', text)
     # 单换行变空格
     text = re.sub(r'(?<!\n)\n(?!\n)', ' ', text)
     # 多空格
     text = re.sub(r' {2,}', ' ', text)
-    # 各种页码/水印/广告
-    text = re.sub(r'[•·]\s*\d{4}年.*?真题.*?[•·]\s*\d+', '', text)
+
+    # === 清理各种页码/水印格式 ===
+    # •2025年6月四级真题（第二套）・
+    # ・2025年6月四级真题（第一套）・
+    # • 2025年6月四级真题（第一套）・
+    # • 2023年 12月四级真题（第三套）・（日期中间有空格）
+    text = re.sub(r'[•·・]\s*\d{4}年\s*\d{1,2}月.*?真题.*?[•·・]\s*\d*', '', text)
+    # 年12月六级真题(二)14
+    text = re.sub(r'年\d{1,2}月.*?真题.*?\d+\s*', '', text)
+    # 试题册 ·...
     text = re.sub(r'试题册\s*·.*?\d+', '', text)
+    # 各种页码格式
     text = re.sub(r'\d{4}年\d{1,2}月.*?真题.*?第?\s*\d+\s*页.*?共\s*\d+\s*页', '', text)
+    text = re.sub(r'\d+\s*·\s*\d{4}年.*?真题', '', text)
+    # by:xxx 广告
     text = re.sub(r'by\s*[:：]\s*\S+', '', text)
+    # 淘宝广告
     text = re.sub(r'淘宝.*?$', '', text, flags=re.MULTILINE)
+    # 残留页码
     text = re.sub(r'\s*\d+\s*页\s*共\s*\d+\s*页\s*$', '', text)
     text = re.sub(r'\s*\d+\s*$', '', text)
+
+    # 清理引号残留
+    text = re.sub(r'""', '"', text)
+    text = re.sub(r'``', '"', text)
+    text = re.sub(r"''", '"', text)
+    # 清理 <4 ^^ 等标记残留
+    text = re.sub(r'<\d+', '', text)
+    text = re.sub(r'\^+', '', text)
+    # 清理冒号前的空格（"natural: habitats" -> "natural habitats"）
+    text = re.sub(r'\s*:\s*', ' ', text)
+    # 清理多余破折号
+    text = re.sub(r'——+', '—', text)
+
+    # 清理首尾
+    text = text.strip()
+    # 如果文章以句号后的数字开头（页码残留），去掉
+    text = re.sub(r'^\d+\s*', '', text)
+
     return text.strip()
 
 
