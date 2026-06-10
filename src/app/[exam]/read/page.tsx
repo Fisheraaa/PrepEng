@@ -363,86 +363,90 @@ export default function ReadPage() {
   }
 
   // --- 做题页面 ---
-  return (
-    <div className="flex h-screen">
-      {/* 左侧：文章 + 字号控制 */}
-      <div className="w-1/2 border-r border-border overflow-y-auto p-6 space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" onClick={handleBackToList} className="h-7 px-2">
-              ← 返回
-            </Button>
-            <h2 className="text-lg font-semibold">{currentSection?.title}</h2>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={decrease} className="h-7 w-7 p-0">A</Button>
-            <span className="text-xs text-muted-foreground w-8 text-center">{fontSize}</span>
-            <Button variant="outline" size="sm" onClick={increase} className="h-7 w-7 p-0 text-base">A</Button>
-          </div>
+
+  // 顶部导航栏（所有 section 共用）
+  const topBar = (
+    <div className="border-b border-border px-4 py-2 flex items-center justify-between shrink-0">
+      <div className="flex items-center gap-2">
+        <Button variant="ghost" size="sm" onClick={handleBackToList} className="h-7 px-2">← 返回</Button>
+        <span className="text-sm font-medium">{currentSection?.title}</span>
+      </div>
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
+          <Button variant="outline" size="sm" onClick={decrease} className="h-6 w-6 p-0 text-xs">A</Button>
+          <span className="text-xs text-muted-foreground w-6 text-center">{fontSize}</span>
+          <Button variant="outline" size="sm" onClick={increase} className="h-6 w-6 p-0">A</Button>
         </div>
-        <Separator />
-        <div className="leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
-          {currentSection?.passage}
+        <div className="flex gap-1">
+          {sections.map((s, idx) => (
+            <button
+              key={idx}
+              onClick={() => handleGoToSection(idx)}
+              className={cn(
+                "px-2 py-1 rounded text-xs transition-colors",
+                idx === currentSectionIdx ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-accent"
+              )}
+            >
+              {sectionLabel(s)}
+            </button>
+          ))}
         </div>
       </div>
+    </div>
+  )
 
-      {/* 右侧：选题面板 + 所有题目 */}
-      <div className="w-1/2 flex flex-col">
-        {/* 顶部：选题目录面板 */}
-        <div className="border-b border-border px-4 py-3 space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground">篇目导航</span>
-            <span className="text-xs text-muted-foreground">
-              {answeredCount}/{questions.length} 已答
-            </span>
-          </div>
-          <div className="flex gap-1.5 flex-wrap">
-            {sections.map((s, idx) => {
-              const sQuestions = s.questions as ChoiceQuestion[]
-              const sAnswered = sQuestions.filter((q) => selectedAnswers[q.id]).length
-              return (
-                <button
-                  key={idx}
-                  onClick={() => handleGoToSection(idx)}
-                  className={cn(
-                    "px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
-                    idx === currentSectionIdx ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"
-                  )}
-                >
-                  {sectionLabel(s)}
-                  <span className="ml-1 opacity-60">{sAnswered}/{sQuestions.length}</span>
-                </button>
-              )
-            })}
-          </div>
+  // Section A: 选词填空 — 全屏布局
+  if (currentSection?.subtype === "banked_cloze") {
+    return (
+      <div className="flex flex-col h-screen">
+        {topBar}
+        <div className="flex-1 overflow-y-auto p-8 max-w-4xl mx-auto w-full">
+          <BankedCloze
+            passage={currentSection.passage || ""}
+            bank={(currentSection as any).bank || []}
+            blanks={questions.map((q, i) => ({ num: 26 + i, answer: q.answer || "" }))}
+          />
         </div>
+      </div>
+    )
+  }
 
-        {/* 题目区域 */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
-          {/* Section A: 选词填空 */}
-          {currentSection?.subtype === "banked_cloze" && currentSection.passage && (
-            <BankedCloze
-              passage={currentSection.passage}
-              bank={(currentSection as any).bank || []}
-              blanks={questions.map((q, i) => ({
-                num: 26 + i,
-                answer: q.answer || ""
-              }))}
-            />
-          )}
-
-          {/* Section B: 信息匹配 */}
-          {currentSection?.subtype === "matching" && (
+  // Section B: 信息匹配 — 左文章右题目
+  if (currentSection?.subtype === "matching") {
+    return (
+      <div className="flex flex-col h-screen">
+        {topBar}
+        <div className="flex flex-1 overflow-hidden">
+          <div className="w-1/2 border-r border-border overflow-y-auto p-6">
+            <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
+              {currentSection.passage || "（文章加载中...）"}
+            </div>
+          </div>
+          <div className="w-1/2 overflow-y-auto p-6">
             <MatchingSection
               questions={questions}
               selectedAnswers={selectedAnswers}
               submitted={submitted}
               onSelect={handleSelectAnswer}
             />
-          )}
+          </div>
+        </div>
+      </div>
+    )
+  }
 
-          {/* Section C: 仔细阅读 */}
-          {currentSection?.subtype === "careful_reading" && questions.map((q, qIdx) => (
+  // Section C: 仔细阅读 — 左文章右题目
+  return (
+    <div className="flex flex-col h-screen">
+      {topBar}
+      <div className="flex flex-1 overflow-hidden">
+        <div className="w-1/2 border-r border-border overflow-y-auto p-6">
+          <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
+            {currentSection?.passage}
+          </div>
+        </div>
+        <div className="w-1/2 overflow-y-auto p-6 space-y-6">
+          {questions.map((q, qIdx) => (
             <QuestionBlock
               key={q.id}
               question={q}
@@ -453,27 +457,19 @@ export default function ReadPage() {
               fontSize={fontSize}
             />
           ))}
-
-          {/* 提交按钮（仅 Section C） */}
-          {currentSection?.subtype === "careful_reading" && (
-            <div className="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-4 pb-2">
-              {!submitted ? (
-                <Button
-                  onClick={handleSubmit}
-                  disabled={answeredCount < questions.length}
-                  className="w-full"
-                >
-                  {answeredCount < questions.length
-                    ? `还有 ${questions.length - answeredCount} 题未答`
-                    : "提交全部答案"}
-                </Button>
-              ) : (
-                <Button onClick={handleNextSection} className="w-full">
-                  {currentSectionIdx < sections.length - 1 ? "下一篇 →" : "查看结果"}
-                </Button>
-              )}
-            </div>
-          )}
+          <div className="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-4 pb-2">
+            {!submitted ? (
+              <Button onClick={handleSubmit} disabled={answeredCount < questions.length} className="w-full">
+                {answeredCount < questions.length
+                  ? `还有 ${questions.length - answeredCount} 题未答`
+                  : "提交全部答案"}
+              </Button>
+            ) : (
+              <Button onClick={handleNextSection} className="w-full">
+                {currentSectionIdx < sections.length - 1 ? "下一篇 →" : "查看结果"}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </div>

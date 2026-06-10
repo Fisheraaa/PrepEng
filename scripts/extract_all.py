@@ -50,6 +50,8 @@ def clean_text(text):
     # 清理多余破折号
     text = re.sub(r'——+', '—', text)
 
+    # 段落间距：句号后换行再加一个空行
+    text = re.sub(r'\.\s+', '.\n\n', text)
     # 清理首尾
     text = text.strip()
     # 如果文章以句号后的数字开头（页码残留），去掉
@@ -148,6 +150,14 @@ def extract_reading_section_b(text):
 
     section_text = match.group(1)
 
+    # 提取段落（A) B) C) ... 格式，在题目之前）
+    # 找到第一个题目编号（36）
+    first_q = re.search(r'(?<!\d)36\s*\.\s', section_text)
+    if first_q:
+        paragraphs_text = section_text[:first_q.start()]
+    else:
+        paragraphs_text = section_text
+
     # 提取匹配题（36-45）
     statements = []
     for q_num in range(36, 46):
@@ -167,7 +177,7 @@ def extract_reading_section_b(text):
         "type": "reading",
         "subtype": "matching",
         "title": "Section B — 信息匹配",
-        "passage": "",
+        "passage": clean_text(paragraphs_text),
         "questions": statements
     }
 
