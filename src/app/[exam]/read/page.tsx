@@ -86,9 +86,19 @@ export default function ReadPage() {
 
   const availablePapers = getAvailablePapers(examType)
   const paper = selectedPaperId ? getExamPaper(examType, selectedPaperId) : null
-  const sections = paper?.sections.filter((s) => s.type === "reading") ?? []
+  const sections = paper?.sections ?? []
   const currentSection = sections[currentSectionIdx]
   const questions = (currentSection?.questions ?? []) as ChoiceQuestion[]
+
+  // Section 类型显示名
+  const sectionLabel = (s: Section) => {
+    if (s.subtype === "banked_cloze") return "选词填空"
+    if (s.subtype === "matching") return "信息匹配"
+    if (s.subtype === "careful_reading") return "仔细阅读"
+    if (s.type === "writing") return "写作"
+    if (s.type === "translation") return "翻译"
+    return s.title || "阅读"
+  }
 
   // 自动恢复进度
   useEffect(() => {
@@ -398,7 +408,7 @@ export default function ReadPage() {
                     idx === currentSectionIdx ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"
                   )}
                 >
-                  篇{idx + 1}
+                  {sectionLabel(s)}
                   <span className="ml-1 opacity-60">{sAnswered}/{sQuestions.length}</span>
                 </button>
               )
