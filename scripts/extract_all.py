@@ -45,34 +45,52 @@ def get_docx_text(doc_path):
 
 
 def extract_reading_section_a(text):
-    """提取 Section A 选词填空"""
-    # 找 Section A 到 Section B 之间
-    match = re.search(r'Section\s*A\s*\n(.*?)(?=Section\s*B\s*\n)', text, re.DOTALL)
+    """提取 Section A 选词填空（从阅读部分）"""
+    # 先找阅读部分（支持 "Part III" / "Part in" / "Part n" 等变体）
+    reading_match = re.search(r'Part\s*(?:[ⅢIIIHIhiDl1]+|in|n)\s*Reading\s*Comprehension', text, re.DOTALL)
+    if not reading_match:
+        return None
+    reading_text = text[reading_match.start():]
+
+    # 在阅读部分内找 Section A 到 Section B
+    match = re.search(r'Section\s*A\s*\n(.*?)(?=Section\s*B\s*\n)', reading_text, re.DOTALL)
     if not match:
         return None
 
     section_text = match.group(1)
 
-    # 提取文章（从 Directions 之后到选项之前）
+    # 提取词库
+    bank = []
+    for m in re.finditer(r'([A-O])\)\s*(\w+)', section_text):
+        bank.append(f"{m.group(1)}){m.group(2)}")
+
+    if not bank:
+        return None
+
+    # 提取文章正文（从 Directions 之后到词库之前）
     directions_match = re.search(r'Directions:.*?once\.\s*', section_text, re.DOTALL)
     if not directions_match:
         return None
 
     after_directions = section_text[directions_match.end():]
 
-    # 提取词库选项
-    bank_match = re.search(r'([A-O])\)\s*(\w+)', after_directions)
-    if not bank_match:
-        return None
+    # 找词库开始位置
+    bank_start = re.search(r'[A-O]\)\s*\w+', after_directions)
+    if bank_start:
+        passage_text = after_directions[:bank_start.start()]
+    else:
+        passage_text = after_directions
 
-    # 提取文章正文和填空
-    passage_match = re.search(r'(.*?)(?=[A-O]\)\s*\w+)', after_directions, re.DOTALL)
-    passage_text = passage_match.group(1).strip() if passage_match else ""
-
-    # 提取词库
-    bank = []
-    for m in re.finditer(r'([A-O])\)\s*(\w+)', after_directions):
-        bank.append(f"{m.group(1)}){m.group(2)}")
+    # 创建填空题（题号 26-35）
+    questions = []
+    for q_num in range(26, 36):
+        questions.append({
+            "id": f"q{q_num}",
+            "content": f"第 {q_num} 题：选择合适的词填入空白处",
+            "options": bank,
+            "answer": "",
+            "explanation": ""
+        })
 
     return {
         "type": "reading",
@@ -80,23 +98,24 @@ def extract_reading_section_a(text):
         "title": "Section A — 选词填空",
         "passage": clean_text(passage_text),
         "bank": bank,
-        "questions": []  # 选词填空的题号是 26-35，每空一个
+        "questions": questions
     }
 
 
 def extract_reading_section_b(text):
-    """提取 Section B 信息匹配"""
-    match = re.search(r'Section\s*B\s*\n(.*?)(?=Section\s*C\s*\n)', text, re.DOTALL)
+    """提取 Section B 信息匹配（从阅读部分）"""
+    # 先找阅读部分
+    reading_match = re.search(r'Part\s*(?:[ⅢIIIHIhiDl1]+|in|n)\s*Reading\s*Comprehension', text, re.DOTALL)
+    if not reading_match:
+        return None
+    reading_text = text[reading_match.start():]
+
+    # 在阅读部分内找 Section B 到 Section C
+    match = re.search(r'Section\s*B\s*\n(.*?)(?=Section\s*C\s*\n)', reading_text, re.DOTALL)
     if not match:
         return None
 
     section_text = match.group(1)
-
-    # 提取文章段落（A) B) C) ... 格式）
-    paragraphs = {}
-    para_matches = re.finditer(r'([A-O])\)\s*(.*?)(?=[A-O]\)\s|$)', section_text, re.DOTALL)
-    for m in para_matches:
-        paragraphs[m.group(1)] = clean_text(m.group(2))
 
     # 提取匹配题（36-45）
     statements = []
@@ -110,19 +129,28 @@ def extract_reading_section_b(text):
                 "explanation": ""
             })
 
+    if not statements:
+        return None
+
     return {
         "type": "reading",
         "subtype": "matching",
         "title": "Section B — 信息匹配",
-        "passage": "",  # 段落内容在 paragraphs 中
-        "paragraphs": paragraphs,
+        "passage": "",
         "questions": statements
     }
 
 
 def extract_reading_section_c(text):
-    """提取 Section C 仔细阅读"""
-    match = re.search(r'Section\s*C\s*\n(.*?)(?=Part\s*[ⅣIV])', text, re.DOTALL)
+    """提取 Section C 仔细阅读（从阅读部分）"""
+    # 先找阅读部分
+    reading_match = re.search(r'Part\s*(?:[ⅢIIIHIhiDl1]+|in|n)\s*Reading\s*Comprehension', text, re.DOTALL)
+    if not reading_match:
+        return None
+    reading_text = text[reading_match.start():]
+
+    # 在阅读部分内找 Section C
+    match = re.search(r'Section\s*C\s*\n(.*?)(?=Part\s*[ⅣIV])', reading_text, re.DOTALL)
     if not match:
         return None
 
