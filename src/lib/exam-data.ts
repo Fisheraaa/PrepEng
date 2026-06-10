@@ -51,6 +51,7 @@ function convertPaper(data: ExtractedPaper): ExamPaper {
       subtype: s.subtype as "careful_reading" | "banked_cloze" | "matching" | undefined,
       title: s.title || "",
       passage: s.passage,
+      bank: s.bank,  // 词库（选词填空用）
       questions: (s.questions || []).map((q) => ({
         id: q.id,
         type: "choice" as const,

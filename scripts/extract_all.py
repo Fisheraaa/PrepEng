@@ -50,8 +50,7 @@ def clean_text(text):
     # 清理多余破折号
     text = re.sub(r'——+', '—', text)
 
-    # 段落间距：句号后换行再加一个空行
-    text = re.sub(r'\.\s+', '.\n\n', text)
+    # 不要每句都加空行，保持原文段落结构
     # 清理首尾
     text = text.strip()
     # 如果文章以句号后的数字开头（页码残留），去掉
@@ -292,20 +291,73 @@ def extract_writing(text):
     }
 
 
+def clean_listening_option(text):
+    """清理听力选项中混入的指令文字"""
+    # 去掉 "Questions X and Y are based on..." 等指令
+    text = re.sub(r'Questions?\s+\d+.*?heard\.?\s*', '', text)
+    text = re.sub(r'Questions?\s+\d+.*?once\.?\s*', '', text)
+    return text.strip()
+
+
 def extract_listening(text):
-    """提取听力题目"""
+    """提取听力题目（分 Section A/B/C）"""
     # 找到 Listening 部分
-    listen_match = re.search(r'Part\s*II\s*Listening.*?\n(.*?)(?=Part\s*(?:III|in)\s*Reading)', text, re.DOTALL)
+    listen_match = re.search(r'Part\s*II\s*Listening.*?\n(.*?)(?=Part\s*(?:III|in|n|HI|DI)\s*Reading)', text, re.DOTALL)
     if not listen_match:
         return None
 
     listen_text = listen_match.group(1)
 
-    # 提取所有听力选择题（1-25）
+    sections = []
+
+    # Section A: News Reports (Q1-7)
+    section_a = extract_listening_section(listen_text, "Section A", 1, 8, "短篇新闻")
+    if section_a:
+        sections.append(section_a)
+
+    # Section B: Long Conversations (Q8-15 for CET-4, Q8-18 for CET-6)
+    section_b = extract_listening_section(listen_text, "Section B", 8, 16, "长对话")
+    if section_b:
+        sections.append(section_b)
+
+    # Section C: Passages (Q16-25 for CET-4)
+    section_c = extract_listening_section(listen_text, "Section C", 16, 26, "听力篇章")
+    if section_c:
+        sections.append(section_c)
+
+    if not sections:
+        # Fallback: 提取所有题目
+        questions = []
+        for q_num in range(1, 26):
+            q = extract_question(listen_text, q_num, 26)
+            if q:
+                # 清理选项
+                q['options'] = [clean_listening_option(opt) for opt in q['options']]
+                questions.append(q)
+        if questions:
+            sections.append({
+                "type": "listening",
+                "title": "听力选择题",
+                "questions": questions
+            })
+
+    return sections
+
+
+def extract_listening_section(text, section_name, q_start, q_end, label):
+    """提取听力某个 section 的题目"""
+    # 找到该 section
+    section_match = re.search(rf'{section_name}\s*\n(.*?)(?=Section\s*[B-C]\s*\n|$)', text, re.DOTALL)
+    if not section_match:
+        return None
+
+    section_text = section_match.group(1)
+
     questions = []
-    for q_num in range(1, 26):
-        q = extract_question(listen_text, q_num, 26)
+    for q_num in range(q_start, q_end):
+        q = extract_question(section_text, q_num, q_end)
         if q:
+            q['options'] = [clean_listening_option(opt) for opt in q['options']]
             questions.append(q)
 
     if not questions:
@@ -313,7 +365,7 @@ def extract_listening(text):
 
     return {
         "type": "listening",
-        "title": "Part II — 听力理解",
+        "title": f"{section_name} — {label}",
         "questions": questions
     }
 
@@ -359,9 +411,9 @@ def process_file(filepath, exam_type, year, month, session):
         result["sections"].append(writing)
 
     # 听力
-    listening = extract_listening(text)
-    if listening:
-        result["sections"].append(listening)
+    listening_sections = extract_listening(text)
+    if listening_sections:
+        result["sections"].extend(listening_sections)
 
     # 阅读 Section A
     section_a = extract_reading_section_a(text)

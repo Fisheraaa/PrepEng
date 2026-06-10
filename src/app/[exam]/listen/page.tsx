@@ -30,20 +30,25 @@ export default function ListenPage() {
   }, {})
   const years = Object.keys(grouped).map(Number).sort((a, b) => b - a)
 
-  // 从题库找听力题
+  // 从题库找听力题（按 section 分组）
   const examPapers = getExamPapers(examType)
-  const questions: ChoiceQuestion[] = []
+  const listenSections: { title: string; questions: ChoiceQuestion[] }[] = []
   if (selected) {
     for (const p of examPapers) {
       if (p.id === selected.id) {
-        const listenSection = p.sections.find((s) => s.type === "listening")
-        if (listenSection) {
-          questions.push(...(listenSection.questions as ChoiceQuestion[]))
+        for (const s of p.sections) {
+          if (s.type === "listening") {
+            listenSections.push({
+              title: s.title || "听力",
+              questions: s.questions as ChoiceQuestion[]
+            })
+          }
         }
         break
       }
     }
   }
+  const questions = listenSections.flatMap((s) => s.questions)
 
   const handleSelect = useCallback((qId: string, letter: string) => {
     if (submitted) return
@@ -75,53 +80,62 @@ export default function ListenPage() {
           </CardContent>
         </Card>
 
-        {questions.length > 0 ? (
+        {listenSections.length > 0 ? (
           <>
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-muted-foreground">
-                听力选择题（{questions.length} 题）
-              </h2>
-              {submitted && <Badge variant="outline">{correctCount}/{questions.length} 正确</Badge>}
-            </div>
-
-            <div className="space-y-4">
-              {questions.map((q, idx) => (
-                <div key={q.id} className="space-y-2">
-                  <p className="text-sm font-medium">{idx + 1}. {q.content || "（听音频作答）"}</p>
-                  <div className="space-y-1.5">
-                    {q.options.map((opt) => {
-                      const letter = opt.charAt(0)
-                      const isSelected = selectedAnswers[q.id] === letter
-                      const isCorrect = letter === q.answer
-                      return (
-                        <button
-                          key={opt}
-                          onClick={() => handleSelect(q.id, letter)}
-                          disabled={submitted}
-                          className={cn(
-                            "w-full text-left p-2.5 rounded border text-sm transition-all",
-                            "hover:border-primary/50 hover:bg-accent/50",
-                            isSelected && !submitted && "border-primary bg-primary/10",
-                            submitted && isCorrect && "border-emerald-500 bg-emerald-500/10",
-                            submitted && isSelected && !isCorrect && "border-destructive bg-destructive/10",
-                            !isSelected && !submitted && "border-border"
-                          )}
-                        >
-                          {opt}
-                        </button>
-                      )
-                    })}
+            {/* 分 section 显示 */}
+            {listenSections.map((section, sIdx) => {
+              const sectionCorrect = section.questions.filter((q) => selectedAnswers[q.id] === q.answer).length
+              return (
+                <div key={sIdx} className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-sm font-semibold">{section.title}</h2>
+                    {submitted && <Badge variant="outline">{sectionCorrect}/{section.questions.length}</Badge>}
                   </div>
-                  {submitted && (
-                    <p className="text-xs text-muted-foreground">
-                      {selectedAnswers[q.id] === q.answer ? "✅ 正确" : `❌ 正确答案：${q.answer}`}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
 
-            <div className="flex gap-3">
+                  <div className="space-y-4">
+                    {section.questions.map((q, qIdx) => (
+                      <div key={q.id} className="space-y-2">
+                        <p className="text-sm font-medium">{qIdx + 1}. {q.content || "（听音频作答）"}</p>
+                        <div className="space-y-1.5">
+                          {q.options.map((opt) => {
+                            const letter = opt.charAt(0)
+                            const isSelected = selectedAnswers[q.id] === letter
+                            const isCorrect = letter === q.answer
+                            return (
+                              <button
+                                key={opt}
+                                onClick={() => handleSelect(q.id, letter)}
+                                disabled={submitted}
+                                className={cn(
+                                  "w-full text-left p-2.5 rounded border text-sm transition-all",
+                                  "hover:border-primary/50 hover:bg-accent/50",
+                                  isSelected && !submitted && "border-primary bg-primary/10",
+                                  submitted && isCorrect && "border-emerald-500 bg-emerald-500/10",
+                                  submitted && isSelected && !isCorrect && "border-destructive bg-destructive/10",
+                                  !isSelected && !submitted && "border-border"
+                                )}
+                              >
+                                {opt}
+                              </button>
+                            )
+                          })}
+                        </div>
+                        {submitted && (
+                          <p className="text-xs text-muted-foreground">
+                            {selectedAnswers[q.id] === q.answer ? "✅ 正确" : `❌ 正确答案：${q.answer}`}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {sIdx < listenSections.length - 1 && <Separator />}
+                </div>
+              )
+            })}
+
+            {/* 提交/重做按钮 */}
+            <div className="flex gap-3 pt-4">
               {!submitted ? (
                 <Button onClick={handleSubmit} disabled={Object.keys(selectedAnswers).length < questions.length} className="w-full">
                   {Object.keys(selectedAnswers).length < questions.length
@@ -129,7 +143,12 @@ export default function ListenPage() {
                     : "提交答案"}
                 </Button>
               ) : (
-                <Button variant="outline" onClick={handleReset} className="w-full">重做</Button>
+                <div className="w-full space-y-2">
+                  <div className="text-center text-sm font-medium">
+                    总分：{correctCount}/{questions.length} 正确
+                  </div>
+                  <Button variant="outline" onClick={handleReset} className="w-full">重做</Button>
+                </div>
               )}
             </div>
           </>

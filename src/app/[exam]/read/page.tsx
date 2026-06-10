@@ -403,7 +403,7 @@ export default function ReadPage() {
         <div className="flex-1 overflow-y-auto p-8 max-w-4xl mx-auto w-full">
           <BankedCloze
             passage={currentSection.passage || ""}
-            bank={(currentSection as any).bank || []}
+            bank={currentSection.bank || []}
             blanks={questions.map((q, i) => ({ num: 26 + i, answer: q.answer || "" }))}
           />
         </div>

@@ -94,6 +94,7 @@ export interface Section {
   title: string             // e.g. "Section A - 选词填空"
   time_limit?: number       // 该部分时间限制（分钟）
   passage?: string          // 阅读理解的文章正文
+  bank?: string[]           // 词库（选词填空用）
   questions: Question[]
 }
 
