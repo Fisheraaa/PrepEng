@@ -86,7 +86,8 @@ export default function ReadPage() {
 
   const availablePapers = getAvailablePapers(examType)
   const paper = selectedPaperId ? getExamPaper(examType, selectedPaperId) : null
-  const sections = paper?.sections ?? []
+  // 只显示阅读类型的 section
+  const sections = paper?.sections.filter((s) => s.type === "reading") ?? []
   const currentSection = sections[currentSectionIdx]
   const questions = (currentSection?.questions ?? []) as ChoiceQuestion[]
 
@@ -95,8 +96,6 @@ export default function ReadPage() {
     if (s.subtype === "banked_cloze") return "选词填空"
     if (s.subtype === "matching") return "信息匹配"
     if (s.subtype === "careful_reading") return "仔细阅读"
-    if (s.type === "writing") return "写作"
-    if (s.type === "translation") return "翻译"
     return s.title || "阅读"
   }
 
