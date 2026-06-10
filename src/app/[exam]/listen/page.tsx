@@ -112,7 +112,7 @@ export default function ListenPage() {
               {questions.map((q, idx) => (
                 <div key={q.id} className="space-y-2">
                   <p className="text-sm font-medium">
-                    {idx + 1}. {q.content}
+                    {idx + 1}. {q.content || "（听音频作答）"}
                   </p>
                   <div className="grid grid-cols-2 gap-2">
                     {q.options.map((opt) => {
