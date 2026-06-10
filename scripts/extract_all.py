@@ -223,6 +223,32 @@ def extract_writing(text):
     }
 
 
+def extract_listening(text):
+    """提取听力题目"""
+    # 找到 Listening 部分
+    listen_match = re.search(r'Part\s*II\s*Listening.*?\n(.*?)(?=Part\s*(?:III|in)\s*Reading)', text, re.DOTALL)
+    if not listen_match:
+        return None
+
+    listen_text = listen_match.group(1)
+
+    # 提取所有听力选择题（1-25）
+    questions = []
+    for q_num in range(1, 26):
+        q = extract_question(listen_text, q_num, 26)
+        if q:
+            questions.append(q)
+
+    if not questions:
+        return None
+
+    return {
+        "type": "listening",
+        "title": "Part II — 听力理解",
+        "questions": questions
+    }
+
+
 def extract_translation(text):
     """提取翻译题目"""
     match = re.search(r'Part\s*[ⅣIV]+\s+Translation\s*\(.*?\)\s*\n\s*(.*?)$', text, re.DOTALL)
@@ -262,6 +288,11 @@ def process_file(filepath, exam_type, year, month, session):
     writing = extract_writing(text)
     if writing:
         result["sections"].append(writing)
+
+    # 听力
+    listening = extract_listening(text)
+    if listening:
+        result["sections"].append(listening)
 
     # 阅读 Section A
     section_a = extract_reading_section_a(text)

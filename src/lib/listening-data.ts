@@ -45,5 +45,11 @@ export const listeningPapers: ListeningPaper[] = [
 ]
 
 export function getListeningPapers(examType: "cet4" | "cet6"): ListeningPaper[] {
-  return listeningPapers.filter((p) => p.exam_type === examType)
+  return listeningPapers
+    .filter((p) => p.exam_type === examType)
+    .sort((a, b) => {
+      if (a.year !== b.year) return b.year - a.year
+      if (a.month !== b.month) return b.month - a.month
+      return (b.session || 0) - (a.session || 0)
+    })
 }
