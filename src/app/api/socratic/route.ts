@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     return unauthorizedResponse()
   }
 
-  const { config, question, options, correct_answer, user_answer, chat_history } =
+  const { config, question, options, correct_answer, user_answer, passage, chat_history } =
     await req.json()
 
   if (!config?.apiKey || !config?.baseUrl || !config?.model) {
@@ -28,9 +28,19 @@ export async function POST(req: NextRequest) {
 - 如果学生卡住了，给提示而不是给答案
 - 当学生理解了，让他们用自己的话总结为什么选错了
 - 用中文交流
-- 不要说"好的""让我""作为老师"之类的废话，直接开始追问`
+- 不要说"好的""让我""作为老师"之类的废话，直接开始追问
+- 可以引用文章中的具体句子来引导学生`
 
-  const context = `题目：${question}
+  let context = ""
+
+  if (passage) {
+    context += `文章：
+${passage}
+
+`
+  }
+
+  context += `题目：${question}
 
 选项：
 ${options.join("\n")}

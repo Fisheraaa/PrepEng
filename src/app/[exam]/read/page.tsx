@@ -478,6 +478,7 @@ export default function ReadPage() {
               submitted={submitted}
               onSelect={(letter) => handleSelectAnswer(q.id, letter)}
               fontSize={fontSize}
+              passage={currentSection?.passage}
             />
           ))}
           <div className="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-4 pb-2">
@@ -510,6 +511,7 @@ function QuestionBlock({
   submitted,
   onSelect,
   fontSize,
+  passage,
 }: {
   question: ChoiceQuestion
   index: number
@@ -517,8 +519,10 @@ function QuestionBlock({
   submitted: boolean
   onSelect: (letter: string) => void
   fontSize: number
+  passage?: string
 }) {
   const isCorrect = submitted && selected === question.answer
+  const [showChat, setShowChat] = useState(false)
 
   return (
     <div className="space-y-3">
@@ -556,7 +560,7 @@ function QuestionBlock({
       </div>
 
       {submitted && (
-        <div className="ml-10">
+        <div className="ml-10 space-y-2">
           <Card className={cn(isCorrect ? "border-emerald-500/30" : "border-destructive/30")}>
             <CardContent className="pt-3 pb-2 px-4">
               <div className="flex items-center gap-2 mb-1">
@@ -571,6 +575,30 @@ function QuestionBlock({
               <p className="text-sm text-muted-foreground leading-relaxed">{question.explanation}</p>
             </CardContent>
           </Card>
+
+          {/* 错题显示追问按钮 */}
+          {!isCorrect && !showChat && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowChat(true)}
+              className="text-xs"
+            >
+              🤔 追问：为什么我选错了？
+            </Button>
+          )}
+
+          {/* 追问对话框 */}
+          {showChat && (
+            <SocraticChat
+              question={question.content}
+              options={question.options}
+              correctAnswer={question.answer}
+              userAnswer={selected ?? ""}
+              passage={passage}
+              onClose={() => setShowChat(false)}
+            />
+          )}
         </div>
       )}
     </div>

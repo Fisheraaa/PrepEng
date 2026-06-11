@@ -18,6 +18,7 @@ interface SocraticChatProps {
   options: string[]
   correctAnswer: string
   userAnswer: string
+  passage?: string  // 文章内容
   onClose: () => void
 }
 
@@ -26,6 +27,7 @@ export function SocraticChat({
   options,
   correctAnswer,
   userAnswer,
+  passage,
   onClose,
 }: SocraticChatProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -77,6 +79,7 @@ export function SocraticChat({
             options,
             correct_answer: correctAnswer,
             user_answer: userAnswer,
+            passage,  // 传入文章上下文
             chat_history: newMessages,
           }),
         })
@@ -136,14 +139,14 @@ export function SocraticChat({
 
       setIsStreaming(false)
     },
-    [messages, isStreaming, question, options, correctAnswer, userAnswer]
+    [messages, isStreaming, question, options, correctAnswer, userAnswer, passage]
   )
 
   // 自动开始第一次追问
   useEffect(() => {
     if (!hasStarted.current) {
       hasStarted.current = true
-      sendMessage("我选错了，请引导我理解。")
+      sendMessage("我选错了这道题，请引导我理解正确答案。")
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -154,7 +157,7 @@ export function SocraticChat({
           <CardTitle className="text-sm flex items-center gap-2">
             🤔 苏格拉底追问
             <Badge variant="outline" className="text-xs">
-              AI 引导你发现错误
+              AI 引导你理解
             </Badge>
           </CardTitle>
           <Button variant="ghost" size="sm" onClick={onClose}>
