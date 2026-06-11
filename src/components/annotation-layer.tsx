@@ -511,3 +511,46 @@ export function getAnnotationsForPaper(
     return []
   }
 }
+
+// 重命名草稿
+export function renameAnnotationSave(
+  examType: string,
+  paperId: string,
+  sectionIdx: number,
+  draftIdx: number,
+  newName: string
+): void {
+  try {
+    const key = `${getStorageKey(examType, paperId, sectionIdx)}-${draftIdx}`
+    const raw = localStorage.getItem(key)
+    if (raw) {
+      const data: AnnotationSaveData = JSON.parse(raw)
+      data.name = newName
+      localStorage.setItem(key, JSON.stringify(data))
+    }
+  } catch {}
+}
+
+// 删除草稿
+export function deleteAnnotationDraft(
+  examType: string,
+  paperId: string,
+  sectionIdx: number,
+  draftIdx: number
+): void {
+  try {
+    const key = `${getStorageKey(examType, paperId, sectionIdx)}-${draftIdx}`
+    localStorage.removeItem(key)
+  } catch {}
+}
+
+// 生成默认草稿名
+export function generateDraftName(
+  examType: string,
+  paperId: string,
+  sectionIdx: number
+): string {
+  const existing = getAnnotationsForPaper(examType, paperId)
+  const sectionDrafts = existing.filter(a => a.sectionIdx === sectionIdx)
+  return `草稿${sectionDrafts.length + 1}`
+}

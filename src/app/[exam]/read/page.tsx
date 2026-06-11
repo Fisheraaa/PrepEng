@@ -18,7 +18,17 @@ import { saveMistake } from "@/lib/storage"
 import { SocraticChat } from "@/components/socratic-chat"
 import { BankedCloze } from "@/components/banked-cloze"
 import { MatchingSection } from "@/components/matching-section"
-import { AnnotationLayer, saveAnnotations, loadAnnotations, hasAnnotations, loadAnnotationSaveData as loadAnnotationData, getAnnotationsForPaper } from "@/components/annotation-layer"
+import {
+  AnnotationLayer,
+  saveAnnotations,
+  loadAnnotations,
+  hasAnnotations,
+  loadAnnotationSaveData,
+  getAnnotationsForPaper,
+  renameAnnotationSave,
+  deleteAnnotationDraft,
+  generateDraftName
+} from "@/components/annotation-layer"
 import type { ChoiceQuestion, ExamPaper, Section, ExamType } from "@/types/exam"
 
 // ============================================================
@@ -88,6 +98,8 @@ export default function ReadPage() {
   const [annotationTool, setAnnotationTool] = useState<"pen" | "highlight" | "underline" | "eraser">("pen")
   const [annotationColor, setAnnotationColor] = useState("#ef4444")
   const [showAnnotationPrompt, setShowAnnotationPrompt] = useState(false)
+  const [showNewDraftDialog, setShowNewDraftDialog] = useState(false)
+  const [newDraftName, setNewDraftName] = useState("")
   const contentRef = useRef<HTMLDivElement>(null)
 
   const { size: fontSize, increase, decrease } = useFontSize()
@@ -204,14 +216,8 @@ export default function ReadPage() {
     setCurrentSectionIdx(0)
     setSelectedAnswers({})
     setSubmitted(false)
-    // 检查是否有任何 section 的标注存档
-    const annotations = getAnnotationsForPaper(examType, paperId)
-    if (annotations.length > 0) {
-      setShowAnnotationPrompt(true)
-    } else {
-      setPhase("reading")
-    }
-  }, [examType])
+    setPhase("reading")
+  }, [])
 
   const handleBackToList = useCallback(() => {
     setSelectedPaperId(null)
@@ -381,52 +387,96 @@ export default function ReadPage() {
 
   // --- 做题页面 ---
 
-  // 标注存档提示
+  // 新建草稿确认
+  const handleCreateDraft = useCallback(() => {
+    if (!selectedPaperId || !newDraftName.trim()) return
+
+    // 保存空草稿
+    saveAnnotations(examType, selectedPaperId, currentSectionIdx, [], newDraftName.trim())
+    setAnnotationActive(true)
+    setShowNewDraftDialog(false)
+  }, [selectedPaperId, examType, currentSectionIdx, newDraftName])
+
+  // 草稿选择弹窗
   if (showAnnotationPrompt && selectedPaperId) {
-    const allAnnotations = getAnnotationsForPaper(examType, selectedPaperId)
+    const sectionDrafts = getAnnotationsForPaper(examType, selectedPaperId)
+      .filter(a => a.sectionIdx === currentSectionIdx)
+
     return (
       <div className="flex items-center justify-center h-screen">
         <Card className="max-w-md">
           <CardHeader>
-            <CardTitle>发现标注存档</CardTitle>
+            <CardTitle>选择草稿</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground">
-              检测到 {allAnnotations.length} 个 section 有标注记录，选择要加载的：
+              当前 section 有 {sectionDrafts.length} 个草稿，选择加载或新建：
             </p>
             <div className="space-y-2 max-h-60 overflow-y-auto">
-              {allAnnotations.map(({ sectionIdx, data }) => {
-                const section = sections[sectionIdx]
-                const sectionName = section ? sectionLabel(section) : `Section ${sectionIdx}`
-                return (
+              {sectionDrafts.map(({ data }, idx) => (
+                <div key={idx} className="flex items-center gap-2 p-3 rounded-lg border">
                   <button
-                    key={sectionIdx}
                     onClick={() => {
-                      setCurrentSectionIdx(sectionIdx)
                       setAnnotationActive(true)
                       setShowAnnotationPrompt(false)
-                      setPhase("reading")
                     }}
-                    className="w-full p-3 rounded-lg border text-left hover:bg-accent transition-colors"
+                    className="flex-1 text-left"
                   >
-                    <p className="text-sm font-medium">{sectionName}</p>
+                    <p className="text-sm font-medium">{data.name || `草稿${idx + 1}`}</p>
                     <p className="text-xs text-muted-foreground mt-1">
                       {(data.annotations || []).length} 处标注 · {new Date(data.updatedAt || Date.now()).toLocaleString()}
                     </p>
                   </button>
-                )
-              })}
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      const newName = prompt("重命名草稿:", data.name || `草稿${idx + 1}`)
+                      if (newName && newName.trim()) {
+                        renameAnnotationSave(examType, selectedPaperId, currentSectionIdx, idx, newName.trim())
+                        setShowAnnotationPrompt(false)
+                        setTimeout(() => setShowAnnotationPrompt(true), 10)
+                      }
+                    }}
+                    className="h-7 px-2 text-xs"
+                  >
+                    重命名
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      if (confirm("确定删除这个草稿吗？")) {
+                        deleteAnnotationDraft(examType, selectedPaperId, currentSectionIdx, idx)
+                        setShowAnnotationPrompt(false)
+                        setTimeout(() => setShowAnnotationPrompt(true), 10)
+                      }
+                    }}
+                    className="h-7 px-2 text-xs text-destructive"
+                  >
+                    删除
+                  </Button>
+                </div>
+              ))}
             </div>
             <div className="flex gap-3 pt-2 border-t">
               <Button
                 variant="outline"
                 onClick={() => {
                   setShowAnnotationPrompt(false)
-                  setPhase("reading")
+                  setNewDraftName(generateDraftName(examType, selectedPaperId, currentSectionIdx))
+                  setShowNewDraftDialog(true)
                 }}
                 className="flex-1"
               >
-                新开空白
+                新建草稿
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setShowAnnotationPrompt(false)}
+                className="flex-1"
+              >
+                取消
               </Button>
             </div>
           </CardContent>
@@ -434,6 +484,65 @@ export default function ReadPage() {
       </div>
     )
   }
+
+  // 新建草稿命名弹窗
+  if (showNewDraftDialog) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Card className="max-w-sm">
+          <CardHeader>
+            <CardTitle>新建草稿</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <label className="text-sm text-muted-foreground">草稿名称：</label>
+              <input
+                type="text"
+                value={newDraftName}
+                onChange={(e) => setNewDraftName(e.target.value)}
+                className="w-full mt-1 px-3 py-2 border rounded-lg bg-background text-foreground"
+                placeholder="输入草稿名称"
+                autoFocus
+                onKeyDown={(e) => e.key === "Enter" && handleCreateDraft()}
+              />
+            </div>
+            <div className="flex gap-3">
+              <Button onClick={handleCreateDraft} className="flex-1" disabled={!newDraftName.trim()}>
+                创建
+              </Button>
+              <Button variant="outline" onClick={() => setShowNewDraftDialog(false)} className="flex-1">
+                取消
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  // 标注按钮点击处理
+  const handleAnnotationClick = useCallback(() => {
+    if (annotationActive) {
+      // 关闭标注
+      setAnnotationActive(false)
+      return
+    }
+
+    // 检查当前 section 是否有草稿
+    if (selectedPaperId) {
+      const existing = getAnnotationsForPaper(examType, selectedPaperId)
+      const sectionDrafts = existing.filter(a => a.sectionIdx === currentSectionIdx)
+
+      if (sectionDrafts.length > 0) {
+        // 有草稿，显示选择弹窗
+        setShowAnnotationPrompt(true)
+      } else {
+        // 没有草稿，弹出新建命名框
+        setNewDraftName(generateDraftName(examType, selectedPaperId, currentSectionIdx))
+        setShowNewDraftDialog(true)
+      }
+    }
+  }, [annotationActive, selectedPaperId, examType, currentSectionIdx])
 
   // 顶部导航栏（所有 section 共用）
   const topBar = (
@@ -448,7 +557,7 @@ export default function ReadPage() {
           <Button
             variant={annotationActive ? "default" : "outline"}
             size="sm"
-            onClick={() => setAnnotationActive(!annotationActive)}
+            onClick={handleAnnotationClick}
             className="h-7 px-2 text-xs"
           >
             {annotationActive ? "✏️ 标注中" : "📝 标注"}
