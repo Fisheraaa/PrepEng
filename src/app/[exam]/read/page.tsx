@@ -344,6 +344,7 @@ export default function ReadPage() {
                                 options={q.options}
                                 correctAnswer={q.answer}
                                 userAnswer={userAns ?? ""}
+                                passage={section.passage}
                                 onClose={() => setSocraticQuestionId(null)}
                               />
                             </div>
