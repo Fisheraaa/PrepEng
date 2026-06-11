@@ -127,9 +127,14 @@ export default function ListenPage() {
                             })}
                           </div>
                           {isSubmitted && (
-                            <p className="text-xs text-muted-foreground">
-                              {selectedAnswers[q.id] === q.answer ? "✅ 正确" : `❌ 正确答案：${q.answer}`}
-                            </p>
+                            <div className="text-xs space-y-1">
+                              <p className="text-muted-foreground">
+                                {selectedAnswers[q.id] === q.answer ? "✅ 正确" : `❌ 正确答案：${q.answer}`}
+                              </p>
+                              {q.explanation && q.explanation !== "暂无解析" && (
+                                <p className="text-muted-foreground/80">{q.explanation}</p>
+                              )}
+                            </div>
                           )}
                         </div>
                       ))}
