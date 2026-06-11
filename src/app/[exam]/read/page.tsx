@@ -411,7 +411,7 @@ export default function ReadPage() {
                   >
                     <p className="text-sm font-medium">{sectionName}</p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      {data.annotations.length} 处标注 · {new Date(data.updatedAt).toLocaleString()}
+                      {(data.annotations || []).length} 处标注 · {new Date(data.updatedAt || Date.now()).toLocaleString()}
                     </p>
                   </button>
                 )
