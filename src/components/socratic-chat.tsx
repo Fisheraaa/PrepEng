@@ -90,6 +90,7 @@ export function SocraticChat({
             ...prev,
             { role: "assistant", content: `△ 错误：${err.slice(0, 100)}` },
           ])
+          setStreamingText("")
           setIsStreaming(false)
           return
         }
@@ -135,6 +136,7 @@ export function SocraticChat({
             content: `△ 网络错误：${err instanceof Error ? err.message : "未知"}`,
           },
         ])
+        setStreamingText("")
       }
 
       setIsStreaming(false)
