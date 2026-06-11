@@ -106,12 +106,10 @@ export default function ReadPage() {
 
   const availablePapers = getAvailablePapers(examType)
   const paper = selectedPaperId ? getExamPaper(examType, selectedPaperId) : null
-  // 只显示阅读类型的 section
   const sections = paper?.sections.filter((s) => s.type === "reading") ?? []
   const currentSection = sections[currentSectionIdx]
   const questions = (currentSection?.questions ?? []) as ChoiceQuestion[]
 
-  // Section 类型显示名
   const sectionLabel = (s: Section) => {
     if (s.subtype === "banked_cloze") return "选词填空"
     if (s.subtype === "matching") return "信息匹配"
@@ -119,29 +117,37 @@ export default function ReadPage() {
     return s.title || "阅读"
   }
 
-  // 自动恢复进度
-  useEffect(() => {
-    if (!selectedPaperId) return
-    const saved = loadReadProgress(examType, selectedPaperId)
-    if (saved && !saved.submitted) {
-      setCurrentSectionIdx(saved.sectionIdx)
-      setSelectedAnswers(saved.answers)
-      setPhase("reading")
-    }
-  }, [examType, selectedPaperId])
+  // 所有 hooks 必须在条件渲染之前定义
+  const handleSelectPaper = useCallback((paperId: string) => {
+    setSelectedPaperId(paperId)
+    setCurrentSectionIdx(0)
+    setSelectedAnswers({})
+    setSubmitted(false)
+    setPhase("reading")
+  }, [])
 
-  // 自动存档
-  useEffect(() => {
-    if (phase === "reading" && !submitted && selectedPaperId) {
-      saveReadProgress(examType, {
-        paperId: selectedPaperId,
-        sectionIdx: currentSectionIdx,
-        answers: selectedAnswers,
-        submitted: false,
-        savedAt: Date.now(),
-      })
-    }
-  }, [phase, selectedAnswers, currentSectionIdx, submitted, examType, selectedPaperId])
+  const handleBackToList = useCallback(() => {
+    setSelectedPaperId(null)
+    setPhase("select")
+    setCurrentSectionIdx(0)
+    setSelectedAnswers({})
+    setSubmitted(false)
+  }, [])
+
+  const handleGoToSection = useCallback((idx: number) => {
+    setCurrentSectionIdx(idx)
+    setSelectedAnswers({})
+    setSubmitted(false)
+  }, [])
+
+  const handleRestart = useCallback(() => {
+    if (!paper) return
+    setCurrentSectionIdx(0)
+    setSelectedAnswers({})
+    setSubmitted(false)
+    setPhase("reading")
+    clearReadProgress(examType, paper.id)
+  }, [examType, paper])
 
   const handleSelectAnswer = useCallback(
     (questionId: string, letter: string) => {
@@ -161,7 +167,6 @@ export default function ReadPage() {
       submitted: true,
       savedAt: Date.now(),
     })
-    // 错题自动存入 IndexedDB
     const now = Date.now()
     questions.forEach((q) => {
       const userAns = selectedAnswers[q.id]
@@ -195,37 +200,55 @@ export default function ReadPage() {
     }
   }, [currentSectionIdx, sections.length])
 
-  const handleRestart = useCallback(() => {
-    if (!paper) return
-    setCurrentSectionIdx(0)
-    setSelectedAnswers({})
-    setSubmitted(false)
-    setPhase("reading")
-    clearReadProgress(examType, paper.id)
-  }, [examType, paper])
+  // 标注按钮点击处理
+  const handleAnnotationClick = useCallback(() => {
+    if (annotationActive) {
+      setAnnotationActive(false)
+      return
+    }
+    if (selectedPaperId) {
+      const existing = getAnnotationsForPaper(examType, selectedPaperId)
+      const sectionDrafts = existing.filter(a => a.sectionIdx === currentSectionIdx)
+      if (sectionDrafts.length > 0) {
+        setShowAnnotationPrompt(true)
+      } else {
+        setNewDraftName(generateDraftName(examType, selectedPaperId, currentSectionIdx))
+        setShowNewDraftDialog(true)
+      }
+    }
+  }, [annotationActive, selectedPaperId, examType, currentSectionIdx])
 
-  const handleGoToSection = useCallback((idx: number) => {
-    setCurrentSectionIdx(idx)
-    setSelectedAnswers({})
-    setSubmitted(false)
-    setPhase("reading")
-  }, [])
+  // 新建草稿确认
+  const handleCreateDraft = useCallback(() => {
+    if (!selectedPaperId || !newDraftName.trim()) return
+    saveAnnotations(examType, selectedPaperId, currentSectionIdx, [], newDraftName.trim())
+    setAnnotationActive(true)
+    setShowNewDraftDialog(false)
+  }, [selectedPaperId, examType, currentSectionIdx, newDraftName])
 
-  const handleSelectPaper = useCallback((paperId: string) => {
-    setSelectedPaperId(paperId)
-    setCurrentSectionIdx(0)
-    setSelectedAnswers({})
-    setSubmitted(false)
-    setPhase("reading")
-  }, [])
+  // 自动恢复进度
+  useEffect(() => {
+    if (!selectedPaperId) return
+    const saved = loadReadProgress(examType, selectedPaperId)
+    if (saved && !saved.submitted) {
+      setCurrentSectionIdx(saved.sectionIdx)
+      setSelectedAnswers(saved.answers)
+      setPhase("reading")
+    }
+  }, [examType, selectedPaperId])
 
-  const handleBackToList = useCallback(() => {
-    setSelectedPaperId(null)
-    setPhase("select")
-    setCurrentSectionIdx(0)
-    setSelectedAnswers({})
-    setSubmitted(false)
-  }, [])
+  // 自动存档
+  useEffect(() => {
+    if (phase === "reading" && !submitted && selectedPaperId) {
+      saveReadProgress(examType, {
+        paperId: selectedPaperId,
+        sectionIdx: currentSectionIdx,
+        answers: selectedAnswers,
+        submitted: false,
+        savedAt: Date.now(),
+      })
+    }
+  }, [phase, selectedAnswers, currentSectionIdx, submitted, examType, selectedPaperId])
 
   // 统计
   const correctCount = questions.filter(
@@ -387,16 +410,6 @@ export default function ReadPage() {
 
   // --- 做题页面 ---
 
-  // 新建草稿确认
-  const handleCreateDraft = useCallback(() => {
-    if (!selectedPaperId || !newDraftName.trim()) return
-
-    // 保存空草稿
-    saveAnnotations(examType, selectedPaperId, currentSectionIdx, [], newDraftName.trim())
-    setAnnotationActive(true)
-    setShowNewDraftDialog(false)
-  }, [selectedPaperId, examType, currentSectionIdx, newDraftName])
-
   // 草稿选择弹窗
   if (showAnnotationPrompt && selectedPaperId) {
     const sectionDrafts = getAnnotationsForPaper(examType, selectedPaperId)
@@ -519,30 +532,6 @@ export default function ReadPage() {
       </div>
     )
   }
-
-  // 标注按钮点击处理
-  const handleAnnotationClick = useCallback(() => {
-    if (annotationActive) {
-      // 关闭标注
-      setAnnotationActive(false)
-      return
-    }
-
-    // 检查当前 section 是否有草稿
-    if (selectedPaperId) {
-      const existing = getAnnotationsForPaper(examType, selectedPaperId)
-      const sectionDrafts = existing.filter(a => a.sectionIdx === currentSectionIdx)
-
-      if (sectionDrafts.length > 0) {
-        // 有草稿，显示选择弹窗
-        setShowAnnotationPrompt(true)
-      } else {
-        // 没有草稿，弹出新建命名框
-        setNewDraftName(generateDraftName(examType, selectedPaperId, currentSectionIdx))
-        setShowNewDraftDialog(true)
-      }
-    }
-  }, [annotationActive, selectedPaperId, examType, currentSectionIdx])
 
   // 顶部导航栏（所有 section 共用）
   const topBar = (
