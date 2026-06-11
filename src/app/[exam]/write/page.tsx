@@ -220,13 +220,6 @@ export default function WritePage() {
           </div>
           <p className="text-sm leading-relaxed">{question?.prompt}</p>
           <Separator />
-          {question?.sample_answer && (
-            <>
-              <h3 className="text-xs font-semibold text-muted-foreground">📝 范文</h3>
-              <p className="text-sm leading-relaxed whitespace-pre-wrap text-muted-foreground">{question.sample_answer}</p>
-              <Separator />
-            </>
-          )}
           <h3 className="text-xs font-semibold text-muted-foreground">评分标准</h3>
           <div className="space-y-2">
             {question?.scoring_rubric?.map(r => (

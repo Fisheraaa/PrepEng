@@ -202,13 +202,6 @@ export default function TranslatePage() {
             <Button variant="ghost" size="sm" onClick={handleBackToList}>← 返回</Button>
           </div>
           <p className="text-sm leading-relaxed">{question?.source_text}</p>
-          {question?.reference_translation && (
-            <>
-              <Separator />
-              <h3 className="text-xs font-semibold text-muted-foreground">📝 参考译文</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{question.reference_translation}</p>
-            </>
-          )}
         </div>
 
         <div className="w-1/2 flex flex-col">
