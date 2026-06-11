@@ -55,12 +55,12 @@ ${options.join("\n")}
     })),
   ]
 
-  // 第一次对话，加入上下文
-  if (messages.length === 0) {
-    messages.push({
-      role: "user",
-      content: `${context}\n\n我选错了这道题，请用苏格拉底法引导我理解为什么错了。`,
-    })
+  // 第一次对话时，将 context 注入到第一条用户消息中
+  if (messages.length > 0 && messages[0].role === "user") {
+    // 检查第一条消息是否已经包含 context
+    if (!messages[0].content.includes("题目：")) {
+      messages[0].content = `${context}\n\n${messages[0].content}`
+    }
   }
 
   // 流式调用 AI
