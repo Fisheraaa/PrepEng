@@ -204,10 +204,12 @@ export default function ReadPage() {
     setCurrentSectionIdx(0)
     setSelectedAnswers({})
     setSubmitted(false)
-    setPhase("reading")
-    // 检查是否有标注存档
-    if (hasAnnotations(examType, paperId, 0)) {
+    // 检查是否有任何 section 的标注存档
+    const annotations = getAnnotationsForPaper(examType, paperId)
+    if (annotations.length > 0) {
       setShowAnnotationPrompt(true)
+    } else {
+      setPhase("reading")
     }
   }, [examType])
 
@@ -381,7 +383,7 @@ export default function ReadPage() {
 
   // 标注存档提示
   if (showAnnotationPrompt && selectedPaperId) {
-    const annotationData = loadAnnotationData(examType, selectedPaperId, currentSectionIdx)
+    const allAnnotations = getAnnotationsForPaper(examType, selectedPaperId)
     return (
       <div className="flex items-center justify-center h-screen">
         <Card className="max-w-md">
@@ -389,28 +391,38 @@ export default function ReadPage() {
             <CardTitle>发现标注存档</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {annotationData && (
-              <div className="p-3 bg-muted rounded-lg">
-                <p className="text-sm font-medium">{annotationData.name}</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  标注 {annotationData.annotations.length} 处 · 更新于 {new Date(annotationData.updatedAt).toLocaleString()}
-                </p>
-              </div>
-            )}
-            <div className="flex gap-3">
-              <Button
-                onClick={() => {
-                  setAnnotationActive(true)
-                  setShowAnnotationPrompt(false)
-                }}
-                className="flex-1"
-              >
-                加载标注
-              </Button>
+            <p className="text-sm text-muted-foreground">
+              检测到 {allAnnotations.length} 个 section 有标注记录，选择要加载的：
+            </p>
+            <div className="space-y-2 max-h-60 overflow-y-auto">
+              {allAnnotations.map(({ sectionIdx, data }) => {
+                const section = sections[sectionIdx]
+                const sectionName = section ? sectionLabel(section) : `Section ${sectionIdx}`
+                return (
+                  <button
+                    key={sectionIdx}
+                    onClick={() => {
+                      setCurrentSectionIdx(sectionIdx)
+                      setAnnotationActive(true)
+                      setShowAnnotationPrompt(false)
+                      setPhase("reading")
+                    }}
+                    className="w-full p-3 rounded-lg border text-left hover:bg-accent transition-colors"
+                  >
+                    <p className="text-sm font-medium">{sectionName}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {data.annotations.length} 处标注 · {new Date(data.updatedAt).toLocaleString()}
+                    </p>
+                  </button>
+                )
+              })}
+            </div>
+            <div className="flex gap-3 pt-2 border-t">
               <Button
                 variant="outline"
                 onClick={() => {
                   setShowAnnotationPrompt(false)
+                  setPhase("reading")
                 }}
                 className="flex-1"
               >

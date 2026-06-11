@@ -25,11 +25,6 @@ interface TextMark {
   type: "highlight" | "underline"
   color: string
   text: string
-  // 在文本中的位置
-  startOffset: number
-  endOffset: number
-  // 用于定位的容器选择器
-  containerPath: string
 }
 
 type Annotation = PenPath | TextMark
@@ -50,20 +45,6 @@ interface AnnotationLayerProps {
 
 function generateId() {
   return Math.random().toString(36).substr(2, 9)
-}
-
-function getElementPath(el: HTMLElement): string {
-  const path: string[] = []
-  let current: HTMLElement | null = el
-  while (current && current !== document.body) {
-    const tag = current.tagName.toLowerCase()
-    const index = current.parentElement
-      ? Array.from(current.parentElement.children).indexOf(current)
-      : 0
-    path.unshift(`${tag}[${index}]`)
-    current = current.parentElement
-  }
-  return path.join("/")
 }
 
 // ============================================================
@@ -169,14 +150,12 @@ export function AnnotationLayer({
 
     const handleMouseDown = (e: MouseEvent) => {
       if (tool === "eraser") {
-        // 橡皮擦：删除点击位置的标注
         const pos = getRelativePos(e)
         eraseAtPoint(pos)
       } else if (tool === "pen") {
         setIsDrawing(true)
         setCurrentPenPath([getRelativePos(e)])
       } else if (tool === "highlight" || tool === "underline") {
-        // 高亮/下划线：处理文字选择
         handleTextMark(tool, color)
       }
     }
@@ -227,24 +206,29 @@ export function AnnotationLayer({
     const selectedText = selection.toString().trim()
     if (!selectedText) return
 
-    // 获取选区的范围
     const range = selection.getRangeAt(0)
-    const container = containerRef.current
 
-    // 创建高亮/下划线元素
-    const mark = document.createElement("mark")
-    mark.style.backgroundColor = type === "highlight" ? markColor + "40" : "transparent"
-    mark.style.borderBottom = type === "underline" ? `2px solid ${markColor}` : "none"
-    mark.style.padding = type === "highlight" ? "2px 0" : "0"
+    // 创建标记元素
+    const mark = document.createElement("span")
     mark.dataset.annotationId = generateId()
+    mark.dataset.annotationType = type
+
+    if (type === "highlight") {
+      // 高亮：背景色，文字保持原色
+      mark.style.backgroundColor = markColor + "40"
+      mark.style.borderRadius = "3px"
+      mark.style.padding = "2px 0"
+    } else {
+      // 下划线：只加下划线，不改变文字颜色
+      mark.style.borderBottom = `2.5px solid ${markColor}`
+      mark.style.paddingBottom = "2px"
+    }
 
     try {
       range.surroundContents(mark)
-    } catch (e) {
-      // 如果选区跨越多个元素，用更简单的方式
-      const span = document.createElement("span")
-      span.style.backgroundColor = type === "highlight" ? markColor + "40" : "transparent"
-      span.style.borderBottom = type === "underline" ? `2px solid ${markColor}` : "none"
+    } catch {
+      // 如果选区跨越多个元素
+      const span = mark.cloneNode(false) as HTMLElement
       span.textContent = selectedText
       range.deleteContents()
       range.insertNode(span)
@@ -256,9 +240,6 @@ export function AnnotationLayer({
       type,
       color: markColor,
       text: selectedText,
-      startOffset: range.startOffset,
-      endOffset: range.endOffset,
-      containerPath: getElementPath(range.startContainer.parentElement as HTMLElement),
     }
 
     setAnnotations((prev) => {
@@ -272,7 +253,7 @@ export function AnnotationLayer({
 
   // 橡皮擦：删除点击位置的标注
   const eraseAtPoint = (pos: Point) => {
-    // 检查是否点击了画笔路径
+    // 检查画笔路径
     for (const ann of annotations) {
       if (ann.type === "pen") {
         for (let i = 0; i < ann.points.length - 1; i++) {
@@ -291,7 +272,7 @@ export function AnnotationLayer({
       }
     }
 
-    // 检查是否点击了文字标记
+    // 检查文字标记
     const container = containerRef.current
     if (container) {
       const marks = container.querySelectorAll("[data-annotation-id]")
@@ -311,7 +292,6 @@ export function AnnotationLayer({
           pos.y <= markPos.y + markPos.height
         ) {
           const annId = (mark as HTMLElement).dataset.annotationId
-          // 移除标记元素，保留文本
           const text = mark.textContent || ""
           const parent = mark.parentNode
           if (parent) {
@@ -328,7 +308,6 @@ export function AnnotationLayer({
     }
   }
 
-  // 计算点到线段的距离
   function pointToLineDistance(point: Point, lineStart: Point, lineEnd: Point): number {
     const A = point.x - lineStart.x
     const B = point.y - lineStart.y
@@ -359,11 +338,10 @@ export function AnnotationLayer({
   const handleUndo = () => {
     setAnnotations((prev) => {
       const last = prev[prev.length - 1]
-      if (last?.type !== "pen") {
-        // 如果是文字标记，需要移除 DOM 元素
+      if (last && last.type !== "pen") {
         const container = containerRef.current
         if (container) {
-          const mark = container.querySelector(`[data-annotation-id="${last?.id}"]`)
+          const mark = container.querySelector(`[data-annotation-id="${last.id}"]`)
           if (mark) {
             const text = mark.textContent || ""
             const parent = mark.parentNode
@@ -382,7 +360,6 @@ export function AnnotationLayer({
 
   // 清空
   const handleClear = () => {
-    // 移除所有文字标记
     const container = containerRef.current
     if (container) {
       const marks = container.querySelectorAll("[data-annotation-id]")
@@ -401,7 +378,6 @@ export function AnnotationLayer({
 
   return (
     <>
-      {/* 画笔画布 */}
       <canvas
         ref={canvasRef}
         className={cn(
@@ -412,7 +388,6 @@ export function AnnotationLayer({
         style={{ zIndex: active ? 10 : -1 }}
       />
 
-      {/* 操作按钮 */}
       {active && (
         <div className="absolute bottom-4 right-4 z-20 flex gap-2">
           <button
@@ -517,22 +492,6 @@ export function hasAnnotations(
   } catch {
     return false
   }
-}
-
-export function renameAnnotationSave(
-  examType: string,
-  paperId: string,
-  sectionIdx: number,
-  newName: string
-): void {
-  try {
-    const data = loadAnnotationSaveData(examType, paperId, sectionIdx)
-    if (data) {
-      data.name = newName
-      const key = getStorageKey(examType, paperId, sectionIdx)
-      localStorage.setItem(key, JSON.stringify(data))
-    }
-  } catch {}
 }
 
 export function getAnnotationsForPaper(
