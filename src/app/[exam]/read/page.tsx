@@ -241,17 +241,21 @@ export default function ReadPage() {
             {availablePapers.map((p) => (
               <Card
                 key={p.id}
-                className="cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors"
-                onClick={() => handleSelectPaper(p.id)}
+                className={p.isComplete ? "cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors" : "opacity-50"}
+                onClick={() => p.isComplete && handleSelectPaper(p.id)}
               >
                 <CardContent className="pt-4 pb-3 px-4 flex items-center justify-between">
                   <div>
                     <p className="font-medium">{p.title}</p>
                     <p className="text-xs text-muted-foreground">
-                      {p.questionCount} 题 · 仔细阅读
+                      {p.questionCount} 题
                     </p>
                   </div>
-                  <Badge variant="outline">开始</Badge>
+                  {p.isComplete ? (
+                    <Badge variant="outline">有题</Badge>
+                  ) : (
+                    <Badge variant="secondary">未完成</Badge>
+                  )}
                 </CardContent>
               </Card>
             ))}

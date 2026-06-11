@@ -203,8 +203,26 @@ export default function ListenPage() {
       </div>
 
       {(() => {
+        // 只有完整达到标准的卷子才标"有题"
+        // 标准：听力+阅读都有题目、答案、解析
         const papersWithQ = new Set(
-          examPapers.filter((p) => p.sections.some((s) => s.type === "listening" && s.questions.length > 0)).map((p) => p.id)
+          examPapers.filter((p) => {
+            const listeningQ = p.sections.filter(s => s.type === "listening").flatMap(s => s.questions)
+            const readingQ = p.sections.filter(s => s.type === "reading").flatMap(s => s.questions)
+
+            // 检查听力和阅读都有题目
+            if (listeningQ.length === 0 || readingQ.length === 0) return false
+
+            // 检查所有题目都有答案和解析
+            const allQ = [...listeningQ, ...readingQ]
+            return allQ.every(q => {
+              // ChoiceQuestion 有 answer 属性
+              if ('answer' in q) {
+                return q.answer && q.explanation && q.explanation !== "暂无解析"
+              }
+              return true
+            })
+          }).map((p) => p.id)
         )
         return years.map((year) => (
           <div key={year}>

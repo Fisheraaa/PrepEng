@@ -69,11 +69,26 @@ export default function TranslatePage() {
   const [savedDraft, setSavedDraft] = useState<string | null>(null)
   const feedbackRef = useRef<HTMLDivElement>(null)
 
-  // 获取有翻译题目的试卷
+  // 获取完整达到标准的试卷
   const allPapers = getExamPapers(examType)
-  const transPapers = allPapers.filter(p =>
-    p.sections.some(s => s.type === "translation")
-  ).map(p => ({
+  const transPapers = allPapers.filter(p => {
+    // 检查是否有翻译题目
+    const hasTranslation = p.sections.some(s => s.type === "translation" && s.questions.length > 0)
+    if (!hasTranslation) return false
+
+    // 检查听力和阅读是否完整
+    const listeningQ = p.sections.filter(s => s.type === "listening").flatMap(s => s.questions)
+    const readingQ = p.sections.filter(s => s.type === "reading").flatMap(s => s.questions)
+    const allQ = [...listeningQ, ...readingQ]
+
+    return listeningQ.length > 0 && readingQ.length > 0 &&
+      allQ.every(q => {
+        if ('answer' in q) {
+          return q.answer && q.explanation && q.explanation !== "暂无解析"
+        }
+        return true
+      })
+  }).map(p => ({
     id: p.id,
     title: p.title,
     question: (p.sections.find(s => s.type === "translation")?.questions[0] as TranslationQuestion)

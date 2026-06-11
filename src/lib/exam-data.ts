@@ -140,15 +140,31 @@ export function getExamPaper(examType: ExamType, paperId: string): ExamPaper | u
 }
 
 export function getAvailablePapers(examType: ExamType) {
-  return getExamPapers(examType).map((p) => ({
-    id: p.id,
-    title: p.title,
-    year: p.year,
-    month: p.month,
-    session: p.session,
-    questionCount: p.sections.reduce((acc, s) => acc + s.questions.length, 0),
-    sectionTypes: [...new Set(p.sections.map((s) => s.type))],
-  }))
+  return getExamPapers(examType).map((p) => {
+    const listeningQ = p.sections.filter(s => s.type === "listening").flatMap(s => s.questions)
+    const readingQ = p.sections.filter(s => s.type === "reading").flatMap(s => s.questions)
+    const allQ = [...listeningQ, ...readingQ]
+
+    // 判断是否完整：听力+阅读都有题目，且所有题目都有答案和解析
+    const isComplete = listeningQ.length > 0 && readingQ.length > 0 &&
+      allQ.every(q => {
+        if ('answer' in q) {
+          return q.answer && q.explanation && q.explanation !== "暂无解析"
+        }
+        return true
+      })
+
+    return {
+      id: p.id,
+      title: p.title,
+      year: p.year,
+      month: p.month,
+      session: p.session,
+      questionCount: allQ.length,
+      sectionTypes: [...new Set(p.sections.map((s) => s.type))],
+      isComplete,
+    }
+  })
 }
 
 // ============================================================
