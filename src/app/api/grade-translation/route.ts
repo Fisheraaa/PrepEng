@@ -1,7 +1,14 @@
 import { NextRequest } from "next/server"
+import { validateRequest, unauthorizedResponse } from "@/lib/auth-middleware"
 import type { APIConfig } from "@/lib/ai"
 
 export async function POST(req: NextRequest) {
+  // 验证 token
+  const isValid = await validateRequest(req)
+  if (!isValid) {
+    return unauthorizedResponse()
+  }
+
   const { config, user_translation, source_text, reference_translation, scoring_points } =
     await req.json()
 

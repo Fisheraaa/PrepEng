@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 interface BankedClozeProps {
   passage: string
   bank: string[]  // ["A)accepted", "B)audiences", ...]
-  blanks: { num: number; answer: string }[]  // [{num: 26, answer: "accepted"}, ...]
+  blanks: { num: number; answer: string; explanation?: string }[]  // [{num: 26, answer: "accepted", explanation: "..."}, ...]
   onSubmit?: (answers: Record<number, string>) => void
 }
 
@@ -150,21 +150,26 @@ export function BankedCloze({ passage, bank, blanks, onSubmit }: BankedClozeProp
           <div className="text-sm font-medium">
             正确 {blanks.filter((b) => filledBlanks[b.num] === b.answer).length} / {blanks.length}
           </div>
-          {/* 显示正确答案 */}
-          <div className="space-y-1">
+          {/* 显示正确答案和解析 */}
+          <div className="space-y-2">
             {blanks.map((blank) => {
               const userAns = filledBlanks[blank.num]
               const isCorrect = userAns === blank.answer
               return (
-                <div key={blank.num} className="text-xs flex items-center gap-2">
-                  <span className={isCorrect ? "text-emerald-400" : "text-destructive"}>
-                    {isCorrect ? "✅" : "❌"}
-                  </span>
-                  <span className="text-muted-foreground">第 {blank.num} 题：</span>
-                  {!isCorrect && (
-                    <span className="text-destructive">你填 {userAns?.replace(/^[A-Z]\)/, "") || "未填"}</span>
+                <div key={blank.num} className="text-xs p-2 rounded border" style={{ borderColor: isCorrect ? 'rgb(34 197 94 / 0.3)' : 'rgb(239 68 68 / 0.3)' }}>
+                  <div className="flex items-center gap-2">
+                    <span className={isCorrect ? "text-emerald-500" : "text-destructive"}>
+                      {isCorrect ? "✅" : "❌"}
+                    </span>
+                    <span className="font-medium">第 {blank.num} 题：</span>
+                    {!isCorrect && (
+                      <span className="text-destructive">你填 {userAns || "未填"}</span>
+                    )}
+                    <span className="text-emerald-500">正确答案 {blank.answer}</span>
+                  </div>
+                  {blank.explanation && (
+                    <p className="mt-1 text-muted-foreground">{blank.explanation}</p>
                   )}
-                  <span className="text-emerald-400">正确答案 {blank.answer?.replace(/^[A-Z]\)/, "")}</span>
                 </div>
               )
             })}

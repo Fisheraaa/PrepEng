@@ -9,56 +9,113 @@ from docx import Document
 
 
 def clean_text(text):
-    """清理文本中的页码、水印、广告等残留"""
-    # 合并断行单词（如 "enviro-\nnment" -> "environment"）
+    """清理文本中的页码、水印、OCR错误、广告等残留"""
+    # 1. 软连字符替换
+    text = text.replace('\xad', '-')
+
+    # 2. 合并断行单词（如 "enviro-\nnment" -> "environment"）
     text = re.sub(r'(\w)-\s*\n\s*(\w)', r'\1\2', text)
     # 单换行变空格
     text = re.sub(r'(?<!\n)\n(?!\n)', ' ', text)
     # 多空格
     text = re.sub(r' {2,}', ' ', text)
 
-    # === 清理各种页码/水印格式 ===
-    # •2025年6月四级真题（第二套）・
-    # ・2025年6月四级真题（第一套）・
-    # • 2025年6月四级真题（第一套）・
-    # • 2023年 12月四级真题（第三套）・（日期中间有空格）
+    # 3. OCR 常见错误修复
+    ocr_fixes = {
+        'fbr ': 'for ',
+        ' fbr ': ' for ',
+        'Ifs ': "It's ",
+        "Ifs'": "It's",
+        'bom ': 'born ',
+        'parfs ': 'parts ',
+        'studentsf': "students'",
+        'experts9': "experts'",
+        'designers5': "designers'",
+        'uis ': 'is ',
+        "you'l ": "you'll ",
+        'whafs': "what's",
+        'ifs ': "it's ",
+        'Ybu ': 'You ',
+        'Fm ': "I'm ",
+        "Fm'": "I'm",
+    }
+    for wrong, right in ocr_fixes.items():
+        text = text.replace(wrong, right)
+
+    # Replace Chinese dashes (character for "one") with regular dashes
+    text = text.replace('一', '-')
+
+    # 4. 清理各种页码/水印格式
     text = re.sub(r'[•·・]\s*\d{4}年\s*\d{1,2}月.*?真题.*?[•·・]\s*\d*', '', text)
-    # 年12月六级真题(二)14
     text = re.sub(r'年\d{1,2}月.*?真题.*?\d+\s*', '', text)
-    # 试题册 ·...
     text = re.sub(r'试题册\s*·.*?\d+', '', text)
-    # 各种页码格式
     text = re.sub(r'\d{4}年\d{1,2}月.*?真题.*?第?\s*\d+\s*页.*?共\s*\d+\s*页', '', text)
     text = re.sub(r'\d+\s*·\s*\d{4}年.*?真题', '', text)
-    # by:xxx 广告
     text = re.sub(r'by\s*[:：]\s*\S+', '', text)
-    # 淘宝广告
     text = re.sub(r'淘宝.*?$', '', text, flags=re.MULTILINE)
-    # 残留页码
     text = re.sub(r'\s*\d+\s*页\s*共\s*\d+\s*页\s*$', '', text)
     text = re.sub(r'\s*\d+\s*$', '', text)
+    # 水印嵌入文中（如 "5 ・2025she says"）
+    text = re.sub(r'\d+\s*[•·・]\s*\d{4}\s*', ' ', text)
+    # 数字+逗号+水印（如 " 7 ,2025年6月四级真题（第一套）・"）
+    text = re.sub(r'\s*\d+\s*,\s*\d{4}年.*?真题.*?[•·・]*', '', text)
 
-    # 清理引号残留
+    # 5. 清理引号残留
     text = re.sub(r'""', '"', text)
     text = re.sub(r'``', '"', text)
     text = re.sub(r"''", '"', text)
     # 清理 <4 ^^ 等标记残留
     text = re.sub(r'<\d+', '', text)
     text = re.sub(r'\^+', '', text)
-    # 清理冒号前的空格（"natural: habitats" -> "natural habitats"）
-    text = re.sub(r'\s*:\s*', ' ', text)
+    # 清理冒号前的空格（"natural: habitats" -> "natural habitats"），但保留正常冒号
+    # 只清理冒号前后都有多余空格的情况
+    text = re.sub(r'\s+:\s+', ' ', text)
     # 清理多余破折号
     text = re.sub(r'——+', '—', text)
+    # 清理中文逗号
+    text = text.replace('、', ',')
 
-    # 段落间距：只在明显段落边界加空行（过渡词、话题转换）
-    # 不在每句后都加空行
-    pass
+    # 6. 段落间距：在明显段落边界加空行
+    # 策略：句号后跟过渡词或话题明显转换时加空行
+    transition_words = r'(?:However|Moreover|Furthermore|In addition|Additionally|Nevertheless|On the other hand|In contrast|Similarly|Likewise|For example|For instance|In fact|Actually|Meanwhile|Therefore|Thus|Consequently|As a result|In conclusion|Finally|Unfortunately|Fortunately|Interestingly|Surprisingly|Notably|Importantly|Significantly|Despite|Although|Though|While|Whereas|Because|Since|As|When|If|But|And|Yet|So|Or|Nor)'
+    # 句号+空格+过渡词 → 加空行
+    text = re.sub(r'(\.)\s+(' + transition_words + r')\s', r'\1\n\n\2 ', text)
+
+    # 7. 修复 PDF 中单词粘连（缺少空格）
+    text = insert_missing_spaces(text)
+
     # 清理首尾
     text = text.strip()
-    # 如果文章以句号后的数字开头（页码残留），去掉
     text = re.sub(r'^\d+\s*', '', text)
 
     return text.strip()
+
+
+def insert_missing_spaces(text):
+    """修复 PDF 提取时单词粘连的问题（如 "WhyDoAmericans" -> "Why Do Americans"）
+
+    规则：
+    1. 小写字母后跟大写字母 -> 插入空格（如 "workT" -> "work T"）
+    2. 句号/问号后跟字母 -> 插入空格（如 "Much?A" -> "Much? A"）
+    3. 数字后跟字母 -> 插入空格（如 "15hours" -> "15 hours"）
+    4. 字母后跟数字 -> 插入空格（如 "work15" -> "work 15"）
+    """
+    # 规则 1: 小写字母后跟大写字母 -> 插入空格
+    text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
+
+    # 规则 2: 句号/问号/感叹号后跟字母 -> 插入空格
+    text = re.sub(r'([.?！])([A-Za-z])', r'\1 \2', text)
+
+    # 规则 3: 数字后跟字母（但不包括常见的度量单位紧挨数字的情况如 "20th", "1st"）
+    text = re.sub(r'(\d)([A-Za-z])', r'\1 \2', text)
+
+    # 规则 4: 字母后跟数字
+    text = re.sub(r'([A-Za-z])(\d)', r'\1 \2', text)
+
+    # 清理可能产生的多余空格
+    text = re.sub(r' {2,}', ' ', text)
+
+    return text
 
 
 def get_pdf_text(pdf_path):
@@ -159,6 +216,9 @@ def extract_reading_section_b(text):
     else:
         paragraphs_text = section_text
 
+    # 去掉 Directions 文字
+    paragraphs_text = re.sub(r'Directions\s*[:：]\s*In\s*this\s*section.*?[Ss]heet\s*\d+\s*\.\s*', '', paragraphs_text, flags=re.DOTALL)
+
     # 提取匹配题（36-45）
     statements = []
     for q_num in range(36, 46):
@@ -192,7 +252,7 @@ def extract_reading_section_c(text):
     reading_text = text[reading_match.start():]
 
     # 在阅读部分内找 Section C
-    match = re.search(r'Section\s*C\s*\n(.*?)(?=Part\s*[ⅣIV])', reading_text, re.DOTALL)
+    match = re.search(r'Section\s*C\s*\n(.*?)(?=Part\s*(?:IV|Ⅳ|IN|N)\s)', reading_text, re.DOTALL)
     if not match:
         return None
 
@@ -260,13 +320,14 @@ def extract_question(text, q_num, q_end):
     for m in re.finditer(r'([A-D])\s*[\)）\.]\s*(.*?)(?=[A-D]\s*[\)）\.]|$)', q_text, re.DOTALL):
         content = re.sub(r'\s+', ' ', m.group(2)).strip()
         if content:
-            options.append(f"{m.group(1)}){content}")
+            options.append(f"{m.group(1)}){clean_text(content)}")
 
     # 题目文本
     first_opt = re.search(r'A\s*[\)）\.]', q_text)
     question_text = q_text[:first_opt.start()].strip() if first_opt else q_text
     question_text = re.sub(r'^\d+\s*\.\s*', '', question_text)
     question_text = re.sub(r'\s+', ' ', question_text).strip()
+    question_text = clean_text(question_text)
 
     if len(options) < 4:
         return None
@@ -282,7 +343,12 @@ def extract_question(text, q_num, q_end):
 
 def extract_writing(text):
     """提取写作题目"""
-    match = re.search(r'Part\s*I\s+Writing\s*\(.*?\)\s*\n\s*(.*?)(?=Part\s*II)', text, re.DOTALL)
+    # Try Part II as end boundary first, then Part III/Ⅲ, then Part IV/N
+    match = re.search(r'Part\s*I\s+Writing\s*\(.*?\)\s*\n\s*(.*?)(?=Part\s*(?:II|Ⅱ)\b)', text, re.DOTALL)
+    if not match:
+        match = re.search(r'Part\s*I\s+Writing\s*\(.*?\)\s*\n\s*(.*?)(?=Part\s*(?:III|Ⅲ)\b)', text, re.DOTALL)
+    if not match:
+        match = re.search(r'Part\s*I\s+Writing\s*\(.*?\)\s*\n\s*(.*?)(?=Part\s*(?:IV|N)\b)', text, re.DOTALL)
     if not match:
         return None
     directions = clean_text(match.group(1))
@@ -294,17 +360,26 @@ def extract_writing(text):
 
 
 def clean_listening_option(text):
-    """清理听力选项中混入的指令文字"""
+    """清理听力选项中混入的指令文字和页码残留"""
     # 去掉 "Questions X and Y are based on..." 等指令
     text = re.sub(r'Questions?\s+\d+.*?heard\.?\s*', '', text)
     text = re.sub(r'Questions?\s+\d+.*?once\.?\s*', '', text)
+    # 去掉页码残留 ·2025年6月四级真题(第一套)·
+    text = re.sub(r'[•·・]\s*\d{4}年\s*\d{1,2}月.*?真题.*?[•·・]\s*\d*', '', text)
+    text = re.sub(r'年\d{1,2}月.*?真题.*?\d+\s*', '', text)
+    # 应用 OCR 修复
+    text = clean_text(text)
     return text.strip()
 
 
 def extract_listening(text):
     """提取听力题目（分 Section A/B/C）"""
     # 找到 Listening 部分
-    listen_match = re.search(r'Part\s*II\s*Listening.*?\n(.*?)(?=Part\s*(?:III|in|n|HI|DI)\s*Reading)', text, re.DOTALL)
+    # Start: Part + optional space + Roman numeral 2 (II/Ⅱ/n/ll/11) + optional space + Listening(Comprehension)
+    # End: Part + optional space + Roman numeral 3 (III/Ⅲ/in/n/HI/DI/UI) + optional space + Reading(Comprehension)
+    listen_start = r'Part\s*(?:II|Ⅱ|n|ll|11)\s*(?:Section\s*[A-C]\s*)?Listening\s*(?:Comprehension)?'
+    listen_end = r'Part\s*(?:III|Ⅲ|in|n|HI|DI|UI)\s*(?:Section\s*[A-C]\s*)?Reading\s*(?:Comprehension)?'
+    listen_match = re.search(listen_start + r'.*?\n(.*?)' + r'(?=' + listen_end + r')', text, re.DOTALL)
     if not listen_match:
         return None
 
@@ -374,10 +449,22 @@ def extract_listening_section(text, section_name, q_start, q_end, label):
 
 def extract_translation(text):
     """提取翻译题目"""
-    match = re.search(r'Part\s*[ⅣIV]+\s+Translation\s*\(.*?\)\s*\n\s*(.*?)$', text, re.DOTALL)
+    match = re.search(r'Part\s*(?:IV|Ⅳ|IN|N)\s+Translation\s*\(.*?\)\s*\n\s*(.*?)$', text, re.DOTALL)
     if not match:
         return None
-    source = clean_text(match.group(1))
+    raw = match.group(1)
+
+    # 去掉 Directions 行（正常或乱码形式）及其后面的乱码内容
+    # 乱码特征：大量单字符被空格隔开，如 "s h o u l d w r i t e"
+    # 匹配 Directions: 开头直到遇到中文字符之前的所有内容
+    raw = re.sub(
+        r'Directions\s*[:：]?.*?(?=[一-鿿])',
+        '',
+        raw,
+        flags=re.DOTALL
+    )
+
+    source = clean_text(raw)
     return {
         "type": "translation",
         "source_text": source,
@@ -465,10 +552,15 @@ def main():
             doc_path = os.path.join(word_dir, doc_file)
             year_match = re.search(r'(\d{4})', year_dir)
             month_match = re.search(r'(\d{2})月', year_dir)
-            session_match = re.search(r'第(\d)套', doc_file)
+            session_match = re.search(r'第([一二三1-3\d])套', doc_file)
             year = int(year_match.group(1)) if year_match else 0
             month = int(month_match.group(1)) if month_match else 0
-            session = int(session_match.group(1)) if session_match else None
+            if session_match:
+                cn_to_num = {'一': 1, '二': 2, '三': 3}
+                raw = session_match.group(1)
+                session = cn_to_num[raw] if raw in cn_to_num else int(raw)
+            else:
+                session = None
 
             print(f"[CET-6] {doc_file}")
             try:

@@ -3,30 +3,19 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Separator } from "@/components/ui/separator"
-import { sampleCET4Writing } from "@/lib/exam-data"
+import { getExamPapers } from "@/lib/exam-data"
 import { loadConfig, isConfigValid } from "@/lib/api-config"
-import type { WritingQuestion } from "@/types/exam"
+import type { WritingQuestion, ExamType } from "@/types/exam"
 import { MarkdownContent } from "@/components/markdown-content"
 
-// ============================================================
 // 自动存档
-// ============================================================
-
 function saveDraft(examType: string, paperId: string, essay: string) {
   try {
-    localStorage.setItem(
-      `write-draft-${examType}-${paperId}`,
-      JSON.stringify({ essay, savedAt: Date.now() })
-    )
+    localStorage.setItem(`write-draft-${examType}-${paperId}`, JSON.stringify({ essay, savedAt: Date.now() }))
   } catch {}
 }
 
@@ -40,10 +29,7 @@ function loadDraft(examType: string, paperId: string): string | null {
   }
 }
 
-// ============================================================
 // 流式读取
-// ============================================================
-
 async function streamAI(
   url: string,
   body: object,
@@ -52,18 +38,10 @@ async function streamAI(
   onError: (err: string) => void
 ) {
   try {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    })
+    const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
     if (!res.ok) {
       const err = await res.text()
-      try {
-        onError(JSON.parse(err).error || `HTTP ${res.status}`)
-      } catch {
-        onError(`HTTP ${res.status}: ${err.slice(0, 200)}`)
-      }
+      try { onError(JSON.parse(err).error || `HTTP ${res.status}`) } catch { onError(`HTTP ${res.status}: ${err.slice(0, 200)}`) }
       return
     }
     const reader = res.body?.getReader()
@@ -81,10 +59,7 @@ async function streamAI(
         if (!trimmed || !trimmed.startsWith("data: ")) continue
         const data = trimmed.slice(6)
         if (data === "[DONE]") { onDone(); return }
-        try {
-          const parsed = JSON.parse(data)
-          if (parsed.content) onChunk(parsed.content)
-        } catch {}
+        try { const parsed = JSON.parse(data); if (parsed.content) onChunk(parsed.content) } catch {}
       }
     }
     onDone()
@@ -93,17 +68,14 @@ async function streamAI(
   }
 }
 
-// ============================================================
-// 主页面
-// ============================================================
-
 type Phase = "select" | "writing" | "feedback"
 
 export default function WritePage() {
   const pathname = usePathname()
-  const examType = pathname.split("/")[1] || "cet4"
+  const examType = (pathname.split("/")[1] || "cet4") as ExamType
 
   const [phase, setPhase] = useState<Phase>("select")
+  const [selectedPaperId, setSelectedPaperId] = useState<string | null>(null)
   const [essay, setEssay] = useState("")
   const [isStreaming, setIsStreaming] = useState(false)
   const [streamedText, setStreamedText] = useState("")
@@ -112,29 +84,37 @@ export default function WritePage() {
   const [savedDraft, setSavedDraft] = useState<string | null>(null)
   const feedbackRef = useRef<HTMLDivElement>(null)
 
-  const paper = sampleCET4Writing
-  const writingSection = paper.sections.find((s) => s.type === "writing")
-  const question = writingSection?.questions[0] as WritingQuestion | undefined
+  // 获取有写作题目的试卷
+  const allPapers = getExamPapers(examType)
+  const writingPapers = allPapers.filter(p =>
+    p.sections.some(s => s.type === "writing")
+  ).map(p => ({
+    id: p.id,
+    title: p.title,
+    question: (p.sections.find(s => s.type === "writing")?.questions[0] as WritingQuestion)
+  })).filter(p => p.question)
 
-  // 检测是否有草稿（不自动恢复）
+  // 当前选中的试卷
+  const currentPaper = selectedPaperId ? writingPapers.find(p => p.id === selectedPaperId) : null
+  const question = currentPaper?.question
+
+  // 检测草稿
   useEffect(() => {
-    const draft = loadDraft(examType, paper.id)
-    if (draft && draft.length > 20) {
-      setSavedDraft(draft)
-    } else {
-      setSavedDraft(null)
-    }
-  }, [examType, paper.id])
+    if (!selectedPaperId) return
+    const draft = loadDraft(examType, selectedPaperId)
+    if (draft && draft.length > 20) setSavedDraft(draft)
+    else setSavedDraft(null)
+  }, [examType, selectedPaperId])
 
   // 自动存档
   useEffect(() => {
-    if (phase === "writing" && essay.length > 0) {
-      const timer = setTimeout(() => saveDraft(examType, paper.id, essay), 2000)
+    if (phase === "writing" && essay.length > 0 && selectedPaperId) {
+      const timer = setTimeout(() => saveDraft(examType, selectedPaperId, essay), 2000)
       return () => clearTimeout(timer)
     }
-  }, [essay, phase, examType, paper.id])
+  }, [essay, phase, examType, selectedPaperId])
 
-  // 流式输出时：只在底部时自动滚
+  // 自动滚动
   useEffect(() => {
     const el = feedbackRef.current
     if (!el || !isStreaming) return
@@ -142,10 +122,17 @@ export default function WritePage() {
     if (atBottom) el.scrollTop = el.scrollHeight
   }, [streamedText, isStreaming])
 
-  const wordCount = essay.trim().split(/\s+/).filter((w) => w.length > 0).length
+  const wordCount = essay.trim().split(/\s+/).filter(w => w.length > 0).length
+
+  const handleSelectPaper = useCallback((paperId: string) => {
+    setSelectedPaperId(paperId)
+    setEssay("")
+    setSavedDraft(null)
+    setPhase("writing")
+  }, [])
 
   const handleGrade = useCallback(async () => {
-    if (!question) return
+    if (!question || !selectedPaperId) return
     const apiConfig = loadConfig()
     if (!isConfigValid(apiConfig)) {
       setApiError("未配置 API。去设置页配置后可获得 AI 批改。")
@@ -157,17 +144,16 @@ export default function WritePage() {
     setApiError(null)
     setApiDone(false)
     setPhase("feedback")
-    // 提交后清除草稿，刷新不再恢复旧内容
-    try { localStorage.removeItem(`write-draft-${examType}-${paper.id}`) } catch {}
+    try { localStorage.removeItem(`write-draft-${examType}-${selectedPaperId}`) } catch {}
 
     await streamAI(
       "/api/grade-writing",
       { config: apiConfig, essay, prompt: question.prompt, word_limit: question.word_limit },
-      (chunk) => setStreamedText((prev) => prev + chunk),
+      (chunk) => setStreamedText(prev => prev + chunk),
       () => { setIsStreaming(false); setApiDone(true) },
       (err) => { setApiError(err); setIsStreaming(false); setApiDone(true) }
     )
-  }, [question, essay])
+  }, [question, essay, selectedPaperId])
 
   const handleReset = useCallback(() => {
     setEssay("")
@@ -178,63 +164,46 @@ export default function WritePage() {
     setPhase("writing")
   }, [])
 
+  const handleBackToList = useCallback(() => {
+    setSelectedPaperId(null)
+    setPhase("select")
+    setEssay("")
+    setSavedDraft(null)
+  }, [])
+
   // --- 选题 ---
   if (phase === "select") {
     return (
       <div className="p-8 max-w-3xl mx-auto space-y-6">
         <div className="space-y-2">
           <h1 className="text-2xl font-bold">✍️ 写作练习</h1>
-          <p className="text-muted-foreground">
-            你写 → 提交 → AI 实时批改 → 逐句拆解范文
-          </p>
+          <p className="text-muted-foreground">选择一套真题 → 你写 → 提交 → AI 实时批改</p>
         </div>
 
-        {/* 草稿提示 */}
-        {savedDraft && (
-          <Card className="border-primary/30 bg-primary/5">
-            <CardContent className="pt-4 pb-3 px-4 flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium">发现未完成的草稿</p>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  {savedDraft.slice(0, 60)}...
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <Button
-                  size="sm"
-                  onClick={() => {
-                    setEssay(savedDraft)
-                    setPhase("writing")
-                  }}
-                >
-                  继续写
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => {
-                    setSavedDraft(null)
-                    try { localStorage.removeItem(`write-draft-${examType}-${paper.id}`) } catch {}
-                  }}
-                >
-                  丢弃
-                </Button>
-              </div>
+        {writingPapers.length === 0 ? (
+          <Card className="bg-muted/50">
+            <CardContent className="pt-6 pb-4 text-center">
+              <span className="text-4xl">📭</span>
+              <p className="text-muted-foreground mt-2">还没有{examType === "cet4" ? "四级" : "六级"}写作题。</p>
             </CardContent>
           </Card>
+        ) : (
+          <div className="space-y-3">
+            {writingPapers.map(p => (
+              <Card key={p.id} className="cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors" onClick={() => handleSelectPaper(p.id)}>
+                <CardContent className="pt-4 pb-3 px-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">{p.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{p.question.prompt.slice(0, 100)}...</p>
+                    </div>
+                    <Badge variant="outline">30 分钟</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         )}
-
-        <Card
-          className="cursor-pointer hover:border-primary/50 hover:bg-accent/50 transition-colors"
-          onClick={() => setPhase("writing")}
-        >
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle>{paper.title} — 写作</CardTitle>
-              <Badge variant="outline">30 分钟</Badge>
-            </div>
-          </CardHeader>
-        </Card>
       </div>
     )
   }
@@ -245,16 +214,22 @@ export default function WritePage() {
       <div className="flex h-screen">
         {/* 左：题目 + 评分标准 */}
         <div className="w-1/2 border-r border-border overflow-y-auto p-6 space-y-4">
-          <h2 className="text-sm font-semibold text-muted-foreground">
-            📄 写作要求
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-muted-foreground">📄 写作要求</h2>
+            <Button variant="ghost" size="sm" onClick={handleBackToList}>← 返回</Button>
+          </div>
           <p className="text-sm leading-relaxed">{question?.prompt}</p>
           <Separator />
-          <h3 className="text-xs font-semibold text-muted-foreground">
-            评分标准
-          </h3>
+          {question?.sample_answer && (
+            <>
+              <h3 className="text-xs font-semibold text-muted-foreground">📝 范文</h3>
+              <p className="text-sm leading-relaxed whitespace-pre-wrap text-muted-foreground">{question.sample_answer}</p>
+              <Separator />
+            </>
+          )}
+          <h3 className="text-xs font-semibold text-muted-foreground">评分标准</h3>
           <div className="space-y-2">
-            {question?.scoring_rubric.map((r) => (
+            {question?.scoring_rubric?.map(r => (
               <div key={r.level} className="flex gap-2 text-xs">
                 <Badge variant="outline" className="shrink-0">{r.level}档</Badge>
                 <span className="text-muted-foreground">{r.description}</span>
@@ -267,12 +242,8 @@ export default function WritePage() {
         <div className="w-1/2 flex flex-col">
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-muted-foreground">
-                ✍️ 你的作文
-              </h2>
-              <span className="text-xs text-muted-foreground">
-                {wordCount} / {question?.word_limit ?? 150} 词
-              </span>
+              <h2 className="text-sm font-semibold text-muted-foreground">✍️ 你的作文</h2>
+              <span className="text-xs text-muted-foreground">{wordCount} / {question?.word_limit ?? 150} 词</span>
             </div>
             <Textarea
               value={essay}
@@ -289,9 +260,7 @@ export default function WritePage() {
                 <span>未配置 API，<a href="/settings" className="text-primary underline">去设置</a></span>
               )}
             </span>
-            <Button onClick={handleGrade} disabled={wordCount < 50}>
-              提交批改
-            </Button>
+            <Button onClick={handleGrade} disabled={wordCount < 50}>提交批改</Button>
           </div>
         </div>
       </div>
@@ -304,41 +273,25 @@ export default function WritePage() {
       <div className="border-b border-border px-6 py-3 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <h1 className="text-lg font-bold">✍️ 写作批改</h1>
-          {isStreaming && (
-            <Badge className="bg-primary/10 text-primary border-primary/20 animate-pulse">
-              AI 批改中...
-            </Badge>
-          )}
-          {apiDone && !apiError && (
-            <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
-              ✅ 批改完成
-            </Badge>
-          )}
+          {isStreaming && <Badge className="bg-primary/10 text-primary border-primary/20 animate-pulse">AI 批改中...</Badge>}
+          {apiDone && !apiError && <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20">✅ 批改完成</Badge>}
         </div>
-        <Button variant="outline" size="sm" onClick={handleReset}>
-          重写
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={handleReset}>重写</Button>
+          <Button variant="ghost" size="sm" onClick={handleBackToList}>换题</Button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto" ref={feedbackRef}>
         <div className="max-w-4xl mx-auto p-6 space-y-6">
-          {/* 题目 + 作文 */}
           <div className="grid md:grid-cols-2 gap-4">
             <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xs text-muted-foreground">📄 写作要求</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-relaxed">{question?.prompt}</p>
-              </CardContent>
+              <CardHeader className="pb-2"><CardTitle className="text-xs text-muted-foreground">📄 写作要求</CardTitle></CardHeader>
+              <CardContent><p className="text-sm leading-relaxed">{question?.prompt}</p></CardContent>
             </Card>
             <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xs text-muted-foreground">✍️ 你的作文 ({wordCount} 词)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-relaxed whitespace-pre-wrap">{essay}</p>
-              </CardContent>
+              <CardHeader className="pb-2"><CardTitle className="text-xs text-muted-foreground">✍️ 你的作文 ({wordCount} 词)</CardTitle></CardHeader>
+              <CardContent><p className="text-sm leading-relaxed whitespace-pre-wrap">{essay}</p></CardContent>
             </Card>
           </div>
 
@@ -357,9 +310,7 @@ export default function WritePage() {
             <Card>
               <CardContent className="pt-5 px-6 pb-6">
                 {streamedText ? (
-                  <div className="prose prose-invert prose-sm max-w-none">
-                    <MarkdownContent text={streamedText} />
-                  </div>
+                  <div className="prose prose-invert prose-sm max-w-none"><MarkdownContent text={streamedText} /></div>
                 ) : (
                   <p className="text-sm text-muted-foreground animate-pulse">AI 正在分析你的作文...</p>
                 )}

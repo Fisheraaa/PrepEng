@@ -17,9 +17,12 @@ interface ExtractedSection {
     options?: string[]
     answer: string
     explanation: string
+    scoring_rubric?: { level: number; description: string; score_range: string }[]
+    scoring_points?: { key_phrase: string; correct_translation: string; alternatives: string[] }[]
   }[]
   prompt?: string
   word_limit?: number
+  sample_answer?: string
   source_text?: string
   reference_translation?: string
 }
@@ -46,21 +49,62 @@ function convertPaper(data: ExtractedPaper): ExamPaper {
     session: data.session,
     title: data.title,
     total_time: 125,
-    sections: data.sections.map((s) => ({
-      type: s.type as "reading" | "writing" | "translation" | "listening",
-      subtype: s.subtype as "careful_reading" | "banked_cloze" | "matching" | undefined,
-      title: s.title || "",
-      passage: s.passage,
-      bank: s.bank,  // 词库（选词填空用）
-      questions: (s.questions || []).map((q) => ({
-        id: q.id,
-        type: "choice" as const,
-        content: q.content,
-        options: q.options || [],
-        answer: q.answer || "A",
-        explanation: q.explanation || "暂无解析",
-      })),
-    })),
+    sections: data.sections.map((s) => {
+      const sectionType = s.type as "reading" | "writing" | "translation" | "listening"
+
+      // 写作和翻译题目需要特殊处理
+      if (sectionType === "writing") {
+        return {
+          type: sectionType,
+          title: s.title || "",
+          questions: [{
+            id: s.questions?.[0]?.id || `${data.id}-writing`,
+            type: "writing" as const,
+            prompt: s.prompt || "",
+            word_limit: s.word_limit || 150,
+            sample_answer: s.sample_answer || "",
+            scoring_rubric: s.questions?.[0]?.scoring_rubric || [
+              { level: 5, description: "切题，表达清楚，文字通顺，基本无语言错误", score_range: "14分档" },
+              { level: 4, description: "基本切题，有少量语言错误", score_range: "11分档" },
+              { level: 3, description: "基本切题，语言错误较多", score_range: "8分档" },
+              { level: 2, description: "条理不清，严重语言错误多", score_range: "5分档" },
+              { level: 1, description: "与题目毫不相关", score_range: "2分档" },
+            ],
+          }],
+        }
+      }
+
+      if (sectionType === "translation") {
+        return {
+          type: sectionType,
+          title: s.title || "",
+          questions: [{
+            id: s.questions?.[0]?.id || `${data.id}-translation`,
+            type: "translation" as const,
+            source_text: s.source_text || "",
+            reference_translation: s.reference_translation || "",
+            scoring_points: s.questions?.[0]?.scoring_points || [],
+          }],
+        }
+      }
+
+      // 听力和阅读题目
+      return {
+        type: sectionType,
+        subtype: s.subtype as "careful_reading" | "banked_cloze" | "matching" | undefined,
+        title: s.title || "",
+        passage: s.passage,
+        bank: s.bank,
+        questions: (s.questions || []).map((q) => ({
+          id: q.id,
+          type: "choice" as const,
+          content: q.content,
+          options: q.options || [],
+          answer: q.answer || "A",
+          explanation: q.explanation || "暂无解析",
+        })),
+      }
+    }),
   }
 }
 
@@ -82,7 +126,7 @@ for (const paper of examData as ExtractedPaper[]) {
 for (const et of ["cet4", "cet6", "ielts"] as ExamType[]) {
   allPapers[et].sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year
-    if (a.month !== b.month) return b.month - a.month
+    if (a.month !== b.month) return (b.month || 0) - (a.month || 0)
     return (b.session || 0) - (a.session || 0)
   })
 }

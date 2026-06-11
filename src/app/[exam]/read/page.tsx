@@ -397,14 +397,20 @@ export default function ReadPage() {
 
   // Section A: 选词填空 — 全屏布局
   if (currentSection?.subtype === "banked_cloze") {
+    // 将字母答案转换为单词答案
+    const bank = currentSection.bank || []
+    const letterToWord = (letter: string) => {
+      const item = bank.find((w) => w.startsWith(letter + ")"))
+      return item ? item.replace(/^[A-Z]\)/, "") : letter
+    }
     return (
       <div className="flex flex-col h-screen">
         {topBar}
         <div className="flex-1 overflow-y-auto p-8 max-w-4xl mx-auto w-full">
           <BankedCloze
             passage={currentSection.passage || ""}
-            bank={currentSection.bank || []}
-            blanks={questions.map((q, i) => ({ num: 26 + i, answer: q.answer || "" }))}
+            bank={bank}
+            blanks={questions.map((q, i) => ({ num: 26 + i, answer: letterToWord(q.answer || ""), explanation: q.explanation || "" }))}
           />
         </div>
       </div>
@@ -422,13 +428,26 @@ export default function ReadPage() {
               {currentSection.passage || "（文章加载中...）"}
             </div>
           </div>
-          <div className="w-1/2 overflow-y-auto p-6">
+          <div className="w-1/2 overflow-y-auto p-6 space-y-6">
             <MatchingSection
               questions={questions}
               selectedAnswers={selectedAnswers}
               submitted={submitted}
               onSelect={handleSelectAnswer}
             />
+            <div className="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-4 pb-2">
+              {!submitted ? (
+                <Button onClick={handleSubmit} disabled={answeredCount < questions.length} className="w-full">
+                  {answeredCount < questions.length
+                    ? `还有 ${questions.length - answeredCount} 题未答`
+                    : "提交全部答案"}
+                </Button>
+              ) : (
+                <Button onClick={handleNextSection} className="w-full">
+                  {currentSectionIdx < sections.length - 1 ? "下一篇 →" : "查看结果"}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>

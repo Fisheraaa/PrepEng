@@ -54,7 +54,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "J) impact，表示'对...产生影响'。"
+            "explanation": ""
           },
           {
             "id": "q27",
@@ -76,7 +76,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "A) access，表示'获得'。"
+            "explanation": ""
           },
           {
             "id": "q28",
@@ -98,7 +98,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "F) barrier，表示'障碍'。"
+            "explanation": ""
           },
           {
             "id": "q29",
@@ -120,7 +120,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "H) digital，表示'数字的'。"
+            "explanation": ""
           },
           {
             "id": "q30",
@@ -142,7 +142,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "C) bridge，表示'弥合'。"
+            "explanation": ""
           },
           {
             "id": "q31",
@@ -164,7 +164,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "L) opportunity，表示'机会'。"
+            "explanation": ""
           },
           {
             "id": "q32",
@@ -186,7 +186,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "G) essential，表示'必要的'。"
+            "explanation": ""
           },
           {
             "id": "q33",
@@ -208,7 +208,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "N) transform，表示'改变'。"
+            "explanation": ""
           },
           {
             "id": "q34",
@@ -230,7 +230,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "B) connect，表示'连接'。"
+            "explanation": ""
           },
           {
             "id": "q35",
@@ -252,7 +252,7 @@
               "H)remaining"
             ],
             "answer": "",
-            "explanation": "K) challenge，表示'挑战'。"
+            "explanation": ""
           }
         ]
       },
@@ -266,61 +266,61 @@
             "id": "q36",
             "content": "The age-long mystery has now been resolved as to how phantom traffic jams are caused.",
             "answer": "",
-            "explanation": "D段提到在线教育可以让学生按自己的节奏学习。"
+            "explanation": ""
           },
           {
             "id": "q37",
             "content": "It is possible to nearly double the hourly throughput per lane by adopting bilateral control.",
             "answer": "",
-            "explanation": "F段提到在线教育需要学生有更强的自律能力。"
+            "explanation": ""
           },
           {
             "id": "q38",
             "content": "According to Hom, drivers making constant adjustments for equal spacing between cars in a flow of traffic can help reduce phantom traffic jams.",
             "answer": "",
-            "explanation": "A段提到疫情期间在线教育快速增长。"
+            "explanation": ""
           },
           {
             "id": "q39",
             "content": "Before systems for bilateral control are installed, drivers should not follow the car in front too closely so as to reduce phantom traffic jams.",
             "answer": "",
-            "explanation": "H段提到在线教育平台正在改进互动功能。"
+            "explanation": ""
           },
           {
             "id": "q40",
             "content": "Hom said with some simple modifications to the existing equipment in new vehicles, their spacing bilateral control could be accomplished.",
             "answer": "",
-            "explanation": "B段提到在线教育可以打破地理限制。"
+            "explanation": ""
           },
           {
             "id": "q41",
             "content": "Drivers caught up in phantom traffic jams are likely to think an accident has happened or some construction is going on.",
             "answer": "",
-            "explanation": "G段提到混合式学习可能是最佳模式。"
+            "explanation": ""
           },
           {
             "id": "q42",
             "content": "Two sets of sensors would be used to help drivers determine the distances between cars.",
             "answer": "",
-            "explanation": "E段提到在线证书越来越被雇主认可。"
+            "explanation": ""
           },
           {
             "id": "q43",
             "content": "Solving the problem of phantom jams could save America billions of dollars every year.",
             "answer": "",
-            "explanation": "C段提到在线教育对传统大学构成挑战。"
+            "explanation": ""
           },
           {
             "id": "q44",
             "content": "In a phantom traffic jam, the cars in the same lane slow down one after another, creating a wave-like effect.",
             "answer": "",
-            "explanation": "K段提到在线教育需要技术支持。"
+            "explanation": ""
           },
           {
             "id": "q45",
             "content": "Hom has found that certain creatures use strategies similar to bilateral control to avoid hitting each other while moving in dense crowds.",
             "answer": "",
-            "explanation": "L段提到在线教育的未来发展前景广阔。"
+            "explanation": ""
           }
         ]
       },
@@ -340,7 +340,7 @@
               "D)It expects every individual to look their very best."
             ],
             "answer": "",
-            "explanation": "研究表明人工智能正在改变医疗诊断。故选A。"
+            "explanation": ""
           },
           {
             "id": "q47",
@@ -352,7 +352,7 @@
               "D)They feel much of their precious time, energy and resources is wasted."
             ],
             "answer": "",
-            "explanation": "AI 可以帮助医生更准确地识别疾病。故选B。"
+            "explanation": ""
           },
           {
             "id": "q48",
@@ -364,7 +364,7 @@
               "D)It may do as much harm as good."
             ],
             "answer": "",
-            "explanation": "AI 在医疗领域的应用还面临数据隐私问题。故选C。"
+            "explanation": ""
           },
           {
             "id": "q49",
@@ -376,7 +376,7 @@
               "D)Frequent interaction."
             ],
             "answer": "",
-            "explanation": "专家认为 AI 不会取代医生，而是辅助医生。故选D。"
+            "explanation": ""
           },
           {
             "id": "q50",
@@ -388,7 +388,7 @@
               "D)We will be discouraged from revealing our true selves."
             ],
             "answer": "",
-            "explanation": "研究发现 AI 在某些领域已经超越人类医生。故选A。"
+            "explanation": ""
           }
         ]
       },
@@ -408,7 +408,7 @@
               "D)A noticeable surge in their varieties."
             ],
             "answer": "",
-            "explanation": "文章讨论了电动汽车的发展趋势。故选B。"
+            "explanation": ""
           },
           {
             "id": "q52",
@@ -420,7 +420,7 @@
               "D)Most of them eat meatless meat to protect the environment."
             ],
             "answer": "",
-            "explanation": "电池技术的进步是电动汽车普及的关键。故选C。"
+            "explanation": ""
           },
           {
             "id": "q53",
@@ -432,7 +432,7 @@
               "D)Most of them are sold as true fake meat."
             ],
             "answer": "",
-            "explanation": "充电基础设施不足是主要障碍。故选D。"
+            "explanation": ""
           },
           {
             "id": "q54",
@@ -444,7 +444,7 @@
               "D)It reduces various health risks posed by meat consumption."
             ],
             "answer": "",
-            "explanation": "政府政策对电动汽车发展很重要。故选A。"
+            "explanation": ""
           },
           {
             "id": "q55",
@@ -456,7 +456,7 @@
               "D)New generations of alternate meat."
             ],
             "answer": "",
-            "explanation": "文章认为电动汽车将成为主流。故选B。"
+            "explanation": ""
           }
         ]
       },
@@ -494,7 +494,7 @@
               "D)They are both students at Marathon High School."
             ],
             "answer": "",
-            "explanation": "新闻提到研究人员发现一种新方法可以更快地检测疾病。故选B。"
+            "explanation": ""
           },
           {
             "id": "q2",
@@ -506,7 +506,7 @@
               "D)It is one of the most popular running events in the southeastern U. S."
             ],
             "answer": "",
-            "explanation": "新方法可以在几小时内给出结果。故选C。"
+            "explanation": ""
           },
           {
             "id": "q3",
@@ -518,7 +518,7 @@
               "D)He used to be a helicopter pilot."
             ],
             "answer": "",
-            "explanation": "研究发现青少年睡眠不足会影响学业表现。故选A。"
+            "explanation": ""
           },
           {
             "id": "q4",
@@ -530,7 +530,7 @@
               "D)It has given him exceptional privilege as an ambassador."
             ],
             "answer": "",
-            "explanation": "专家建议学校推迟上课时间。故选D。"
+            "explanation": ""
           },
           {
             "id": "q5",
@@ -542,7 +542,7 @@
               "D)They are pets kept by the store staff."
             ],
             "answer": "",
-            "explanation": "新闻报道了一项关于远程工作的调查。故选B。"
+            "explanation": ""
           },
           {
             "id": "q6",
@@ -554,7 +554,7 @@
               "D)It might have got lost."
             ],
             "answer": "",
-            "explanation": "调查发现大多数员工希望继续远程工作。故选C。"
+            "explanation": ""
           },
           {
             "id": "q7",
@@ -566,7 +566,7 @@
               "D)Bring in pets with them."
             ],
             "answer": "",
-            "explanation": "公司正在考虑混合办公模式。故选A。"
+            "explanation": ""
           }
         ]
       },
@@ -584,7 +584,7 @@
               "D)Moving to the city center."
             ],
             "answer": "",
-            "explanation": "女士在询问关于新项目的进度。故选C。"
+            "explanation": ""
           },
           {
             "id": "q9",
@@ -596,7 +596,7 @@
               "D)The distance to her home."
             ],
             "answer": "",
-            "explanation": "男士说项目遇到了一些技术问题。故选B。"
+            "explanation": ""
           },
           {
             "id": "q10",
@@ -608,7 +608,7 @@
               "D)Lived on campus."
             ],
             "answer": "",
-            "explanation": "他们决定延长截止日期。故选D。"
+            "explanation": ""
           },
           {
             "id": "q11",
@@ -620,7 +620,7 @@
               "D)Weigh the benefits against the disadvantages."
             ],
             "answer": "",
-            "explanation": "女士建议寻求外部专家的帮助。故选A。"
+            "explanation": ""
           },
           {
             "id": "q12",
@@ -632,7 +632,7 @@
               "D)Helping the man with his shopping."
             ],
             "answer": "",
-            "explanation": "男士最近参加了一个职业培训。故选B。"
+            "explanation": ""
           },
           {
             "id": "q13",
@@ -644,7 +644,7 @@
               "D)Obviously childish."
             ],
             "answer": "",
-            "explanation": "培训内容是关于领导力的。故选C。"
+            "explanation": ""
           },
           {
             "id": "q14",
@@ -656,7 +656,7 @@
               "D)One he can play either alone or in a group."
             ],
             "answer": "",
-            "explanation": "女士认为培训对职业发展很有帮助。故选A。"
+            "explanation": ""
           },
           {
             "id": "q15",
@@ -668,7 +668,7 @@
               "D)It distinguishes itself as one of the oldest games."
             ],
             "answer": "",
-            "explanation": "男士计划将所学应用到工作中。故选D。"
+            "explanation": ""
           }
         ]
       },
@@ -686,7 +686,7 @@
               "D)Customers given more choices are more likely to get confused."
             ],
             "answer": "",
-            "explanation": "文章讨论了城市绿化的重要性。故选A。"
+            "explanation": ""
           },
           {
             "id": "q17",
@@ -698,7 +698,7 @@
               "D)What kind of display leads to greater customer satisfaction."
             ],
             "answer": "",
-            "explanation": "绿化可以改善空气质量和居民健康。故选B。"
+            "explanation": ""
           },
           {
             "id": "q18",
@@ -710,7 +710,7 @@
               "D)There are rules that motivate customers to buy."
             ],
             "answer": "",
-            "explanation": "一些城市已经开始实施屋顶花园项目。故选C。"
+            "explanation": ""
           },
           {
             "id": "q19",
@@ -722,7 +722,7 @@
               "D)Energy-boosting."
             ],
             "answer": "",
-            "explanation": "研究发现社交媒体对青少年心理健康有影响。故选D。"
+            "explanation": ""
           },
           {
             "id": "q20",
@@ -734,7 +734,7 @@
               "D)By making it part of the job."
             ],
             "answer": "",
-            "explanation": "过度使用社交媒体可能导致焦虑和抑郁。故选A。"
+            "explanation": ""
           },
           {
             "id": "q21",
@@ -746,7 +746,7 @@
               "D)It helped improve their working environment."
             ],
             "answer": "",
-            "explanation": "专家建议限制青少年的社交媒体使用时间。故选B。"
+            "explanation": ""
           },
           {
             "id": "q22",
@@ -758,7 +758,7 @@
               "D)It has a lot to do with independent luxury food suppliers."
             ],
             "answer": "",
-            "explanation": "文章讨论了可再生能源的发展趋势。故选C。"
+            "explanation": ""
           },
           {
             "id": "q23",
@@ -770,7 +770,7 @@
               "D)It recycles waste food from the city."
             ],
             "answer": "",
-            "explanation": "太阳能和风能成本正在下降。故选A。"
+            "explanation": ""
           },
           {
             "id": "q24",
@@ -782,7 +782,7 @@
               "D)It aims to provide high-quality products."
             ],
             "answer": "",
-            "explanation": "政府补贴对可再生能源发展很重要。故选D。"
+            "explanation": ""
           },
           {
             "id": "q25",
@@ -794,7 +794,7 @@
               "D)To meet customers 5 urgent demand."
             ],
             "answer": "",
-            "explanation": "文章认为可再生能源将在未来占主导地位。故选B。"
+            "explanation": ""
           }
         ]
       },
@@ -842,7 +842,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "H) contribute，表示'对...做出贡献'。"
+            "explanation": ""
           },
           {
             "id": "q27",
@@ -865,7 +865,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "D) fascinating，表示'迷人的'。"
+            "explanation": ""
           },
           {
             "id": "q28",
@@ -888,7 +888,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "A) explore，表示'探索'。"
+            "explanation": ""
           },
           {
             "id": "q29",
@@ -911,7 +911,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "F) challenge，表示'挑战'。"
+            "explanation": ""
           },
           {
             "id": "q30",
@@ -934,7 +934,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "G) inspire，表示'启发'。"
+            "explanation": ""
           },
           {
             "id": "q31",
@@ -957,7 +957,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "L) transform，表示'改变'。"
+            "explanation": ""
           },
           {
             "id": "q32",
@@ -980,7 +980,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "O) promote，表示'促进'。"
+            "explanation": ""
           },
           {
             "id": "q33",
@@ -1003,7 +1003,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "N) struggle，表示'挣扎'。"
+            "explanation": ""
           },
           {
             "id": "q34",
@@ -1026,7 +1026,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "B) appreciate，表示'欣赏'。"
+            "explanation": ""
           },
           {
             "id": "q35",
@@ -1049,7 +1049,7 @@
               "H)offences"
             ],
             "answer": "",
-            "explanation": "I) discover，表示'发现'。"
+            "explanation": ""
           }
         ]
       },
@@ -1063,61 +1063,61 @@
             "id": "q36",
             "content": "Fruit juice is different from whole fruit in that it contains much less fibre.",
             "answer": "",
-            "explanation": "E段提到远程工作可以减少通勤时间和交通拥堵。"
+            "explanation": ""
           },
           {
             "id": "q37",
             "content": "Some people believe a juice diet helps to rid our body of harmful or poisonous substances.",
             "answer": "",
-            "explanation": "G段提到远程工作可能带来的社交隔离问题。"
+            "explanation": ""
           },
           {
             "id": "q38",
             "content": "A lot of research comes to the same conclusion that fruit juice does harm to the human body when it leads to surplus calories.",
             "answer": "",
-            "explanation": "A段提到远程工作的趋势在疫情后加速。"
+            "explanation": ""
           },
           {
             "id": "q39",
             "content": "The claimed health benefits of fruit and vegetable juices have rendered the industry very profitable.",
             "answer": "",
-            "explanation": "K段提到公司正在开发新的协作工具。"
+            "explanation": ""
           },
           {
             "id": "q40",
             "content": "To increase the benefits of fruit juice to our health, we'd better choose ripe fruit to make juice.",
             "answer": "",
-            "explanation": "C段提到远程工作对环境有积极影响。"
+            "explanation": ""
           },
           {
             "id": "q41",
             "content": "Diets containing large amounts of fibre reduce the risk of heart disease, diabetes and other health hazards.",
             "answer": "",
-            "explanation": "H段提到远程工作需要更好的时间管理技能。"
+            "explanation": ""
           },
           {
             "id": "q42",
             "content": "According to a research paper, drinking fruit juice is beneficial on condition that it is consumed in reasonable amounts.",
             "answer": "",
-            "explanation": "F段提到远程工作可能影响职业晋升机会。"
+            "explanation": ""
           },
           {
             "id": "q43",
             "content": "One expert claims that juicing wastes a lot of nutrients contained in fruits.",
             "answer": "",
-            "explanation": "B段提到远程工作可以提高员工满意度。"
+            "explanation": ""
           },
           {
             "id": "q44",
             "content": "It takes some time for fruit's cells to be digested and for fructose to be absorbed.",
             "answer": "",
-            "explanation": "L段提到混合办公模式可能是未来的趋势。"
+            "explanation": ""
           },
           {
             "id": "q45",
             "content": "A lot of research has demonstrated that drinking fruit juice does not reduce our daily consumption of other foods.",
             "answer": "",
-            "explanation": "D段提到远程工作对不同行业的影响不同。"
+            "explanation": ""
           }
         ]
       },
@@ -1137,7 +1137,7 @@
               "D)Provide extra energy for what we do."
             ],
             "answer": "",
-            "explanation": "研究表明每天步行可以降低心脏病风险。故选A。"
+            "explanation": ""
           },
           {
             "id": "q47",
@@ -1149,7 +1149,7 @@
               "D)Different types of clothing convey different messages symbolically."
             ],
             "answer": "",
-            "explanation": "步行30分钟是最理想的时长。故选B。"
+            "explanation": ""
           },
           {
             "id": "q48",
@@ -1161,7 +1161,7 @@
               "D)By influencing our interpretation of symbolic messages."
             ],
             "answer": "",
-            "explanation": "步行可以改善心血管健康。故选C。"
+            "explanation": ""
           },
           {
             "id": "q49",
@@ -1173,7 +1173,7 @@
               "D)They may enable people to have the right mentality for doing business."
             ],
             "answer": "",
-            "explanation": "专家建议将步行融入日常生活。故选D。"
+            "explanation": ""
           },
           {
             "id": "q50",
@@ -1185,7 +1185,7 @@
               "D)Look unusual."
             ],
             "answer": "",
-            "explanation": "研究发现步行还可以改善心理健康。故选A。"
+            "explanation": ""
           }
         ]
       },
@@ -1205,7 +1205,7 @@
               "D)They are no longer relevant to teenagers 5 lives."
             ],
             "answer": "",
-            "explanation": "研究发现早起的人更健康。故选B。"
+            "explanation": ""
           },
           {
             "id": "q52",
@@ -1217,7 +1217,7 @@
               "D)It contains elements similar to those in some masterpieces of classical music."
             ],
             "answer": "",
-            "explanation": "早起与更好的睡眠质量相关。故选C。"
+            "explanation": ""
           },
           {
             "id": "q53",
@@ -1229,7 +1229,7 @@
               "D)To justify the necessity of using orchestras in opera."
             ],
             "answer": "",
-            "explanation": "早起的人通常有更好的饮食习惯。故选D。"
+            "explanation": ""
           },
           {
             "id": "q54",
@@ -1241,7 +1241,7 @@
               "D)They are essential for movies to become the world's greatest hits."
             ],
             "answer": "",
-            "explanation": "专家建议逐渐调整作息时间。故选A。"
+            "explanation": ""
           },
           {
             "id": "q55",
@@ -1253,7 +1253,7 @@
               "D)It might not be able to rival classical music and opera in importance for centuries to come."
             ],
             "answer": "",
-            "explanation": "研究认为早起可以提高生产力。故选B。"
+            "explanation": ""
           }
         ]
       },
@@ -1275,8 +1275,7 @@
       {
         "type": "writing",
         "prompt": "Directions: Suppose your university is seeking students' opinions on the necessity of making College Chinese a compulsory course. You are now to write an essay to express your view. You will have 30 minutes to write the essay. You should write at least 120 words but no more than 180 words.",
-        "word_limit": 120,
-        "sample_answer": "As a fundamental discipline, College Chinese plays a crucial role in higher education. I firmly support making it a compulsory course because it enhances students' language proficiency, cultural literacy, and analytical abilities.\n\nFirst, College Chinese strengthens students' reading comprehension and writing skills, which are indispensable for academic papers and professional reports. Many graduates struggle with formal documentation, and this course provides systematic training. Second, through studying classical and contemporary Chinese works, students gain deeper cultural insights and develop national identity, which is particularly valuable in today's globalized world. Most importantly, College Chinese cultivates sophisticated analytical skills. By interpreting complex texts such as ancient poems and philosophical essays, students learn to identify implicit meanings, evaluate different perspectives, and construct well-reasoned arguments—abilities that go beyond academic boundaries and are highly applicable to careers in law, business, and medicine.\n\nIn conclusion, mandating College Chinese ensures students acquire essential communication skills, cultural literacy, and analytical thinking capabilities. These competencies make graduates more competitive in the job market while preserving China's literary heritage. Universities should therefore recognize its comprehensive benefits."
+        "word_limit": 120
       },
       {
         "type": "listening",
@@ -1291,8 +1290,8 @@
               "B)By enhancing its nourishment.",
               "D)By cooking it in vegetable oil."
             ],
-            "answer": "A",
-            "explanation": "新闻开头说塔里克在玉米上涂抹黄油后一切都改变了，黄油让玉米更美味。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q2",
@@ -1303,8 +1302,8 @@
               "B)To attend an honorary ceremony.",
               "D)To exhibit their com at the state's Com Palace."
             ],
-            "answer": "B",
-            "explanation": "新闻提到塔里克和家人受邀前往南达科他州参加玉米宫的荣誉仪式。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q3",
@@ -1315,8 +1314,8 @@
               "B)Forged postal keys illegally.",
               "D)Broke a number of postal collection boxes."
             ],
-            "answer": "A",
-            "explanation": "新闻多处提到两人涉嫌多次盗窃邮件。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q4",
@@ -1327,8 +1326,8 @@
               "B)Loss of all their possessions.",
               "D)Up to fifteen years in prison."
             ],
-            "answer": "D",
-            "explanation": "两人因盗窃邮件面临最高5年监禁，因持有邮政钥匙面临最高10年，共计15年。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q5",
@@ -1339,8 +1338,8 @@
               "C)It creates waste and severely impacts the environment.",
               "D)It produces clothes affordable only to a tiny minority."
             ],
-            "answer": "C",
-            "explanation": "新闻提到服装行业因制造严重危害环境的废弃物问题而备受指责。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q6",
@@ -1351,8 +1350,8 @@
               "C)To incentivize manufacturers to be more consumer-friendly.",
               "D)To urge manufacturers and consumers to reduce waste."
             ],
-            "answer": "D",
-            "explanation": "研究人员提出生产税等政策是为了激励制造商和消费者增强废弃物意识。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q7",
@@ -1363,8 +1362,8 @@
               "B)Identifying the source of the problem.",
               "D)Establishing powerful regulatory bodies."
             ],
-            "answer": "B",
-            "explanation": "新闻说找出供应链中问题的根源至关重要。故选B。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -1381,8 +1380,8 @@
               "B)She cannot avoid rush-hour traffic.",
               "D)The city is too big to move around easily."
             ],
-            "answer": "A",
-            "explanation": "女士开头就抱怨城市高峰时段交通简直要把她逼疯了。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q9",
@@ -1393,8 +1392,8 @@
               "B)Increasing the number of bus routes.",
               "D)Learning from other big cities."
             ],
-            "answer": "C",
-            "explanation": "女士建议地铁系统可以装空调来改善高峰时段的交通体验。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q10",
@@ -1405,8 +1404,8 @@
               "B)He is fortunate to live very near to work.",
               "D)He is going to move closer to his office."
             ],
-            "answer": "C",
-            "explanation": "男士说自己坐36路公交直达办公室，车程30分钟不用换乘。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q11",
@@ -1417,8 +1416,8 @@
               "B)Send her his housing agenfs telephone number.",
               "D)Make sure the agent finds something good for her."
             ],
-            "answer": "B",
-            "explanation": "女士请男士把房产中介的电话号码发给她。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q12",
@@ -1429,8 +1428,8 @@
               "B)He received a heart operation a few days ago.",
               "D)He had some plastic surgery done."
             ],
-            "answer": "D",
-            "explanation": "男士开头就说约翰尼做了整形手术。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q13",
@@ -1441,8 +1440,8 @@
               "B)The man's use of the expression 'fixed'.",
               "D)The man's good memory of his childhood."
             ],
-            "answer": "B",
-            "explanation": "女士对'修复'这个表达感到困惑，反问疤痕怎么能修复。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q14",
@@ -1453,8 +1452,8 @@
               "B)It made him appear even more manly.",
               "D)It seemed to make up for his physical defects."
             ],
-            "answer": "C",
-            "explanation": "男士认为约翰尼的疤痕为他增添了个性，赋予了他某种独特性。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q15",
@@ -1465,8 +1464,8 @@
               "B)Hostile.",
               "D)Critical."
             ],
-            "answer": "D",
-            "explanation": "两位说话者都批评约翰尼的女朋友太肤浅自私。故选D。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -1483,8 +1482,8 @@
               "B)Through evolution.",
               "D)Through collaboration."
             ],
-            "answer": "B",
-            "explanation": "研究人员说语言不是被发明的，而是进化而来的。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q17",
@@ -1495,8 +1494,8 @@
               "B)With people interacting with animals close by.",
               "D)With people trying to string sounds together."
             ],
-            "answer": "A",
-            "explanation": "第一种理论认为语言始于人们模仿周围事物的声音，如动物叫声、自然声等。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q18",
@@ -1507,8 +1506,8 @@
               "C)Making sounds enables one to express their ideas more explicitly.",
               "D)Making sounds helps one communicate with people they can't see."
             ],
-            "answer": "D",
-            "explanation": "理论认为转向发声是因为说话可以让你在看不到对方时也能交流。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q19",
@@ -1519,8 +1518,8 @@
               "B)Quite confident.",
               "D)Highly intelligent."
             ],
-            "answer": "C",
-            "explanation": "研究表明与治疗犬互动对承受压力的学生的执行功能有积极影响。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q20",
@@ -1531,8 +1530,8 @@
               "C)When they found collaboration essential to them.",
               "D)When they were seeking someone to help them."
             ],
-            "answer": "A",
-            "explanation": "研究测量了参与者的执行功能，即计划、组织、激励、集中和记忆的技能。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q21",
@@ -1543,8 +1542,8 @@
               "B)Make clear their social goal.",
               "D)Consider the consequences."
             ],
-            "answer": "D",
-            "explanation": "彭德里认为传统压力管理课程会给陷入困境的学生增加压力。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q22",
@@ -1555,8 +1554,8 @@
               "B)More images of animals than humans.",
               "D)Little proof of human fascination with animals."
             ],
-            "answer": "B",
-            "explanation": "文章说承担风险需要悉心规划和努力工作，而非盲目冒险。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q23",
@@ -1567,8 +1566,8 @@
               "B)They were primarily native.",
               "D)They were hardly injured."
             ],
-            "answer": "C",
-            "explanation": "愿意尝试新想法是企业发展的关键。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q24",
@@ -1579,8 +1578,8 @@
               "B)To introduce to Egyptians animals from Punt.",
               "D)To show off her riches and power."
             ],
-            "answer": "D",
-            "explanation": "失败时应从失败中吸取教训，勇往直前。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q25",
@@ -1591,8 +1590,8 @@
               "B)It was a shelter for wild animals.",
               "D)It was the first public exhibit of animals."
             ],
-            "answer": "A",
-            "explanation": "当大多数人规避风险时，风险承担者的竞争会减少。故选D。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -1639,8 +1638,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "D",
-            "explanation": "complex修饰behaviour，与strategic并列，指成年人身上复杂的策略性自我展示行为。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q27",
@@ -1662,8 +1661,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "G",
-            "explanation": "previously修饰known，表示'比先前已知的要早得多'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q28",
@@ -1685,8 +1684,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "A",
-            "explanation": "accepted构成被动语态，表示'被仰慕的人认可'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q29",
@@ -1708,8 +1707,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "E",
-            "explanation": "constitutes表示'构成理想的声誉'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q30",
@@ -1731,8 +1730,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "C",
-            "explanation": "building构成目的状语，表示'树立良好声誉的策略'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q31",
@@ -1754,8 +1753,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "O",
-            "explanation": "vary表示'调整行为'，与alter语义复现。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q32",
@@ -1777,8 +1776,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "N",
-            "explanation": "understand与use并列，表示'理解并运用'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q33",
@@ -1800,8 +1799,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "B",
-            "explanation": "audiences指'社交场景中的观察方'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q34",
@@ -1823,8 +1822,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "L",
-            "explanation": "struggle与succeed对比，表示'难以应对的环节'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q35",
@@ -1846,8 +1845,8 @@
               "O)vary",
               "H)revolving"
             ],
-            "answer": "M",
-            "explanation": "suddenly与pop into existence搭配，表示'突然形成'。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -1860,62 +1859,62 @@
           {
             "id": "q36",
             "content": "During the course of preparing for Design Ventura, teachers receive training and support while students get tutoring from designers.",
-            "answer": "H",
-            "explanation": "H段提到教师会接受培训，学生会获得设计师辅导。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q37",
             "content": "A visit to the Design Museum shop in London can reduce the designers' fears about the future supply of talents educated in Britain.",
-            "answer": "C",
-            "explanation": "C段提到参观设计博物馆商店可以减少设计师的担忧。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q38",
             "content": "One of Design Ventura judges says the competition adds vigour to the standard curriculum in schools.",
-            "answer": "L",
-            "explanation": "L段评委说竞赛让标准课程变得生动有趣。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q39",
             "content": "Enrollment in Design and Technology decreased by nearly ten percent last year in the UK.",
-            "answer": "A",
-            "explanation": "A段提到设计与技术课程学生人数下降近10%。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q40",
             "content": "Participation of ninth graders in Design Ventura can motivate them to choose design technology as their subject.",
-            "answer": "M",
-            "explanation": "M段说九年级参加竞赛可促使后续选修设计技术课程。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q41",
             "content": "Design Ventura is welcomed by teachers because it helps to prove the worth of design as a school subject.",
-            "answer": "G",
-            "explanation": "G段说教师喜欢竞赛因为它有助于证实设计学科的价值。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q42",
             "content": "The schools don't have to pay anything to take part in the Design Ventura competition.",
-            "answer": "K",
-            "explanation": "K段说学校参加竞赛无需花费任何费用。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q43",
             "content": "Participants in Design Ventura are challenged to create sustainable and marketable products.",
-            "answer": "D",
-            "explanation": "D段说竞赛挑战学生开发兼具创意性、可持续性与商业可行性的产品。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q44",
             "content": "Students benefit from Design Ventura because they can learn about budgeting and marketing in addition to game design.",
-            "answer": "J",
-            "explanation": "J段说竞赛有商业元素，学生需学习预算和营销知识。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q45",
             "content": "According to an officer of the Creative Industries Federation, there is difficulty now in recruiting engineers in the UK.",
-            "answer": "B",
-            "explanation": "B段说工程行业存在招聘难题。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -1934,8 +1933,8 @@
               "C)They may not adapt to the fragmentation of their habitat.",
               "D)They may cease to exist as a result of enjoying too good a life."
             ],
-            "answer": "D",
-            "explanation": "文章开头说作者习惯回答'忙'是因为成功人士都这样回答，他在效仿他们。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q47",
@@ -1946,8 +1945,8 @@
               "C)Pandas' natural habitats are becoming less suitable for reproduction.",
               "D)The increased panda population is attributed to the fragmentation of their habitat."
             ],
-            "answer": "A",
-            "explanation": "我们相信努力工作能带来成功，所以认为工作忙碌的人地位更高。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q48",
@@ -1958,8 +1957,8 @@
               "C)Their chances of finding new mates have a lot to do with their habitat.",
               "D)Their environment for survival has been continuously worsening."
             ],
-            "answer": "C",
-            "explanation": "研究表明忙碌文化让员工难以找到工作与生活平衡，有精疲力竭风险。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q49",
@@ -1970,8 +1969,8 @@
               "C)It has implications for future panda research.",
               "D)It can be used to locate the right spot for pandas."
             ],
-            "answer": "B",
-            "explanation": "这类表达听起来像你不得不停止工作，而不是想充分利用休息时间。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q50",
@@ -1982,8 +1981,8 @@
               "C)Shed light on the conservation of most large meat-eating animals.",
               "D)Show the complexity of interactions between humans and animals."
             ],
-            "answer": "C",
-            "explanation": "推出工具是为了确保大家真正有休假时间，而不是休假时还要处理邮件。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -2002,8 +2001,8 @@
               "B)They appear to know all the secrets to success.",
               "D)They are bound to excel effortlessly."
             ],
-            "answer": "A",
-            "explanation": "研究发现女性比男性更早预订机票，平均早1.8天，这是价格差异的主要原因。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q52",
@@ -2014,8 +2013,8 @@
               "B)It proves necessary for big achievements.",
               "D)It is a guarantee for real success in life."
             ],
-            "answer": "C",
-            "explanation": "研究人员想确定是什么造成了机票价格的性别差距。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q53",
@@ -2026,8 +2025,8 @@
               "C)They will try hard to land a job that fits their skills best.",
               "D)They will find themselves lacking in all the skills they need."
             ],
-            "answer": "B",
-            "explanation": "当考虑消极互惠变量时，机票价格的性别差异就消失了。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q54",
@@ -2038,8 +2037,8 @@
               "B)It opens our eyes to new opportunities.",
               "D)It lets us reconsider the goals to achieve."
             ],
-            "answer": "D",
-            "explanation": "消极互惠可能导致员工积极性下降、业务绩效降低、工作场所士气低落。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q55",
@@ -2050,15 +2049,15 @@
               "C)We can never master a skill without constant practice.",
               "D)We can never expect to reach our goals without passion."
             ],
-            "answer": "B",
-            "explanation": "分析表明女性提前预订机票每年可为大型跨国公司节省100万美元。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
       {
         "type": "translation",
         "source_text": "被誉为“杂交水稻(hybrid rice)之父”的袁隆平和他的科研团队克服重重困难，研发出了-种超级 杂交水稻。这项技术获得了举世公认的巨大成功。通过这项技术的应用，水稻抗旱抗病能力更强，能适 应不同的气候和土壤条件，产量可提高20-30%。超级杂交水稻营养丰富，口感更佳。目前，这项技术 已经在许多国家得到广泛应用，为全球粮食安全做出了重大贡献。",
-        "reference_translation": "Yuan Longping, known globally as the \"Father of Hybrid Rice\", and his research team overcame numerous challenges to successfully develop a super hybrid rice variety. This technology has been universally recognized as a tremendous success. Through the application of this technology, the rice exhibits stronger drought and disease resistance, adapts to diverse climatic and soil conditions, and achieves a 20-30% increase in yield. The super hybrid rice is also more nutritious and has a superior taste. Currently, the technology has been widely applied in many countries, making significant contributions to global food security."
+        "reference_translation": ""
       }
     ]
   },
@@ -6464,8 +6463,8 @@
               "B)They are generally the samea ge.",
               "D)They have the same ethnic background."
             ],
-            "answer": "A",
-            "explanation": "研究发现朋友的大脑运作协调一致。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q2",
@@ -6476,8 +6475,8 @@
               "B)It is hard to predict.",
               "D)It resembles family ties."
             ],
-            "answer": "A",
-            "explanation": "研究发现朋友间的关系可能是双向的。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q3",
@@ -6488,8 +6487,8 @@
               "B)Identify their biological fathers.",
               "D)See whether they are actually related."
             ],
-            "answer": "A",
-            "explanation": "两人都在 DNA 匹配网站上查找家世信息。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q4",
@@ -6500,8 +6499,8 @@
               "B)They were born to the same mother.",
               "D)They were both 60 years of age."
             ],
-            "answer": "C",
-            "explanation": "两人是同一个母亲所生，相差15个月。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q5",
@@ -6512,8 +6511,8 @@
               "B)Other tourists refused to join in the cleanup.",
               "D)The kilometer-long beach was practically deserted."
             ],
-            "answer": "C",
-            "explanation": "村庄要为一只橘猫举办生日派对。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q6",
@@ -6524,8 +6523,8 @@
               "B)A local woman.",
               "D)One of the five tourists."
             ],
-            "answer": "D",
-            "explanation": "猫大部分时间都在村里的商店和企业里度过。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q7",
@@ -6536,8 +6535,8 @@
               "C)The number of tourists to the beach is on a steady decline.",
               "D)It was tourists not natives who were cleaning up the beach."
             ],
-            "answer": "C",
-            "explanation": "猫喜欢高价猫粮，品味昂贵。故选C。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -6554,8 +6553,8 @@
               "B)He has got some books to read.",
               "D)He is physically unfit for it."
             ],
-            "answer": "D",
-            "explanation": "女士抱怨城市高峰时段交通让人无法忍受。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q9",
@@ -6566,8 +6565,8 @@
               "B)To learn how popular zoos could be.",
               "D)To give her little nephew a treat."
             ],
-            "answer": "C",
-            "explanation": "女士建议地铁安装空调。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q10",
@@ -6578,8 +6577,8 @@
               "B)He is keen on extreme sports.",
               "D)He spends most of his time in the gym."
             ],
-            "answer": "C",
-            "explanation": "男士坐36路公交直达办公室，车程30分钟。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q11",
@@ -6590,8 +6589,8 @@
               "B)Concentrating on reading.",
               "D)Planning Christmas celebrations."
             ],
-            "answer": "C",
-            "explanation": "女士请男士把房产中介电话发给她。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q12",
@@ -6602,8 +6601,8 @@
               "B)It is attracting many people's attention.",
               "D)It argues for postponing retirement."
             ],
-            "answer": "C",
-            "explanation": "男士说约翰尼做了整形手术。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q13",
@@ -6614,8 +6613,8 @@
               "B)One should trust financial planners, figures.",
               "D)One should start saving as early as possible."
             ],
-            "answer": "C",
-            "explanation": "女士对'修复'这个表达感到困惑。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q14",
@@ -6626,8 +6625,8 @@
               "B)It shouldn't be considered risky.",
               "D)It is the way to quit a job one hates."
             ],
-            "answer": "A",
-            "explanation": "男士认为疤痕赋予了约翰尼某种独特性。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q15",
@@ -6638,8 +6637,8 @@
               "B)By retiring when one reaches sixty years old.",
               "D)By following the counsel of financial planners."
             ],
-            "answer": "C",
-            "explanation": "两位说话者对约翰尼的女朋友持批判态度。故选D。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -6656,8 +6655,8 @@
               "C)They were readily shared among members of the same social or racial group.",
               "D)They were influenced by the presence of someone from an outsider group."
             ],
-            "answer": "D",
-            "explanation": "语言不是被发明的，而是进化而来的。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q17",
@@ -6668,8 +6667,8 @@
               "C)When an experimenter from the research team took notice.",
               "D)When they were offered both candy and fruit as a snack."
             ],
-            "answer": "B",
-            "explanation": "第一种理论认为语言始于模仿周围事物的声音。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q18",
@@ -6680,8 +6679,8 @@
               "B)By teaching consumers diet strategies.",
               "D)By maintaining its positive image."
             ],
-            "answer": "A",
-            "explanation": "转向发声是因为说话可以让你在看不到对方时也能交流。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q19",
@@ -6692,8 +6691,8 @@
               "C)The effect of interacting with therapy dogs on students under pressure.",
               "D)The work universities are doing to help students succeed academically."
             ],
-            "answer": "C",
-            "explanation": "研究表明与治疗犬互动对承受压力的学生有积极影响。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q20",
@@ -6704,8 +6703,8 @@
               "B)Their executive functioning.",
               "D)Their leadership capacities."
             ],
-            "answer": "B",
-            "explanation": "研究测量了参与者的执行功能。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q21",
@@ -6716,8 +6715,8 @@
               "B)Add to some students' stress.",
               "D)Help students with mental issues pull through."
             ],
-            "answer": "B",
-            "explanation": "传统压力管理课程会给陷入困境的学生增加压力。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q22",
@@ -6728,8 +6727,8 @@
               "B)Attempt to succeed at any cost.",
               "D)Remain optimistic even in difficulty."
             ],
-            "answer": "A",
-            "explanation": "承担风险需要悉心规划和努力工作。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q23",
@@ -6740,8 +6739,8 @@
               "B)Trying out innovative marketing strategies.",
               "D)Being willing to experiment with novel ideas."
             ],
-            "answer": "D",
-            "explanation": "愿意尝试新想法是企业发展的关键。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q24",
@@ -6752,8 +6751,8 @@
               "B)Learn from our failure and forge ahead.",
               "D)Examine our strategies and find out weaknesses."
             ],
-            "answer": "B",
-            "explanation": "失败时应从失败中吸取教训，勇往直前。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q25",
@@ -6764,8 +6763,8 @@
               "B)Safer operation.",
               "D)Less competition."
             ],
-            "answer": "D",
-            "explanation": "当大多数人规避风险时，风险承担者的竞争会减少。故选D。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -6810,8 +6809,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "F",
-            "explanation": "F) impact，表示'产生重要影响'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q27",
@@ -6832,8 +6831,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "D",
-            "explanation": "D) controversial，表示'有一定争议性'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q28",
@@ -6854,8 +6853,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "H",
-            "explanation": "H) moderate，表示'适度运动'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q29",
@@ -6876,8 +6875,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "I",
-            "explanation": "I) participated，表示'参加调查'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q30",
@@ -6898,8 +6897,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "O",
-            "explanation": "O) upper，表示'有上限'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q31",
@@ -6920,8 +6919,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "M",
-            "explanation": "M) seemingly，表示'似乎没有上限'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q32",
@@ -6942,8 +6941,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "L",
-            "explanation": "L) risk，表示'死亡风险'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q33",
@@ -6964,8 +6963,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "J",
-            "explanation": "J) patterns，表示'发现规律'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q34",
@@ -6986,8 +6985,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "A",
-            "explanation": "A) adjust，表示'调整因素'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q35",
@@ -7008,8 +7007,8 @@
               "G)limitations",
               "H)moderate"
             ],
-            "answer": "G",
-            "explanation": "G) limitations，表示'局限性'。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -7022,62 +7021,62 @@
           {
             "id": "q36",
             "content": "One consequence of climate change is that some people may not have adequate access to certain foods.",
-            "answer": "D",
-            "explanation": "D段提到有些人可能很难获得某些食物。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q37",
             "content": "People around the world are eating foods more similar than what they used to eat.",
-            "answer": "I",
-            "explanation": "I段提到世界饮食越来越标准化。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q38",
             "content": "A recent news report talked about scientific efforts to help crops survive droughts through genetic engineering.",
-            "answer": "B",
-            "explanation": "B段提到帮助农作物应对干旱的科学努力。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q39",
             "content": "It is predicted that climate change will affect the availability and price of quality chocolate.",
-            "answer": "G",
-            "explanation": "G段提到气候变化将影响优质巧克力供应和价格。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q40",
             "content": "People wonder if certain crops and foodstuffs could disappear like some animal species due to climate change.",
-            "answer": "A",
-            "explanation": "A段提到人们担心农作物是否会因气候变化消失。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q41",
             "content": "Although farms in the US can move a bit northward, crop yields may decrease.",
-            "answer": "F",
-            "explanation": "F段提到美国农场可以向北迁移但产量可能下降。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q42",
             "content": "One possible solution to the food security problem is diversification of diet.",
-            "answer": "L",
-            "explanation": "L段提到饮食多样化是应对粮食安全问题的办法。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q43",
             "content": "It remains unsettled whether the global food supply problem can be solved by creating heat-tolerant crops through genetic engineering.",
-            "answer": "J",
-            "explanation": "J段提到基因工程培育耐热农作物尚无定论。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q44",
             "content": "Poor people may have to give up eating certain foods because of their high prices.",
-            "answer": "H",
-            "explanation": "H段提到穷人可能因高价格放弃某些食物。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q45",
             "content": "A number of existing farming technologies could be used to reduce the negative effect of climate change on food production.",
-            "answer": "K",
-            "explanation": "K段提到现有农业技术可以减少气候变化影响。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -7096,8 +7095,8 @@
               "B)He is actually proud to be fully occupied.",
               "D)He believes busyness ensures accomplishments."
             ],
-            "answer": "A",
-            "explanation": "作者习惯说'忙'是因为成功人士都这样回答。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q47",
@@ -7108,8 +7107,8 @@
               "C)Our own opportunity for success never comes easily.",
               "D)We find few people of high status have time for leisure."
             ],
-            "answer": "B",
-            "explanation": "我们相信努力工作带来成功，所以认为忙碌的人地位高。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q48",
@@ -7120,8 +7119,8 @@
               "C)It distorts many employees? belief of what a satisfying life is.",
               "D)It does much harm to many busy employees* well-being."
             ],
-            "answer": "D",
-            "explanation": "忙碌文化让员工难以平衡工作生活，有精疲力竭风险。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q49",
@@ -7132,8 +7131,8 @@
               "B)One is opposed to the prevailing work culture.",
               "D)One is simply enjoying their time off work."
             ],
-            "answer": "C",
-            "explanation": "这类表达听起来像你不得不停止工作。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q50",
@@ -7144,8 +7143,8 @@
               "C)To stop managers from talking about how busy their teams usually are.",
               "D)To encourage both employers and employees to answer emails promptly."
             ],
-            "answer": "B",
-            "explanation": "推出工具是为了确保大家真正有休假时间。故选B。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -7164,8 +7163,8 @@
               "C)It is mainly accounted for by male employees, readiness to pay more.",
               "D)It is due to the fact that women care more about their company's money."
             ],
-            "answer": "A",
-            "explanation": "女性比男性更早预订机票，这是价格差异主因。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q52",
@@ -7176,8 +7175,8 @@
               "C)What motivated women to book cheaper flights.",
               "D)What accounted for the gender gap in airfares."
             ],
-            "answer": "D",
-            "explanation": "研究人员想确定机票价格性别差距的原因。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q53",
@@ -7188,8 +7187,8 @@
               "C)The gender difference in airfare expenses no longer existed.",
               "D)The gender gap tended to narrow to a significant degree."
             ],
-            "answer": "C",
-            "explanation": "考虑消极互惠变量后，性别差异消失。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q54",
@@ -7200,8 +7199,8 @@
               "C)It proves to be counterproductive in a number of ways.",
               "D)It can result in increasing labor-management conflicts."
             ],
-            "answer": "C",
-            "explanation": "消极互惠可能导致员工积极性下降、绩效降低。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q55",
@@ -7212,8 +7211,8 @@
               "C)It can translate women's booking practice into men's behavior.",
               "D)It can enhance large multinational companies J competitiveness."
             ],
-            "answer": "A",
-            "explanation": "女性提前预订每年可为公司节省100万美元。故选A。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -12924,8 +12923,8 @@
               "C)Its findings confirmed those of previous studies.",
               "D)It ran for as long as some thirty years."
             ],
-            "answer": "D",
-            "explanation": "新闻提到男子因超速被拦下，实际上是他的狗在开车。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q2",
@@ -12936,8 +12935,8 @@
               "C)Consuming more energy drinks and sports drinks.",
               "D)Forming the habit of exercising regularly."
             ],
-            "answer": "B",
-            "explanation": "警察发现是狗在驾驶座上。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q3",
@@ -12948,8 +12947,8 @@
               "C)He left his paintings at a highway rest stop.",
               "D)He found two 17 th-century oil paintings."
             ],
-            "answer": "C",
-            "explanation": "研究表明喝咖啡可能有助于延长寿命。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q4",
@@ -12960,8 +12959,8 @@
               "B)They are originals.",
               "D)They came from the same artist."
             ],
-            "answer": "A",
-            "explanation": "研究发现喝咖啡的人死亡风险更低。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q5",
@@ -12972,8 +12971,8 @@
               "B)Leave the remote cold region.",
               "D)Flee from the threat of bears."
             ],
-            "answer": "A",
-            "explanation": "新研究发现散步可以改善大脑功能。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q6",
@@ -12984,8 +12983,8 @@
               "C)She searched for her daughter in freezing cold.",
               "D)She works in childcare services."
             ],
-            "answer": "D",
-            "explanation": "研究测量了参与者散步前后的认知表现。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q7",
@@ -12996,8 +12995,8 @@
               "C)She suffered from the effects of severe cold.",
               "D)She was finally rescued by her relatives."
             ],
-            "answer": "A",
-            "explanation": "专家建议每天至少步行30分钟。故选A。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -13014,8 +13013,8 @@
               "C)She comes from the city of Cape Town.",
               "D)She has a truly amazing appearance."
             ],
-            "answer": "A",
-            "explanation": "女士在图书馆找不到需要的书。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q9",
@@ -13026,8 +13025,8 @@
               "B)It has a flat surface at the top.",
               "D)It was named by European settlers."
             ],
-            "answer": "C",
-            "explanation": "男士建议她使用在线目录系统。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q10",
@@ -13038,8 +13037,8 @@
               "B)She is of mixed blood.",
               "D)She speaks several languages."
             ],
-            "answer": "B",
-            "explanation": "书已经被其他人借走了。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q11",
@@ -13050,8 +13049,8 @@
               "B)It is becoming a national sport.",
               "D)It is more popular than football."
             ],
-            "answer": "C",
-            "explanation": "女士可以预约这本书。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q12",
@@ -13062,8 +13061,8 @@
               "B)Consult his advisors.",
               "D)Take stress-relief sessions."
             ],
-            "answer": "D",
-            "explanation": "男士最近开始学习烹饪。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q13",
@@ -13074,8 +13073,8 @@
               "B)He finds the workload too heavy.",
               "D)He has difficulty taking notes quickly."
             ],
-            "answer": "D",
-            "explanation": "他是因为想吃得更健康才开始学的。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q14",
@@ -13086,8 +13085,8 @@
               "B)An emotional learner.",
               "D)A logical learner."
             ],
-            "answer": "A",
-            "explanation": "女士推荐了一个烹饪课程。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q15",
@@ -13098,8 +13097,8 @@
               "C)Commit them to memory after class.",
               "D)Organize them into a well-connected story."
             ],
-            "answer": "C",
-            "explanation": "男士觉得自己的厨艺还需要提高。故选C。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -13116,8 +13115,8 @@
               "C)It is a code of conduct based on laws and ethics.",
               "D)It is a moral principle to guide people's behavior."
             ],
-            "answer": "D",
-            "explanation": "文章讨论了远程工作的好处。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q17",
@@ -13128,8 +13127,8 @@
               "C)It may sometimes produce undesirable outcomes.",
               "D)It fails to consider the complexity of human relationships."
             ],
-            "answer": "B",
-            "explanation": "远程工作可以减少通勤时间。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q18",
@@ -13140,8 +13139,8 @@
               "C)Failure to follow the golden rule may lead to violation of laws and ethics.",
               "D)Observing the golden rule is the first step to becoming a responsible citizen."
             ],
-            "answer": "D",
-            "explanation": "远程工作可能带来的挑战是社交隔离。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q19",
@@ -13152,8 +13151,8 @@
               "C)Many of them have an increasingly diversified staff.",
               "D)They have not quite grasped the concept of diversity."
             ],
-            "answer": "A",
-            "explanation": "研究发现学生在早上学习效率更高。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q20",
@@ -13164,8 +13163,8 @@
               "C)People's attitudes towards diversity at the workplace.",
               "D)Innovative ideas and solutions resulting from diversity."
             ],
-            "answer": "C",
-            "explanation": "研究测量了不同时间段的认知表现。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q21",
@@ -13176,8 +13175,8 @@
               "C)Employers differ, from employees in their perspectives on diversity.",
               "D)Doubts about the practicability of diversity are gradually disappearing."
             ],
-            "answer": "B",
-            "explanation": "专家建议把重要任务安排在上午。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q22",
@@ -13188,8 +13187,8 @@
               "C)Laying equal stress on written and spoken communication.",
               "D)Using different forms of communication appropriately."
             ],
-            "answer": "B",
-            "explanation": "文章讨论了人工智能在医疗领域的应用。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q23",
@@ -13200,8 +13199,8 @@
               "C)They are taken as memos of understanding.",
               "D)They are to be confirmed in written form."
             ],
-            "answer": "C",
-            "explanation": "AI 可以帮助医生更快地诊断疾病。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q24",
@@ -13212,8 +13211,8 @@
               "C)It regards written contracts as unalterable.",
               "D)It has seen a decline in verbal agreements."
             ],
-            "answer": "C",
-            "explanation": "AI 在医疗领域的挑战是数据隐私问题。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q25",
@@ -13224,8 +13223,8 @@
               "C)It strengthens business partnerships.",
               "D)Its terms may not be strictly binding."
             ],
-            "answer": "A",
-            "explanation": "文章认为 AI 将改变医疗行业的未来。故选A。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -13270,8 +13269,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "L",
-            "explanation": "L) actually，表示'实际上'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q27",
@@ -13292,8 +13291,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "G",
-            "explanation": "G) characters，表示'角色'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q28",
@@ -13314,8 +13313,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "M",
-            "explanation": "M) natural，表示'自然的'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q29",
@@ -13336,8 +13335,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "K",
-            "explanation": "K) reality，表示'现实'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q30",
@@ -13358,8 +13357,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "E",
-            "explanation": "E) examples，表示'例子'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q31",
@@ -13380,8 +13379,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "O",
-            "explanation": "O) wonder，表示'奇迹'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q32",
@@ -13402,8 +13401,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "A",
-            "explanation": "A) achieve，表示'实现'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q33",
@@ -13424,8 +13423,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "F",
-            "explanation": "F) explore，表示'探索'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q34",
@@ -13446,8 +13445,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "D",
-            "explanation": "D) completely，表示'完全地'。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q35",
@@ -13468,8 +13467,8 @@
               "G)dental",
               "H)downward"
             ],
-            "answer": "B",
-            "explanation": "B) beneficial，表示'有益的'。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -13482,62 +13481,62 @@
           {
             "id": "q36",
             "content": "Clues about the culture of a company can be found on its website.",
-            "answer": "F",
-            "explanation": "F段提到设计博物馆商店出售学生设计的产品。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q37",
             "content": "It can be difficult to know the real situation in a company until you become part of it.",
-            "answer": "A",
-            "explanation": "C段提到参观设计博物馆可以减少设计师的担忧。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q38",
             "content": "It is impossible for a job applicant to have every expectation met.",
-            "answer": "K",
-            "explanation": "L段评委说竞赛让标准课程变得生动有趣。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q39",
             "content": "Simply by reading its description, the author found the job offered ideal.",
-            "answer": "E",
-            "explanation": "A段提到设计与技术课程学生人数下降近10%。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q40",
             "content": "Job applicants are advised to make a written list of their likes and dislikes in their previous employment.",
-            "answer": "J",
-            "explanation": "M段说九年级参加竞赛可促使后续选修设计技术课程。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q41",
             "content": "At the end of an interview, a job applicant should seize the opportunity to get answers to their urgent questions.",
-            "answer": "B",
-            "explanation": "G段说教师喜欢竞赛因为它有助于证实设计学科的价值。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q42",
             "content": "To begin with, job applicants should be clear what they expect from their future employer.",
-            "answer": "H",
-            "explanation": "K段说学校参加竞赛无需花费任何费用。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q43",
             "content": "Job applicants should read with a critical eye what is written about a company on the website.",
-            "answer": "G",
-            "explanation": "D段说竞赛挑战学生开发兼具创意性、可持续性与商业可行性的产品。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q44",
             "content": "Job satisfaction has a lot to do with company culture.",
-            "answer": "D",
-            "explanation": "J段说竞赛有商业元素，学生需学习预算和营销知识。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q45",
             "content": "A chat with an insider of a company can give job applicants very useful information when they prepare for an interview.",
-            "answer": "I",
-            "explanation": "B段说工程行业存在招聘难题。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -13556,8 +13555,8 @@
               "C)They can learn at their own pace.",
               "D)They rarely fulfil the course requirements."
             ],
-            "answer": "D",
-            "explanation": "研究表明五岁儿童已开始关注自身公众形象。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q47",
@@ -13568,8 +13567,8 @@
               "C)They are based on easily accessible material.",
               "D)They are given to accommodate students 9 needs."
             ],
-            "answer": "A",
-            "explanation": "儿童对社会地位的认知源于成年人。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q48",
@@ -13580,8 +13579,8 @@
               "C)They tend to increase professors? burden of responding to students 9 emails.",
               "D)They provide little chance for students to build relationships with each other. 2022套 第"
             ],
-            "answer": "C",
-            "explanation": "五岁儿童会通过策略性行为改变外界形象。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q49",
@@ -13592,8 +13591,8 @@
               "C)Some students may have difficulty attending them.",
               "D)Schools with limited resources will be at a disadvantage."
             ],
-            "answer": "A",
-            "explanation": "研究发现儿童理解不同特质在不同情境下有不同价值。故选B。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q50",
@@ -13604,8 +13603,8 @@
               "C)Development of students 9 personalities.",
               "D)Cultivation of analytical thinking ability."
             ],
-            "answer": "C",
-            "explanation": "文章认为更早阶段的声誉形成机制值得探究。故选C。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },
@@ -13624,8 +13623,8 @@
               "C)Settle disputes between universities and government agencies.",
               "D)Prevent information from being used incorrectly by the public."
             ],
-            "answer": "B",
-            "explanation": "研究发现女性比男性更早预订机票。故选A。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q52",
@@ -13636,8 +13635,8 @@
               "C)It might add to the difficulty of getting research funds.",
               "D)It might prevent medical scientists reaching consensus.,"
             ],
-            "answer": "D",
-            "explanation": "研究人员想确定机票价格性别差距的原因。故选D。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q53",
@@ -13648,8 +13647,8 @@
               "C)Debates about science are accessible to the public anyway.",
               "D)Scientists can voice their opinions whatever way they like."
             ],
-            "answer": "A",
-            "explanation": "考虑消极互惠变量后，性别差异消失。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q54",
@@ -13660,8 +13659,8 @@
               "C)Formulate new rules for it.",
               "D)Restrain it to a rational degree."
             ],
-            "answer": "A",
-            "explanation": "消极互惠可能导致员工积极性下降、绩效降低。故选C。"
+            "answer": "",
+            "explanation": ""
           },
           {
             "id": "q55",
@@ -13672,8 +13671,8 @@
               "C)It is a dynamic and self-improving process.",
               "D)It is a collection of facts and established rules."
             ],
-            "answer": "D",
-            "explanation": "女性提前预订每年可为公司节省100万美元。故选A。"
+            "answer": "",
+            "explanation": ""
           }
         ]
       },

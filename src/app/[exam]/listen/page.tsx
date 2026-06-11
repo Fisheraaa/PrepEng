@@ -65,127 +65,131 @@ export default function ListenPage() {
   if (selected) {
     return (
       <div className="p-8 max-w-3xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
+        {/* 悬浮播放器 */}
+        <div className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b shadow-sm -mx-8 px-8 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex-1 min-w-0">
+              <AudioPlayer src={selected.audio_url} title={selected.title} />
+            </div>
+            <Button variant="ghost" size="sm" onClick={() => { setSelected(null); setSubmittedSections(new Set()); setSelectedAnswers({}); }} className="ml-4 shrink-0">
+              ← 返回
+            </Button>
+          </div>
+        </div>
+
+        {/* 内容区域 */}
+        <div className="space-y-6">
           <div>
             <h1 className="text-2xl font-bold">🎧 听力练习</h1>
             <p className="text-sm text-muted-foreground">{selected.title}</p>
           </div>
-          <Button variant="outline" size="sm" onClick={() => { setSelected(null); setSubmittedSections(new Set()); setSelectedAnswers({}); }}>
-            返回列表
-          </Button>
-        </div>
 
-        <Card>
-          <CardContent className="pt-6">
-            <AudioPlayer src={selected.audio_url} title={selected.title} />
-          </CardContent>
-        </Card>
+          {listenSections.length > 0 ? (
+            <div className="space-y-6">
+              {listenSections.map((section, sIdx) => {
+                const isSubmitted = submittedSections.has(sIdx)
+                const sectionCorrect = section.questions.filter((q) => selectedAnswers[q.id] === q.answer).length
+                const sectionAnswered = section.questions.filter((q) => selectedAnswers[q.id]).length
 
-        {listenSections.length > 0 ? (
-          <>
-            {listenSections.map((section, sIdx) => {
-              const isSubmitted = submittedSections.has(sIdx)
-              const sectionCorrect = section.questions.filter((q) => selectedAnswers[q.id] === q.answer).length
-              const sectionAnswered = section.questions.filter((q) => selectedAnswers[q.id]).length
-
-              return (
-                <div key={sIdx} className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-semibold">{section.title}</h2>
-                    {isSubmitted && <Badge variant="outline">{sectionCorrect}/{section.questions.length}</Badge>}
-                  </div>
-
-                  <div className="space-y-4">
-                    {section.questions.map((q, qIdx) => (
-                      <div key={q.id} className="space-y-2">
-                        <p className="text-sm font-medium">{qIdx + 1}. {q.content || "（听音频作答）"}</p>
-                        <div className="space-y-1.5">
-                          {q.options.map((opt) => {
-                            const letter = opt.charAt(0)
-                            const isSelected = selectedAnswers[q.id] === letter
-                            const isCorrect = letter === q.answer
-                            return (
-                              <button
-                                key={opt}
-                                onClick={() => handleSelect(q.id, letter)}
-                                disabled={isSubmitted}
-                                className={cn(
-                                  "w-full text-left p-2.5 rounded border text-sm transition-all",
-                                  "hover:border-primary/50 hover:bg-accent/50",
-                                  isSelected && !isSubmitted && "border-primary bg-primary/10",
-                                  isSubmitted && isCorrect && "border-emerald-500 bg-emerald-500/10",
-                                  isSubmitted && isSelected && !isCorrect && "border-destructive bg-destructive/10",
-                                  !isSelected && !isSubmitted && "border-border"
-                                )}
-                              >
-                                {opt}
-                              </button>
-                            )
-                          })}
-                        </div>
-                        {isSubmitted && (
-                          <p className="text-xs text-muted-foreground">
-                            {selectedAnswers[q.id] === q.answer ? "✅ 正确" : `❌ 正确答案：${q.answer}`}
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* 每个 section 单独提交 */}
-                  {!isSubmitted ? (
-                    <Button
-                      onClick={() => handleSubmitSection(sIdx)}
-                      disabled={sectionAnswered < section.questions.length}
-                      className="w-full"
-                      size="sm"
-                    >
-                      {sectionAnswered < section.questions.length
-                        ? `还有 ${section.questions.length - sectionAnswered} 题未答`
-                        : `提交 ${section.title}`}
-                    </Button>
-                  ) : (
-                    <div className="text-center text-xs text-muted-foreground py-1">
-                      ✅ {sectionCorrect}/{section.questions.length} 正确
+                return (
+                  <div key={sIdx} className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h2 className="text-sm font-semibold">{section.title}</h2>
+                      {isSubmitted && <Badge variant="outline">{sectionCorrect}/{section.questions.length}</Badge>}
                     </div>
-                  )}
 
-                  {sIdx < listenSections.length - 1 && <Separator />}
-                </div>
-              )
-            })}
+                    <div className="space-y-4">
+                      {section.questions.map((q, qIdx) => (
+                        <div key={q.id} className="space-y-2">
+                          <p className="text-sm font-medium">{qIdx + 1}. {q.content || "（听音频作答）"}</p>
+                          <div className="space-y-1.5">
+                            {q.options.map((opt) => {
+                              const letter = opt.charAt(0)
+                              const isSelected = selectedAnswers[q.id] === letter
+                              const isCorrect = letter === q.answer
+                              return (
+                                <button
+                                  key={opt}
+                                  onClick={() => handleSelect(q.id, letter)}
+                                  disabled={isSubmitted}
+                                  className={cn(
+                                    "w-full text-left p-2.5 rounded border text-sm transition-all",
+                                    "hover:border-primary/50 hover:bg-accent/50",
+                                    isSelected && !isSubmitted && "border-primary bg-primary/10",
+                                    isSubmitted && isCorrect && "border-emerald-500 bg-emerald-500/10",
+                                    isSubmitted && isSelected && !isCorrect && "border-destructive bg-destructive/10",
+                                    !isSelected && !isSubmitted && "border-border"
+                                  )}
+                                >
+                                  {opt}
+                                </button>
+                              )
+                            })}
+                          </div>
+                          {isSubmitted && (
+                            <p className="text-xs text-muted-foreground">
+                              {selectedAnswers[q.id] === q.answer ? "✅ 正确" : `❌ 正确答案：${q.answer}`}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
 
-            {/* 总分（所有 section 提交后） */}
-            {allSubmitted && (
-              <div className="text-center space-y-3 pt-4 border-t">
-                <div className="text-2xl font-bold">
-                  {totalCorrect}/{allQuestions.length} 正确
+                    {/* 每个 section 单独提交 */}
+                    {!isSubmitted ? (
+                      <Button
+                        onClick={() => handleSubmitSection(sIdx)}
+                        disabled={sectionAnswered < section.questions.length}
+                        className="w-full"
+                        size="sm"
+                      >
+                        {sectionAnswered < section.questions.length
+                          ? `还有 ${section.questions.length - sectionAnswered} 题未答`
+                          : `提交 ${section.title}`}
+                      </Button>
+                    ) : (
+                      <div className="text-center text-xs text-muted-foreground py-1">
+                        ✅ {sectionCorrect}/{section.questions.length} 正确
+                      </div>
+                    )}
+
+                    {sIdx < listenSections.length - 1 && <Separator />}
+                  </div>
+                )
+              })}
+
+              {/* 总分（所有 section 提交后） */}
+              {allSubmitted && (
+                <div className="text-center space-y-3 pt-4 border-t">
+                  <div className="text-2xl font-bold">
+                    {totalCorrect}/{allQuestions.length} 正确
+                  </div>
+                  <Button variant="outline" onClick={handleReset} className="w-full">全部重做</Button>
                 </div>
-                <Button variant="outline" onClick={handleReset} className="w-full">全部重做</Button>
-              </div>
-            )}
-          </>
-        ) : (
+              )}
+            </div>
+          ) : (
+            <Card className="bg-muted/30">
+              <CardContent className="pt-4 text-sm text-muted-foreground">
+                <p>该套题暂无听力题目，只有音频。</p>
+                <p className="text-xs mt-2">标了「有题」的试卷才有题目可做。</p>
+              </CardContent>
+            </Card>
+          )}
+
+          <Separator />
+
           <Card className="bg-muted/30">
-            <CardContent className="pt-4 text-sm text-muted-foreground">
-              <p>该套题暂无听力题目，只有音频。</p>
-              <p className="text-xs mt-2">标了「有题」的试卷才有题目可做。</p>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm">💡 听力练习技巧</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground space-y-2">
+              <p><strong>第一遍</strong>：正常速度听，做题。不要暂停。</p>
+              <p><strong>第二遍</strong>：0.75x 速度精听，对照答案。</p>
+              <p><strong>第三遍</strong>：1x 速度跟读。</p>
             </CardContent>
           </Card>
-        )}
-
-        <Separator />
-
-        <Card className="bg-muted/30">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">💡 听力练习技巧</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground space-y-2">
-            <p><strong>第一遍</strong>：正常速度听，做题。不要暂停。</p>
-            <p><strong>第二遍</strong>：0.75x 速度精听，对照答案。</p>
-            <p><strong>第三遍</strong>：1x 速度跟读。</p>
-          </CardContent>
-        </Card>
+        </div>
       </div>
     )
   }

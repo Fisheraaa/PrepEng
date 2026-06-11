@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import { getMistakes, saveMistake } from "@/lib/storage"
+import { getExamPaper } from "@/lib/exam-data"
 import type { MistakeEntry, ExamType } from "@/types/exam"
 
 export default function ReviewPage() {
@@ -156,6 +157,9 @@ export default function ReviewPage() {
                     <Badge variant="outline" className="text-xs">
                       {sectionLabels[m.section_type] ?? m.section_type}
                     </Badge>
+                    <span className="text-xs text-muted-foreground">
+                      {getExamPaper(examType, m.paper_id)?.title ?? m.paper_id}
+                    </span>
                     <span className="text-xs text-muted-foreground">
                       错了 {m.wrong_count} 次
                     </span>
