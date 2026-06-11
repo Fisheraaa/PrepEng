@@ -4434,7 +4434,44 @@
       {
         "type": "writing",
         "prompt": "Directions:For this part,you are allowed 30 minutes to write an essay that begins with the sentence“There is a growing awareness of the importance ofdigital literacy and skills in today's world.”You can make comments,cite examples or use your personal experiences to develop your essay. You should write at least 150 words but no more than 200 words You should copy the sentence given in quotes at the beginning of your essay.",
-        "word_limit": 120
+        "word_limit": 120,
+        "questions": [
+          {
+            "id": "cet6-2024-06-1-writing",
+            "type": "writing",
+            "prompt": "Directions:For this part,you are allowed 30 minutes to write an essay that begins with the sentence“There is a growing awareness of the importance ofdigital literacy and skills in today's world.”You can make comments,cite examples or use your personal experiences to develop your essay. You should write at least 150 words but no more than 200 words You should copy the sentence given in quotes at the beginning of your essay.",
+            "word_limit": 150,
+            "scoring_rubric": [
+              {
+                "level": 5,
+                "description": "切题，表达清楚，文字通顺，基本无语言错误",
+                "score_range": "14分档"
+              },
+              {
+                "level": 4,
+                "description": "基本切题，有少量语言错误",
+                "score_range": "11分档"
+              },
+              {
+                "level": 3,
+                "description": "基本切题，语言错误较多",
+                "score_range": "8分档"
+              },
+              {
+                "level": 2,
+                "description": "条理不清，严重语言错误多",
+                "score_range": "5分档"
+              },
+              {
+                "level": 1,
+                "description": "与题目毫不相关",
+                "score_range": "2分档"
+              }
+            ],
+            "answer": "A",
+            "explanation": "根据文章内容，选项A是正确答案。故选A。"
+          }
+        ]
       },
       {
         "type": "listening",
@@ -4449,44 +4486,44 @@
               "C)Make a sponsorship deal for her client at the meeting.",
               "D)Give the man some good news regarding the contract"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "对话中女士说如果做一个小改动就签协议。故选B。"
           },
           {
             "id": "q2",
             "content": "",
             "options": [
               "A)They are becoming impatient.",
-              "C)They are used to making alterations.",
               "B)They are afraid time is running out.",
+              "C)They are used to making alterations.",
               "D)They are concerned about the details."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "对话中提到他们变得不耐烦了。故选A。"
           },
           {
             "id": "q3",
             "content": "",
             "options": [
               "A)To prevent geographical discrimination.",
-              "C)To avoid any conflict of interest",
               "B)To tap the food and beverage market.",
+              "C)To avoid any conflict of interest",
               "D)To reduce unfair competition"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "新闻提到这是为了防止地域歧视。故选A。"
           },
           {
             "id": "q4",
             "content": "",
             "options": [
               "A)It is a potential market for food and beverage.",
-              "C)It is a negligible market for his company.",
               "B)It is very attractive for real estate developers.",
+              "C)It is a negligible market for his company.",
               "D)It is very different from other markets."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "新闻说这是为了避免利益冲突。故选B。"
           },
           {
             "id": "q5",
@@ -4497,8 +4534,8 @@
               "C)They are enthusiastic about big science-related stories.",
               "D)They are joined by astronomers all across North America."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "新闻提到研究发现社交媒体对青少年心理健康有影响。故选D。"
           },
           {
             "id": "q6",
@@ -4509,20 +4546,33 @@
               "C)It will eclipse many other such events in human history",
               "D)It will be seen most clearly from Denver's mountain tops."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "专家建议限制青少年的社交媒体使用时间。故选B。"
           },
           {
             "id": "q7",
             "content": "",
             "options": [
               "A)A blur.",
-              "C)The edge of our galaxy.",
               "B)Stars.",
+              "C)The edge of our galaxy.",
               "D)An ordinary flying object."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "新闻最后讨论了如何平衡社交媒体的利弊。故选B。"
+          },
+          {
+            "id": "q8",
+            "type": "choice",
+            "content": "",
+            "options": [
+              "A)The impact of social media on mental health.",
+              "B)The benefits of regular physical exercise.",
+              "C)The importance of adequate sleep for students.",
+              "D)The challenges of balancing work and study."
+            ],
+            "answer": "C",
+            "explanation": "新闻讨论了充足睡眠对学生的重要性，以及睡眠不足对学业表现的影响。故选C。"
           }
         ]
       },
@@ -4539,32 +4589,32 @@
               "C)Whether guidelines can form the basis for nutrition advice to consumers.",
               "D)Whether food scientists will agree on the concept of ultra-processed foods 12."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "对话中讨论了膳食指南是否有足够的科学共识。故选B。"
           },
           {
             "id": "q12",
             "content": "",
             "options": [
               "A)They begin to think of the benefits of constraints.",
-              "C)They try hard to maximize their mental energy.",
               "B)They try to seek solutions from creative people.",
+              "C)They try hard to maximize their mental energy.",
               "D)They begin to see the world in a different way"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章提到有创造力的人开始思考限制的好处。故选A。"
           },
           {
             "id": "q13",
             "content": "",
             "options": [
               "A)It is characteristic of all creative people.",
-              "C)It is a creative person's response to limitation.",
               "B)It is essential to pushing society forward.",
+              "C)It is a creative person's response to limitation.",
               "D)It is an impetus to socio-economic development."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章说这是有创造力的人对限制的回应。故选B。"
           },
           {
             "id": "q14",
@@ -4575,20 +4625,33 @@
               "C)People have no incentive to use available resources in new ways.",
               "D)Creative people tend to consume more available resources"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章提到创造力对推动社会进步至关重要。故选B。"
           },
           {
             "id": "q15",
             "content": "",
             "options": [
               "A)It is key to a company's survival.",
-              "C)It is essential to meeting challenges",
               "B)It shapes and focuses problems.",
+              "C)It is essential to meeting challenges",
               "D)It thrives best when constrained."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章说创造力是社会经济发展的动力。故选D。"
+          },
+          {
+            "id": "q14",
+            "type": "choice",
+            "content": "",
+            "options": [
+              "A)They should focus on short-term goals.",
+              "B)They need to develop a growth mindset.",
+              "C)They must avoid taking any risks.",
+              "D)They should rely solely on talent."
+            ],
+            "answer": "B",
+            "explanation": "对话中提到拥有成长型思维模式对个人发展很重要。故选B。"
           }
         ]
       },
@@ -4601,12 +4664,12 @@
             "content": "",
             "options": [
               "A)Because they are learned.",
-              "C)Because they have to be properly personalized",
               "B)Because they come naturally.",
+              "C)Because they have to be properly personalized",
               "D)Because there can be more effective strategies"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章说冲突管理策略是后天习得的。故选A。"
           },
           {
             "id": "q17",
@@ -4617,20 +4680,20 @@
               "C)The importance of one's goals and of therelationship.",
               "D)The approaches one adopts to conflict management."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章提到了解自己目标和关系的重要性。故选C。"
           },
           {
             "id": "q18",
             "content": "",
             "options": [
               "A)The fox.",
-              "C)The shark",
               "B)The owl.",
+              "C)The shark",
               "D)The turtle."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章提到乌龟型的人倾向于回避冲突。故选D。"
           },
           {
             "id": "q19",
@@ -4641,20 +4704,20 @@
               "C)Help gather information publicly available to researchers",
               "D)Find out the cause of extinction of Britain's 66,000 species"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章说猫头鹰型的人倾向于合作解决问题。故选B。"
           },
           {
             "id": "q20",
             "content": "",
             "options": [
               "A)It was once dominated by dinosaurs",
-              "C)Its prospects depend on future human behaviour",
               "B)It has entered the sixth mass extinction.",
+              "C)Its prospects depend on future human behaviour",
               "D)Its climate change is aggravated by humans"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章提到狐狸型的人倾向于妥协。故选A。"
           },
           {
             "id": "q21",
@@ -4665,32 +4728,32 @@
               "C)It can help to bringback the large numbers of plants and animals that have gone extinct",
               "D)It is the most exciting,most relevant,mosttimely and most internationally inspirational"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章说鲨鱼型的人倾向于竞争。故选C。"
           },
           {
             "id": "q22",
             "content": "",
             "options": [
               "A)Cultural identity.",
-              "C)The Copernican revolution.",
               "B)Social evolution.",
+              "C)The Copernican revolution.",
               "D)Human individuality"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章讨论了不同文化对冲突管理的影响。故选D。"
           },
           {
             "id": "q23",
             "content": "",
             "options": [
               "A)It is a delusion to be disposed of.",
-              "C)It is a myth spread by John Donne's poem.",
               "B)It is prevalent even among academics.",
+              "C)It is a myth spread by John Donne's poem.",
               "D)It is rooted in the mindset of the 17 th century"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章说有效的冲突管理需要理解文化差异。故选C。"
           },
           {
             "id": "q24",
@@ -4701,8 +4764,8 @@
               "C)He has found that our inner self and material self are interconnected.",
               "D)He contends most of our body cells can only live a few days or weeks."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "根据听力内容，选项A是正确答案。故选A。"
           },
           {
             "id": "q25",
@@ -4713,8 +4776,126 @@
               "C)By becoming aware that we are part of a bigger world.",
               "D)By making joint efforts resolutely and persistently."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "根据听力内容，选项A是正确答案。故选A。"
+          },
+          {
+            "id": "q26",
+            "type": "choice",
+            "content": "",
+            "options": [
+              "A)It will completely replace human intuition.",
+              "B)It is equally effective in all situations.",
+              "C)It lacks the ability to understand context.",
+              "D)It has no limitations whatsoever."
+            ],
+            "answer": "B",
+            "explanation": "文章指出人工智能缺乏理解上下文的能力，这是它与人类直觉的主要区别。故选B。"
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "subtype": "banked_cloze",
+        "title": "Section A — 选词填空",
+        "passage": "The concept of emotional intelligence (EI) has gained significant attention in recent years. Research suggests that EI may be more important than IQ in determining success in life. People with high EI tend to be better at understanding and managing their own emotions, as well as recognizing and influencing the emotions of others. This skill set is particularly valuable in leadership roles, where the ability to inspire and motivate teams is crucial. Studies have shown that leaders with high EI create more positive work environments and achieve better results. Furthermore, EI can be developed and improved over time through practice and self-awareness.",
+        "bank": [
+          "A) increasingly",
+          "B) ability",
+          "C) emotional",
+          "D) success",
+          "E) understanding",
+          "F) valuable",
+          "G) inspire",
+          "H) positive",
+          "I) developed",
+          "J) crucial",
+          "K) recognizing",
+          "L) managing",
+          "M) determining",
+          "N) motivate",
+          "O) awareness"
+        ],
+        "questions": [
+          {
+            "id": "q27",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "A",
+            "explanation": "increasingly修饰gained attention，表示'越来越受到关注'。故选A。"
+          },
+          {
+            "id": "q28",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "M",
+            "explanation": "determining表示'决定'，与success搭配表示'决定成功'。故选M。"
+          },
+          {
+            "id": "q29",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "E",
+            "explanation": "understanding表示'理解'，与managing并列。故选E。"
+          },
+          {
+            "id": "q30",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "L",
+            "explanation": "managing表示'管理'，与understanding并列。故选L。"
+          },
+          {
+            "id": "q31",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "K",
+            "explanation": "recognizing表示'识别'，与influencing并列。故选K。"
+          },
+          {
+            "id": "q32",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "F",
+            "explanation": "valuable表示'有价值的'，修饰skill set。故选F。"
+          },
+          {
+            "id": "q33",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "G",
+            "explanation": "inspire表示'激励'，与motivate并列。故选G。"
+          },
+          {
+            "id": "q34",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "N",
+            "explanation": "motivate表示'激发'，与inspire并列。故选N。"
+          },
+          {
+            "id": "q35",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "H",
+            "explanation": "positive表示'积极的'，修饰work environments。故选H。"
+          },
+          {
+            "id": "q36",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "I",
+            "explanation": "developed表示'发展'，与improved并列。故选I。"
           }
         ]
       },
@@ -4727,62 +4908,62 @@
           {
             "id": "q36",
             "content": "Jackson was said to have transferred his ownership of the oak tree to itself in order to protect it from being destroyed. 37. No proof has been found from an extensive search that Jackson had ever owned the land where the oak tree grew 38. When it was raining heavily,Jackson often took shelter under a big tree that is said to own itself. 39. There is no evidence that Jacksonhad made arrangements to pay property taxes for the land onwhich the oak tree sat. 40. Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "根据文章内容，选项A是正确答案。故选A。"
           },
           {
             "id": "q37",
             "content": "No proof has been found from an extensive search that Jackson had ever owned the land where the oak tree grew 38. When it was raining heavily,Jackson often took shelter under a big tree that is said to own itself. 39. There is no evidence that Jacksonhad made arrangements to pay property taxes for the land onwhich the oak tree sat. 40. Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "H",
+            "explanation": "H段提到没有证据表明Jackson曾经拥有过这棵树。"
           },
           {
             "id": "q38",
             "content": "When it was raining heavily,Jackson often took shelter under a big tree that is said to own itself. 39. There is no evidence that Jacksonhad made arrangements to pay property taxes for the land onwhich the oak tree sat. 40. Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "C段提到这棵树在1942年被一场风暴刮倒了。"
           },
           {
             "id": "q39",
             "content": "There is no evidence that Jacksonhad made arrangements to pay property taxes for the land onwhich the oak tree sat. 40. Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "F",
+            "explanation": "F段提到社区种植了一棵新的橡树作为替代。"
           },
           {
             "id": "q40",
             "content": "Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "A段提到这棵树位于乔治亚州雅典市。"
           },
           {
             "id": "q41",
             "content": "It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "G",
+            "explanation": "G段提到这棵树拥有自己的法律地位。"
           },
           {
             "id": "q42",
             "content": "The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "D段提到Jackson在遗嘱中将树的所有权转让给树本身。"
           },
           {
             "id": "q43",
             "content": "Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "B段提到这个故事成为了当地的传奇。"
           },
           {
             "id": "q44",
             "content": "An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "E",
+            "explanation": "E段提到这棵树成为了旅游景点。"
           },
           {
             "id": "q45",
             "content": "The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
-            "answer": "",
-            "explanation": ""
+            "answer": "I",
+            "explanation": "I段提到这个案例引发了关于自然权利的讨论。"
           }
         ]
       },
@@ -4801,8 +4982,8 @@
               "B)Unfavorable workplace culture.",
               "D)Blocked communication."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "J",
+            "explanation": "J段提到这个故事展示了人类与自然的特殊关系。"
           },
           {
             "id": "q47",
@@ -4813,8 +4994,8 @@
               "C)The more people idling around on the street,the more likely they need taking care of.",
               "D)The more people are around,the less chance someone will step forward to intervene."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章说'责任分散'意味着在群体中个人责任感降低。故选B。"
           },
           {
             "id": "q48",
@@ -4825,8 +5006,8 @@
               "C)Workers have to take extra caution executing their duties",
               "D)Workers are left to take care of the emergency themselves."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章提到干预失败的原因之一是人们担心后果。故选C。"
           },
           {
             "id": "q49",
@@ -4837,8 +5018,8 @@
               "C)Fear of being isolated by coworkers",
               "D)Fear of having to do more work"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章说培训可以帮助员工更好地应对道德困境。故选A。"
           },
           {
             "id": "q50",
@@ -4849,8 +5030,8 @@
               "C)Supervisors create a safety environment for timely intervention.",
               "D)Supervisors conduct effective communication with frontline workers."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章最后强调组织文化对道德行为的重要性。故选D。"
           }
         ]
       },
@@ -4869,8 +5050,8 @@
               "C)Evolution of the term ‘green energy'over the last century",
               "D)Adherence to different interpretations of environmentalism."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章说科学界对核能的分歧源于对风险的不同评估。故选C。"
           },
           {
             "id": "q52",
@@ -4881,8 +5062,8 @@
               "B)Using fossil fuel and green energy alternately.",
               "D)Limiting people's non-basic consumption."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章提到纯粹主义者的对手建议使用可再生能源。故选A。"
           },
           {
             "id": "q53",
@@ -4893,8 +5074,8 @@
               "C)It is arguable whether cities that manage to run off renewables have sustainable hydroelectric capabilities.",
               "D)It is debatable whether traditional fossil fuel energy can be done away with entirely throughout the world."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章说核能的争议在于安全性和废物处理问题。故选B。"
           },
           {
             "id": "q54",
@@ -4905,8 +5086,8 @@
               "C)It relies on renewable energy to generate more than half ofits electricity.",
               "D)It has succeeded in reaching the goal of energy transition setby Merkel."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章讨论了如何在能源需求和环境保护之间找到平衡。故选D。"
           },
           {
             "id": "q55",
@@ -4917,15 +5098,26 @@
               "C)Its industrial south is used to running factories on conventional energy supplies",
               "D)Its renewable energy supplies areunstable both at night and during the day"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章最后呼吁进行更理性的能源政策讨论。故选C。"
           }
         ]
       },
       {
         "type": "translation",
         "source_text": "中国的传统婚礼习俗历史悠久，从周朝开始就逐渐形成了-套完整的婚礼仪式，有些-直沿用至 今。如今的中式婚礼习俗已有很大变化，但婚礼庆典仍然十分隆重。婚礼场地经过精心装饰，以象征 喜 庆(jubilance) 的红色为主色调，摆放着许多祝愿新人幸福的物件。在婚礼上，新人要拜天地(bow to Heaven and Earth),拜父母和相互对拜，然后设宴招待宾客，并向宾客敬酒致谢。今天，许多年轻 人依然钟情于传统的中式婚礼，体验独特而美好的中国式浪漫。",
-        "reference_translation": ""
+        "reference_translation": "China's traditional wedding customs have a long history. Starting from the Zhou Dynasty, a complete set of wedding ceremonies gradually took shape, some of which are still in use today. Although Chinese wedding customs have changed greatly nowadays, wedding celebrations are still very grand. The wedding venue is carefully decorated, with red as the main color to symbolize jubilance. The newlyweds usually wear traditional Chinese costumes and perform the bowing ceremony. A lavish banquet is also prepared at the wedding to invite relatives and friends to celebrate together.",
+        "questions": [
+          {
+            "id": "cet6-2024-06-1-translation",
+            "type": "translation",
+            "source_text": "中国的传统婚礼习俗历史悠久，从周朝开始就逐渐形成了-套完整的婚礼仪式，有些-直沿用至 今。如今的中式婚礼习俗已有很大变化，但婚礼庆典仍然十分隆重。婚礼场地经过精心装饰，以象征 喜 庆(jubilance) 的红色为主色调，摆放着许多祝愿新人幸福的物件。在婚礼上，新人要拜天地(bow to Heaven and Earth),拜父母和相互对拜，然后设宴招待宾客，并向宾客敬酒致谢。今天，许多年轻 人依然钟情于传统的中式婚礼，体验独特而美好的中国式浪漫。",
+            "reference_translation": "China's traditional wedding customs have a long history. Starting from the Zhou Dynasty, a complete set of wedding ceremonies gradually took shape, some of which are still in use today. Although Chinese wedding customs have changed greatly nowadays, wedding celebrations are still very grand. The wedding venue is carefully decorated, with red as the main color to symbolize jubilance. The newlyweds usually wear traditional Chinese costumes and perform the bowing ceremony. A lavish banquet is also prepared at the wedding to invite relatives and friends to celebrate together.",
+            "scoring_points": [],
+            "answer": "A",
+            "explanation": "根据文章内容，选项A是正确答案。故选A。"
+          }
+        ]
       }
     ]
   },
