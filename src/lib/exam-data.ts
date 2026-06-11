@@ -146,7 +146,15 @@ export function getAvailablePapers(examType: ExamType) {
     const allQ = [...listeningQ, ...readingQ]
 
     // 判断是否完整：听力+阅读都有题目，且所有题目都有答案和解析
-    const isComplete = listeningQ.length > 0 && readingQ.length > 0 &&
+    // 结构检查：听力3个section/25题，阅读4个section/30题
+    const listeningSections = p.sections.filter(s => s.type === "listening")
+    const readingSections = p.sections.filter(s => s.type === "reading")
+    const hasWriting = p.sections.some(s => s.type === "writing")
+    const hasTranslation = p.sections.some(s => s.type === "translation")
+
+    const isComplete = listeningSections.length === 3 && listeningQ.length === 25 &&
+      readingSections.length === 4 && readingQ.length === 30 &&
+      hasWriting && hasTranslation &&
       allQ.every(q => {
         if ('answer' in q) {
           return q.answer && q.explanation && q.explanation !== "暂无解析"

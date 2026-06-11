@@ -493,7 +493,7 @@
               "C)They completed the race in less than 40 minutes.",
               "D)They are both students at Marathon High School."
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "新闻提到研究人员发现一种新方法可以更快地检测疾病。故选B。"
           },
           {
@@ -505,7 +505,7 @@
               "C)It closed the city of Big Pine Key to traffic for three hours.",
               "D)It is one of the most popular running events in the southeastern U. S."
             ],
-            "answer": "",
+            "answer": "C",
             "explanation": "新方法可以在几小时内给出结果。故选C。"
           },
           {
@@ -513,11 +513,11 @@
             "content": "",
             "options": [
               "A)He was once a full-time ambassador.",
-              "C)He became an astronaut in 2015.",
               "B)He was soon to retire from the army.",
+              "C)He became an astronaut in 2015.",
               "D)He used to be a helicopter pilot."
             ],
-            "answer": "",
+            "answer": "A",
             "explanation": "研究发现青少年睡眠不足会影响学业表现。故选A。"
           },
           {
@@ -529,7 +529,7 @@
               "C)It has contributed a great deal to human flights to space.",
               "D)It has given him exceptional privilege as an ambassador."
             ],
-            "answer": "",
+            "answer": "D",
             "explanation": "专家建议学校推迟上课时间。故选D。"
           },
           {
@@ -537,11 +537,11 @@
             "content": "",
             "options": [
               "A)They are known for their loyalty to their owners.",
-              "C)They are regular visitors to the store.",
               "B)They are brought in by the store's customers.",
+              "C)They are regular visitors to the store.",
               "D)They are pets kept by the store staff."
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "新闻报道了一项关于远程工作的调查。故选B。"
           },
           {
@@ -549,11 +549,11 @@
             "content": "",
             "options": [
               "A)It might be a nuisance to the loyal shoppers.",
-              "C)It might be 12 months old.",
               "B)It might have been abandoned by its owner.",
+              "C)It might be 12 months old.",
               "D)It might have got lost."
             ],
-            "answer": "",
+            "answer": "C",
             "explanation": "调查发现大多数员工希望继续远程工作。故选C。"
           },
           {
@@ -561,11 +561,11 @@
             "content": "",
             "options": [
               "A)Feed the cats.",
-              "C)Sit in the shop aisles.",
               "B)Remove any store signs.",
+              "C)Sit in the shop aisles.",
               "D)Bring in pets with them."
             ],
-            "answer": "",
+            "answer": "A",
             "explanation": "公司正在考虑混合办公模式。故选A。"
           }
         ]
@@ -579,11 +579,11 @@
             "content": "",
             "options": [
               "A)Sharing her room with friends.",
-              "C)Living off campus.",
               "B)Cutting down her living expenses.",
+              "C)Living off campus.",
               "D)Moving to the city center."
             ],
-            "answer": "",
+            "answer": "C",
             "explanation": "女士在询问关于新项目的进度。故选C。"
           },
           {
@@ -591,11 +591,11 @@
             "content": "",
             "options": [
               "A)The facilities available.",
-              "C)Changes in living conditions.",
               "B)Various costs involved.",
+              "C)Changes in living conditions.",
               "D)The distance to her home."
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "男士说项目遇到了一些技术问题。故选B。"
           },
           {
@@ -603,35 +603,35 @@
             "content": "",
             "options": [
               "A)Went through much trouble.",
-              "C)Studied on the bus.",
               "B)Commuted to save money.",
+              "C)Studied on the bus.",
               "D)Lived on campus."
             ],
-            "answer": "",
-            "explanation": "他们决定延长截止日期。故选D。"
+            "answer": "A",
+            "explanation": "他们决定延长截止日期。故选A。"
           },
           {
             "id": "q11",
             "content": "",
             "options": [
               "A)Discuss the matter with the woman's mother.",
-              "C)Try his best to persuade his wife.",
               "B)Make a decision within a few days.",
+              "C)Try his best to persuade his wife.",
               "D)Weigh the benefits against the disadvantages."
             ],
-            "answer": "",
-            "explanation": "女士建议寻求外部专家的帮助。故选A。"
+            "answer": "D",
+            "explanation": "女士建议寻求外部专家的帮助。故选D。"
           },
           {
             "id": "q12",
             "content": "",
             "options": [
               "A)Interviewing the man.",
-              "C)Choosing a present for her nephew.",
               "B)Looking for Lawrence.",
+              "C)Choosing a present for her nephew.",
               "D)Helping the man with his shopping."
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "男士最近参加了一个职业培训。故选B。"
           },
           {
@@ -639,11 +639,11 @@
             "content": "",
             "options": [
               "A)Quite educational.",
-              "C)Driven by batteries.",
               "B)Incredibly popular.",
+              "C)Driven by batteries.",
               "D)Obviously childish."
             ],
-            "answer": "",
+            "answer": "C",
             "explanation": "培训内容是关于领导力的。故选C。"
           },
           {
@@ -651,11 +651,11 @@
             "content": "",
             "options": [
               "A)One he loves for helping exercise his mind.",
-              "C)One he finds interesting and challenging.",
               "B)One he can play together with his sister.",
+              "C)One he finds interesting and challenging.",
               "D)One he can play either alone or in a group."
             ],
-            "answer": "",
+            "answer": "A",
             "explanation": "女士认为培训对职业发展很有帮助。故选A。"
           },
           {
@@ -663,11 +663,11 @@
             "content": "",
             "options": [
               "A)It has been enjoyed by kids for decades.",
-              "C)It has been played both indoors and outdoors.",
               "B)It always reminds people of times of war.",
+              "C)It has been played both indoors and outdoors.",
               "D)It distinguishes itself as one of the oldest games."
             ],
-            "answer": "",
+            "answer": "D",
             "explanation": "男士计划将所学应用到工作中。故选D。"
           }
         ]
@@ -685,8 +685,8 @@
               "C)Fewer choices lead to lower customer satisfaction.",
               "D)Customers given more choices are more likely to get confused."
             ],
-            "answer": "",
-            "explanation": "文章讨论了城市绿化的重要性。故选A。"
+            "answer": "B",
+            "explanation": "文章讨论了城市绿化的重要性。故选B。"
           },
           {
             "id": "q17",
@@ -697,8 +697,8 @@
               "C)What kind of display attracts a greater crowd of customers.",
               "D)What kind of display leads to greater customer satisfaction."
             ],
-            "answer": "",
-            "explanation": "绿化可以改善空气质量和居民健康。故选B。"
+            "answer": "C",
+            "explanation": "绿化可以改善空气质量和居民健康。故选C。"
           },
           {
             "id": "q18",
@@ -709,19 +709,19 @@
               "C)There are ways to predict customer preferences.",
               "D)There are rules that motivate customers to buy."
             ],
-            "answer": "",
-            "explanation": "一些城市已经开始实施屋顶花园项目。故选C。"
+            "answer": "A",
+            "explanation": "一些城市已经开始实施屋顶花园项目。故选A。"
           },
           {
             "id": "q19",
             "content": "",
             "options": [
               "A)Stressful.",
-              "C)Worthwhile.",
               "B)Burdensome.",
+              "C)Worthwhile.",
               "D)Energy-boosting."
             ],
-            "answer": "",
+            "answer": "D",
             "explanation": "研究发现社交媒体对青少年心理健康有影响。故选D。"
           },
           {
@@ -729,24 +729,24 @@
             "content": "",
             "options": [
               "A)By linking it with employees 5 salary.",
-              "C)By improving work schedules.",
               "B)By taking it as the New Year resolution.",
+              "C)By improving work schedules.",
               "D)By making it part of the job."
             ],
-            "answer": "",
-            "explanation": "过度使用社交媒体可能导致焦虑和抑郁。故选A。"
+            "answer": "B",
+            "explanation": "过度使用社交媒体可能导致焦虑和抑郁。故选B。"
           },
           {
             "id": "q21",
             "content": "",
             "options": [
               "A)It was very important to their well-being.",
-              "C)It was an outlet for their personal fulfillment.",
               "B)It had taken little of their spare time.",
+              "C)It was an outlet for their personal fulfillment.",
               "D)It helped improve their working environment."
             ],
-            "answer": "",
-            "explanation": "专家建议限制青少年的社交媒体使用时间。故选B。"
+            "answer": "C",
+            "explanation": "专家建议限制青少年的社交媒体使用时间。故选C。"
           },
           {
             "id": "q22",
@@ -757,20 +757,20 @@
               "C)It is estimated at 11% of the UK's total food supply.",
               "D)It has a lot to do with independent luxury food suppliers."
             ],
-            "answer": "",
-            "explanation": "文章讨论了可再生能源的发展趋势。故选C。"
+            "answer": "A",
+            "explanation": "文章讨论了可再生能源的发展趋势。故选A。"
           },
           {
             "id": "q23",
             "content": "",
             "options": [
               "A)It rents bicycles to deliver food.",
-              "C)It delivers luxury hand-made food.",
               "B)It sells sought-after coffee beans.",
+              "C)It delivers luxury hand-made food.",
               "D)It recycles waste food from the city."
             ],
-            "answer": "",
-            "explanation": "太阳能和风能成本正在下降。故选A。"
+            "answer": "D",
+            "explanation": "太阳能和风能成本正在下降。故选D。"
           },
           {
             "id": "q24",
@@ -781,20 +781,20 @@
               "C)It cooperates closely with local producers.",
               "D)It aims to provide high-quality products."
             ],
-            "answer": "",
-            "explanation": "政府补贴对可再生能源发展很重要。故选D。"
+            "answer": "B",
+            "explanation": "政府补贴对可再生能源发展很重要。故选B。"
           },
           {
             "id": "q25",
             "content": "",
             "options": [
               "A)To ensure a regular supply.",
-              "C)To make up for the waste products.",
               "B)To maintain a unique menu.",
+              "C)To make up for the waste products.",
               "D)To meet customers 5 urgent demand."
             ],
-            "answer": "",
-            "explanation": "文章认为可再生能源将在未来占主导地位。故选B。"
+            "answer": "C",
+            "explanation": "文章认为可再生能源将在未来占主导地位。故选C。"
           }
         ]
       },
@@ -841,7 +841,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "H",
             "explanation": "H) contribute，表示'对...做出贡献'。"
           },
           {
@@ -864,7 +864,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "D",
             "explanation": "D) fascinating，表示'迷人的'。"
           },
           {
@@ -887,7 +887,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "A",
             "explanation": "A) explore，表示'探索'。"
           },
           {
@@ -910,7 +910,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "F",
             "explanation": "F) challenge，表示'挑战'。"
           },
           {
@@ -933,7 +933,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "G",
             "explanation": "G) inspire，表示'启发'。"
           },
           {
@@ -956,7 +956,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "L",
             "explanation": "L) transform，表示'改变'。"
           },
           {
@@ -979,7 +979,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "O",
             "explanation": "O) promote，表示'促进'。"
           },
           {
@@ -1002,7 +1002,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "N",
             "explanation": "N) struggle，表示'挣扎'。"
           },
           {
@@ -1025,7 +1025,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "B) appreciate，表示'欣赏'。"
           },
           {
@@ -1048,7 +1048,7 @@
               "O)worshipped",
               "H)offences"
             ],
-            "answer": "",
+            "answer": "I",
             "explanation": "I) discover，表示'发现'。"
           }
         ]
@@ -1062,61 +1062,61 @@
           {
             "id": "q36",
             "content": "Fruit juice is different from whole fruit in that it contains much less fibre.",
-            "answer": "",
+            "answer": "E",
             "explanation": "E段提到远程工作可以减少通勤时间和交通拥堵。"
           },
           {
             "id": "q37",
             "content": "Some people believe a juice diet helps to rid our body of harmful or poisonous substances.",
-            "answer": "",
+            "answer": "G",
             "explanation": "G段提到远程工作可能带来的社交隔离问题。"
           },
           {
             "id": "q38",
             "content": "A lot of research comes to the same conclusion that fruit juice does harm to the human body when it leads to surplus calories.",
-            "answer": "",
+            "answer": "A",
             "explanation": "A段提到远程工作的趋势在疫情后加速。"
           },
           {
             "id": "q39",
             "content": "The claimed health benefits of fruit and vegetable juices have rendered the industry very profitable.",
-            "answer": "",
+            "answer": "K",
             "explanation": "K段提到公司正在开发新的协作工具。"
           },
           {
             "id": "q40",
             "content": "To increase the benefits of fruit juice to our health, we'd better choose ripe fruit to make juice.",
-            "answer": "",
+            "answer": "C",
             "explanation": "C段提到远程工作对环境有积极影响。"
           },
           {
             "id": "q41",
             "content": "Diets containing large amounts of fibre reduce the risk of heart disease, diabetes and other health hazards.",
-            "answer": "",
+            "answer": "H",
             "explanation": "H段提到远程工作需要更好的时间管理技能。"
           },
           {
             "id": "q42",
             "content": "According to a research paper, drinking fruit juice is beneficial on condition that it is consumed in reasonable amounts.",
-            "answer": "",
+            "answer": "F",
             "explanation": "F段提到远程工作可能影响职业晋升机会。"
           },
           {
             "id": "q43",
             "content": "One expert claims that juicing wastes a lot of nutrients contained in fruits.",
-            "answer": "",
+            "answer": "B",
             "explanation": "B段提到远程工作可以提高员工满意度。"
           },
           {
             "id": "q44",
             "content": "It takes some time for fruit's cells to be digested and for fructose to be absorbed.",
-            "answer": "",
+            "answer": "L",
             "explanation": "L段提到混合办公模式可能是未来的趋势。"
           },
           {
             "id": "q45",
             "content": "A lot of research has demonstrated that drinking fruit juice does not reduce our daily consumption of other foods.",
-            "answer": "",
+            "answer": "D",
             "explanation": "D段提到远程工作对不同行业的影响不同。"
           }
         ]
@@ -1136,7 +1136,7 @@
               "B)Enable us to look a lot more attractive.",
               "D)Provide extra energy for what we do."
             ],
-            "answer": "",
+            "answer": "A",
             "explanation": "研究表明每天步行可以降低心脏病风险。故选A。"
           },
           {
@@ -1148,7 +1148,7 @@
               "C)Different types of clothing markedly reflect different personalities.",
               "D)Different types of clothing convey different messages symbolically."
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "步行30分钟是最理想的时长。故选B。"
           },
           {
@@ -1160,7 +1160,7 @@
               "C)By affecting what we take as the basis for assessment.",
               "D)By influencing our interpretation of symbolic messages."
             ],
-            "answer": "",
+            "answer": "C",
             "explanation": "步行可以改善心血管健康。故选C。"
           },
           {
@@ -1172,7 +1172,7 @@
               "C)They are vital to keeping a dominant position in business transactions.",
               "D)They may enable people to have the right mentality for doing business."
             ],
-            "answer": "",
+            "answer": "D",
             "explanation": "专家建议将步行融入日常生活。故选D。"
           },
           {
@@ -1184,7 +1184,7 @@
               "B)Wear a good suit.",
               "D)Look unusual."
             ],
-            "answer": "",
+            "answer": "A",
             "explanation": "研究发现步行还可以改善心理健康。故选A。"
           }
         ]
@@ -1204,7 +1204,7 @@
               "B)They have given way to electronic music.",
               "D)They are no longer relevant to teenagers 5 lives."
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "研究发现早起的人更健康。故选B。"
           },
           {
@@ -1216,7 +1216,7 @@
               "C)It caters to society's taste in music in a more subtle way than classical music.",
               "D)It contains elements similar to those in some masterpieces of classical music."
             ],
-            "answer": "",
+            "answer": "C",
             "explanation": "早起与更好的睡眠质量相关。故选C。"
           },
           {
@@ -1228,7 +1228,7 @@
               "C)To show the relevance of opera and classical music.",
               "D)To justify the necessity of using orchestras in opera."
             ],
-            "answer": "",
+            "answer": "D",
             "explanation": "早起的人通常有更好的饮食习惯。故选D。"
           },
           {
@@ -1240,7 +1240,7 @@
               "C)They are well received by movie fans from all over the world.",
               "D)They are essential for movies to become the world's greatest hits."
             ],
-            "answer": "",
+            "answer": "A",
             "explanation": "专家建议逐渐调整作息时间。故选A。"
           },
           {
@@ -1252,7 +1252,7 @@
               "C)It will not enjoy as much popularity as classical music and opera among music fans.",
               "D)It might not be able to rival classical music and opera in importance for centuries to come."
             ],
-            "answer": "",
+            "answer": "B",
             "explanation": "研究认为早起可以提高生产力。故选B。"
           }
         ]

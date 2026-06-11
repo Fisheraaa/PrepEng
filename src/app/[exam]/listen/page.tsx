@@ -212,16 +212,23 @@ export default function ListenPage() {
         // 标准：听力+阅读都有题目、答案、解析
         const papersWithQ = new Set(
           examPapers.filter((p) => {
-            const listeningQ = p.sections.filter(s => s.type === "listening").flatMap(s => s.questions)
-            const readingQ = p.sections.filter(s => s.type === "reading").flatMap(s => s.questions)
+            const listeningSections = p.sections.filter(s => s.type === "listening")
+            const readingSections = p.sections.filter(s => s.type === "reading")
+            const listeningQ = listeningSections.flatMap(s => s.questions)
+            const readingQ = readingSections.flatMap(s => s.questions)
 
-            // 检查听力和阅读都有题目
-            if (listeningQ.length === 0 || readingQ.length === 0) return false
+            // 结构检查：听力3个section/25题，阅读4个section/30题
+            if (listeningSections.length !== 3 || listeningQ.length !== 25) return false
+            if (readingSections.length !== 4 || readingQ.length !== 30) return false
+
+            // 检查写作和翻译存在
+            const hasWriting = p.sections.some(s => s.type === "writing")
+            const hasTranslation = p.sections.some(s => s.type === "translation")
+            if (!hasWriting || !hasTranslation) return false
 
             // 检查所有题目都有答案和解析
             const allQ = [...listeningQ, ...readingQ]
             return allQ.every(q => {
-              // ChoiceQuestion 有 answer 属性
               if ('answer' in q) {
                 return q.answer && q.explanation && q.explanation !== "暂无解析"
               }
