@@ -1,16 +1,18 @@
 "use client"
 
 import { useRef, useState, useEffect, useCallback } from "react"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface Point {
   x: number
   y: number
+  width?: number
+  height?: number
 }
 
 interface DrawPath {
-  tool: "pen" | "eraser" | "highlight" | "underline"
+  id: string
+  tool: "pen" | "highlight" | "underline" | "eraser"
   color: string
   lineWidth: number
   points: Point[]
@@ -27,29 +29,21 @@ interface CanvasOverlayProps {
   initialData?: DrawPath[]
 }
 
-const COLORS = [
-  { name: "红", value: "#ef4444" },
-  { name: "蓝", value: "#3b82f6" },
-  { name: "绿", value: "#22c55e" },
-  { name: "黄", value: "#eab308" },
-]
-
-const LINE_WIDTHS = [2, 4, 6]
+function generateId() {
+  return Math.random().toString(36).substr(2, 9)
+}
 
 export function CanvasOverlay({
   width,
   height,
   active,
-  tool: externalTool,
-  color: externalColor,
-  lineWidth: externalLineWidth,
+  tool = "pen",
+  color = "#ef4444",
+  lineWidth = 2,
   onSave,
   initialData = [],
 }: CanvasOverlayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const tool = externalTool || "pen"
-  const color = externalColor || COLORS[0].value
-  const lineWidth = externalLineWidth || 2
   const [isDrawing, setIsDrawing] = useState(false)
   const [paths, setPaths] = useState<DrawPath[]>(initialData)
   const [currentPath, setCurrentPath] = useState<Point[]>([])
@@ -65,40 +59,68 @@ export function CanvasOverlay({
 
     for (const path of paths) {
       if (path.points.length < 2) continue
+
       ctx.beginPath()
-      ctx.strokeStyle = path.tool === "eraser" ? "#0c0e12" : path.color
-      ctx.lineWidth = path.lineWidth
       ctx.lineCap = "round"
       ctx.lineJoin = "round"
 
       if (path.tool === "highlight") {
+        // 高亮：半透明粗线
+        ctx.strokeStyle = path.color
         ctx.globalAlpha = 0.3
-        ctx.lineWidth = path.lineWidth * 4
+        ctx.lineWidth = 20
+        ctx.moveTo(path.points[0].x, path.points[0].y)
+        for (let i = 1; i < path.points.length; i++) {
+          ctx.lineTo(path.points[i].x, path.points[i].y)
+        }
+        ctx.stroke()
       } else if (path.tool === "underline") {
-        ctx.setLineDash([6, 3])
-      } else {
+        // 下划线：虚线
+        ctx.strokeStyle = path.color
         ctx.globalAlpha = 1
+        ctx.lineWidth = 2
+        ctx.setLineDash([6, 3])
+        ctx.moveTo(path.points[0].x, path.points[0].y)
+        for (let i = 1; i < path.points.length; i++) {
+          ctx.lineTo(path.points[i].x, path.points[i].y)
+        }
+        ctx.stroke()
         ctx.setLineDash([])
+      } else if (path.tool === "pen") {
+        // 画笔：实线
+        ctx.strokeStyle = path.color
+        ctx.globalAlpha = 1
+        ctx.lineWidth = path.lineWidth
+        ctx.moveTo(path.points[0].x, path.points[0].y)
+        for (let i = 1; i < path.points.length; i++) {
+          ctx.lineTo(path.points[i].x, path.points[i].y)
+        }
+        ctx.stroke()
       }
-
-      ctx.moveTo(path.points[0].x, path.points[0].y)
-      for (let i = 1; i < path.points.length; i++) {
-        ctx.lineTo(path.points[i].x, path.points[i].y)
-      }
-      ctx.stroke()
       ctx.globalAlpha = 1
-      ctx.setLineDash([])
     }
 
     // 绘制当前路径
-    if (currentPath.length >= 2) {
+    if (currentPath.length >= 2 && tool !== "eraser") {
       ctx.beginPath()
-      ctx.strokeStyle = tool === "eraser" ? "#0c0e12" : color
-      ctx.lineWidth = tool === "highlight" ? lineWidth * 4 : lineWidth
       ctx.lineCap = "round"
       ctx.lineJoin = "round"
-      if (tool === "highlight") ctx.globalAlpha = 0.3
-      if (tool === "underline") ctx.setLineDash([6, 3])
+
+      if (tool === "highlight") {
+        ctx.strokeStyle = color
+        ctx.globalAlpha = 0.3
+        ctx.lineWidth = 20
+      } else if (tool === "underline") {
+        ctx.strokeStyle = color
+        ctx.globalAlpha = 1
+        ctx.lineWidth = 2
+        ctx.setLineDash([6, 3])
+      } else {
+        ctx.strokeStyle = color
+        ctx.globalAlpha = 1
+        ctx.lineWidth = lineWidth
+      }
+
       ctx.moveTo(currentPath[0].x, currentPath[0].y)
       for (let i = 1; i < currentPath.length; i++) {
         ctx.lineTo(currentPath[i].x, currentPath[i].y)
@@ -125,14 +147,65 @@ export function CanvasOverlay({
     }
   }
 
+  // 检查点击位置是否在某条线上
+  const findPathAtPoint = (point: Point): DrawPath | null => {
+    const threshold = 10 // 点击容差
+
+    for (const path of paths) {
+      for (let i = 0; i < path.points.length - 1; i++) {
+        const p1 = path.points[i]
+        const p2 = path.points[i + 1]
+
+        // 计算点到线段的距离
+        const A = point.x - p1.x
+        const B = point.y - p1.y
+        const C = p2.x - p1.x
+        const D = p2.y - p1.y
+
+        const dot = A * C + B * D
+        const lenSq = C * C + D * D
+        let param = -1
+        if (lenSq !== 0) param = dot / lenSq
+
+        let xx, yy
+        if (param < 0) {
+          xx = p1.x
+          yy = p1.y
+        } else if (param > 1) {
+          xx = p2.x
+          yy = p2.y
+        } else {
+          xx = p1.x + param * C
+          yy = p1.y + param * D
+        }
+
+        const dist = Math.sqrt((point.x - xx) ** 2 + (point.y - yy) ** 2)
+        if (dist < threshold) {
+          return path
+        }
+      }
+    }
+    return null
+  }
+
   const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     if (!active) return
-    setIsDrawing(true)
-    setCurrentPath([getPos(e)])
+    const pos = getPos(e)
+
+    if (tool === "eraser") {
+      // 橡皮擦：点击删除整条线
+      const pathToDelete = findPathAtPoint(pos)
+      if (pathToDelete) {
+        setPaths((prev) => prev.filter((p) => p.id !== pathToDelete.id))
+      }
+    } else {
+      setIsDrawing(true)
+      setCurrentPath([pos])
+    }
   }
 
   const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDrawing || !active) return
+    if (!isDrawing || !active || tool === "eraser") return
     setCurrentPath((prev) => [...prev, getPos(e)])
   }
 
@@ -141,6 +214,7 @@ export function CanvasOverlay({
     setIsDrawing(false)
     if (currentPath.length >= 2) {
       const newPath: DrawPath = {
+        id: generateId(),
         tool,
         color,
         lineWidth,
@@ -161,7 +235,7 @@ export function CanvasOverlay({
     setPaths([])
   }
 
-  // 保存
+  // 自动保存
   useEffect(() => {
     if (onSave && paths.length > 0) {
       const timer = setTimeout(() => onSave(paths), 2000)
@@ -177,7 +251,7 @@ export function CanvasOverlay({
         height={height}
         className={cn(
           "absolute inset-0",
-          active ? "cursor-crosshair" : "pointer-events-none"
+          active ? (tool === "eraser" ? "cursor-pointer" : "cursor-crosshair") : "pointer-events-none"
         )}
         style={{ zIndex: active ? 10 : -1 }}
         onMouseDown={handleStart}

@@ -19,7 +19,7 @@ import { SocraticChat } from "@/components/socratic-chat"
 import { BankedCloze } from "@/components/banked-cloze"
 import { MatchingSection } from "@/components/matching-section"
 import { CanvasOverlay } from "@/components/canvas-overlay"
-import { saveAnnotation, loadAnnotation, hasAnnotation } from "@/lib/annotation-storage"
+import { saveAnnotation, loadAnnotation, hasAnnotation, loadAnnotationData, renameAnnotation } from "@/lib/annotation-storage"
 import type { ChoiceQuestion, ExamPaper, Section, ExamType } from "@/types/exam"
 
 // ============================================================
@@ -380,7 +380,8 @@ export default function ReadPage() {
   // --- 做题页面 ---
 
   // 标注存档提示
-  if (showAnnotationPrompt) {
+  if (showAnnotationPrompt && selectedPaperId) {
+    const annotationData = loadAnnotationData(examType, selectedPaperId, currentSectionIdx)
     return (
       <div className="flex items-center justify-center h-screen">
         <Card className="max-w-md">
@@ -388,9 +389,14 @@ export default function ReadPage() {
             <CardTitle>发现标注存档</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              检测到之前的标注记录，是否加载？
-            </p>
+            {annotationData && (
+              <div className="p-3 bg-muted rounded-lg">
+                <p className="text-sm font-medium">{annotationData.name}</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  标注 {annotationData.paths.length} 处 · 更新于 {new Date(annotationData.updatedAt).toLocaleString()}
+                </p>
+              </div>
+            )}
             <div className="flex gap-3">
               <Button
                 onClick={() => {
@@ -403,7 +409,9 @@ export default function ReadPage() {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => setShowAnnotationPrompt(false)}
+                onClick={() => {
+                  setShowAnnotationPrompt(false)
+                }}
                 className="flex-1"
               >
                 新开空白
