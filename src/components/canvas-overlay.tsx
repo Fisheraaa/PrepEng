@@ -184,20 +184,9 @@ export function CanvasOverlay({
         onTouchEnd={handleEnd}
       />
 
-      {/* 工具栏触发按钮 - 只在标注模式激活时显示 */}
+      {/* 工具栏 - 标注模式激活时自动显示 */}
       {active && (
-        <button
-          onClick={() => setShowToolbar(!showToolbar)}
-          className="absolute top-2 right-2 z-20 w-8 h-8 rounded-full flex items-center justify-center text-xs bg-primary text-primary-foreground transition-all"
-          title="工具栏"
-        >
-          🛠️
-        </button>
-      )}
-
-      {/* 工具栏 */}
-      {showToolbar && (
-        <div className="absolute top-12 right-2 z-20 bg-card border rounded-lg p-3 shadow-lg space-y-3 w-48">
+        <div className="sticky top-0 z-20 bg-card border rounded-lg p-3 shadow-lg space-y-3 mb-3">
           {/* 工具选择 */}
           <div className="flex gap-1">
             {(["pen", "highlight", "underline", "eraser"] as const).map((t) => (
