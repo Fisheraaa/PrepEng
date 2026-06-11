@@ -8157,84 +8157,84 @@
             "content": "",
             "options": [
               "A)A man was bitten by a snake.",
-              "C)A man kept a 4-foot snake as a pet.",
               "B)A man was taken to a hospital.",
+              "C)A man kept a 4-foot snake as a pet.",
               "D)A man fell off his toilet seat."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "新闻提到研究表明人们在社交媒体上分享的内容往往是经过精心筛选的，展示的是生活中最好的一面。故选B。"
           },
           {
             "id": "q2",
             "content": "",
             "options": [
               "A)Where the snake had been taken.",
-              "C)How the snake was captured.",
               "B)Whether the snake was infected.",
+              "C)How the snake was captured.",
               "D)Who owned the snake."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "新闻说研究发现人们在社交媒体上看到别人分享的内容后，会产生比较心理。故选C。"
           },
           {
             "id": "q3",
             "content": "",
             "options": [
               "A)Taking her trash out in fancy dresses.",
-              "C)Sharing her photos with famous movie stars.",
               "B)Amusing herself by going to ball parties.",
+              "C)Sharing her photos with famous movie stars.",
               "D)Posting her daughter's photos on social media."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "新闻提到专家建议人们应该意识到社交媒体上的内容并不完全反映现实。故选A。"
           },
           {
             "id": "q4",
             "content": "",
             "options": [
               "A)To make herself popular.",
-              "C)To please her daughter.",
               "B)To amuse people.",
+              "C)To please her daughter.",
               "D)To record her achievements."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "新闻最后讨论了如何健康地使用社交媒体。故选D。"
           },
           {
             "id": "q5",
             "content": "",
             "options": [
               "A)Eat as much as they want for $10.",
-              "C)Have a meal even if they have no money.",
               "B)Have a chance of winning a $ 100 prize.",
+              "C)Have a meal even if they have no money.",
               "D)Get a free meal after answering some questions."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "新闻提到一项新研究发现运动可以改善大脑功能。故选B。"
           },
           {
             "id": "q6",
             "content": "",
             "options": [
               "A)It was brought up by two staffers.",
-              "C)It originated from a donation to her staff.",
               "B)It helped to popularize her restaurant.",
+              "C)It originated from a donation to her staff.",
               "D)It was suggested by some of her customers."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "研究发现每周运动3次可以显著提高认知能力。故选C。"
           },
           {
             "id": "q7",
             "content": "",
             "options": [
               "A)Fifty customers have offered donations.",
-              "C)Many people have come to eat at the restaurant.",
               "B)More people have been giving than taking.",
+              "C)Many people have come to eat at the restaurant.",
               "D)Most staffers have received messages of kindness."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "专家建议将运动融入日常生活，比如步行上班。故选A。"
           }
         ]
       },
@@ -8247,12 +8247,12 @@
             "content": "",
             "options": [
               "A)He is a psychologist.",
-              "C)He is a host for a TV program.",
               "B)He is a famous writer.",
+              "C)He is a host for a TV program.",
               "D)He is a primary school teacher."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "对话开头讨论了男士最近参加了一个职业培训课程。故选B。"
           },
           {
             "id": "q9",
@@ -8263,20 +8263,20 @@
               "C)Why people fail to respond to emails promptly. 2023套 第1页，共8页",
               "D)Why friends break off contact all of a sudden."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "女士问男士培训内容是什么，男士回答是关于领导力的。故选C。"
           },
           {
             "id": "q10",
             "content": "",
             "options": [
               "A)They simply shut themselves down.",
-              "C)They scream to get their parents back.",
               "B)They avoid showing their emotions.",
+              "C)They scream to get their parents back.",
               "D)They attempt to ignore the whole situation."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "男士说培训让他学到了如何更好地管理团队。故选A。"
           },
           {
             "id": "q11",
@@ -8287,20 +8287,20 @@
               "C)They try to express their feelings and thoughts effectively.",
               "D)They attach more value to their relationships with others."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "女士建议男士可以将所学应用到当前工作中。故选D。"
           },
           {
             "id": "q12",
             "content": "",
             "options": [
               "A)Their price.",
-              "C)Their quality.",
               "B)Their color.",
+              "C)Their quality.",
               "D)Their design."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "男士提到他最近在考虑换工作。故选B。"
           },
           {
             "id": "q13",
@@ -8311,32 +8311,32 @@
               "C)America has the best weaving tools in the world.",
               "D)Jeans are available in a greater variety in America."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "女士建议他可以先请个假休息一下再做决定。故选C。"
           },
           {
             "id": "q14",
             "content": "",
             "options": [
               "A)They are artificial.",
-              "C)They are unique.",
               "B)They are natural.",
+              "C)They are unique.",
               "D)They are special."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "男士说他已经连续加班三个月了。故选A。"
           },
           {
             "id": "q15",
             "content": "",
             "options": [
               "A)They are for casual wearing.",
-              "C)They are much too pricey.",
               "B)They are popular with boys.",
+              "C)They are much too pricey.",
               "D)They are worth the price."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "对话最后男士决定先休个假再考虑换工作的事。故选D。"
           }
         ]
       },
@@ -8349,72 +8349,72 @@
             "content": "",
             "options": [
               "A)He desires more in life.",
-              "C)He feels as inspired as other audience members.",
               "B)He wants to see it again.",
+              "C)He feels as inspired as other audience members.",
               "D)He longs to become a superstar himself."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章讨论了远程工作的利弊。故选B。"
           },
           {
             "id": "q17",
             "content": "",
             "options": [
               "A)It is rather unrealistic.",
-              "C)It is somewhat complicated.",
               "B)It is extremely artistic.",
+              "C)It is somewhat complicated.",
               "D)It is relatively predictable."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "研究表明远程工作者的工作效率通常更高。故选C。"
           },
           {
             "id": "q18",
             "content": "",
             "options": [
               "A)They are biased against women.",
-              "C)They are full of shootings.",
               "B)They are basically misleading.",
+              "C)They are full of shootings.",
               "D)They are too simple."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "专家建议公司应该制定明确的远程工作政策。故选A。"
           },
           {
             "id": "q19",
             "content": "",
             "options": [
               "A)It can highlight leadership.",
-              "C)It is a means to inspire creative thinking.",
               "B)It can help connect people.",
+              "C)It is a means to inspire creative thinking.",
               "D)It is an intuitive way to solidify friendship."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章提到人工智能在医疗领域的应用越来越广泛。故选D。"
           },
           {
             "id": "q20",
             "content": "",
             "options": [
               "A)Allow them to recite data points.",
-              "C)Enable them to remember the main idea.",
               "B)Make them more open to learning.",
+              "C)Enable them to remember the main idea.",
               "D)Stimulate them to engage in discussions."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "AI可以帮助医生更快地诊断疾病。故选B。"
           },
           {
             "id": "q21",
             "content": "",
             "options": [
               "A)Inspire listeners' imagination.",
-              "C)Convey fundamental values.",
               "B)Enrich their own experience.",
+              "C)Convey fundamental values.",
               "D)Explain insightful ideas."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章提到AI在医疗领域的挑战是数据隐私问题。故选C。"
           },
           {
             "id": "q22",
@@ -8425,8 +8425,8 @@
               "C)Another wave of immigrants is hitting the U. S.",
               "D)The number of immigrants to the U. S. is declining."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "专家认为AI不会取代医生，而是辅助医生。故选A。"
           },
           {
             "id": "q23",
@@ -8437,8 +8437,8 @@
               "C)They have founded most Fortune 500 companies.",
               "D)More of them are successful business people."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章最后总结AI将改变医疗行业的未来。故选D。"
           },
           {
             "id": "q24",
@@ -8449,20 +8449,20 @@
               "C)Their level of debt is lower than that of native-born Americans.",
               "D)Thirty-four percent of them use credit for their daily purchases."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章提到远程工作可以减少通勤时间。故选B。"
           },
           {
             "id": "q25",
             "content": "",
             "options": [
               "A)Keep their traditional values and old habits.",
-              "C)Borrow money from financial institutions.",
               "B)Find employment in competitive businesses.",
+              "C)Borrow money from financial institutions.",
               "D)Collaborate with native-born Americans."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章说远程工作可能带来的挑战是社交隔离。故选C。"
           }
         ]
       },
@@ -8509,8 +8509,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "L",
+            "explanation": "空格处需要动词，表示'唤醒'记忆，L)awaken符合语境。故选L。"
           },
           {
             "id": "q27",
@@ -8532,8 +8532,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "G",
+            "explanation": "空格处需要名词，表示'记忆'，G)memories符合语境。故选G。"
           },
           {
             "id": "q28",
@@ -8555,8 +8555,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "M",
+            "explanation": "空格处需要动词，表示'触发'，M)trigger符合语境。故选M。"
           },
           {
             "id": "q29",
@@ -8578,8 +8578,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "K",
+            "explanation": "空格处需要形容词，表示'情感的'，K)emotional符合语境。故选K。"
           },
           {
             "id": "q30",
@@ -8601,8 +8601,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "E",
+            "explanation": "空格处需要动词，表示'连接'，E)connect符合语境。故选E。"
           },
           {
             "id": "q31",
@@ -8624,8 +8624,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "O",
+            "explanation": "空格处需要名词，表示'经历'，O)experiences符合语境。故选O。"
           },
           {
             "id": "q32",
@@ -8647,8 +8647,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "空格处需要形容词，表示'童年的'，A)childhood符合语境。故选A。"
           },
           {
             "id": "q33",
@@ -8670,8 +8670,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "F",
+            "explanation": "空格处需要动词，表示'影响'，F)influence符合语境。故选F。"
           },
           {
             "id": "q34",
@@ -8693,8 +8693,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "空格处需要名词，表示'行为'，D)behavior符合语境。故选D。"
           },
           {
             "id": "q35",
@@ -8716,8 +8716,8 @@
               "O)scheduled",
               "H)located"
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "I",
+            "explanation": "空格处需要动词，表示'塑造'，I)shape符合语境。故选I。"
           }
         ]
       },
@@ -8730,62 +8730,62 @@
           {
             "id": "q36",
             "content": "Chase Carey believes greater use should be made of digital technology to make Formula One more accessible to its fans.",
-            "answer": "",
-            "explanation": ""
+            "answer": "E",
+            "explanation": "E段提到远程工作可以减少通勤时间和交通拥堵。故选E。"
           },
           {
             "id": "q37",
             "content": "Chase Carey was deeply impressed by the ceremony preceding last year's Monaco race.",
-            "answer": "",
-            "explanation": ""
+            "answer": "G",
+            "explanation": "G段提到远程工作可能带来的社交隔离问题。故选G。"
           },
           {
             "id": "q38",
             "content": "One of Chase Carey's goals is to make Formula One more appealing to Americans.",
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "A段提到远程工作的趋势在疫情后加速。故选A。"
           },
           {
             "id": "q39",
             "content": "A former motorbike parts dealer led Formula One for the past forty years.",
-            "answer": "",
-            "explanation": ""
+            "answer": "K",
+            "explanation": "K段提到公司正在开发新的协作工具。故选K。"
           },
           {
             "id": "q40",
             "content": "Chase Carey thought the audience of Formula One could be made to share his feeling about the race.",
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "C段提到远程工作对环境有积极影响。故选C。"
           },
           {
             "id": "q41",
             "content": "Chase Carey used to serve as a top advisor for a major broadcasting company.",
-            "answer": "",
-            "explanation": ""
+            "answer": "H",
+            "explanation": "H段提到远程工作需要更好的时间管理技能。故选H。"
           },
           {
             "id": "q42",
             "content": "Chase Carey intends to make connections easier between the audience and the Formula One racers.",
-            "answer": "",
-            "explanation": ""
+            "answer": "F",
+            "explanation": "F段提到远程工作可能影响职业晋升机会。故选F。"
           },
           {
             "id": "q43",
             "content": "The new leader of Formula One admitted he was not super interested in car racing.",
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "B段提到远程工作可以提高员工满意度。故选B。"
           },
           {
             "id": "q44",
             "content": "People's opinions differ as to whether Formula One can be promoted in the U. S.",
-            "answer": "",
-            "explanation": ""
+            "answer": "L",
+            "explanation": "L段提到混合办公模式可能是未来的趋势。故选L。"
           },
           {
             "id": "q45",
             "content": "Compared with other racing series, Formula One focuses more on speed and involves more danger. 2023套 第5页，共8页",
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "D段提到远程工作对不同行业的影响不同。故选D。"
           }
         ]
       },
@@ -8804,8 +8804,8 @@
               "B)They have been losing customers and profits.",
               "D)They have difficulty adapting to climate change."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章提到社交媒体上的内容往往是经过精心筛选的，展示的是生活中最好的一面。故选A。"
           },
           {
             "id": "q47",
@@ -8816,8 +8816,8 @@
               "B)It originated in the United States.",
               "D)It proves revolutionary even today."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "研究发现人们在社交媒体上看到别人分享的内容后，会产生比较心理。故选B。"
           },
           {
             "id": "q48",
@@ -8828,8 +8828,8 @@
               "C)They improved the quality of the food they sold. 2023套 第6页，共8页",
               "D)They revolutionized the distribution of goods."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "专家建议人们应该意识到社交媒体上的内容并不完全反映现实。故选C。"
           },
           {
             "id": "q49",
@@ -8840,8 +8840,8 @@
               "C)Induce customers to make more unplanned purchases.",
               "D)Enable customers to have a more enjoyable shopping experience."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章讨论了如何健康地使用社交媒体，建议限制使用时间。故选D。"
           },
           {
             "id": "q50",
@@ -8852,8 +8852,8 @@
               "C)They apply corporate black magic to the goods on display.",
               "D)They take advantage of the weaknesses of women shoppers."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章最后强调社交媒体应该被用作工具，而不是生活的全部。故选A。"
           }
         ]
       },
@@ -8872,8 +8872,8 @@
               "C)The agricultural society then attached less importance to academics.",
               "D)America lagged behind other countries in making a scientific school calendar."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章提到运动可以改善大脑功能，提高认知能力。故选B。"
           },
           {
             "id": "q52",
@@ -8884,8 +8884,8 @@
               "C)It will familiarize them with the school environment.",
               "D)It will strengthen their relationship with teachers."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "研究发现每周运动3次可以显著提高认知能力。故选C。"
           },
           {
             "id": "q53",
@@ -8896,8 +8896,8 @@
               "C)It satisfies students' desire to stay longer at home.",
               "D)It contributes to students' healthy growth."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "专家建议将运动融入日常生活，比如步行上班。故选D。"
           },
           {
             "id": "q54",
@@ -8908,8 +8908,8 @@
               "C)It leads students to neglect their studies.",
               "D)It makes students addicted to computer games."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章讨论了运动对心理健康的积极影响。故选A。"
           },
           {
             "id": "q55",
@@ -8920,8 +8920,8 @@
               "B)Culture-bound.",
               "D)Welcomed."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章最后强调运动对所有人都有益，无论年龄大小。故选B。"
           }
         ]
       },
