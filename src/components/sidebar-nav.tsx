@@ -12,13 +12,13 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "仪表盘", href: "", icon: "📊", description: "进度概览" },
+  { label: "仪表盘", href: "", icon: "◈", description: "进度概览" },
   { label: "听力", href: "/listen", icon: "🎧", description: "真题听力练习" },
-  { label: "阅读", href: "/read", icon: "📖", description: "阅读理解精练" },
-  { label: "写作", href: "/write", icon: "✍️", description: "AI 批改作文" },
-  { label: "翻译", href: "/translate", icon: "🔄", description: "汉译英练习" },
-  { label: "模拟考", href: "/mock", icon: "⏱️", description: "完整模拟" },
-  { label: "错题本", href: "/review", icon: "📝", description: "复习错题" },
+  { label: "阅读", href: "/read", icon: "▣", description: "阅读理解精练" },
+  { label: "写作", href: "/write", icon: "🖋", description: "AI 批改作文" },
+  { label: "翻译", href: "/translate", icon: "▤", description: "汉译英练习" },
+  { label: "模拟考", href: "/mock", icon: "◐", description: "完整模拟" },
+  { label: "错题本", href: "/review", icon: "◔", description: "复习错题" },
 ]
 
 interface SidebarNavProps {

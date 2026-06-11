@@ -95,7 +95,7 @@ export function AudioPlayer({ src, title, onTimeUpdate }: AudioPlayerProps) {
   if (error) {
     return (
       <div className="flex items-center gap-2 p-3 bg-destructive/10 rounded-lg text-sm text-destructive">
-        <span>⚠️ 音频加载失败</span>
+        <span>△ 音频加载失败</span>
       </div>
     )
   }

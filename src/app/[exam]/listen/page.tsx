@@ -186,7 +186,7 @@ export default function ListenPage() {
 
           <Card className="bg-muted/30">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm">💡 听力练习技巧</CardTitle>
+              <CardTitle className="text-sm">◇ 听力练习技巧</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground space-y-2">
               <p><strong>第一遍</strong>：正常速度听，做题。不要暂停。</p>

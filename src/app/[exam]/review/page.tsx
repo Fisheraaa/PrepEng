@@ -90,16 +90,16 @@ export default function ReviewPage() {
   }
 
   const sectionLabels: Record<string, string> = {
-    reading: "📖 阅读",
-    writing: "✍️ 写作",
-    translation: "🔄 翻译",
-    listening: "🎧 听力",
+    reading: "📚 阅读",
+    writing: "✏️ 写作",
+    translation: "▤ 翻译",
+    listening: "🎙 听力",
   }
 
   return (
     <div className="p-8 max-w-3xl mx-auto space-y-6">
       <div className="space-y-2">
-        <h1 className="text-2xl font-bold">📝 错题本</h1>
+        <h1 className="text-2xl font-bold">📋 错题本</h1>
         <p className="text-muted-foreground">
           做错的题自动归档。间隔复习，永久记忆。
         </p>
@@ -135,7 +135,7 @@ export default function ReviewPage() {
       ) : filtered.length === 0 ? (
         <Card className="bg-muted/50">
           <CardContent className="pt-6 pb-4 text-center space-y-3">
-            <span className="text-4xl">🎉</span>
+            <span className="text-4xl">✦</span>
             <p className="text-muted-foreground">
               {mistakes.length === 0
                 ? "还没有错题。去做几道练习题吧！"

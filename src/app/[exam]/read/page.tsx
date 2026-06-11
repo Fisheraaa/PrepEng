@@ -313,7 +313,7 @@ export default function ReadPage() {
                       key={q.id}
                       className={cn(
                         "p-3 rounded-lg border text-sm",
-                        isCorrect ? "border-emerald-500/20 bg-emerald-500/5" : "border-destructive/20 bg-destructive/5"
+                        isCorrect ? "border-green-600/20 bg-green-600/5" : "border-destructive/20 bg-destructive/5"
                       )}
                     >
                       <div className="flex items-start gap-2">
@@ -547,7 +547,7 @@ function QuestionBlock({
                 "hover:border-primary/50 hover:bg-accent/50",
                 "disabled:cursor-not-allowed",
                 isSelected && !submitted && "border-primary bg-primary/10",
-                submitted && isOptionCorrect && "border-emerald-500 bg-emerald-500/10",
+                submitted && isOptionCorrect && "border-green-600/50 bg-green-600/10",
                 submitted && isSelected && !isOptionCorrect && "border-destructive bg-destructive/10",
                 !isSelected && !submitted && "border-border"
               )}
@@ -561,11 +561,11 @@ function QuestionBlock({
 
       {submitted && (
         <div className="ml-10 space-y-2">
-          <Card className={cn(isCorrect ? "border-emerald-500/30" : "border-destructive/30")}>
+          <Card className={cn(isCorrect ? "border-green-600/30" : "border-destructive/30")}>
             <CardContent className="pt-3 pb-2 px-4">
               <div className="flex items-center gap-2 mb-1">
                 {isCorrect ? (
-                  <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">✅ 正确</Badge>
+                  <Badge className="bg-green-600/10 text-green-400 border-green-600/20 text-xs">✅ 正确</Badge>
                 ) : (
                   <Badge variant="destructive" className="text-xs">
                     ❌ 错误 · 你的：{selected ?? "未答"} · 正确：{question.answer}

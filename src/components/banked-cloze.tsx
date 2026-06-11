@@ -78,7 +78,7 @@ export function BankedCloze({ passage, bank, blanks, onSubmit }: BankedClozeProp
             "hover:border-primary/50 hover:bg-accent/50",
             !filled && !submitted && "border-muted-foreground/30 bg-muted/30",
             filled && !submitted && "border-primary bg-primary/10",
-            isCorrect && "border-emerald-500 bg-emerald-500/10",
+            isCorrect && "border-green-600/50 bg-green-600/10",
             isWrong && "border-destructive bg-destructive/10"
           )}
         >
@@ -158,14 +158,14 @@ export function BankedCloze({ passage, bank, blanks, onSubmit }: BankedClozeProp
               return (
                 <div key={blank.num} className="text-xs p-2 rounded border" style={{ borderColor: isCorrect ? 'rgb(34 197 94 / 0.3)' : 'rgb(239 68 68 / 0.3)' }}>
                   <div className="flex items-center gap-2">
-                    <span className={isCorrect ? "text-emerald-500" : "text-destructive"}>
-                      {isCorrect ? "✅" : "❌"}
+                    <span className={isCorrect ? "text-green-400" : "text-destructive"}>
+                      {isCorrect ? "✓" : "✗"}
                     </span>
                     <span className="font-medium">第 {blank.num} 题：</span>
                     {!isCorrect && (
                       <span className="text-destructive">你填 {userAns || "未填"}</span>
                     )}
-                    <span className="text-emerald-500">正确答案 {blank.answer}</span>
+                    <span className="text-green-400">正确答案 {blank.answer}</span>
                   </div>
                   {blank.explanation && (
                     <p className="mt-1 text-muted-foreground">{blank.explanation}</p>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrepEng 主题选择</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 30px; background: #0a0a0a; }
+
+/* 基础变量 - 默认用A方案 */
+:root {
+  --bg-primary: #0f1318;
+  --bg-secondary: #171d25;
+  --bg-tertiary: #1f2733;
+  --border: #2d3748;
+  --border-hover: #4a5568;
+  --text-primary: #f0f4f8;
+  --text-secondary: #a0aec0;
+  --text-muted: #5a6a7e;
+  --blue: #63b3ed;
+  --blue-light: #7ec8f0;
+  --blue-bg: rgba(99,179,237,0.1);
+  --blue-border: rgba(99,179,237,0.25);
+  --green: #68d391;
+  --green-bg: rgba(104,211,145,0.1);
+  --green-border: rgba(104,211,145,0.25);
+  --red: #fc8181;
+  --red-bg: rgba(252,129,129,0.1);
+  --red-border: rgba(252,129,129,0.25);
+  --gold: #ecc94b;
+  --gold-light: #f0d060;
+  --gold-bg: rgba(236,201,75,0.1);
+  --gold-border: rgba(236,201,75,0.25);
+  --purple: #b794f4;
+  --purple-bg: rgba(183,148,244,0.1);
+  --purple-border: rgba(183,148,244,0.25);
+}
+
+/* 方案B - 暖蓝 */
+.theme-b {
+  --blue: #63b3ed;
+  --blue-light: #90cdf4;
+  --blue-bg: rgba(99,179,237,0.12);
+  --blue-border: rgba(99,179,237,0.3);
+  --gold: #ecc94b;
+  --gold-light: #f6e05e;
+  --gold-bg: rgba(236,201,75,0.12);
+  --gold-border: rgba(236,201,75,0.3);
+}
+
+/* 方案C - 冰蓝 */
+.theme-c {
+  --blue: #90cdf4;
+  --blue-light: #bee3f8;
+  --blue-bg: rgba(144,205,244,0.12);
+  --blue-border: rgba(144,205,244,0.3);
+  --gold: #f6e05e;
+  --gold-light: #faf08a;
+  --gold-bg: rgba(246,224,94,0.12);
+  --gold-border: rgba(246,224,94,0.3);
+}
+
+/* 方案D - 紫蓝 */
+.theme-d {
+  --blue: #7c9cf5;
+  --blue-light: #a3bffa;
+  --blue-bg: rgba(124,156,245,0.12);
+  --blue-border: rgba(124,156,245,0.3);
+  --gold: #f6ad55;
+  --gold-light: #fbd38d;
+  --gold-bg: rgba(246,173,85,0.12);
+  --gold-border: rgba(246,173,85,0.3);
+}
+
+/* 方案E - 青蓝 */
+.theme-e {
+  --blue: #4fd1c5;
+  --blue-light: #81e6d9;
+  --blue-bg: rgba(79,209,197,0.12);
+  --blue-border: rgba(79,209,197,0.3);
+  --gold: #f6ad55;
+  --gold-light: #fbd38d;
+  --gold-bg: rgba(246,173,85,0.12);
+  --gold-border: rgba(246,173,85,0.3);
+}
+
+.demo-section {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.section-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.section-label::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+/* 按钮 */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn:active::after { opacity: 1; }
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+  background: var(--blue-light);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #1a1612;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: #2d3748;
+  border-color: var(--border-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue-border);
+}
+
+.btn-outline:hover {
+  background: var(--blue-bg);
+  border-color: var(--blue);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.btn-sm { padding: 7px 14px; font-size: 13px; }
+.btn-icon { display: inline-flex; align-items: center; gap: 6px; }
+
+/* 选项 */
+.option {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 14px;
+}
+
+.option:hover {
+  border-color: var(--blue-border);
+  background: var(--blue-bg);
+}
+
+.option:active { transform: scale(0.99); }
+
+.option.correct {
+  border-color: var(--green);
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.option.wrong {
+  border-color: var(--red);
+  background: var(--red-bg);
+  color: var(--red);
+}
+
+.option.selected {
+  border-color: var(--blue);
+  background: var(--blue-bg);
+}
+
+/* 标签 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.tag-blue { background: var(--blue-bg); color: var(--blue); border-color: var(--blue-border); }
+.tag-green { background: var(--green-bg); color: var(--green); border-color: var(--green-border); }
+.tag-gold { background: var(--gold-bg); color: var(--gold); border-color: var(--gold-border); }
+.tag-red { background: var(--red-bg); color: var(--red); border-color: var(--red-border); }
+
+/* 进度条 */
+.progress {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  transition: width 0.5s ease;
+}
+
+/* 提示框 */
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.alert-error {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  color: var(--red);
+}
+
+/* 加载骨架 - 多种流光强度 */
+.skeleton-base {
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+}
+
+/* 流光A - 淡金色 */
+.skeleton-a {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, rgba(236,201,75,0.08) 37%, var(--bg-tertiary) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* 流光B - 中等金色 */
+.skeleton-b {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, rgba(236,201,75,0.15) 37%, var(--bg-tertiary) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* 流光C - 强金色 */
+.skeleton-c {
+  background: linear-gradient(90deg, var(--bg-tertiary) 20%, rgba(236,201,75,0.25) 35%, rgba(246,208,96,0.15) 50%, var(--bg-tertiary) 65%);
+  background-size: 300% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* 流光D - 金色+蓝色混合 */
+.skeleton-d {
+  background: linear-gradient(90deg, var(--bg-tertiary) 15%, rgba(99,179,237,0.12) 30%, rgba(236,201,75,0.2) 50%, rgba(99,179,237,0.12) 70%, var(--bg-tertiary) 85%);
+  background-size: 300% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* 流光E - 暖金渐变 */
+.skeleton-e {
+  background: linear-gradient(90deg, var(--bg-tertiary) 10%, rgba(201,169,110,0.15) 25%, rgba(236,201,75,0.3) 45%, rgba(201,169,110,0.15) 65%, var(--bg-tertiary) 90%);
+  background-size: 250% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 流光边框 */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, transparent 30%, rgba(236,201,75,0.2) 50%, transparent 70%);
+  background-size: 300% 300%;
+  animation: glow-move 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes glow-move {
+  0% { background-position: 100% 100%; }
+  50% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+</style>
+</head>
+<body>
+
+<h1 style="color: #f0f4f8; text-align: center; margin-bottom: 10px; font-size: 28px; font-weight: 600;">
+  PrepEng 主题选择
+</h1>
+<p style="color: #5a6a7e; text-align: center; margin-bottom: 50px; font-size: 13px;">
+  选择主色调和流光强度
+</p>
+
+<!-- 主色选择 -->
+<div class="demo-section">
+  <div class="section-label">主色选择 (5种)</div>
+  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+
+    <div class="card" id="theme-a" onclick="setTheme('')" style="cursor: pointer;">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: #63b3ed; margin: 0 auto 8px;"></div>
+        <div style="color: #f0f4f8; font-weight: 600;">A. 天蓝</div>
+        <div style="color: #5a6a7e; font-size: 12px;">#63b3ed</div>
+      </div>
+      <button class="btn btn-primary btn-sm" style="width: 100%;">选择此方案</button>
+    </div>
+
+    <div class="card" id="theme-b" onclick="setTheme('theme-b')" style="cursor: pointer;">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #63b3ed, #90cdf4); margin: 0 auto 8px;"></div>
+        <div style="color: #f0f4f8; font-weight: 600;">B. 暖蓝</div>
+        <div style="color: #5a6a7e; font-size: 12px;">#63b3ed~#90cdf4</div>
+      </div>
+      <button class="btn btn-primary btn-sm" style="width: 100%;">选择此方案</button>
+    </div>
+
+    <div class="card" id="theme-c" onclick="setTheme('theme-c')" style="cursor: pointer;">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: #90cdf4; margin: 0 auto 8px;"></div>
+        <div style="color: #f0f4f8; font-weight: 600;">C. 冰蓝</div>
+        <div style="color: #5a6a7e; font-size: 12px;">#90cdf4</div>
+      </div>
+      <button class="btn btn-primary btn-sm" style="width: 100%;">选择此方案</button>
+    </div>
+
+    <div class="card" id="theme-d" onclick="setTheme('theme-d')" style="cursor: pointer;">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: #7c9cf5; margin: 0 auto 8px;"></div>
+        <div style="color: #f0f4f8; font-weight: 600;">D. 紫蓝</div>
+        <div style="color: #5a6a7e; font-size: 12px;">#7c9cf5</div>
+      </div>
+      <button class="btn btn-primary btn-sm" style="width: 100%;">选择此方案</button>
+    </div>
+
+    <div class="card" id="theme-e" onclick="setTheme('theme-e')" style="cursor: pointer;">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: #4fd1c5; margin: 0 auto 8px;"></div>
+        <div style="color: #f0f4f8; font-weight: 600;">E. 青蓝</div>
+        <div style="color: #5a6a7e; font-size: 12px;">#4fd1c5</div>
+      </div>
+      <button class="btn btn-primary btn-sm" style="width: 100%;">选择此方案</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- 流光强度选择 -->
+<div class="demo-section">
+  <div class="section-label">加载流光强度 (5种)</div>
+  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+
+    <div class="card">
+      <div style="color: #a0aec0; font-size: 12px; margin-bottom: 10px;">A. 淡金色</div>
+      <div class="skeleton-base skeleton-a" style="height: 12px; width: 80%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-a" style="height: 12px; width: 60%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-a" style="height: 60px; width: 100%;"></div>
+    </div>
+
+    <div class="card">
+      <div style="color: #a0aec0; font-size: 12px; margin-bottom: 10px;">B. 中等金色</div>
+      <div class="skeleton-base skeleton-b" style="height: 12px; width: 80%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-b" style="height: 12px; width: 60%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-b" style="height: 60px; width: 100%;"></div>
+    </div>
+
+    <div class="card" style="border-color: var(--gold-border);">
+      <div style="color: var(--gold); font-size: 12px; margin-bottom: 10px;">C. 强金色 ★推荐</div>
+      <div class="skeleton-base skeleton-c" style="height: 12px; width: 80%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-c" style="height: 12px; width: 60%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-c" style="height: 60px; width: 100%;"></div>
+    </div>
+
+    <div class="card">
+      <div style="color: #a0aec0; font-size: 12px; margin-bottom: 10px;">D. 金蓝混合</div>
+      <div class="skeleton-base skeleton-d" style="height: 12px; width: 80%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-d" style="height: 12px; width: 60%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-d" style="height: 60px; width: 100%;"></div>
+    </div>
+
+    <div class="card">
+      <div style="color: #a0aec0; font-size: 12px; margin-bottom: 10px;">E. 暖金渐变</div>
+      <div class="skeleton-base skeleton-e" style="height: 12px; width: 80%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-e" style="height: 12px; width: 60%; margin-bottom: 8px;"></div>
+      <div class="skeleton-base skeleton-e" style="height: 60px; width: 100%;"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 组件预览 -->
+<div class="demo-section">
+  <div class="section-label">组件预览</div>
+  <div class="card">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
+      <button class="btn btn-primary">主要按钮</button>
+      <button class="btn btn-gold">金色强调</button>
+      <button class="btn btn-secondary">次要按钮</button>
+      <button class="btn btn-outline">轮廓按钮</button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
+      <span class="tag tag-blue">阅读</span>
+      <span class="tag tag-green">已掌握</span>
+      <span class="tag tag-gold">重点</span>
+      <span class="tag tag-red">未完成</span>
+    </div>
+    <div class="progress" style="margin-bottom: 16px;">
+      <div class="progress-bar" style="width: 65%;"></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="option">A) It increases productivity</div>
+      <div class="option correct">B) It reduces commute time</div>
+      <div class="option wrong">C) It eliminates stress</div>
+    </div>
+  </div>
+</div>
+
+<!-- 完整题目示例 -->
+<div class="demo-section">
+  <div class="section-label">完整题目示例</div>
+  <div class="card glow-border">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <div style="display: flex; gap: 8px;">
+        <span class="tag tag-blue">阅读</span>
+        <span class="tag">Section B</span>
+      </div>
+      <span style="color: var(--text-muted); font-size: 12px;">2025年6月</span>
+    </div>
+    <div class="progress" style="margin-bottom: 16px;">
+      <div class="progress-bar" style="width: 40%;"></div>
+    </div>
+    <p style="color: var(--text-primary); font-size: 15px; line-height: 1.7; margin-bottom: 16px;">
+      <strong style="color: var(--gold);">Q5.</strong> What does the report say about the clothing industry?
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+      <div class="option">A) It is becoming more sustainable</div>
+      <div class="option wrong">B) It has improved its recycling options</div>
+      <div class="option correct">C) It has been criticized for creating waste</div>
+      <div class="option">D) It produces high-quality clothes</div>
+    </div>
+    <div class="alert alert-error" style="margin-bottom: 16px;">
+      <div><strong>错误</strong> · 你的答案：B · 正确答案：C<br/><span style="opacity: 0.8; font-size: 12px;">新闻提到服装行业因制造严重危害环境的废弃物问题而备受指责。故选C。</span></div>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-outline btn-sm btn-icon">追问</button>
+      <button class="btn btn-ghost btn-sm">下一题 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function setTheme(theme) {
+  document.body.className = theme;
+  // 高亮选中的卡片
+  document.querySelectorAll('[id^="theme-"]').forEach(el => {
+    el.style.borderColor = 'var(--border)';
+  });
+  if (theme) {
+    document.getElementById(theme).style.borderColor = 'var(--blue)';
+  } else {
+    document.getElementById('theme-a').style.borderColor = 'var(--blue)';
+  }
+}
+</script>
+
+</body>
+</html>

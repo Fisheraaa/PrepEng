@@ -50,8 +50,8 @@ export function MatchingSection({
                       "w-8 h-8 rounded border text-xs font-medium transition-all",
                       "hover:border-primary/50",
                       isSelected && !submitted && "border-primary bg-primary text-primary-foreground",
-                      submitted && isOptionCorrect && "border-emerald-500 bg-emerald-500 text-emerald-700",
-                      submitted && isSelected && !isOptionCorrect && "border-destructive bg-destructive/10",
+                      submitted && isOptionCorrect && "border-green-600/50 bg-green-600/10 text-green-400",
+                      submitted && isSelected && !isOptionCorrect && "border-red-500/30 bg-red-500/5 text-red-400",
                       !isSelected && !submitted && "border-border"
                     )}
                   >
@@ -63,18 +63,18 @@ export function MatchingSection({
             {/* 提交后显示答案和解析 */}
             {submitted && (
               <div className={cn(
-                "p-2 rounded text-xs",
-                isCorrect ? "bg-emerald-50 border border-emerald-200" : "bg-red-50 border border-red-200"
+                "p-3 rounded-lg text-xs border",
+                isCorrect ? "border-green-600/20 bg-green-600/5" : "border-red-500/20 bg-red-500/5"
               )}>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 mb-1">
                   {isCorrect ? (
-                    <span className="text-emerald-600">✅ 正确</span>
+                    <span className="text-green-400">✓ 正确</span>
                   ) : (
-                    <span className="text-red-600">❌ 你的答案：{selected || "未选"} · 正确答案：{q.answer}</span>
+                    <span className="text-red-400">✗ 你的答案：{selected || "未选"} · 正确答案：{q.answer}</span>
                   )}
                 </div>
                 {q.explanation && (
-                  <p className="mt-1 text-muted-foreground">{q.explanation}</p>
+                  <p className="text-muted-foreground leading-relaxed">{q.explanation}</p>
                 )}
               </div>
             )}

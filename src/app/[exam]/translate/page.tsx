@@ -182,14 +182,14 @@ export default function TranslatePage() {
     return (
       <div className="p-8 max-w-3xl mx-auto space-y-6">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold">🔄 翻译练习</h1>
+          <h1 className="text-2xl font-bold">▤ 翻译练习</h1>
           <p className="text-muted-foreground">选择一套真题 → 中译英 → 提交 → AI 实时批改</p>
         </div>
 
         {transPapers.length === 0 ? (
           <Card className="bg-muted/50">
             <CardContent className="pt-6 pb-4 text-center">
-              <span className="text-4xl">📭</span>
+              <span className="text-4xl">📂</span>
               <p className="text-muted-foreground mt-2">还没有{examType === "cet4" ? "四级" : "六级"}翻译题。</p>
             </CardContent>
           </Card>
@@ -229,14 +229,14 @@ export default function TranslatePage() {
         <div className="w-1/2 flex flex-col">
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-muted-foreground">✍️ 你的翻译</h2>
+              <h2 className="text-sm font-semibold text-muted-foreground">✏️ 你的翻译</h2>
               <span className="text-xs text-muted-foreground">{wordCount} 词</span>
             </div>
             <Textarea value={userTranslation} onChange={(e) => setUserTranslation(e.target.value)} placeholder="Type your translation here..." className="min-h-[300px] resize-none text-sm leading-relaxed" />
           </div>
           <div className="border-t border-border px-6 py-3 flex items-center justify-between shrink-0">
             <span className="text-xs text-muted-foreground">
-              {isConfigValid(loadConfig()) ? <span className="text-emerald-400">✅ AI 批改已配置</span> : <span>未配置 API，<a href="/settings" className="text-primary underline">去设置</a></span>}
+              {isConfigValid(loadConfig()) ? <span className="text-emerald-400">✓ AI 批改已配置</span> : <span>未配置 API，<a href="/settings" className="text-primary underline">去设置</a></span>}
             </span>
             <Button onClick={handleCheck} disabled={wordCount < 10}>提交翻译</Button>
           </div>
@@ -250,9 +250,9 @@ export default function TranslatePage() {
     <div className="flex flex-col h-screen">
       <div className="border-b border-border px-6 py-3 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
-          <h1 className="text-lg font-bold">🔄 翻译批改</h1>
+          <h1 className="text-lg font-bold">▤ 翻译批改</h1>
           {isStreaming && <Badge className="bg-primary/10 text-primary border-primary/20 animate-pulse">AI 批改中...</Badge>}
-          {apiDone && !apiError && <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20">✅ 批改完成</Badge>}
+          {apiDone && !apiError && <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20">✓ 批改完成</Badge>}
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleReset}>重翻</Button>
@@ -268,7 +268,7 @@ export default function TranslatePage() {
               <CardContent><p className="text-sm leading-relaxed">{question?.source_text}</p></CardContent>
             </Card>
             <Card>
-              <CardHeader className="pb-2"><CardTitle className="text-xs text-muted-foreground">✍️ 你的翻译</CardTitle></CardHeader>
+              <CardHeader className="pb-2"><CardTitle className="text-xs text-muted-foreground">✏️ 你的翻译</CardTitle></CardHeader>
               <CardContent><p className="text-sm leading-relaxed whitespace-pre-wrap">{userTranslation}</p></CardContent>
             </Card>
           </div>
@@ -278,7 +278,7 @@ export default function TranslatePage() {
           {apiError && (
             <Card className="border-yellow-500/30 bg-yellow-500/5">
               <CardContent className="pt-3 pb-2 px-4">
-                <p className="text-sm text-yellow-400">⚠️ {apiError}</p>
+                <p className="text-sm text-yellow-400">△ {apiError}</p>
                 <a href="/settings" className="text-xs text-primary underline mt-1 inline-block">去配置 API →</a>
               </CardContent>
             </Card>
@@ -311,7 +311,7 @@ export default function TranslatePage() {
                         <Card key={i} className={cn(matched ? "border-emerald-500/20" : "border-destructive/20")}>
                           <CardContent className="pt-2 pb-1.5 px-3 space-y-0.5">
                             <div className="flex items-center gap-1.5">
-                              <span className="text-xs">{matched ? "✅" : "❌"}</span>
+                              <span className="text-xs">{matched ? "✓" : "✗"}</span>
                               <Badge variant="secondary" className="text-xs">{point.key_phrase}</Badge>
                             </div>
                             <p className="text-xs"><span className="text-emerald-400">✓</span> {point.correct_translation}</p>

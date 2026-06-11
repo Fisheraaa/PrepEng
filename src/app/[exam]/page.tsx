@@ -35,7 +35,7 @@ const examInfo: Record<
       {
         name: "听力",
         href: "/listen",
-        icon: "🎧",
+        icon: "🎙",
         weight: "35%",
         description: "短篇新闻 + 长对话 + 听力篇章",
       },
@@ -68,7 +68,7 @@ const examInfo: Record<
       {
         name: "听力",
         href: "/listen",
-        icon: "🎧",
+        icon: "🎙",
         weight: "35%",
         description: "长对话 + 听力篇章 + 讲座",
       },
@@ -101,7 +101,7 @@ const examInfo: Record<
       {
         name: "听力",
         href: "/listen",
-        icon: "🎧",
+        icon: "🎙",
         weight: "25%",
         description: "4 sections, 40 questions",
       },

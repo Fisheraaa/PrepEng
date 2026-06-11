@@ -55,7 +55,7 @@ export function SocraticChat({
         setMessages((prev) => [
           ...prev,
           { role: "user", content: userMsg },
-          { role: "assistant", content: "⚠️ 未配置 API，请先去设置页配置。" },
+          { role: "assistant", content: "△ 未配置 API，请先去设置页配置。" },
         ])
         return
       }
@@ -88,7 +88,7 @@ export function SocraticChat({
           const err = await res.text()
           setMessages((prev) => [
             ...prev,
-            { role: "assistant", content: `⚠️ 错误：${err.slice(0, 100)}` },
+            { role: "assistant", content: `△ 错误：${err.slice(0, 100)}` },
           ])
           setIsStreaming(false)
           return
@@ -132,7 +132,7 @@ export function SocraticChat({
           ...prev,
           {
             role: "assistant",
-            content: `⚠️ 网络错误：${err instanceof Error ? err.message : "未知"}`,
+            content: `△ 网络错误：${err instanceof Error ? err.message : "未知"}`,
           },
         ])
       }
@@ -155,7 +155,7 @@ export function SocraticChat({
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
           <CardTitle className="text-sm flex items-center gap-2">
-            🤔 苏格拉底追问
+            {">"} 苏格拉底追问
             <Badge variant="outline" className="text-xs">
               AI 引导你理解
             </Badge>
