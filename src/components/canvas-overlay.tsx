@@ -20,6 +20,9 @@ interface CanvasOverlayProps {
   width: number
   height: number
   active: boolean
+  tool?: "pen" | "eraser" | "highlight" | "underline"
+  color?: string
+  lineWidth?: number
   onSave?: (data: DrawPath[]) => void
   initialData?: DrawPath[]
 }
@@ -37,17 +40,19 @@ export function CanvasOverlay({
   width,
   height,
   active,
+  tool: externalTool,
+  color: externalColor,
+  lineWidth: externalLineWidth,
   onSave,
   initialData = [],
 }: CanvasOverlayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [tool, setTool] = useState<"pen" | "eraser" | "highlight" | "underline">("pen")
-  const [color, setColor] = useState(COLORS[0].value)
-  const [lineWidth, setLineWidth] = useState(2)
+  const tool = externalTool || "pen"
+  const color = externalColor || COLORS[0].value
+  const lineWidth = externalLineWidth || 2
   const [isDrawing, setIsDrawing] = useState(false)
   const [paths, setPaths] = useState<DrawPath[]>(initialData)
   const [currentPath, setCurrentPath] = useState<Point[]>([])
-  const [showToolbar, setShowToolbar] = useState(false)
 
   // 绘制所有路径
   const redraw = useCallback(() => {
@@ -184,90 +189,23 @@ export function CanvasOverlay({
         onTouchEnd={handleEnd}
       />
 
-      {/* 工具栏 - 标注模式激活时自动显示 */}
+      {/* 操作按钮 - 标注模式激活时显示 */}
       {active && (
-        <div className="sticky top-0 z-20 bg-card border rounded-lg p-3 shadow-lg space-y-3 mb-3">
-          {/* 工具选择 */}
-          <div className="flex gap-1">
-            {(["pen", "highlight", "underline", "eraser"] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => setTool(t)}
-                className={cn(
-                  "flex-1 py-1.5 rounded text-xs transition-all",
-                  tool === t
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-accent"
-                )}
-                title={t === "pen" ? "画笔" : t === "highlight" ? "高亮" : t === "underline" ? "下划线" : "橡皮擦"}
-              >
-                {t === "pen" ? "🖊" : t === "highlight" ? "🖍" : t === "underline" ? "📎" : "🧹"}
-              </button>
-            ))}
-          </div>
-
-          {/* 颜色选择 */}
-          {tool !== "eraser" && (
-            <div className="flex gap-1.5 justify-center">
-              {COLORS.map((c) => (
-                <button
-                  key={c.value}
-                  onClick={() => setColor(c.value)}
-                  className={cn(
-                    "w-6 h-6 rounded-full border-2 transition-all",
-                    color === c.value ? "border-foreground scale-110" : "border-transparent"
-                  )}
-                  style={{ background: c.value }}
-                  title={c.name}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* 线宽选择 */}
-          <div className="flex gap-1.5 justify-center">
-            {LINE_WIDTHS.map((w) => (
-              <button
-                key={w}
-                onClick={() => setLineWidth(w)}
-                className={cn(
-                  "w-8 h-8 rounded flex items-center justify-center transition-all",
-                  lineWidth === w
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-accent"
-                )}
-              >
-                <div
-                  className="rounded-full"
-                  style={{
-                    width: w * 2,
-                    height: w * 2,
-                    background: tool === "eraser" ? "#888" : color,
-                  }}
-                />
-              </button>
-            ))}
-          </div>
-
-          {/* 操作按钮 */}
-          <div className="flex gap-2">
-            <Button size="sm" variant="outline" onClick={handleUndo} className="flex-1 text-xs">
-              撤销
-            </Button>
-            <Button size="sm" variant="outline" onClick={handleClear} className="flex-1 text-xs">
-              清空
-            </Button>
-          </div>
-
-          {/* 开关 */}
-          <Button
-            size="sm"
-            variant={active ? "default" : "outline"}
-            onClick={() => setShowToolbar(false)}
-            className="w-full text-xs"
+        <div className="absolute bottom-2 right-2 z-20 flex gap-1">
+          <button
+            onClick={handleUndo}
+            className="px-2 py-1 rounded text-xs bg-card border shadow-sm hover:bg-accent transition-all"
+            title="撤销"
           >
-            {active ? "关闭标注模式" : "开启标注模式"}
-          </Button>
+            ↩ 撤销
+          </button>
+          <button
+            onClick={handleClear}
+            className="px-2 py-1 rounded text-xs bg-card border shadow-sm hover:bg-accent transition-all"
+            title="清空"
+          >
+            🗑 清空
+          </button>
         </div>
       )}
     </div>

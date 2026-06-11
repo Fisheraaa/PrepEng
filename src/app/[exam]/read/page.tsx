@@ -86,6 +86,8 @@ export default function ReadPage() {
   const [submitted, setSubmitted] = useState(false)
   const [socraticQuestionId, setSocraticQuestionId] = useState<string | null>(null)
   const [annotationActive, setAnnotationActive] = useState(false)
+  const [annotationTool, setAnnotationTool] = useState<"pen" | "highlight" | "underline" | "eraser">("pen")
+  const [annotationColor, setAnnotationColor] = useState("#ef4444")
   const [showAnnotationPrompt, setShowAnnotationPrompt] = useState(false)
 
   const { size: fontSize, increase, decrease } = useFontSize()
@@ -415,41 +417,98 @@ export default function ReadPage() {
 
   // 顶部导航栏（所有 section 共用）
   const topBar = (
-    <div className="border-b border-border px-4 py-2 flex items-center justify-between shrink-0">
-      <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" onClick={handleBackToList} className="h-7 px-2">← 返回</Button>
-        <span className="text-sm font-medium">{currentSection?.title}</span>
-      </div>
-      <div className="flex items-center gap-3">
-        {/* 标注模式切换 */}
-        <Button
-          variant={annotationActive ? "default" : "outline"}
-          size="sm"
-          onClick={() => setAnnotationActive(!annotationActive)}
-          className="h-7 px-2 text-xs"
-        >
-          {annotationActive ? "✏️ 标注中" : "📝 标注"}
-        </Button>
-        <div className="flex items-center gap-1">
-          <Button variant="outline" size="sm" onClick={decrease} className="h-6 w-6 p-0 text-xs">A</Button>
-          <span className="text-xs text-muted-foreground w-6 text-center">{fontSize}</span>
-          <Button variant="outline" size="sm" onClick={increase} className="h-6 w-6 p-0">A</Button>
+    <div className="border-b border-border px-4 py-2 shrink-0">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="sm" onClick={handleBackToList} className="h-7 px-2">← 返回</Button>
+          <span className="text-sm font-medium">{currentSection?.title}</span>
         </div>
-        <div className="flex gap-1">
-          {sections.map((s, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleGoToSection(idx)}
-              className={cn(
-                "px-2 py-1 rounded text-xs transition-colors",
-                idx === currentSectionIdx ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-accent"
-              )}
-            >
-              {sectionLabel(s)}
-            </button>
-          ))}
+        <div className="flex items-center gap-3">
+          {/* 标注模式切换 */}
+          <Button
+            variant={annotationActive ? "default" : "outline"}
+            size="sm"
+            onClick={() => setAnnotationActive(!annotationActive)}
+            className="h-7 px-2 text-xs"
+          >
+            {annotationActive ? "✏️ 标注中" : "📝 标注"}
+          </Button>
+          <div className="flex items-center gap-1">
+            <Button variant="outline" size="sm" onClick={decrease} className="h-6 w-6 p-0 text-xs">A</Button>
+            <span className="text-xs text-muted-foreground w-6 text-center">{fontSize}</span>
+            <Button variant="outline" size="sm" onClick={increase} className="h-6 w-6 p-0">A</Button>
+          </div>
+          <div className="flex gap-1">
+            {sections.map((s, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleGoToSection(idx)}
+                className={cn(
+                  "px-2 py-1 rounded text-xs transition-colors",
+                  idx === currentSectionIdx ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-accent"
+                )}
+              >
+                {sectionLabel(s)}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
+      {/* 标注工具栏 - 点击标注后展开 */}
+      {annotationActive && (
+        <div className="flex items-center gap-3 mt-2 pt-2 border-t border-border">
+          <span className="text-xs text-muted-foreground">工具：</span>
+          <div className="flex gap-1">
+            {[
+              { key: "pen", icon: "🖊", label: "画笔" },
+              { key: "highlight", icon: "🖍", label: "高亮" },
+              { key: "underline", icon: "📎", label: "下划线" },
+              { key: "eraser", icon: "🧹", label: "橡皮擦" },
+            ].map((t) => (
+              <button
+                key={t.key}
+                onClick={() => setAnnotationTool(t.key as any)}
+                className={cn(
+                  "px-2 py-1 rounded text-xs transition-all",
+                  annotationTool === t.key
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                )}
+                title={t.label}
+              >
+                {t.icon}
+              </button>
+            ))}
+          </div>
+          {annotationTool !== "eraser" && (
+            <>
+              <span className="text-xs text-muted-foreground">颜色：</span>
+              <div className="flex gap-1.5">
+                {[
+                  { name: "红", value: "#ef4444" },
+                  { name: "蓝", value: "#3b82f6" },
+                  { name: "绿", value: "#22c55e" },
+                  { name: "黄", value: "#eab308" },
+                ].map((c) => (
+                  <button
+                    key={c.value}
+                    onClick={() => setAnnotationColor(c.value)}
+                    className={cn(
+                      "w-5 h-5 rounded-full border-2 transition-all",
+                      annotationColor === c.value ? "border-foreground scale-110" : "border-transparent"
+                    )}
+                    style={{ background: c.value }}
+                    title={c.name}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+          <Button size="sm" variant="ghost" className="text-xs ml-auto" onClick={() => setAnnotationActive(false)}>
+            关闭标注
+          </Button>
+        </div>
+      )}
     </div>
   )
 
@@ -526,6 +585,8 @@ export default function ReadPage() {
               width={600}
               height={2000}
               active={annotationActive}
+              tool={annotationTool}
+              color={annotationColor}
               initialData={loadAnnotation(examType, selectedPaperId, currentSectionIdx) || []}
               onSave={(paths) => saveAnnotation(examType, selectedPaperId, currentSectionIdx, paths)}
             />

@@ -9,6 +9,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Separator } from "@/components/ui/separator"
 import { getExamPapers } from "@/lib/exam-data"
 import { loadConfig, isConfigValid } from "@/lib/api-config"
+import { cn } from "@/lib/utils"
+import { CanvasOverlay } from "@/components/canvas-overlay"
+import { saveAnnotation, loadAnnotation } from "@/lib/annotation-storage"
 import type { WritingQuestion, ExamType } from "@/types/exam"
 import { MarkdownContent } from "@/components/markdown-content"
 
@@ -82,6 +85,9 @@ export default function WritePage() {
   const [apiError, setApiError] = useState<string | null>(null)
   const [apiDone, setApiDone] = useState(false)
   const [savedDraft, setSavedDraft] = useState<string | null>(null)
+  const [annotationActive, setAnnotationActive] = useState(false)
+  const [annotationTool, setAnnotationTool] = useState<"pen" | "highlight" | "underline" | "eraser">("pen")
+  const [annotationColor, setAnnotationColor] = useState("#ef4444")
   const feedbackRef = useRef<HTMLDivElement>(null)
 
   // 获取完整达到标准的试卷
@@ -233,49 +239,133 @@ export default function WritePage() {
   // --- 做题界面 ---
   if (phase === "writing") {
     return (
-      <div className="flex h-screen">
-        {/* 左：题目 + 评分标准 */}
-        <div className="w-1/2 border-r border-border overflow-y-auto p-6 space-y-4">
+      <div className="flex flex-col h-screen">
+        {/* 顶部工具栏 */}
+        <div className="border-b border-border px-4 py-2 shrink-0">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-muted-foreground">📄 写作要求</h2>
-            <Button variant="ghost" size="sm" onClick={handleBackToList}>← 返回</Button>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" onClick={handleBackToList} className="h-7 px-2">← 返回</Button>
+              <span className="text-sm font-medium">写作练习</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Button
+                variant={annotationActive ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAnnotationActive(!annotationActive)}
+                className="h-7 px-2 text-xs"
+              >
+                {annotationActive ? "✏️ 标注中" : "📝 标注"}
+              </Button>
+            </div>
           </div>
-          <p className="text-sm leading-relaxed">{question?.prompt}</p>
-          <Separator />
-          <h3 className="text-xs font-semibold text-muted-foreground">评分标准</h3>
-          <div className="space-y-2">
-            {question?.scoring_rubric?.map(r => (
-              <div key={r.level} className="flex gap-2 text-xs">
-                <Badge variant="outline" className="shrink-0">{r.level}档</Badge>
-                <span className="text-muted-foreground">{r.description}</span>
+          {/* 标注工具栏 */}
+          {annotationActive && (
+            <div className="flex items-center gap-3 mt-2 pt-2 border-t border-border">
+              <span className="text-xs text-muted-foreground">工具：</span>
+              <div className="flex gap-1">
+                {[
+                  { key: "pen", icon: "🖊", label: "画笔" },
+                  { key: "highlight", icon: "🖍", label: "高亮" },
+                  { key: "underline", icon: "📎", label: "下划线" },
+                  { key: "eraser", icon: "🧹", label: "橡皮擦" },
+                ].map((t) => (
+                  <button
+                    key={t.key}
+                    onClick={() => setAnnotationTool(t.key as any)}
+                    className={cn(
+                      "px-2 py-1 rounded text-xs transition-all",
+                      annotationTool === t.key
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-accent"
+                    )}
+                    title={t.label}
+                  >
+                    {t.icon}
+                  </button>
+                ))}
               </div>
-            ))}
-          </div>
+              {annotationTool !== "eraser" && (
+                <>
+                  <span className="text-xs text-muted-foreground">颜色：</span>
+                  <div className="flex gap-1.5">
+                    {[
+                      { name: "红", value: "#ef4444" },
+                      { name: "蓝", value: "#3b82f6" },
+                      { name: "绿", value: "#22c55e" },
+                      { name: "黄", value: "#eab308" },
+                    ].map((c) => (
+                      <button
+                        key={c.value}
+                        onClick={() => setAnnotationColor(c.value)}
+                        className={cn(
+                          "w-5 h-5 rounded-full border-2 transition-all",
+                          annotationColor === c.value ? "border-foreground scale-110" : "border-transparent"
+                        )}
+                        style={{ background: c.value }}
+                        title={c.name}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+              <Button size="sm" variant="ghost" className="text-xs ml-auto" onClick={() => setAnnotationActive(false)}>
+                关闭标注
+              </Button>
+            </div>
+          )}
         </div>
 
-        {/* 右：写作输入 */}
-        <div className="w-1/2 flex flex-col">
-          <div className="flex-1 overflow-y-auto p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-muted-foreground">✍️ 你的作文</h2>
-              <span className="text-xs text-muted-foreground">{wordCount} / {question?.word_limit ?? 150} 词</span>
+        <div className="flex flex-1 overflow-hidden">
+          {/* 左：题目 + 评分标准 */}
+          <div className="w-1/2 border-r border-border overflow-y-auto p-6 space-y-4 relative">
+            <p className="text-sm leading-relaxed">{question?.prompt}</p>
+            <Separator />
+            <h3 className="text-xs font-semibold text-muted-foreground">评分标准</h3>
+            <div className="space-y-2">
+              {question?.scoring_rubric?.map(r => (
+                <div key={r.level} className="flex gap-2 text-xs">
+                  <Badge variant="outline" className="shrink-0">{r.level}档</Badge>
+                  <span className="text-muted-foreground">{r.description}</span>
+                </div>
+              ))}
             </div>
-            <Textarea
-              value={essay}
-              onChange={(e) => setEssay(e.target.value)}
-              placeholder="Write your essay here..."
-              className="min-h-[350px] resize-none text-sm leading-relaxed"
-            />
+            {selectedPaperId && (
+              <CanvasOverlay
+                width={600}
+                height={1500}
+                active={annotationActive}
+                tool={annotationTool}
+                color={annotationColor}
+                initialData={loadAnnotation(examType, selectedPaperId, 0) || []}
+                onSave={(paths) => saveAnnotation(examType, selectedPaperId, 0, paths)}
+              />
+            )}
           </div>
-          <div className="border-t border-border px-6 py-3 flex items-center justify-between shrink-0">
-            <span className="text-xs text-muted-foreground">
-              {isConfigValid(loadConfig()) ? (
-                <span className="text-emerald-400">✅ AI 批改已配置</span>
-              ) : (
-                <span>未配置 API，<a href="/settings" className="text-primary underline">去设置</a></span>
-              )}
-            </span>
-            <Button onClick={handleGrade} disabled={wordCount < 50}>提交批改</Button>
+
+          {/* 右：写作输入 */}
+          <div className="w-1/2 flex flex-col">
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm font-semibold text-muted-foreground">✍️ 你的作文</h2>
+                <span className="text-xs text-muted-foreground">{wordCount} / {question?.word_limit ?? 150} 词</span>
+              </div>
+              <Textarea
+                value={essay}
+                onChange={(e) => setEssay(e.target.value)}
+                placeholder="Write your essay here..."
+                className="min-h-[350px] resize-none text-sm leading-relaxed"
+              />
+            </div>
+            <div className="border-t border-border px-6 py-3 flex items-center justify-between shrink-0">
+              <span className="text-xs text-muted-foreground">
+                {isConfigValid(loadConfig()) ? (
+                  <span className="text-emerald-400">✅ AI 批改已配置</span>
+                ) : (
+                  <span>未配置 API，<a href="/settings" className="text-primary underline">去设置</a></span>
+                )}
+              </span>
+              <Button onClick={handleGrade} disabled={wordCount < 50}>提交批改</Button>
+            </div>
           </div>
         </div>
       </div>
