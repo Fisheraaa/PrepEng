@@ -18,6 +18,8 @@ import { saveMistake } from "@/lib/storage"
 import { SocraticChat } from "@/components/socratic-chat"
 import { BankedCloze } from "@/components/banked-cloze"
 import { MatchingSection } from "@/components/matching-section"
+import { CanvasOverlay } from "@/components/canvas-overlay"
+import { saveAnnotation, loadAnnotation, hasAnnotation } from "@/lib/annotation-storage"
 import type { ChoiceQuestion, ExamPaper, Section, ExamType } from "@/types/exam"
 
 // ============================================================
@@ -83,6 +85,8 @@ export default function ReadPage() {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
   const [socraticQuestionId, setSocraticQuestionId] = useState<string | null>(null)
+  const [annotationActive, setAnnotationActive] = useState(false)
+  const [showAnnotationPrompt, setShowAnnotationPrompt] = useState(false)
 
   const { size: fontSize, increase, decrease } = useFontSize()
 
@@ -199,7 +203,11 @@ export default function ReadPage() {
     setSelectedAnswers({})
     setSubmitted(false)
     setPhase("reading")
-  }, [])
+    // 检查是否有标注存档
+    if (hasAnnotation(examType, paperId, 0)) {
+      setShowAnnotationPrompt(true)
+    }
+  }, [examType])
 
   const handleBackToList = useCallback(() => {
     setSelectedPaperId(null)
@@ -369,6 +377,42 @@ export default function ReadPage() {
 
   // --- 做题页面 ---
 
+  // 标注存档提示
+  if (showAnnotationPrompt) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Card className="max-w-md">
+          <CardHeader>
+            <CardTitle>发现标注存档</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              检测到之前的标注记录，是否加载？
+            </p>
+            <div className="flex gap-3">
+              <Button
+                onClick={() => {
+                  setAnnotationActive(true)
+                  setShowAnnotationPrompt(false)
+                }}
+                className="flex-1"
+              >
+                加载标注
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowAnnotationPrompt(false)}
+                className="flex-1"
+              >
+                新开空白
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
   // 顶部导航栏（所有 section 共用）
   const topBar = (
     <div className="border-b border-border px-4 py-2 flex items-center justify-between shrink-0">
@@ -377,6 +421,15 @@ export default function ReadPage() {
         <span className="text-sm font-medium">{currentSection?.title}</span>
       </div>
       <div className="flex items-center gap-3">
+        {/* 标注模式切换 */}
+        <Button
+          variant={annotationActive ? "default" : "outline"}
+          size="sm"
+          onClick={() => setAnnotationActive(!annotationActive)}
+          className="h-7 px-2 text-xs"
+        >
+          {annotationActive ? "✏️ 标注中" : "📝 标注"}
+        </Button>
         <div className="flex items-center gap-1">
           <Button variant="outline" size="sm" onClick={decrease} className="h-6 w-6 p-0 text-xs">A</Button>
           <span className="text-xs text-muted-foreground w-6 text-center">{fontSize}</span>
@@ -464,10 +517,19 @@ export default function ReadPage() {
     <div className="flex flex-col h-screen">
       {topBar}
       <div className="flex flex-1 overflow-hidden">
-        <div className="w-1/2 border-r border-border overflow-y-auto p-6">
+        <div className="w-1/2 border-r border-border overflow-y-auto p-6 relative">
           <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
             {currentSection?.passage}
           </div>
+          {selectedPaperId && (
+            <CanvasOverlay
+              width={600}
+              height={2000}
+              active={annotationActive}
+              initialData={loadAnnotation(examType, selectedPaperId, currentSectionIdx) || []}
+              onSave={(paths) => saveAnnotation(examType, selectedPaperId, currentSectionIdx, paths)}
+            />
+          )}
         </div>
         <div className="w-1/2 overflow-y-auto p-6 space-y-6">
           {questions.map((q, qIdx) => (
