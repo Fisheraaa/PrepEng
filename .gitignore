@@ -3,11 +3,13 @@ node_modules/
 out/
 .env.local
 
-# 音频和PDF资源（太大，不进git）
-public/**/*.mp3
-public/**/*.MP3
+# PDF和文档资源（太大，不进git）
 public/**/*.pdf
 public/**/*.PDF
 public/**/*.docx
 public/**/*.doc
 public/**/*.txt
+
+# 允许音频文件（听力需要）
+# public/**/*.mp3
+# public/**/*.MP3

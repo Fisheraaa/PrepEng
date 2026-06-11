@@ -11,7 +11,7 @@ interface ExtractedSection {
   passage?: string
   bank?: string[]
   paragraphs?: Record<string, string>
-  questions: {
+  questions?: {
     id: string
     content: string
     options?: string[]
