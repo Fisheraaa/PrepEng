@@ -842,7 +842,7 @@
               "H)offences"
             ],
             "answer": "H",
-            "explanation": "H) contribute，表示'对...做出贡献'。"
+            "explanation": "H) contribute，表示'对...做出贡献'。故选H。"
           },
           {
             "id": "q27",
@@ -865,7 +865,7 @@
               "H)offences"
             ],
             "answer": "D",
-            "explanation": "D) fascinating，表示'迷人的'。"
+            "explanation": "D) fascinating，表示'迷人的'。故选D。"
           },
           {
             "id": "q28",
@@ -888,7 +888,7 @@
               "H)offences"
             ],
             "answer": "A",
-            "explanation": "A) explore，表示'探索'。"
+            "explanation": "A) explore，表示'探索'。故选A。"
           },
           {
             "id": "q29",
@@ -911,7 +911,7 @@
               "H)offences"
             ],
             "answer": "F",
-            "explanation": "F) challenge，表示'挑战'。"
+            "explanation": "F) challenge，表示'挑战'。故选F。"
           },
           {
             "id": "q30",
@@ -934,7 +934,7 @@
               "H)offences"
             ],
             "answer": "G",
-            "explanation": "G) inspire，表示'启发'。"
+            "explanation": "G) inspire，表示'启发'。故选G。"
           },
           {
             "id": "q31",
@@ -957,7 +957,7 @@
               "H)offences"
             ],
             "answer": "L",
-            "explanation": "L) transform，表示'改变'。"
+            "explanation": "L) transform，表示'改变'。故选L。"
           },
           {
             "id": "q32",
@@ -980,7 +980,7 @@
               "H)offences"
             ],
             "answer": "O",
-            "explanation": "O) promote，表示'促进'。"
+            "explanation": "O) promote，表示'促进'。故选O。"
           },
           {
             "id": "q33",
@@ -1003,7 +1003,7 @@
               "H)offences"
             ],
             "answer": "N",
-            "explanation": "N) struggle，表示'挣扎'。"
+            "explanation": "N) struggle，表示'挣扎'。故选N。"
           },
           {
             "id": "q34",
@@ -1026,7 +1026,7 @@
               "H)offences"
             ],
             "answer": "B",
-            "explanation": "B) appreciate，表示'欣赏'。"
+            "explanation": "B) appreciate，表示'欣赏'。故选B。"
           },
           {
             "id": "q35",
@@ -1049,7 +1049,7 @@
               "H)offences"
             ],
             "answer": "I",
-            "explanation": "I) discover，表示'发现'。"
+            "explanation": "I) discover，表示'发现'。故选I。"
           }
         ]
       },
@@ -1063,61 +1063,61 @@
             "id": "q36",
             "content": "Fruit juice is different from whole fruit in that it contains much less fibre.",
             "answer": "E",
-            "explanation": "E段提到远程工作可以减少通勤时间和交通拥堵。"
+            "explanation": "E段提到远程工作可以减少通勤时间和交通拥堵。故选E。"
           },
           {
             "id": "q37",
             "content": "Some people believe a juice diet helps to rid our body of harmful or poisonous substances.",
             "answer": "G",
-            "explanation": "G段提到远程工作可能带来的社交隔离问题。"
+            "explanation": "G段提到远程工作可能带来的社交隔离问题。故选G。"
           },
           {
             "id": "q38",
             "content": "A lot of research comes to the same conclusion that fruit juice does harm to the human body when it leads to surplus calories.",
             "answer": "A",
-            "explanation": "A段提到远程工作的趋势在疫情后加速。"
+            "explanation": "A段提到远程工作的趋势在疫情后加速。故选A。"
           },
           {
             "id": "q39",
             "content": "The claimed health benefits of fruit and vegetable juices have rendered the industry very profitable.",
             "answer": "K",
-            "explanation": "K段提到公司正在开发新的协作工具。"
+            "explanation": "K段提到公司正在开发新的协作工具。故选K。"
           },
           {
             "id": "q40",
             "content": "To increase the benefits of fruit juice to our health, we'd better choose ripe fruit to make juice.",
             "answer": "C",
-            "explanation": "C段提到远程工作对环境有积极影响。"
+            "explanation": "C段提到远程工作对环境有积极影响。故选C。"
           },
           {
             "id": "q41",
             "content": "Diets containing large amounts of fibre reduce the risk of heart disease, diabetes and other health hazards.",
             "answer": "H",
-            "explanation": "H段提到远程工作需要更好的时间管理技能。"
+            "explanation": "H段提到远程工作需要更好的时间管理技能。故选H。"
           },
           {
             "id": "q42",
             "content": "According to a research paper, drinking fruit juice is beneficial on condition that it is consumed in reasonable amounts.",
             "answer": "F",
-            "explanation": "F段提到远程工作可能影响职业晋升机会。"
+            "explanation": "F段提到远程工作可能影响职业晋升机会。故选F。"
           },
           {
             "id": "q43",
             "content": "One expert claims that juicing wastes a lot of nutrients contained in fruits.",
             "answer": "B",
-            "explanation": "B段提到远程工作可以提高员工满意度。"
+            "explanation": "B段提到远程工作可以提高员工满意度。故选B。"
           },
           {
             "id": "q44",
             "content": "It takes some time for fruit's cells to be digested and for fructose to be absorbed.",
             "answer": "L",
-            "explanation": "L段提到混合办公模式可能是未来的趋势。"
+            "explanation": "L段提到混合办公模式可能是未来的趋势。故选L。"
           },
           {
             "id": "q45",
             "content": "A lot of research has demonstrated that drinking fruit juice does not reduce our daily consumption of other foods.",
             "answer": "D",
-            "explanation": "D段提到远程工作对不同行业的影响不同。"
+            "explanation": "D段提到远程工作对不同行业的影响不同。故选D。"
           }
         ]
       },
@@ -4915,55 +4915,55 @@
             "id": "q37",
             "content": "No proof has been found from an extensive search that Jackson had ever owned the land where the oak tree grew 38. When it was raining heavily,Jackson often took shelter under a big tree that is said to own itself. 39. There is no evidence that Jacksonhad made arrangements to pay property taxes for the land onwhich the oak tree sat. 40. Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "H",
-            "explanation": "H段提到没有证据表明Jackson曾经拥有过这棵树。"
+            "explanation": "H段提到没有证据表明Jackson曾经拥有过这棵树。故选H。"
           },
           {
             "id": "q38",
             "content": "When it was raining heavily,Jackson often took shelter under a big tree that is said to own itself. 39. There is no evidence that Jacksonhad made arrangements to pay property taxes for the land onwhich the oak tree sat. 40. Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "C",
-            "explanation": "C段提到这棵树在1942年被一场风暴刮倒了。"
+            "explanation": "C段提到这棵树在1942年被一场风暴刮倒了。故选C。"
           },
           {
             "id": "q39",
             "content": "There is no evidence that Jacksonhad made arrangements to pay property taxes for the land onwhich the oak tree sat. 40. Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "F",
-            "explanation": "F段提到社区种植了一棵新的橡树作为替代。"
+            "explanation": "F段提到社区种植了一棵新的橡树作为替代。故选F。"
           },
           {
             "id": "q40",
             "content": "Professor Ward paid Jackson over one thousand dollars when purchasing a piece ofland from him. 41. It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "A",
-            "explanation": "A段提到这棵树位于乔治亚州雅典市。"
+            "explanation": "A段提到这棵树位于乔治亚州雅典市。故选A。"
           },
           {
             "id": "q41",
             "content": "It is said the tree that owned itself fell in a heavy windstorm. 42. The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "G",
-            "explanation": "G段提到这棵树拥有自己的法律地位。"
+            "explanation": "G段提到这棵树拥有自己的法律地位。故选G。"
           },
           {
             "id": "q42",
             "content": "The story of the oak tree is suspected to have been invented as a thought exercise. 43. Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "D",
-            "explanation": "D段提到Jackson在遗嘱中将树的所有权转让给树本身。"
+            "explanation": "D段提到Jackson在遗嘱中将树的所有权转让给树本身。故选D。"
           },
           {
             "id": "q43",
             "content": "Jackson's little plantation was auctioned off to settle his debt in the mid-19 th century 44. An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "B",
-            "explanation": "B段提到这个故事成为了当地的传奇。"
+            "explanation": "B段提到这个故事成为了当地的传奇。故选B。"
           },
           {
             "id": "q44",
             "content": "An official ceremony was held to celebrate the transplantingof a small tree to where its ancestor had stood. 45. The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "E",
-            "explanation": "E段提到这棵树成为了旅游景点。"
+            "explanation": "E段提到这棵树成为了旅游景点。故选E。"
           },
           {
             "id": "q45",
             "content": "The story of the Tree That Owns Itself appeared in the local paper several times,with slight alterations in wording.",
             "answer": "I",
-            "explanation": "I段提到这个案例引发了关于自然权利的讨论。"
+            "explanation": "I段提到这个案例引发了关于自然权利的讨论。故选I。"
           }
         ]
       },
@@ -4983,7 +4983,7 @@
               "D)Blocked communication."
             ],
             "answer": "J",
-            "explanation": "J段提到这个故事展示了人类与自然的特殊关系。"
+            "explanation": "J段提到这个故事展示了人类与自然的特殊关系。故选J。"
           },
           {
             "id": "q47",
