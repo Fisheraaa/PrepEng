@@ -42,21 +42,21 @@ const examInfo: Record<
       {
         name: "阅读",
         href: "/read",
-        icon: "📖",
+        icon: "▣",
         weight: "35%",
         description: "选词填空 + 信息匹配 + 仔细阅读",
       },
       {
         name: "写作",
         href: "/write",
-        icon: "✍️",
+        icon: "🖋",
         weight: "15%",
         description: "30分钟，120-180词短文",
       },
       {
         name: "翻译",
         href: "/translate",
-        icon: "🔄",
+        icon: "▤",
         weight: "15%",
         description: "汉译英段落翻译",
       },
@@ -75,21 +75,21 @@ const examInfo: Record<
       {
         name: "阅读",
         href: "/read",
-        icon: "📖",
+        icon: "▣",
         weight: "35%",
         description: "选词填空 + 信息匹配 + 仔细阅读",
       },
       {
         name: "写作",
         href: "/write",
-        icon: "✍️",
+        icon: "🖋",
         weight: "15%",
         description: "30分钟，150-200词短文",
       },
       {
         name: "翻译",
         href: "/translate",
-        icon: "🔄",
+        icon: "▤",
         weight: "15%",
         description: "汉译英段落翻译",
       },
@@ -108,14 +108,14 @@ const examInfo: Record<
       {
         name: "阅读",
         href: "/read",
-        icon: "📖",
+        icon: "▣",
         weight: "25%",
         description: "3 passages, 40 questions",
       },
       {
         name: "写作",
         href: "/write",
-        icon: "✍️",
+        icon: "🖋",
         weight: "25%",
         description: "Task 1 (图表) + Task 2 (议论文)",
       },
@@ -164,9 +164,9 @@ export default function ExamDashboard() {
       <div className="grid grid-cols-4 gap-4">
         {[
           { label: "题库套数", value: String(paperCount), icon: "📚" },
-          { label: "错题数", value: String(mistakeCount), icon: "📝" },
+          { label: "错题数", value: String(mistakeCount), icon: "◔" },
           { label: "正确率", value: mistakeCount > 0 ? `${Math.max(0, 100 - mistakeCount * 5)}%` : "--", icon: "✅" },
-          { label: "待复习", value: String(dueCount), icon: "🔄" },
+          { label: "待复习", value: String(dueCount), icon: "▤" },
         ].map((stat) => (
           <Card key={stat.label}>
             <CardContent className="pt-4 pb-3 px-4">

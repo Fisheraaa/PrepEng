@@ -16,6 +16,11 @@
 | listening section | 3个，题目数 = 25（7+8+10） |
 | reading section | 4个，题目数 = 30（10+10+5+5） |
 | translation section | 存在，source_text 长度 > 20，reference_translation 长度 > 20 |
+| 选词填空 bank | 必须有 15 个词（A-O） |
+| 选词填空 passage | 必须有数字标记（26, 27, 28...）表示空白位置 |
+| 选词填空答案 | 答案必须在 bank 中存在 |
+| 信息匹配 passage | 必须有段落标记（A), B), C)...） |
+| 阅读 passage 段落 | 段落之间应有空行分隔（如果原始数据有的话） |
 
 ### 2. 格式检查
 

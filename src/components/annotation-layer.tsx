@@ -389,16 +389,16 @@ export function AnnotationLayer({
       />
 
       {active && (
-        <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+        <div className="fixed bottom-6 right-6 z-50 flex gap-2">
           <button
             onClick={handleUndo}
-            className="px-3 py-1.5 rounded-lg text-xs bg-card border shadow-md hover:bg-accent transition-all font-medium"
+            className="px-4 py-2 rounded-lg text-sm bg-card border shadow-lg hover:bg-accent transition-all font-medium"
           >
             ↩ 撤销
           </button>
           <button
             onClick={handleClear}
-            className="px-3 py-1.5 rounded-lg text-xs bg-card border shadow-md hover:bg-accent transition-all font-medium"
+            className="px-4 py-2 rounded-lg text-sm bg-card border shadow-lg hover:bg-accent transition-all font-medium"
           >
             🗑 清空
           </button>

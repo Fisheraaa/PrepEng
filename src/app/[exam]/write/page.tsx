@@ -329,7 +329,7 @@ export default function WritePage() {
                 </div>
               ))}
             </div>
-            {selectedPaperId && (
+            {selectedPaperId && annotationActive && (
               <AnnotationLayer
                 containerRef={contentRef}
                 active={annotationActive}

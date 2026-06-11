@@ -662,7 +662,7 @@ export default function ReadPage() {
             <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
               {currentSection.passage || "（文章加载中...）"}
             </div>
-            {selectedPaperId && (
+            {selectedPaperId && annotationActive && (
               <AnnotationLayer
                 containerRef={contentRef}
                 active={annotationActive}
@@ -709,7 +709,7 @@ export default function ReadPage() {
           <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
             {currentSection?.passage}
           </div>
-          {selectedPaperId && (
+          {selectedPaperId && annotationActive && (
             <AnnotationLayer
               containerRef={contentRef}
               active={annotationActive}
