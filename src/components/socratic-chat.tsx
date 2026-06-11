@@ -123,10 +123,17 @@ export function SocraticChat({
           }
         }
 
-        setMessages((prev) => [
-          ...prev,
-          { role: "assistant", content: fullText },
-        ])
+        if (fullText.trim()) {
+          setMessages((prev) => [
+            ...prev,
+            { role: "assistant", content: fullText },
+          ])
+        } else {
+          setMessages((prev) => [
+            ...prev,
+            { role: "assistant", content: "△ AI 未返回内容，请重试。" },
+          ])
+        }
         setStreamingText("")
       } catch (err) {
         setMessages((prev) => [
