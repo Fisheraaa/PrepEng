@@ -1,0 +1,554 @@
+"use client"
+
+import { useRef, useState, useEffect, useCallback } from "react"
+import { cn } from "@/lib/utils"
+
+// ============================================================
+// 数据结构
+// ============================================================
+
+interface Point {
+  x: number
+  y: number
+}
+
+interface PenPath {
+  id: string
+  type: "pen"
+  color: string
+  width: number
+  points: Point[]
+}
+
+interface TextMark {
+  id: string
+  type: "highlight" | "underline"
+  color: string
+  text: string
+  // 在文本中的位置
+  startOffset: number
+  endOffset: number
+  // 用于定位的容器选择器
+  containerPath: string
+}
+
+type Annotation = PenPath | TextMark
+
+interface AnnotationLayerProps {
+  containerRef: React.RefObject<HTMLElement | null>
+  active: boolean
+  tool: "pen" | "highlight" | "underline" | "eraser"
+  color: string
+  lineWidth: number
+  onAnnotationsChange?: (annotations: Annotation[]) => void
+  initialAnnotations?: Annotation[]
+}
+
+// ============================================================
+// 工具函数
+// ============================================================
+
+function generateId() {
+  return Math.random().toString(36).substr(2, 9)
+}
+
+function getElementPath(el: HTMLElement): string {
+  const path: string[] = []
+  let current: HTMLElement | null = el
+  while (current && current !== document.body) {
+    const tag = current.tagName.toLowerCase()
+    const index = current.parentElement
+      ? Array.from(current.parentElement.children).indexOf(current)
+      : 0
+    path.unshift(`${tag}[${index}]`)
+    current = current.parentElement
+  }
+  return path.join("/")
+}
+
+// ============================================================
+// 主组件
+// ============================================================
+
+export function AnnotationLayer({
+  containerRef,
+  active,
+  tool,
+  color,
+  lineWidth,
+  onAnnotationsChange,
+  initialAnnotations = [],
+}: AnnotationLayerProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [annotations, setAnnotations] = useState<Annotation[]>(initialAnnotations)
+  const [isDrawing, setIsDrawing] = useState(false)
+  const [currentPenPath, setCurrentPenPath] = useState<Point[]>([])
+
+  // 同步 canvas 大小
+  useEffect(() => {
+    const container = containerRef.current
+    const canvas = canvasRef.current
+    if (!container || !canvas) return
+
+    const resizeObserver = new ResizeObserver(() => {
+      canvas.width = container.scrollWidth
+      canvas.height = container.scrollHeight
+      redraw()
+    })
+
+    resizeObserver.observe(container)
+    canvas.width = container.scrollWidth
+    canvas.height = container.scrollHeight
+
+    return () => resizeObserver.disconnect()
+  }, [containerRef])
+
+  // 重新绘制所有画笔路径
+  const redraw = useCallback(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    for (const ann of annotations) {
+      if (ann.type === "pen") {
+        drawPenPath(ctx, ann)
+      }
+    }
+
+    // 绘制当前路径
+    if (currentPenPath.length >= 2 && tool === "pen") {
+      drawPenPath(ctx, {
+        id: "current",
+        type: "pen",
+        color,
+        width: lineWidth,
+        points: currentPenPath,
+      })
+    }
+  }, [annotations, currentPenPath, tool, color, lineWidth])
+
+  useEffect(() => {
+    redraw()
+  }, [redraw])
+
+  // 绘制画笔路径
+  function drawPenPath(ctx: CanvasRenderingContext2D, path: PenPath) {
+    if (path.points.length < 2) return
+    ctx.beginPath()
+    ctx.strokeStyle = path.color
+    ctx.lineWidth = path.width
+    ctx.lineCap = "round"
+    ctx.lineJoin = "round"
+    ctx.globalAlpha = 1
+    ctx.moveTo(path.points[0].x, path.points[0].y)
+    for (let i = 1; i < path.points.length; i++) {
+      ctx.lineTo(path.points[i].x, path.points[i].y)
+    }
+    ctx.stroke()
+  }
+
+  // 获取相对于容器的坐标
+  const getRelativePos = (e: MouseEvent | TouchEvent): Point => {
+    const container = containerRef.current!
+    const rect = container.getBoundingClientRect()
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX
+    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY
+    return {
+      x: clientX - rect.left + container.scrollLeft,
+      y: clientY - rect.top + container.scrollTop,
+    }
+  }
+
+  // 鼠标事件处理
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container || !active) return
+
+    const handleMouseDown = (e: MouseEvent) => {
+      if (tool === "eraser") {
+        // 橡皮擦：删除点击位置的标注
+        const pos = getRelativePos(e)
+        eraseAtPoint(pos)
+      } else if (tool === "pen") {
+        setIsDrawing(true)
+        setCurrentPenPath([getRelativePos(e)])
+      } else if (tool === "highlight" || tool === "underline") {
+        // 高亮/下划线：处理文字选择
+        handleTextMark(tool, color)
+      }
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDrawing || tool !== "pen") return
+      setCurrentPenPath((prev) => [...prev, getRelativePos(e)])
+    }
+
+    const handleMouseUp = () => {
+      if (!isDrawing || tool !== "pen") return
+      setIsDrawing(false)
+      if (currentPenPath.length >= 2) {
+        const newAnnotation: PenPath = {
+          id: generateId(),
+          type: "pen",
+          color,
+          width: lineWidth,
+          points: currentPenPath,
+        }
+        setAnnotations((prev) => {
+          const updated = [...prev, newAnnotation]
+          onAnnotationsChange?.(updated)
+          return updated
+        })
+      }
+      setCurrentPenPath([])
+    }
+
+    container.addEventListener("mousedown", handleMouseDown)
+    container.addEventListener("mousemove", handleMouseMove)
+    container.addEventListener("mouseup", handleMouseUp)
+    container.addEventListener("mouseleave", handleMouseUp)
+
+    return () => {
+      container.removeEventListener("mousedown", handleMouseDown)
+      container.removeEventListener("mousemove", handleMouseMove)
+      container.removeEventListener("mouseup", handleMouseUp)
+      container.removeEventListener("mouseleave", handleMouseUp)
+    }
+  }, [containerRef, active, tool, color, lineWidth, isDrawing, currentPenPath])
+
+  // 处理文字标记（高亮/下划线）
+  const handleTextMark = (type: "highlight" | "underline", markColor: string) => {
+    const selection = window.getSelection()
+    if (!selection || selection.isCollapsed) return
+
+    const selectedText = selection.toString().trim()
+    if (!selectedText) return
+
+    // 获取选区的范围
+    const range = selection.getRangeAt(0)
+    const container = containerRef.current
+
+    // 创建高亮/下划线元素
+    const mark = document.createElement("mark")
+    mark.style.backgroundColor = type === "highlight" ? markColor + "40" : "transparent"
+    mark.style.borderBottom = type === "underline" ? `2px solid ${markColor}` : "none"
+    mark.style.padding = type === "highlight" ? "2px 0" : "0"
+    mark.dataset.annotationId = generateId()
+
+    try {
+      range.surroundContents(mark)
+    } catch (e) {
+      // 如果选区跨越多个元素，用更简单的方式
+      const span = document.createElement("span")
+      span.style.backgroundColor = type === "highlight" ? markColor + "40" : "transparent"
+      span.style.borderBottom = type === "underline" ? `2px solid ${markColor}` : "none"
+      span.textContent = selectedText
+      range.deleteContents()
+      range.insertNode(span)
+    }
+
+    // 保存标注记录
+    const newAnnotation: TextMark = {
+      id: mark.dataset.annotationId!,
+      type,
+      color: markColor,
+      text: selectedText,
+      startOffset: range.startOffset,
+      endOffset: range.endOffset,
+      containerPath: getElementPath(range.startContainer.parentElement as HTMLElement),
+    }
+
+    setAnnotations((prev) => {
+      const updated = [...prev, newAnnotation]
+      onAnnotationsChange?.(updated)
+      return updated
+    })
+
+    selection.empty()
+  }
+
+  // 橡皮擦：删除点击位置的标注
+  const eraseAtPoint = (pos: Point) => {
+    // 检查是否点击了画笔路径
+    for (const ann of annotations) {
+      if (ann.type === "pen") {
+        for (let i = 0; i < ann.points.length - 1; i++) {
+          const p1 = ann.points[i]
+          const p2 = ann.points[i + 1]
+          const dist = pointToLineDistance(pos, p1, p2)
+          if (dist < 10) {
+            setAnnotations((prev) => {
+              const updated = prev.filter((a) => a.id !== ann.id)
+              onAnnotationsChange?.(updated)
+              return updated
+            })
+            return
+          }
+        }
+      }
+    }
+
+    // 检查是否点击了文字标记
+    const container = containerRef.current
+    if (container) {
+      const marks = container.querySelectorAll("[data-annotation-id]")
+      marks.forEach((mark) => {
+        const rect = mark.getBoundingClientRect()
+        const containerRect = container.getBoundingClientRect()
+        const markPos = {
+          x: rect.left - containerRect.left + container.scrollLeft,
+          y: rect.top - containerRect.top + container.scrollTop,
+          width: rect.width,
+          height: rect.height,
+        }
+        if (
+          pos.x >= markPos.x &&
+          pos.x <= markPos.x + markPos.width &&
+          pos.y >= markPos.y &&
+          pos.y <= markPos.y + markPos.height
+        ) {
+          const annId = (mark as HTMLElement).dataset.annotationId
+          // 移除标记元素，保留文本
+          const text = mark.textContent || ""
+          const parent = mark.parentNode
+          if (parent) {
+            parent.replaceChild(document.createTextNode(text), mark)
+            parent.normalize()
+          }
+          setAnnotations((prev) => {
+            const updated = prev.filter((a) => a.id !== annId)
+            onAnnotationsChange?.(updated)
+            return updated
+          })
+        }
+      })
+    }
+  }
+
+  // 计算点到线段的距离
+  function pointToLineDistance(point: Point, lineStart: Point, lineEnd: Point): number {
+    const A = point.x - lineStart.x
+    const B = point.y - lineStart.y
+    const C = lineEnd.x - lineStart.x
+    const D = lineEnd.y - lineStart.y
+
+    const dot = A * C + B * D
+    const lenSq = C * C + D * D
+    let param = -1
+    if (lenSq !== 0) param = dot / lenSq
+
+    let xx: number, yy: number
+    if (param < 0) {
+      xx = lineStart.x
+      yy = lineStart.y
+    } else if (param > 1) {
+      xx = lineEnd.x
+      yy = lineEnd.y
+    } else {
+      xx = lineStart.x + param * C
+      yy = lineStart.y + param * D
+    }
+
+    return Math.sqrt((point.x - xx) ** 2 + (point.y - yy) ** 2)
+  }
+
+  // 撤销
+  const handleUndo = () => {
+    setAnnotations((prev) => {
+      const last = prev[prev.length - 1]
+      if (last?.type !== "pen") {
+        // 如果是文字标记，需要移除 DOM 元素
+        const container = containerRef.current
+        if (container) {
+          const mark = container.querySelector(`[data-annotation-id="${last?.id}"]`)
+          if (mark) {
+            const text = mark.textContent || ""
+            const parent = mark.parentNode
+            if (parent) {
+              parent.replaceChild(document.createTextNode(text), mark)
+              parent.normalize()
+            }
+          }
+        }
+      }
+      const updated = prev.slice(0, -1)
+      onAnnotationsChange?.(updated)
+      return updated
+    })
+  }
+
+  // 清空
+  const handleClear = () => {
+    // 移除所有文字标记
+    const container = containerRef.current
+    if (container) {
+      const marks = container.querySelectorAll("[data-annotation-id]")
+      marks.forEach((mark) => {
+        const text = mark.textContent || ""
+        const parent = mark.parentNode
+        if (parent) {
+          parent.replaceChild(document.createTextNode(text), mark)
+          parent.normalize()
+        }
+      })
+    }
+    setAnnotations([])
+    onAnnotationsChange?.([])
+  }
+
+  return (
+    <>
+      {/* 画笔画布 */}
+      <canvas
+        ref={canvasRef}
+        className={cn(
+          "absolute inset-0 pointer-events-none",
+          active && tool === "pen" && "pointer-events-auto cursor-crosshair",
+          active && tool === "eraser" && "pointer-events-auto cursor-pointer"
+        )}
+        style={{ zIndex: active ? 10 : -1 }}
+      />
+
+      {/* 操作按钮 */}
+      {active && (
+        <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+          <button
+            onClick={handleUndo}
+            className="px-3 py-1.5 rounded-lg text-xs bg-card border shadow-md hover:bg-accent transition-all font-medium"
+          >
+            ↩ 撤销
+          </button>
+          <button
+            onClick={handleClear}
+            className="px-3 py-1.5 rounded-lg text-xs bg-card border shadow-md hover:bg-accent transition-all font-medium"
+          >
+            🗑 清空
+          </button>
+        </div>
+      )}
+    </>
+  )
+}
+
+// ============================================================
+// 存档管理
+// ============================================================
+
+export interface AnnotationSaveData {
+  name: string
+  annotations: Annotation[]
+  createdAt: number
+  updatedAt: number
+}
+
+const STORAGE_PREFIX = "annotation-"
+
+export function getStorageKey(examType: string, paperId: string, sectionIdx: number): string {
+  return `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}`
+}
+
+export function saveAnnotations(
+  examType: string,
+  paperId: string,
+  sectionIdx: number,
+  annotations: Annotation[],
+  name?: string
+): void {
+  try {
+    const key = getStorageKey(examType, paperId, sectionIdx)
+    const existing = loadAnnotationSaveData(examType, paperId, sectionIdx)
+
+    const data: AnnotationSaveData = {
+      name: name || existing?.name || `存档 ${new Date().toLocaleString()}`,
+      annotations,
+      createdAt: existing?.createdAt || Date.now(),
+      updatedAt: Date.now(),
+    }
+    localStorage.setItem(key, JSON.stringify(data))
+  } catch {}
+}
+
+export function loadAnnotationSaveData(
+  examType: string,
+  paperId: string,
+  sectionIdx: number
+): AnnotationSaveData | null {
+  try {
+    const key = getStorageKey(examType, paperId, sectionIdx)
+    const raw = localStorage.getItem(key)
+    if (!raw) return null
+    return JSON.parse(raw)
+  } catch {
+    return null
+  }
+}
+
+export function loadAnnotations(
+  examType: string,
+  paperId: string,
+  sectionIdx: number
+): Annotation[] {
+  const data = loadAnnotationSaveData(examType, paperId, sectionIdx)
+  return data?.annotations || []
+}
+
+export function deleteAnnotations(
+  examType: string,
+  paperId: string,
+  sectionIdx: number
+): void {
+  try {
+    const key = getStorageKey(examType, paperId, sectionIdx)
+    localStorage.removeItem(key)
+  } catch {}
+}
+
+export function hasAnnotations(
+  examType: string,
+  paperId: string,
+  sectionIdx: number
+): boolean {
+  try {
+    const key = getStorageKey(examType, paperId, sectionIdx)
+    return localStorage.getItem(key) !== null
+  } catch {
+    return false
+  }
+}
+
+export function renameAnnotationSave(
+  examType: string,
+  paperId: string,
+  sectionIdx: number,
+  newName: string
+): void {
+  try {
+    const data = loadAnnotationSaveData(examType, paperId, sectionIdx)
+    if (data) {
+      data.name = newName
+      const key = getStorageKey(examType, paperId, sectionIdx)
+      localStorage.setItem(key, JSON.stringify(data))
+    }
+  } catch {}
+}
+
+export function getAnnotationsForPaper(
+  examType: string,
+  paperId: string
+): Array<{ sectionIdx: number; data: AnnotationSaveData }> {
+  try {
+    const result: Array<{ sectionIdx: number; data: AnnotationSaveData }> = []
+    for (let i = 0; i < 10; i++) {
+      const data = loadAnnotationSaveData(examType, paperId, i)
+      if (data) {
+        result.push({ sectionIdx: i, data })
+      }
+    }
+    return result
+  } catch {
+    return []
+  }
+}

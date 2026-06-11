@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
@@ -18,8 +18,7 @@ import { saveMistake } from "@/lib/storage"
 import { SocraticChat } from "@/components/socratic-chat"
 import { BankedCloze } from "@/components/banked-cloze"
 import { MatchingSection } from "@/components/matching-section"
-import { CanvasOverlay } from "@/components/canvas-overlay"
-import { saveAnnotation, loadAnnotation, hasAnnotation, loadAnnotationData, renameAnnotation } from "@/lib/annotation-storage"
+import { AnnotationLayer, saveAnnotations, loadAnnotations, hasAnnotations, loadAnnotationSaveData as loadAnnotationData, getAnnotationsForPaper } from "@/components/annotation-layer"
 import type { ChoiceQuestion, ExamPaper, Section, ExamType } from "@/types/exam"
 
 // ============================================================
@@ -89,6 +88,7 @@ export default function ReadPage() {
   const [annotationTool, setAnnotationTool] = useState<"pen" | "highlight" | "underline" | "eraser">("pen")
   const [annotationColor, setAnnotationColor] = useState("#ef4444")
   const [showAnnotationPrompt, setShowAnnotationPrompt] = useState(false)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   const { size: fontSize, increase, decrease } = useFontSize()
 
@@ -206,7 +206,7 @@ export default function ReadPage() {
     setSubmitted(false)
     setPhase("reading")
     // 检查是否有标注存档
-    if (hasAnnotation(examType, paperId, 0)) {
+    if (hasAnnotations(examType, paperId, 0)) {
       setShowAnnotationPrompt(true)
     }
   }, [examType])
@@ -393,7 +393,7 @@ export default function ReadPage() {
               <div className="p-3 bg-muted rounded-lg">
                 <p className="text-sm font-medium">{annotationData.name}</p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  标注 {annotationData.paths.length} 处 · 更新于 {new Date(annotationData.updatedAt).toLocaleString()}
+                  标注 {annotationData.annotations.length} 处 · 更新于 {new Date(annotationData.updatedAt).toLocaleString()}
                 </p>
               </div>
             )}
@@ -548,10 +548,21 @@ export default function ReadPage() {
       <div className="flex flex-col h-screen">
         {topBar}
         <div className="flex flex-1 overflow-hidden">
-          <div className="w-1/2 border-r border-border overflow-y-auto p-6">
+          <div ref={contentRef} className="w-1/2 border-r border-border overflow-y-auto p-6 relative">
             <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
               {currentSection.passage || "（文章加载中...）"}
             </div>
+            {selectedPaperId && (
+              <AnnotationLayer
+                containerRef={contentRef}
+                active={annotationActive}
+                tool={annotationTool}
+                color={annotationColor}
+                lineWidth={2}
+                initialAnnotations={loadAnnotations(examType, selectedPaperId, currentSectionIdx)}
+                onAnnotationsChange={(anns) => saveAnnotations(examType, selectedPaperId, currentSectionIdx, anns)}
+              />
+            )}
           </div>
           <div className="w-1/2 overflow-y-auto p-6 space-y-6">
             <MatchingSection
@@ -584,19 +595,19 @@ export default function ReadPage() {
     <div className="flex flex-col h-screen">
       {topBar}
       <div className="flex flex-1 overflow-hidden">
-        <div className="w-1/2 border-r border-border overflow-y-auto p-6 relative">
+        <div ref={contentRef} className="w-1/2 border-r border-border overflow-y-auto p-6 relative">
           <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ fontSize: `${fontSize}px` }}>
             {currentSection?.passage}
           </div>
           {selectedPaperId && (
-            <CanvasOverlay
-              width={600}
-              height={2000}
+            <AnnotationLayer
+              containerRef={contentRef}
               active={annotationActive}
               tool={annotationTool}
               color={annotationColor}
-              initialData={loadAnnotation(examType, selectedPaperId, currentSectionIdx) || []}
-              onSave={(paths) => saveAnnotation(examType, selectedPaperId, currentSectionIdx, paths)}
+              lineWidth={2}
+              initialAnnotations={loadAnnotations(examType, selectedPaperId, currentSectionIdx)}
+              onAnnotationsChange={(anns) => saveAnnotations(examType, selectedPaperId, currentSectionIdx, anns)}
             />
           )}
         </div>

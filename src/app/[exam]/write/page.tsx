@@ -10,8 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import { getExamPapers } from "@/lib/exam-data"
 import { loadConfig, isConfigValid } from "@/lib/api-config"
 import { cn } from "@/lib/utils"
-import { CanvasOverlay } from "@/components/canvas-overlay"
-import { saveAnnotation, loadAnnotation } from "@/lib/annotation-storage"
+import { AnnotationLayer, saveAnnotations, loadAnnotations } from "@/components/annotation-layer"
 import type { WritingQuestion, ExamType } from "@/types/exam"
 import { MarkdownContent } from "@/components/markdown-content"
 
@@ -88,6 +87,7 @@ export default function WritePage() {
   const [annotationActive, setAnnotationActive] = useState(false)
   const [annotationTool, setAnnotationTool] = useState<"pen" | "highlight" | "underline" | "eraser">("pen")
   const [annotationColor, setAnnotationColor] = useState("#ef4444")
+  const contentRef = useRef<HTMLDivElement>(null)
   const feedbackRef = useRef<HTMLDivElement>(null)
 
   // 获取完整达到标准的试卷
@@ -317,7 +317,7 @@ export default function WritePage() {
 
         <div className="flex flex-1 overflow-hidden">
           {/* 左：题目 + 评分标准 */}
-          <div className="w-1/2 border-r border-border overflow-y-auto p-6 space-y-4 relative">
+          <div ref={contentRef} className="w-1/2 border-r border-border overflow-y-auto p-6 space-y-4 relative">
             <p className="text-sm leading-relaxed">{question?.prompt}</p>
             <Separator />
             <h3 className="text-xs font-semibold text-muted-foreground">评分标准</h3>
@@ -330,14 +330,14 @@ export default function WritePage() {
               ))}
             </div>
             {selectedPaperId && (
-              <CanvasOverlay
-                width={600}
-                height={1500}
+              <AnnotationLayer
+                containerRef={contentRef}
                 active={annotationActive}
                 tool={annotationTool}
                 color={annotationColor}
-                initialData={loadAnnotation(examType, selectedPaperId, 0) || []}
-                onSave={(paths) => saveAnnotation(examType, selectedPaperId, 0, paths)}
+                lineWidth={2}
+                initialAnnotations={loadAnnotations(examType, selectedPaperId, 0)}
+                onAnnotationsChange={(anns) => saveAnnotations(examType, selectedPaperId, 0, anns)}
               />
             )}
           </div>
