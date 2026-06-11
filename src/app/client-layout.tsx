@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useCallback, useState } from "react"
+import { useEffect } from "react"
 import { AuthProvider, LoginPage, useAuth } from "@/components/login-guard"
 
 function AuthGate({ children }: { children: React.ReactNode }) {
@@ -13,21 +13,8 @@ function AuthGate({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
-export function ClientLayout({ children }: { children: React.ReactNode }) {
-  const [token, setToken] = useState<string | null>(null)
-
-  // 监听登录事件
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const customEvent = e as CustomEvent
-      if (customEvent.detail?.token) {
-        setToken(customEvent.detail.token)
-      }
-    }
-
-    window.addEventListener("auth:login", handler)
-    return () => window.removeEventListener("auth:login", handler)
-  }, [])
+function FetchInterceptor({ children }: { children: React.ReactNode }) {
+  const { token } = useAuth()
 
   // 扩展 fetch 来自动带上 token
   useEffect(() => {
@@ -35,7 +22,6 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
 
     const originalFetch = window.fetch
     window.fetch = async (input, init = {}) => {
-      // 只对我们的 API 调用添加 token
       const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url
 
       if (url.startsWith("/api/") && !url.startsWith("/api/auth")) {
@@ -52,9 +38,15 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     }
   }, [token])
 
+  return <>{children}</>
+}
+
+export function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <AuthProvider>
-      <AuthGate>{children}</AuthGate>
+      <FetchInterceptor>
+        <AuthGate>{children}</AuthGate>
+      </FetchInterceptor>
     </AuthProvider>
   )
 }

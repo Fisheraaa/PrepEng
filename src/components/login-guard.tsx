@@ -10,12 +10,14 @@ interface AuthContextType {
   token: string | null
   isAuthenticated: boolean
   logout: () => void
+  setToken: (token: string | null) => void
 }
 
 const AuthContext = createContext<AuthContextType>({
   token: null,
   isAuthenticated: false,
   logout: () => {},
+  setToken: () => {},
 })
 
 export function useAuth() {
@@ -58,7 +60,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ token, isAuthenticated: !!token, logout }}>
+    <AuthContext.Provider value={{ token, isAuthenticated: !!token, logout, setToken }}>
       {children}
     </AuthContext.Provider>
   )
@@ -69,7 +71,7 @@ export function LoginPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const { token, isAuthenticated } = useAuth()
+  const { isAuthenticated, setToken } = useAuth()
 
   const handleLogin = useCallback(async () => {
     if (!password.trim()) return
@@ -87,9 +89,7 @@ export function LoginPage() {
       const data = await res.json()
 
       if (data.success && data.token) {
-        // token 存在内存中，不存 localStorage
-        // 通过父组件的 setToken 更新
-        window.dispatchEvent(new CustomEvent("auth:login", { detail: { token: data.token } }))
+        setToken(data.token)
       } else {
         setError(data.error || "登录失败")
       }
@@ -98,7 +98,7 @@ export function LoginPage() {
     } finally {
       setLoading(false)
     }
-  }, [password])
+  }, [password, setToken])
 
   if (isAuthenticated) {
     return null
