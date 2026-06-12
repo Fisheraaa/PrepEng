@@ -10440,8 +10440,8 @@
             "content": "",
             "options": [
               "A)In a restaurant.",
-              "C)In a food store.",
               "B)In a kitchen.",
+              "C)In a food store.",
               "D)In a supermarket."
             ],
             "answer": "",
@@ -10452,8 +10452,8 @@
             "content": "",
             "options": [
               "A)She eats meat occasionally.",
-              "C)She is allergic to seafood.",
               "B)She enjoys cheeseburgers.",
+              "C)She is allergic to seafood.",
               "D)She is a partial vegetarian."
             ],
             "answer": "",
@@ -10464,8 +10464,8 @@
             "content": "",
             "options": [
               "A)Dealing with one's colleagues.",
-              "C)Following the same diet for years.",
               "B)Changing one's eating habit.",
+              "C)Following the same diet for years.",
               "D)Keeping awake at morning meetings."
             ],
             "answer": "",
@@ -10476,8 +10476,8 @@
             "content": "",
             "options": [
               "A)They enjoy perfect health.",
-              "C)They only eat organic food.",
               "B)They are both animal lovers.",
+              "C)They only eat organic food.",
               "D)They are cutting back on coffee."
             ],
             "answer": "",
@@ -10512,8 +10512,8 @@
             "content": "",
             "options": [
               "A)It is a must for rational judgment.",
-              "C)It is a good quality in the workplace.",
               "B)It is more of a sin than a virtue.",
+              "C)It is a good quality in the workplace.",
               "D)It is more important now than ever."
             ],
             "answer": "",
@@ -10530,8 +10530,8 @@
             "content": "",
             "options": [
               "A)They show genius which defies description.",
-              "C)They create very high commercial value.",
               "B)They accomplish feats many of us cannot.",
+              "C)They create very high commercial value.",
               "D)They bring great honor to their country."
             ],
             "answer": "",
@@ -10566,8 +10566,8 @@
             "content": "",
             "options": [
               "A)They always cost more than expected.",
-              "C)They should be paid up by the attendees.",
               "B)They are joyous and exciting occasions.",
+              "C)They should be paid up by the attendees.",
               "D)They are dreams coming true to the brides."
             ],
             "answer": "",
@@ -10578,8 +10578,8 @@
             "content": "",
             "options": [
               "A)It cost $60,000.",
-              "C)It had eight guests only.",
               "B)It was cancelled.",
+              "C)It had eight guests only.",
               "D)It was held in Las Vegas."
             ],
             "answer": "",
@@ -10590,8 +10590,8 @@
             "content": "",
             "options": [
               "A)Postpone her wedding.",
-              "C)Keep to her budget.",
               "B)Ask her friends for help.",
+              "C)Keep to her budget.",
               "D)Invite more guests."
             ],
             "answer": "",
@@ -10602,8 +10602,8 @@
             "content": "",
             "options": [
               "A)She called it romantic.",
-              "C)She said she would think about it.",
               "B)She welcomed it with open arms.",
+              "C)She said she would think about it.",
               "D)She rejected it flatly."
             ],
             "answer": "",
@@ -10620,8 +10620,8 @@
             "content": "",
             "options": [
               "A)It determines people's moods.",
-              "C)It is closely related to people's emotions.",
               "B)It can impact people's wellbeing.",
+              "C)It is closely related to people's emotions.",
               "D)It can influence people's personalities."
             ],
             "answer": "",
@@ -10632,8 +10632,8 @@
             "content": "",
             "options": [
               "A)They make people more reproductive.",
-              "C)They tend to produce positive feelings.",
               "B)They increase people's life expectancy.",
+              "C)They tend to produce positive feelings.",
               "D)They may alter people's genes gradually."
             ],
             "answer": "",
@@ -10668,8 +10668,8 @@
             "content": "",
             "options": [
               "A)Medication is available for treating loneliness.",
-              "C)Being busy helps fight loneliness.",
               "B)Loneliness rarely results from living alone.",
+              "C)Being busy helps fight loneliness.",
               "D)Loneliness is probably reversible."
             ],
             "answer": "",
@@ -10680,8 +10680,8 @@
             "content": "",
             "options": [
               "A)Living with one's children.",
-              "C)Meaningful social contact.",
               "B)Meeting social expectations.",
+              "C)Meaningful social contact.",
               "D)Timely medical intervention."
             ],
             "answer": "",
@@ -10692,8 +10692,8 @@
             "content": "",
             "options": [
               "A)She had a successful career in finance.",
-              "C)She made regular trips to Asian countries.",
               "B)She wrote stories about women travelers.",
+              "C)She made regular trips to Asian countries.",
               "D)She invested in several private companies."
             ],
             "answer": "",
@@ -10704,8 +10704,8 @@
             "content": "",
             "options": [
               "A)Buy a ranch.",
-              "C)Travel round the world.",
               "B)Start a blog.",
+              "C)Travel round the world.",
               "D)Set up a travel agency."
             ],
             "answer": "",
@@ -10716,8 +10716,8 @@
             "content": "",
             "options": [
               "A)Work hard to attract attention from publishers.",
-              "C)Try to find a full-time job in the travel business.",
               "B)Gain support from travel advertising companies.",
+              "C)Try to find a full-time job in the travel business.",
               "D)Create something unique to enter the industry."
             ],
             "answer": "",
@@ -10728,12 +10728,117 @@
             "content": "",
             "options": [
               "A)Attracting sufficient investment.",
-              "C)Avoiding too much advertising early on.",
               "B)Creating an exotic corporate culture.",
+              "C)Avoiding too much advertising early on.",
               "D)Refraining from promoting similar products."
             ],
             "answer": "",
             "explanation": ""
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "subtype": "banked_cloze",
+        "title": "Section A — 选词填空",
+        "passage": "The concept of sustainability has gained 26 attention in recent years. Companies are now expected to consider not just profit, but also their 27 on society and the environment. This shift has led to the rise of Corporate Social Responsibility (CSR) initiatives. Many organizations have 28 programs to reduce their carbon footprint and support local communities. These efforts are not just good for the planet—they can also 29 a company's reputation and attract environmentally conscious consumers. Studies have shown that businesses with strong CSR practices tend to have more 30 employees and better customer loyalty. Furthermore, sustainable practices can lead to cost 31 through reduced waste and energy efficiency. However, implementing these changes requires 32 commitment from leadership and a willingness to 33 traditional business models. The good news is that the 34 of sustainable business practices is growing, with more companies recognizing the long-term 35 of this approach.",
+        "bank": [
+          "A) significant",
+          "B) impact",
+          "C) launched",
+          "D) enhance",
+          "E) engaged",
+          "F) savings",
+          "G) substantial",
+          "H) transform",
+          "I) adoption",
+          "J) benefits",
+          "K) considerable",
+          "L) effect",
+          "M) initiated",
+          "N) improve",
+          "O) motivated"
+        ],
+        "questions": [
+          {
+            "id": "q26",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "A",
+            "explanation": "significant表示'显著的'，修饰attention。故选A。"
+          },
+          {
+            "id": "q27",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "B",
+            "explanation": "impact表示'影响'，与on society搭配。故选B。"
+          },
+          {
+            "id": "q28",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "C",
+            "explanation": "launched表示'启动'，与programs搭配。故选C。"
+          },
+          {
+            "id": "q29",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "D",
+            "explanation": "enhance表示'提升'，与reputation搭配。故选D。"
+          },
+          {
+            "id": "q30",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "E",
+            "explanation": "engaged表示'投入的'，修饰employees。故选E。"
+          },
+          {
+            "id": "q31",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "F",
+            "explanation": "savings表示'节省'，与cost搭配。故选F。"
+          },
+          {
+            "id": "q32",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "G",
+            "explanation": "substantial表示'大量的'，修饰commitment。故选G。"
+          },
+          {
+            "id": "q33",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "H",
+            "explanation": "transform表示'改变'，与business models搭配。故选H。"
+          },
+          {
+            "id": "q34",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "I",
+            "explanation": "adoption表示'采用'，与growing搭配。故选I。"
+          },
+          {
+            "id": "q35",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "J",
+            "explanation": "benefits表示'好处'，与long-term搭配。故选J。"
           }
         ]
       },
