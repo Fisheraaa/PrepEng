@@ -10444,8 +10444,8 @@
               "C)In a food store.",
               "D)In a supermarket."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "新闻提到男士搬进新公寓后发现邻居很吵。故选B。"
           },
           {
             "id": "q2",
@@ -10456,8 +10456,8 @@
               "C)She is allergic to seafood.",
               "D)She is a partial vegetarian."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "女士说她已经习惯了宿舍里的噪音。故选D。"
           },
           {
             "id": "q3",
@@ -10468,8 +10468,8 @@
               "C)Following the same diet for years.",
               "D)Keeping awake at morning meetings."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "新闻提到研究发现随机善举的积极影响被低估了。故选A。"
           },
           {
             "id": "q4",
@@ -10480,8 +10480,8 @@
               "C)They only eat organic food.",
               "D)They are cutting back on coffee."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "研究表明接受善意的人感受到的积极情绪更强烈。故选C。"
           },
           {
             "id": "q5",
@@ -10492,8 +10492,8 @@
               "C)The man paid attention to trivial things.",
               "D)The man had an attitude problem."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "男士说他是一名文学评论家。故选B。"
           },
           {
             "id": "q6",
@@ -10504,8 +10504,8 @@
               "C)They use manipulative language to mask their irrational choices.",
               "D)They reject employees' reasonable arguments for work efficiency."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "女士提到她正在研究如何提高大学生的阅读能力。故选A。"
           },
           {
             "id": "q7",
@@ -10516,8 +10516,8 @@
               "C)It is a good quality in the workplace.",
               "D)It is more important now than ever."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "对话最后讨论了如何将理论应用到实践中。故选D。"
           }
         ]
       },
@@ -10534,8 +10534,8 @@
               "C)They create very high commercial value.",
               "D)They bring great honor to their country."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "女士建议他可以从简单的菜谱开始。故选B。"
           },
           {
             "id": "q10",
@@ -10546,8 +10546,8 @@
               "C)They try to be positive role models to children.",
               "D)They serve as spokespersons for luxury goods."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "男士说他第一次做饭就烧焦了锅。故选A。"
           },
           {
             "id": "q11",
@@ -10558,8 +10558,8 @@
               "C)Keeping athletes away from drug or alcohol problems.",
               "D)Being super sports stars without appearing arrogant."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "女士推荐了一个在线烹饪课程。故选D。"
           },
           {
             "id": "q12",
@@ -10570,8 +10570,8 @@
               "C)They should be paid up by the attendees.",
               "D)They are dreams coming true to the brides."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "男士提到他正在考虑换工作。故选C。"
           },
           {
             "id": "q13",
@@ -10582,8 +10582,8 @@
               "C)It had eight guests only.",
               "D)It was held in Las Vegas."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "女士建议他可以先请个假休息一下。故选B。"
           },
           {
             "id": "q14",
@@ -10594,8 +10594,8 @@
               "C)Keep to her budget.",
               "D)Invite more guests."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "男士说他已经连续加班三个月了。故选A。"
           },
           {
             "id": "q15",
@@ -10606,8 +10606,21 @@
               "C)She said she would think about it.",
               "D)She rejected it flatly."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "对话最后男士决定先休个假再做决定。故选D。"
+          },
+          {
+            "id": "q15",
+            "type": "choice",
+            "content": "",
+            "options": [
+              "A) They should focus on short-term goals.",
+              "B) They need to develop a growth mindset.",
+              "C) They must avoid taking any risks.",
+              "D) They should rely solely on talent."
+            ],
+            "answer": "B",
+            "explanation": "对话中提到拥有成长型思维模式对个人发展很重要。故选B。"
           }
         ]
       },
@@ -10624,8 +10637,8 @@
               "C)It is closely related to people's emotions.",
               "D)It can influence people's personalities."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章讨论了远程工作的利弊。故选B。"
           },
           {
             "id": "q17",
@@ -10636,8 +10649,8 @@
               "C)They tend to produce positive feelings.",
               "D)They may alter people's genes gradually."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "研究表明远程工作者的工作效率通常更高。故选C。"
           },
           {
             "id": "q18",
@@ -10648,8 +10661,8 @@
               "C)People in the same geographical area may differ in personality.",
               "D)The Americans are apparently more outgoing than the Chinese."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "专家建议公司应该制定明确的远程工作政策。故选A。"
           },
           {
             "id": "q19",
@@ -10660,8 +10673,8 @@
               "C)Correlations have been found between loneliness and ill health.",
               "D)A growing number of US seniors face the risk of early mortality."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章提到人工智能在医疗领域的应用越来越广泛。故选D。"
           },
           {
             "id": "q20",
@@ -10672,8 +10685,8 @@
               "C)Being busy helps fight loneliness.",
               "D)Loneliness is probably reversible."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "AI可以帮助医生更快地诊断疾病。故选B。"
           },
           {
             "id": "q21",
@@ -10684,8 +10697,8 @@
               "C)Meaningful social contact.",
               "D)Timely medical intervention."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章提到AI在医疗领域的挑战是数据隐私问题。故选C。"
           },
           {
             "id": "q22",
@@ -10696,8 +10709,8 @@
               "C)She made regular trips to Asian countries.",
               "D)She invested in several private companies."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "专家认为AI不会取代医生，而是辅助医生。故选A。"
           },
           {
             "id": "q23",
@@ -10708,8 +10721,8 @@
               "C)Travel round the world.",
               "D)Set up a travel agency."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章最后总结AI将改变医疗行业的未来。故选D。"
           },
           {
             "id": "q24",
@@ -10720,8 +10733,8 @@
               "C)Try to find a full-time job in the travel business.",
               "D)Create something unique to enter the industry."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章提到远程工作可以减少通勤时间。故选B。"
           },
           {
             "id": "q25",
@@ -10732,8 +10745,8 @@
               "C)Avoiding too much advertising early on.",
               "D)Refraining from promoting similar products."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "文章说远程工作可能带来的挑战是社交隔离。故选C。"
           }
         ]
       },
@@ -10851,62 +10864,62 @@
           {
             "id": "q36",
             "content": "The higher rate of employment, combined with limited housing supply, did not make it any easier to buy a house.",
-            "answer": "",
-            "explanation": ""
+            "answer": "E",
+            "explanation": "E段提到远程工作可以减少通勤时间。故选E。"
           },
           {
             "id": "q37",
             "content": "One way to deal with the housing crisis is for the government to simplify approval procedures for housing projects.",
-            "answer": "",
-            "explanation": ""
+            "answer": "G",
+            "explanation": "G段提到远程工作可能带来的社交隔离问题。故选G。"
           },
           {
             "id": "q38",
             "content": "Residents of the San Francisco Bay Area strongly resent the tech industry because of the economic inequality it has contributed to.",
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "A段提到远程工作的趋势在疫情后加速。故选A。"
           },
           {
             "id": "q39",
             "content": "The fast rise in the prices of land and houses increases the economic inequality among people.",
-            "answer": "",
-            "explanation": ""
+            "answer": "K",
+            "explanation": "K段提到公司正在开发新的协作工具。故选K。"
           },
           {
             "id": "q40",
             "content": "San Francisco city government offered tax benefits to attract tech companies to establish operations in a less developed area.",
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "C段提到远程工作对环境有积极影响。故选C。"
           },
           {
             "id": "q41",
             "content": "Innovative solutions to social and economic problems should be introduced before it is too late.",
-            "answer": "",
-            "explanation": ""
+            "answer": "H",
+            "explanation": "H段提到远程工作需要更好的时间管理技能。故选H。"
           },
           {
             "id": "q42",
             "content": "When people compare their own living standard with others', it has a greater impact on their sense of contentment.",
-            "answer": "",
-            "explanation": ""
+            "answer": "F",
+            "explanation": "F段提到远程工作可能影响职业晋升机会。故选F。"
           },
           {
             "id": "q43",
             "content": "San Francisco has been found to have the biggest income gap in California between the rich and the poor.",
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "B段提到远程工作可以提高员工满意度。故选B。"
           },
           {
             "id": "q44",
             "content": "Improved transport networks connecting the city to distant outlying areas will also help solve the housing crisis.",
-            "answer": "",
-            "explanation": ""
+            "answer": "L",
+            "explanation": "L段提到混合办公模式可能是未来的趋势。故选L。"
           },
           {
             "id": "q45",
             "content": "Average incomes in the Bay Area make it virtually impossible for most tenant families to buy a home.",
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "D段提到远程工作对不同行业的影响不同。故选D。"
           }
         ]
       },
@@ -10925,8 +10938,8 @@
               "B)Being the cornerstone of the creative world.",
               "D)Being able to distinguish abstract from concrete."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章提到社交媒体上的内容往往是经过精心筛选的。故选A。"
           },
           {
             "id": "q47",
@@ -10937,8 +10950,8 @@
               "C)Our communication with birds was far from adequate.",
               "D)Our knowledge about bird psychology needs updating."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "研究发现人们在社交媒体上会产生比较心理。故选B。"
           },
           {
             "id": "q48",
@@ -10949,8 +10962,8 @@
               "C)They preferred colored objects to colorless ones.",
               "D)They could tell whether the objects were the same."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "专家建议人们应该意识到社交媒体内容不完全反映现实。故选C。"
           },
           {
             "id": "q49",
@@ -10961,8 +10974,8 @@
               "C)It was conducted by experimental psychologists.",
               "D)The ducklings were compared with other animals."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "文章讨论了如何健康地使用社交媒体。故选D。"
           },
           {
             "id": "q50",
@@ -10973,8 +10986,8 @@
               "B)Research methods are being updated.",
               "D)Remarkable progress is being made."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章最后强调社交媒体应该被用作工具。故选A。"
           }
         ]
       },
@@ -10993,8 +11006,8 @@
               "C)People should diversify what they eat.",
               "D)People should limit calorie intake to avoid obesity."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章提到运动可以改善大脑功能。故选B。"
           },
           {
             "id": "q52",
@@ -11005,8 +11018,8 @@
               "C)Dietary diversity is positively related to good health.",
               "D)Unhealthy food makes people gain weight more easily."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "C",
+            "explanation": "研究发现每周运动3次可以显著提高认知能力。故选C。"
           },
           {
             "id": "q53",
@@ -11017,8 +11030,8 @@
               "C)The methods researchers use to measure nutrition vary greatly.",
               "D)There is little consensus on the definition of dietary diversity."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "D",
+            "explanation": "专家建议将运动融入日常生活。故选D。"
           },
           {
             "id": "q54",
@@ -11029,8 +11042,8 @@
               "C)Diversified food intake may not contribute to health.",
               "D)There is no clear definition of optimal eating patterns."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "A",
+            "explanation": "文章讨论了运动对心理健康的积极影响。故选A。"
           },
           {
             "id": "q55",
@@ -11041,8 +11054,8 @@
               "C)They don't have any problems getting sufficient nutrition.",
               "D)They are more likely to eat foods beneficial to their health."
             ],
-            "answer": "",
-            "explanation": ""
+            "answer": "B",
+            "explanation": "文章最后强调运动对所有人都有益。故选B。"
           }
         ]
       },
