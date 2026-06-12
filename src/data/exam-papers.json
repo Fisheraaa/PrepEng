@@ -8947,7 +8947,7 @@
       },
       {
         "type": "listening",
-        "title": "听力选择题",
+        "title": "Section A — 短篇新闻",
         "questions": [
           {
             "id": "q1",
@@ -9032,7 +9032,13 @@
             ],
             "answer": "B",
             "explanation": "女士建议他可以从简单的菜谱开始。故选B。"
-          },
+          }
+        ]
+      },
+      {
+        "type": "listening",
+        "title": "Section B — 长对话",
+        "questions": [
           {
             "id": "q10",
             "content": "",
@@ -9128,7 +9134,13 @@
             ],
             "answer": "C",
             "explanation": "研究表明远程工作者的工作效率通常更高。故选C。"
-          },
+          }
+        ]
+      },
+      {
+        "type": "listening",
+        "title": "Section C — 听力篇章",
+        "questions": [
           {
             "id": "q18",
             "content": "",
@@ -9224,6 +9236,137 @@
             ],
             "answer": "D",
             "explanation": "专家建议组织工作之外的活动来培养友谊。故选D。"
+          },
+          {
+            "id": "q24",
+            "type": "choice",
+            "content": "",
+            "options": [
+              "A)They show little interest in their friends' work.",
+              "B)They tend to be much more difficult to make.",
+              "C)They are more trustworthy and reliable.",
+              "D)They increase people's job satisfaction."
+            ],
+            "answer": "C",
+            "explanation": "文章提到职场友谊更值得信赖和可靠。故选C。"
+          },
+          {
+            "id": "q25",
+            "type": "choice",
+            "content": "",
+            "options": [
+              "A)Allow employees to have a flexible work schedule.",
+              "B)Encourage employees to be friends with colleagues.",
+              "C)Help employees balance work and family responsibilities.",
+              "D)Organize activities to nourish friendships outside of work."
+            ],
+            "answer": "D",
+            "explanation": "专家建议组织工作之外的活动来培养友谊。故选D。"
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "subtype": "banked_cloze",
+        "title": "Section A — 选词填空",
+        "passage": "The concept of emotional intelligence (EI) has gained 26 significant attention in recent years. Research suggests that EI may be more important than IQ in 27 success in life. People with high EI tend to be better at 28 and managing their own emotions, as well as 29 and influencing the emotions of others. This skill set is particularly 30 in leadership roles, where the ability to 31 and motivate teams is crucial. Studies have shown that leaders with high EI create more 32 work environments and achieve better results. Furthermore, EI can be 33 and improved over time through practice and self-awareness. This is 34 news for those who may not have been born with high emotional intelligence. With 35 effort, anyone can develop their EI skills.",
+        "bank": [
+          "A) increasingly",
+          "B) ability",
+          "C) emotional",
+          "D) success",
+          "E) understanding",
+          "F) valuable",
+          "G) inspire",
+          "H) positive",
+          "I) developed",
+          "J) crucial",
+          "K) recognizing",
+          "L) managing",
+          "M) determining",
+          "N) motivate",
+          "O) awareness"
+        ],
+        "questions": [
+          {
+            "id": "q26",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "A",
+            "explanation": "increasingly修饰gained attention，表示'越来越受到关注'。故选A。"
+          },
+          {
+            "id": "q27",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "M",
+            "explanation": "determining表示'决定'，与success搭配表示'决定成功'。故选M。"
+          },
+          {
+            "id": "q28",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "E",
+            "explanation": "understanding表示'理解'，与managing并列。故选E。"
+          },
+          {
+            "id": "q29",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "K",
+            "explanation": "recognizing表示'识别'，与influencing并列。故选K。"
+          },
+          {
+            "id": "q30",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "F",
+            "explanation": "valuable表示'有价值的'，修饰skill set。故选F。"
+          },
+          {
+            "id": "q31",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "G",
+            "explanation": "inspire表示'激励'，与motivate并列。故选G。"
+          },
+          {
+            "id": "q32",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "H",
+            "explanation": "positive表示'积极的'，修饰work environments。故选H。"
+          },
+          {
+            "id": "q33",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "I",
+            "explanation": "developed表示'发展'，与improved并列。故选I。"
+          },
+          {
+            "id": "q34",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "J",
+            "explanation": "crucial表示'关键的'，修饰news。故选J。"
+          },
+          {
+            "id": "q35",
+            "type": "choice",
+            "content": "",
+            "options": [],
+            "answer": "B",
+            "explanation": "ability表示'能力'，与effort搭配表示'努力和能力'。故选B。"
           }
         ]
       },
