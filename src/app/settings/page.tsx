@@ -285,6 +285,84 @@ export default function SettingsPage() {
 
         <Separator />
 
+        {/* 数据备份 */}
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm">📦 数据备份</CardTitle>
+            <CardDescription className="text-xs">
+              导出/导入所有本地数据（API 配置、标注草稿、做题进度、错题本）
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  const data: Record<string, string> = {}
+                  for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i)
+                    if (key) {
+                      data[key] = localStorage.getItem(key) || ""
+                    }
+                  }
+                  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" })
+                  const url = URL.createObjectURL(blob)
+                  const a = document.createElement("a")
+                  a.href = url
+                  a.download = `prepeng-backup-${new Date().toISOString().slice(0, 10)}.json`
+                  a.click()
+                  URL.revokeObjectURL(url)
+                }}
+              >
+                📤 导出数据
+              </Button>
+              <div>
+                <input
+                  type="file"
+                  accept=".json"
+                  id="import-data"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0]
+                    if (!file) return
+                    const reader = new FileReader()
+                    reader.onload = (ev) => {
+                      try {
+                        const data = JSON.parse(ev.target?.result as string)
+                        let count = 0
+                        for (const [key, value] of Object.entries(data)) {
+                          if (typeof value === "string") {
+                            localStorage.setItem(key, value)
+                            count++
+                          }
+                        }
+                        alert(`已导入 ${count} 条数据，刷新页面生效。`)
+                      } catch {
+                        alert("文件格式错误")
+                      }
+                    }
+                    reader.readAsText(file)
+                    e.target.value = ""
+                  }}
+                />
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => document.getElementById("import-data")?.click()}
+                >
+                  📥 导入数据
+                </Button>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              导出的 JSON 文件包含所有本地数据。换浏览器或重装系统前记得备份。
+            </p>
+          </CardContent>
+        </Card>
+
+        <Separator />
+
         {/* 使用说明 */}
         <Card className="bg-muted/30">
           <CardHeader className="pb-2">
