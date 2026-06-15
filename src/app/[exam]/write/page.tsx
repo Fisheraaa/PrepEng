@@ -97,7 +97,16 @@ export default function WritePage() {
     const hasWriting = p.sections.some(s => s.type === "writing" && s.questions.length > 0)
     if (!hasWriting) return false
 
-    // 结构检查：听力3个section/25题，阅读4个section/30题
+    // IELTS 只需要阅读达标 + 写作有范文
+    if (examType === "ielts") {
+      const readingSections = p.sections.filter(s => s.type === "reading")
+      const readingQ = readingSections.flatMap(s => s.questions)
+      const writingSection = p.sections.find(s => s.type === "writing")
+      const hasSample = writingSection?.questions.some(q => 'sample_answer' in q && q.sample_answer)
+      return readingSections.length === 3 && readingQ.length === 40 && hasSample
+    }
+
+    // CET 结构检查：听力3个section/25题，阅读4个section/30题
     const listeningSections = p.sections.filter(s => s.type === "listening")
     const readingSections = p.sections.filter(s => s.type === "reading")
     const listeningQ = listeningSections.flatMap(s => s.questions)
@@ -212,7 +221,7 @@ export default function WritePage() {
           <Card className="bg-muted/50">
             <CardContent className="pt-6 pb-4 text-center">
               <span className="text-4xl">📭</span>
-              <p className="text-muted-foreground mt-2">还没有{examType === "cet4" ? "四级" : "六级"}写作题。</p>
+              <p className="text-muted-foreground mt-2">还没有{examType === "ielts" ? "雅思" : examType === "cet4" ? "四级" : "六级"}写作题。</p>
             </CardContent>
           </Card>
         ) : (

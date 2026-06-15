@@ -65,6 +65,13 @@ export function AnnotationLayer({
   const [isDrawing, setIsDrawing] = useState(false)
   const [currentPenPath, setCurrentPenPath] = useState<Point[]>([])
 
+  // 当 initialAnnotations 变化时同步状态（切换 section 时）
+  useEffect(() => {
+    setAnnotations(initialAnnotations)
+    setCurrentPenPath([])
+    setIsDrawing(false)
+  }, [initialAnnotations])
+
   // 同步 canvas 大小
   useEffect(() => {
     const container = containerRef.current
@@ -420,39 +427,83 @@ export interface AnnotationSaveData {
 }
 
 const STORAGE_PREFIX = "annotation-"
+const MAX_DRAFTS = 20
 
-export function getStorageKey(examType: string, paperId: string, sectionIdx: number): string {
-  return `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}`
+// 获取某个 section 的所有草稿 key
+function getDraftKeys(examType: string, paperId: string, sectionIdx: number): string[] {
+  const keys: string[] = []
+  for (let i = 0; i < MAX_DRAFTS; i++) {
+    const key = `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}-${i}`
+    if (localStorage.getItem(key) !== null) {
+      keys.push(key)
+    }
+  }
+  return keys
 }
 
+// 获取下一个可用的草稿索引
+function getNextDraftIdx(examType: string, paperId: string, sectionIdx: number): number {
+  for (let i = 0; i < MAX_DRAFTS; i++) {
+    const key = `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}-${i}`
+    if (localStorage.getItem(key) === null) {
+      return i
+    }
+  }
+  return -1 // 已满
+}
+
+// 检查草稿名是否已存在
+export function isDraftNameTaken(
+  examType: string,
+  paperId: string,
+  sectionIdx: number,
+  name: string
+): boolean {
+  const drafts = getDraftsForSection(examType, paperId, sectionIdx)
+  return drafts.some(d => d.data.name === name)
+}
+
+// 保存草稿（新建或更新）
 export function saveAnnotations(
   examType: string,
   paperId: string,
   sectionIdx: number,
   annotations: Annotation[],
-  name?: string
-): void {
+  name?: string,
+  draftIdx?: number
+): number {
   try {
-    const key = getStorageKey(examType, paperId, sectionIdx)
-    const existing = loadAnnotationSaveData(examType, paperId, sectionIdx)
+    let idx = draftIdx
+    if (idx === undefined) {
+      idx = getNextDraftIdx(examType, paperId, sectionIdx)
+      if (idx === -1) return -1 // 已满
+    }
+
+    const key = `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}-${idx}`
+    const existing = loadAnnotationSaveData(examType, paperId, sectionIdx, idx)
 
     const data: AnnotationSaveData = {
-      name: name || existing?.name || `存档 ${new Date().toLocaleString()}`,
+      name: name || existing?.name || `草稿 ${idx + 1}`,
       annotations,
       createdAt: existing?.createdAt || Date.now(),
       updatedAt: Date.now(),
     }
     localStorage.setItem(key, JSON.stringify(data))
-  } catch {}
+    return idx
+  } catch {
+    return -1
+  }
 }
 
+// 加载指定草稿
 export function loadAnnotationSaveData(
   examType: string,
   paperId: string,
-  sectionIdx: number
+  sectionIdx: number,
+  draftIdx: number = 0
 ): AnnotationSaveData | null {
   try {
-    const key = getStorageKey(examType, paperId, sectionIdx)
+    const key = `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}-${draftIdx}`
     const raw = localStorage.getItem(key)
     if (!raw) return null
     return JSON.parse(raw)
@@ -461,49 +512,72 @@ export function loadAnnotationSaveData(
   }
 }
 
+// 加载指定草稿的标注
 export function loadAnnotations(
   examType: string,
   paperId: string,
-  sectionIdx: number
+  sectionIdx: number,
+  draftIdx: number = 0
 ): Annotation[] {
-  const data = loadAnnotationSaveData(examType, paperId, sectionIdx)
+  const data = loadAnnotationSaveData(examType, paperId, sectionIdx, draftIdx)
   return data?.annotations || []
 }
 
+// 删除指定草稿
 export function deleteAnnotations(
   examType: string,
   paperId: string,
-  sectionIdx: number
+  sectionIdx: number,
+  draftIdx: number = 0
 ): void {
   try {
-    const key = getStorageKey(examType, paperId, sectionIdx)
+    const key = `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}-${draftIdx}`
     localStorage.removeItem(key)
   } catch {}
 }
 
+// 检查 section 是否有草稿
 export function hasAnnotations(
   examType: string,
   paperId: string,
   sectionIdx: number
 ): boolean {
+  return getDraftKeys(examType, paperId, sectionIdx).length > 0
+}
+
+// 获取某个 section 的所有草稿
+export function getDraftsForSection(
+  examType: string,
+  paperId: string,
+  sectionIdx: number
+): Array<{ draftIdx: number; data: AnnotationSaveData }> {
   try {
-    const key = getStorageKey(examType, paperId, sectionIdx)
-    return localStorage.getItem(key) !== null
+    const result: Array<{ draftIdx: number; data: AnnotationSaveData }> = []
+    for (let i = 0; i < MAX_DRAFTS; i++) {
+      const data = loadAnnotationSaveData(examType, paperId, sectionIdx, i)
+      if (data) {
+        result.push({ draftIdx: i, data })
+      }
+    }
+    return result
   } catch {
-    return false
+    return []
   }
 }
 
+// 获取某个试卷的所有草稿（兼容旧接口）
 export function getAnnotationsForPaper(
   examType: string,
   paperId: string
-): Array<{ sectionIdx: number; data: AnnotationSaveData }> {
+): Array<{ sectionIdx: number; draftIdx: number; data: AnnotationSaveData }> {
   try {
-    const result: Array<{ sectionIdx: number; data: AnnotationSaveData }> = []
-    for (let i = 0; i < 10; i++) {
-      const data = loadAnnotationSaveData(examType, paperId, i)
-      if (data) {
-        result.push({ sectionIdx: i, data })
+    const result: Array<{ sectionIdx: number; draftIdx: number; data: AnnotationSaveData }> = []
+    for (let sectionIdx = 0; sectionIdx < 10; sectionIdx++) {
+      for (let draftIdx = 0; draftIdx < MAX_DRAFTS; draftIdx++) {
+        const data = loadAnnotationSaveData(examType, paperId, sectionIdx, draftIdx)
+        if (data) {
+          result.push({ sectionIdx, draftIdx, data })
+        }
       }
     }
     return result
@@ -521,11 +595,12 @@ export function renameAnnotationSave(
   newName: string
 ): void {
   try {
-    const key = `${getStorageKey(examType, paperId, sectionIdx)}-${draftIdx}`
+    const key = `${STORAGE_PREFIX}${examType}-${paperId}-${sectionIdx}-${draftIdx}`
     const raw = localStorage.getItem(key)
     if (raw) {
       const data: AnnotationSaveData = JSON.parse(raw)
       data.name = newName
+      data.updatedAt = Date.now()
       localStorage.setItem(key, JSON.stringify(data))
     }
   } catch {}
@@ -538,10 +613,7 @@ export function deleteAnnotationDraft(
   sectionIdx: number,
   draftIdx: number
 ): void {
-  try {
-    const key = `${getStorageKey(examType, paperId, sectionIdx)}-${draftIdx}`
-    localStorage.removeItem(key)
-  } catch {}
+  deleteAnnotations(examType, paperId, sectionIdx, draftIdx)
 }
 
 // 生成默认草稿名
@@ -550,7 +622,6 @@ export function generateDraftName(
   paperId: string,
   sectionIdx: number
 ): string {
-  const existing = getAnnotationsForPaper(examType, paperId)
-  const sectionDrafts = existing.filter(a => a.sectionIdx === sectionIdx)
-  return `草稿${sectionDrafts.length + 1}`
+  const drafts = getDraftsForSection(examType, paperId, sectionIdx)
+  return `草稿${drafts.length + 1}`
 }

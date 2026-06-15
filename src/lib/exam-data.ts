@@ -117,7 +117,7 @@ const allPapers: Record<ExamType, ExamPaper[]> = {
 
 for (const paper of examData as ExtractedPaper[]) {
   const et = paper.exam_type as ExamType
-  if (et === "cet4" || et === "cet6") {
+  if (et === "cet4" || et === "cet6" || et === "ielts") {
     allPapers[et].push(convertPaper(paper))
   }
 }
@@ -145,22 +145,37 @@ export function getAvailablePapers(examType: ExamType) {
     const readingQ = p.sections.filter(s => s.type === "reading").flatMap(s => s.questions)
     const allQ = [...listeningQ, ...readingQ]
 
-    // 判断是否完整：听力+阅读都有题目，且所有题目都有答案和解析
-    // 结构检查：听力3个section/25题，阅读4个section/30题
     const listeningSections = p.sections.filter(s => s.type === "listening")
     const readingSections = p.sections.filter(s => s.type === "reading")
     const hasWriting = p.sections.some(s => s.type === "writing")
     const hasTranslation = p.sections.some(s => s.type === "translation")
 
-    const isComplete = listeningSections.length === 3 && listeningQ.length === 25 &&
-      readingSections.length === 4 && readingQ.length === 30 &&
-      hasWriting && hasTranslation &&
-      allQ.every(q => {
-        if ('answer' in q) {
-          return q.answer && q.explanation && q.explanation !== "暂无解析"
-        }
-        return true
-      })
+    // IELTS 和 CET 的达标标准不同
+    let isComplete = false
+
+    // 检查听力和阅读题是否有答案
+    const choiceQComplete = [...listeningQ, ...readingQ].every(q => {
+      if ('answer' in q) {
+        return q.answer && q.explanation && q.explanation !== "暂无解析"
+      }
+      return true
+    })
+
+    if (examType === "ielts") {
+      // IELTS: 阅读3个passage/40题，写作有范文即可（听力暂无音频，不要求）
+      const writingSections = p.sections.filter(s => s.type === "writing")
+      const writingComplete = writingSections.some(s =>
+        s.questions.some(q => 'sample_answer' in q && q.sample_answer && 'scoring_rubric' in q)
+      )
+
+      isComplete = readingSections.length === 3 && readingQ.length === 40 &&
+        hasWriting && writingComplete && choiceQComplete
+    } else {
+      // CET4/6: 听力3个section/25题，阅读4个section/30题，写作+翻译
+      isComplete = listeningSections.length === 3 && listeningQ.length === 25 &&
+        readingSections.length === 4 && readingQ.length === 30 &&
+        hasWriting && hasTranslation && choiceQComplete
+    }
 
     return {
       id: p.id,

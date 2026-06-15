@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { loadConfig, isConfigValid } from "@/lib/api-config"
 import { cn } from "@/lib/utils"
+import { MarkdownContent } from "@/components/markdown-content"
 
 interface ChatMessage {
   role: "user" | "assistant"
@@ -196,7 +197,11 @@ export function SocraticChat({
                     : "bg-muted text-muted-foreground"
                 )}
               >
-                {msg.content}
+                {msg.role === "assistant" ? (
+                  <MarkdownContent text={msg.content} />
+                ) : (
+                  msg.content
+                )}
               </div>
             </div>
           ))}
@@ -205,7 +210,7 @@ export function SocraticChat({
           {isStreaming && streamingText && (
             <div className="flex justify-start">
               <div className="max-w-[85%] rounded-lg px-3 py-2 text-sm leading-relaxed bg-muted text-muted-foreground">
-                {streamingText}
+                <MarkdownContent text={streamingText} />
               </div>
             </div>
           )}

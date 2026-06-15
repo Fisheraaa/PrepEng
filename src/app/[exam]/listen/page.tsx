@@ -14,7 +14,7 @@ import type { ChoiceQuestion, ExamType } from "@/types/exam"
 
 export default function ListenPage() {
   const pathname = usePathname()
-  const examType = (pathname.split("/")[1] || "cet4") as "cet4" | "cet6"
+  const examType = (pathname.split("/")[1] || "cet4") as "cet4" | "cet6" | "ielts"
 
   const [selected, setSelected] = useState<ListeningPaper | null>(null)
   const [submittedSections, setSubmittedSections] = useState<Set<number>>(new Set())
@@ -217,14 +217,21 @@ export default function ListenPage() {
             const listeningQ = listeningSections.flatMap(s => s.questions)
             const readingQ = readingSections.flatMap(s => s.questions)
 
-            // 结构检查：听力3个section/25题，阅读4个section/30题
-            if (listeningSections.length !== 3 || listeningQ.length !== 25) return false
-            if (readingSections.length !== 4 || readingQ.length !== 30) return false
-
-            // 检查写作和翻译存在
+            // 根据考试类型检查结构
             const hasWriting = p.sections.some(s => s.type === "writing")
             const hasTranslation = p.sections.some(s => s.type === "translation")
-            if (!hasWriting || !hasTranslation) return false
+
+            if (examType === "ielts") {
+              // IELTS: 听力4个section/40题，阅读3个passage/40题
+              if (listeningSections.length !== 4 || listeningQ.length !== 40) return false
+              if (readingSections.length !== 3 || readingQ.length !== 40) return false
+              if (!hasWriting) return false
+            } else {
+              // CET4/6: 听力3个section/25题，阅读4个section/30题
+              if (listeningSections.length !== 3 || listeningQ.length !== 25) return false
+              if (readingSections.length !== 4 || readingQ.length !== 30) return false
+              if (!hasWriting || !hasTranslation) return false
+            }
 
             // 检查所有题目都有答案和解析
             const allQ = [...listeningQ, ...readingQ]
@@ -266,7 +273,7 @@ export default function ListenPage() {
         <Card className="bg-muted/50">
           <CardContent className="pt-6 pb-4 text-center">
             <span className="text-4xl">📭</span>
-            <p className="text-muted-foreground mt-2">还没有{examType === "cet4" ? "四级" : "六级"}听力音频。</p>
+            <p className="text-muted-foreground mt-2">还没有{examType === "ielts" ? "雅思" : examType === "cet4" ? "四级" : "六级"}听力音频。</p>
           </CardContent>
         </Card>
       )}

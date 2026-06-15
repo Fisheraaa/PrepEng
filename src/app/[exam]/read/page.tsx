@@ -27,7 +27,8 @@ import {
   getAnnotationsForPaper,
   renameAnnotationSave,
   deleteAnnotationDraft,
-  generateDraftName
+  generateDraftName,
+  isDraftNameTaken
 } from "@/components/annotation-layer"
 import type { ChoiceQuestion, ExamPaper, Section, ExamType } from "@/types/exam"
 
@@ -100,6 +101,7 @@ export default function ReadPage() {
   const [showAnnotationPrompt, setShowAnnotationPrompt] = useState(false)
   const [showNewDraftDialog, setShowNewDraftDialog] = useState(false)
   const [newDraftName, setNewDraftName] = useState("")
+  const [currentDraftIdx, setCurrentDraftIdx] = useState<number>(0)
   const contentRef = useRef<HTMLDivElement>(null)
 
   const { size: fontSize, increase, decrease } = useFontSize()
@@ -138,6 +140,11 @@ export default function ReadPage() {
     setCurrentSectionIdx(idx)
     setSelectedAnswers({})
     setSubmitted(false)
+    // 切换 section 时重置标注状态
+    setAnnotationActive(false)
+    setAnnotationTool("pen")
+    setAnnotationColor("#ef4444")
+    setCurrentDraftIdx(0)
   }, [])
 
   const handleRestart = useCallback(() => {
@@ -221,9 +228,16 @@ export default function ReadPage() {
   // 新建草稿确认
   const handleCreateDraft = useCallback(() => {
     if (!selectedPaperId || !newDraftName.trim()) return
-    saveAnnotations(examType, selectedPaperId, currentSectionIdx, [], newDraftName.trim())
-    setAnnotationActive(true)
-    setShowNewDraftDialog(false)
+    if (isDraftNameTaken(examType, selectedPaperId, currentSectionIdx, newDraftName.trim())) {
+      alert("草稿名已存在，请换一个名字")
+      return
+    }
+    const idx = saveAnnotations(examType, selectedPaperId, currentSectionIdx, [], newDraftName.trim())
+    if (idx >= 0) {
+      setCurrentDraftIdx(idx)
+      setAnnotationActive(true)
+      setShowNewDraftDialog(false)
+    }
   }, [selectedPaperId, examType, currentSectionIdx, newDraftName])
 
   // 自动恢复进度
@@ -273,7 +287,7 @@ export default function ReadPage() {
             <CardContent className="pt-6 pb-4 text-center">
               <span className="text-4xl">📭</span>
               <p className="text-muted-foreground mt-2">
-                还没有{examType === "cet4" ? "四级" : "六级"}阅读题。
+                还没有{examType === "ielts" ? "雅思" : examType === "cet4" ? "四级" : "六级"}阅读题。
               </p>
             </CardContent>
           </Card>
@@ -426,16 +440,17 @@ export default function ReadPage() {
               当前 section 有 {sectionDrafts.length} 个草稿，选择加载或新建：
             </p>
             <div className="space-y-2 max-h-60 overflow-y-auto">
-              {sectionDrafts.map(({ data }, idx) => (
-                <div key={idx} className="flex items-center gap-2 p-3 rounded-lg border">
+              {sectionDrafts.map(({ draftIdx, data }) => (
+                <div key={draftIdx} className="flex items-center gap-2 p-3 rounded-lg border">
                   <button
                     onClick={() => {
+                      setCurrentDraftIdx(draftIdx)
                       setAnnotationActive(true)
                       setShowAnnotationPrompt(false)
                     }}
                     className="flex-1 text-left"
                   >
-                    <p className="text-sm font-medium">{data.name || `草稿${idx + 1}`}</p>
+                    <p className="text-sm font-medium">{data.name || `草稿${draftIdx + 1}`}</p>
                     <p className="text-xs text-muted-foreground mt-1">
                       {(data.annotations || []).length} 处标注 · {new Date(data.updatedAt || Date.now()).toLocaleString()}
                     </p>
@@ -444,9 +459,13 @@ export default function ReadPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => {
-                      const newName = prompt("重命名草稿:", data.name || `草稿${idx + 1}`)
+                      const newName = prompt("重命名草稿:", data.name || `草稿${draftIdx + 1}`)
                       if (newName && newName.trim()) {
-                        renameAnnotationSave(examType, selectedPaperId, currentSectionIdx, idx, newName.trim())
+                        if (isDraftNameTaken(examType, selectedPaperId, currentSectionIdx, newName.trim())) {
+                          alert("草稿名已存在")
+                          return
+                        }
+                        renameAnnotationSave(examType, selectedPaperId, currentSectionIdx, draftIdx, newName.trim())
                         setShowAnnotationPrompt(false)
                         setTimeout(() => setShowAnnotationPrompt(true), 10)
                       }
@@ -460,7 +479,7 @@ export default function ReadPage() {
                     size="sm"
                     onClick={() => {
                       if (confirm("确定删除这个草稿吗？")) {
-                        deleteAnnotationDraft(examType, selectedPaperId, currentSectionIdx, idx)
+                        deleteAnnotationDraft(examType, selectedPaperId, currentSectionIdx, draftIdx)
                         setShowAnnotationPrompt(false)
                         setTimeout(() => setShowAnnotationPrompt(true), 10)
                       }
@@ -669,8 +688,8 @@ export default function ReadPage() {
                 tool={annotationTool}
                 color={annotationColor}
                 lineWidth={2}
-                initialAnnotations={loadAnnotations(examType, selectedPaperId, currentSectionIdx)}
-                onAnnotationsChange={(anns) => saveAnnotations(examType, selectedPaperId, currentSectionIdx, anns)}
+                initialAnnotations={loadAnnotations(examType, selectedPaperId, currentSectionIdx, currentDraftIdx)}
+                onAnnotationsChange={(anns) => saveAnnotations(examType, selectedPaperId, currentSectionIdx, anns, undefined, currentDraftIdx)}
               />
             )}
           </div>
@@ -716,8 +735,8 @@ export default function ReadPage() {
               tool={annotationTool}
               color={annotationColor}
               lineWidth={2}
-              initialAnnotations={loadAnnotations(examType, selectedPaperId, currentSectionIdx)}
-              onAnnotationsChange={(anns) => saveAnnotations(examType, selectedPaperId, currentSectionIdx, anns)}
+              initialAnnotations={loadAnnotations(examType, selectedPaperId, currentSectionIdx, currentDraftIdx)}
+              onAnnotationsChange={(anns) => saveAnnotations(examType, selectedPaperId, currentSectionIdx, anns, undefined, currentDraftIdx)}
             />
           )}
         </div>

@@ -4,7 +4,7 @@
 
 export interface ListeningPaper {
   id: string
-  exam_type: "cet4" | "cet6"
+  exam_type: "cet4" | "cet6" | "ielts"
   year: number
   month: number
   session?: number
@@ -44,7 +44,7 @@ export const listeningPapers: ListeningPaper[] = [
   { id: "cet6-2025-06-1", exam_type: "cet6", year: 2025, month: 6, session: 1, title: "2025年6月 第1套", audio_url: "/cet6/audio/2025-06-1.mp3" },
 ]
 
-export function getListeningPapers(examType: "cet4" | "cet6"): ListeningPaper[] {
+export function getListeningPapers(examType: "cet4" | "cet6" | "ielts"): ListeningPaper[] {
   return listeningPapers
     .filter((p) => p.exam_type === examType)
     .sort((a, b) => {

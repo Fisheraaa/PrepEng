@@ -13,3 +13,4 @@ public/**/*.txt
 # 允许音频文件（听力需要）
 # public/**/*.mp3
 # public/**/*.MP3
+*.md:Zone.Identifier

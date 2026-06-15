@@ -36,9 +36,9 @@ src/
 │       ├── read/page.tsx     # 阅读练习（一次展示全部题目，整篇提交）
 │       ├── write/page.tsx    # 写作练习（左右做题 → 全宽流式 AI 批改）
 │       ├── translate/page.tsx # 翻译练习（同上双布局）
-│       ├── listen/page.tsx   # 听力练习（待完善）
-│       ├── mock/page.tsx     # 模拟考试（待完善）
-│       └── review/page.tsx   # 错题本（待完善）
+│       ├── listen/page.tsx   # 听力练习
+│       ├── speak/page.tsx    # 口语练习（IELTS）
+│       └── review/page.tsx   # 错题本
 ├── components/
 │   ├── ui/                   # shadcn UI 组件
 │   └── markdown-content.tsx  # 共享 Markdown 渲染组件

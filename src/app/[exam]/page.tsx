@@ -121,10 +121,10 @@ const examInfo: Record<
       },
       {
         name: "口语",
-        href: "/translate",
-        icon: "🗣️",
+        href: "/speak",
+        icon: "🗣",
         weight: "25%",
-        description: "3 parts, 11-14 minutes",
+        description: "Part 1 + Part 2 + Part 3",
       },
     ],
   },
@@ -226,7 +226,7 @@ export default function ExamDashboard() {
                   ? "四级阅读和听力各占 35%，是拿分大头。建议先从阅读开始，建立做题感觉后再加上听力和写作翻译。"
                   : examType === "cet6"
                   ? "六级难度比四级高一个台阶。阅读要练速度，听力要练精听，写作翻译要注意高级词汇和句式。"
-                  : "雅思四个模块各占 25%，需要均衡发展。阅读和听力是客观题，容易拿分；写作和口语需要大量练习。"}
+                  : "雅思听力和阅读各40题，写作包含图表描述和议论文。建议多做真题，熟悉题型和时间节奏。"}
               </p>
             </div>
           </div>
