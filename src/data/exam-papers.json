@@ -14249,5 +14249,1658 @@
         ]
       }
     ]
+  },
+  {
+    "id": "ielts-2024-01",
+    "exam_type": "ielts",
+    "year": 2024,
+    "month": 1,
+    "session": 1,
+    "title": "2024年1月 IELTS Academic",
+    "sections": [
+      {
+        "type": "reading",
+        "title": "Reading Passage 1 — Public Health in the 21st Century",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "Public Health in the 21st Century\n\nPublic health has undergone a dramatic transformation over the past century. Infectious diseases, which were once the leading cause of death, have been largely controlled through vaccination, sanitation, and antibiotics. Today, the primary health challenges in developed countries are chronic diseases such as heart disease, diabetes, and cancer. However, the COVID-19 pandemic demonstrated that infectious diseases remain a significant threat.\n\nThe rise of chronic diseases is closely linked to lifestyle factors. Poor diet, lack of physical activity, smoking, and excessive alcohol consumption are the main drivers of these conditions. Obesity, which has reached epidemic proportions in many countries, is a major risk factor for numerous chronic diseases. The World Health Organization estimates that obesity-related conditions cost the global economy over $2 trillion annually.\n\nMental health has also emerged as a critical public health concern. Depression is now the leading cause of disability worldwide, affecting more than 260 million people. The stigma surrounding mental illness has decreased in recent years, but access to mental health services remains limited in many countries. The economic cost of mental health conditions is estimated at $1 trillion per year in lost productivity.\n\nAntimicrobial resistance is another growing threat. The overuse and misuse of antibiotics has led to the emergence of drug-resistant bacteria, making infections harder to treat. The WHO has warned that without action, antimicrobial resistance could cause 10 million deaths annually by 2050, surpassing cancer as a cause of death.\n\nClimate change poses additional public health challenges. Rising temperatures increase the spread of vector-borne diseases like malaria and dengue fever. Air pollution, which is exacerbated by climate change, causes approximately 7 million premature deaths annually. Extreme weather events, such as heatwaves and floods, directly threaten human health and safety.\n\nAddressing these challenges requires a comprehensive approach that includes prevention, early detection, and treatment. Governments must invest in public health infrastructure, promote healthy lifestyles, and address the social determinants of health, such as poverty, education, and housing. International cooperation is also essential, as health threats do not respect national boundaries.",
+        "questions": [
+          {
+            "id": "r1",
+            "content": "What was once the leading cause of death?",
+            "options": [
+              "A) Chronic diseases",
+              "B) Infectious diseases",
+              "C) Cancer",
+              "D) Heart disease"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Infectious diseases, which were once the leading cause of death'."
+          },
+          {
+            "id": "r2",
+            "content": "What is the main driver of chronic diseases?",
+            "options": [
+              "A) Genetics",
+              "B) Pollution",
+              "C) Lifestyle factors",
+              "D) Age"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The rise of chronic diseases is closely linked to lifestyle factors'."
+          },
+          {
+            "id": "r3",
+            "content": "What is the estimated annual cost of obesity-related conditions?",
+            "options": [
+              "A) $500 billion",
+              "B) $1 trillion",
+              "C) Over $2 trillion",
+              "D) $5 trillion"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'obesity-related conditions cost the global economy over $2 trillion annually'."
+          },
+          {
+            "id": "r4",
+            "content": "What is the leading cause of disability worldwide?",
+            "options": [
+              "A) Cancer",
+              "B) Heart disease",
+              "C) Depression",
+              "D) Diabetes"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Depression is now the leading cause of disability worldwide'."
+          },
+          {
+            "id": "r5",
+            "content": "How many deaths could antimicrobial resistance cause by 2050?",
+            "options": [
+              "A) 1 million",
+              "B) 5 million",
+              "C) 10 million",
+              "D) 20 million"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'antimicrobial resistance could cause 10 million deaths annually by 2050'."
+          },
+          {
+            "id": "r6",
+            "content": "What does air pollution cause annually?",
+            "options": [
+              "A) 1 million deaths",
+              "B) 3 million deaths",
+              "C) 7 million deaths",
+              "D) 10 million deaths"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Air pollution... causes approximately 7 million premature deaths annually'."
+          },
+          {
+            "id": "r7",
+            "content": "What is the economic cost of mental health conditions?",
+            "options": [
+              "A) $500 billion per year",
+              "B) $1 trillion per year",
+              "C) $2 trillion per year",
+              "D) $5 trillion per year"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'The economic cost of mental health conditions is estimated at $1 trillion per year'."
+          },
+          {
+            "id": "r8",
+            "content": "Antimicrobial resistance is caused by...",
+            "options": [
+              "A) Climate change",
+              "B) Poor diet",
+              "C) Overuse of antibiotics",
+              "D) Lack of exercise"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The overuse and misuse of antibiotics has led to the emergence of drug-resistant bacteria'."
+          },
+          {
+            "id": "r9",
+            "content": "Infectious diseases are no longer a threat.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'the COVID-19 pandemic demonstrated that infectious diseases remain a significant threat'."
+          },
+          {
+            "id": "r10",
+            "content": "Obesity is more common in developing countries.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "C",
+            "explanation": "NOT GIVEN - The passage says obesity has 'reached epidemic proportions in many countries' but doesn't compare developed vs developing."
+          },
+          {
+            "id": "r11",
+            "content": "Mental health stigma has increased in recent years.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'The stigma surrounding mental illness has decreased in recent years'."
+          },
+          {
+            "id": "r12",
+            "content": "Climate change increases the spread of malaria.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'Rising temperatures increase the spread of vector-borne diseases like malaria'."
+          },
+          {
+            "id": "r13",
+            "content": "What is the main message of this passage?",
+            "options": [
+              "A) Only infectious diseases matter",
+              "B) Public health faces multiple complex challenges",
+              "C) Climate change is the biggest threat",
+              "D) Mental health is not important"
+            ],
+            "answer": "B",
+            "explanation": "The passage discusses multiple public health challenges including chronic diseases, mental health, antimicrobial resistance, and climate change."
+          },
+          {
+            "id": "r14",
+            "content": "What is needed to address public health challenges?",
+            "options": [
+              "A) Only medication",
+              "B) Only government action",
+              "C) A comprehensive approach including prevention and international cooperation",
+              "D) Only individual behavior change"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Addressing these challenges requires a comprehensive approach... International cooperation is also essential'."
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "title": "Reading Passage 2 — The Digital Economy",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "The Digital Economy\n\nThe digital economy has transformed the way businesses operate and consumers interact with goods and services. E-commerce, which was once a novelty, now accounts for a significant portion of retail sales worldwide. In 2023, global e-commerce sales exceeded $5.7 trillion, and this figure is projected to grow by 56% over the next few years.\n\nThe rise of digital platforms has created new business models and disrupted traditional industries. Companies like Amazon, Alibaba, and Shopify have made it possible for anyone to start an online business with minimal capital. The gig economy, facilitated by platforms like Uber and DoorDash, has created flexible employment opportunities for millions of people.\n\nDigital payments have also transformed commerce. Mobile payment systems like Apple Pay, Google Pay, and various national systems have made cashless transactions the norm in many countries. In China, mobile payments accounted for over 80% of all transactions in 2022. This shift has reduced the cost of handling cash and increased financial inclusion.\n\nHowever, the digital economy also presents challenges. The digital divide between those who have access to technology and those who do not remains significant. According to the International Telecommunication Union, approximately 2.7 billion people still do not use the internet. This divide can exacerbate existing inequalities in education, healthcare, and economic opportunity.\n\nData privacy and security are major concerns. The collection and use of personal data by technology companies has raised questions about individual privacy rights. High-profile data breaches have exposed the personal information of millions of users. Governments around the world are implementing data protection regulations, such as the European Union's General Data Protection Regulation (GDPR).\n\nThe impact of artificial intelligence on employment is another concern. While AI has the potential to create new jobs and increase productivity, it also threatens to automate many existing roles. A study by McKinsey estimates that up to 30% of work activities could be automated by 2030. This could lead to significant job displacement, particularly in manufacturing, transportation, and customer service.\n\nDespite these challenges, the digital economy offers enormous opportunities for innovation, efficiency, and inclusion. Governments, businesses, and individuals must work together to ensure that the benefits of digitalization are shared broadly and that the risks are managed effectively.",
+        "questions": [
+          {
+            "id": "r15",
+            "content": "What were global e-commerce sales in 2023?",
+            "options": [
+              "A) $2 trillion",
+              "B) $4 trillion",
+              "C) Over $5.7 trillion",
+              "D) $8 trillion"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'global e-commerce sales exceeded $5.7 trillion'."
+          },
+          {
+            "id": "r16",
+            "content": "What percentage of transactions in China were mobile payments in 2022?",
+            "options": [
+              "A) 50%",
+              "B) 65%",
+              "C) 80%",
+              "D) 95%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'In China, mobile payments accounted for over 80% of all transactions in 2022'."
+          },
+          {
+            "id": "r17",
+            "content": "How many people still don't use the internet?",
+            "options": [
+              "A) 1 billion",
+              "B) 2 billion",
+              "C) 2.7 billion",
+              "D) 4 billion"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'approximately 2.7 billion people still do not use the internet'."
+          },
+          {
+            "id": "r18",
+            "content": "What percentage of work activities could be automated by 2030?",
+            "options": [
+              "A) 10%",
+              "B) 20%",
+              "C) 30%",
+              "D) 50%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'up to 30% of work activities could be automated by 2030'."
+          },
+          {
+            "id": "r19",
+            "content": "What regulation is mentioned for data protection?",
+            "options": [
+              "A) CCPA",
+              "B) GDPR",
+              "C) HIPAA",
+              "D) SOX"
+            ],
+            "answer": "B",
+            "explanation": "The passage mentions 'the European Union's General Data Protection Regulation (GDPR)'."
+          },
+          {
+            "id": "r20",
+            "content": "The digital economy has no challenges.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage discusses multiple challenges including the digital divide, data privacy, and employment impact."
+          },
+          {
+            "id": "r21",
+            "content": "Mobile payments have increased financial inclusion.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states mobile payments 'increased financial inclusion'."
+          },
+          {
+            "id": "r22",
+            "content": "AI will only create new jobs, not eliminate any.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states AI 'threatens to automate many existing roles' and 'could lead to significant job displacement'."
+          },
+          {
+            "id": "r23",
+            "content": "Amazon, Alibaba, and Shopify are mentioned as...",
+            "options": [
+              "A) Social media platforms",
+              "B) Digital platforms that enable online business",
+              "C) Payment systems",
+              "D) AI companies"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Companies like Amazon, Alibaba, and Shopify have made it possible for anyone to start an online business'."
+          },
+          {
+            "id": "r24",
+            "content": "What is the main concern about AI and employment?",
+            "options": [
+              "A) AI is too expensive",
+              "B) AI could automate many existing roles",
+              "C) AI is not accurate enough",
+              "D) AI is too slow"
+            ],
+            "answer": "B",
+            "explanation": "The passage states AI 'threatens to automate many existing roles' and 'could lead to significant job displacement'."
+          },
+          {
+            "id": "r25",
+            "content": "The gig economy creates...",
+            "options": [
+              "A) Only full-time jobs",
+              "B) Flexible employment opportunities",
+              "C) Only high-paying jobs",
+              "D) No jobs"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'The gig economy... has created flexible employment opportunities for millions of people'."
+          },
+          {
+            "id": "r26",
+            "content": "What is the projected growth of e-commerce?",
+            "options": [
+              "A) 20%",
+              "B) 35%",
+              "C) 56%",
+              "D) 75%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'this figure is projected to grow by 56% over the next few years'."
+          },
+          {
+            "id": "r27",
+            "content": "The author's overall view of the digital economy is...",
+            "options": [
+              "A) Completely negative",
+              "B) Balanced, showing both opportunities and challenges",
+              "C) Completely positive",
+              "D) No opinion given"
+            ],
+            "answer": "B",
+            "explanation": "The author discusses both challenges and opportunities, concluding that 'the digital economy offers enormous opportunities' while also noting risks."
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "title": "Reading Passage 3 — Biodiversity Loss",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "Biodiversity Loss: A Silent Crisis\n\nBiodiversity, the variety of life on Earth, is declining at an unprecedented rate. Scientists estimate that species are going extinct at 1,000 times the natural background rate. The Living Planet Report 2022 found that wildlife populations have declined by an average of 69% since 1970. This loss of biodiversity has profound implications for ecosystems, food security, and human well-being.\n\nThe main drivers of biodiversity loss are habitat destruction, overexploitation, pollution, invasive species, and climate change. Deforestation, which destroys the habitats of countless species, is a major contributor. The Amazon rainforest, which is home to approximately 10% of all species on Earth, has lost about 17% of its forest cover in the past 50 years.\n\nOverexploitation of species through hunting, fishing, and harvesting is another significant driver. Overfishing has depleted fish stocks in many parts of the world. The Food and Agriculture Organization estimates that approximately 34% of global fish stocks are overfished. This not only threatens marine ecosystems but also the food security of communities that depend on fishing.\n\nPollution, including plastic waste, chemical runoff, and air pollution, also contributes to biodiversity loss. Plastic pollution in the oceans has reached crisis levels, with an estimated 8 million tons of plastic entering the oceans each year. This plastic harms marine life through ingestion and entanglement.\n\nInvasive species, introduced through trade and travel, can devastate native ecosystems. These species often have no natural predators in their new environments, allowing them to spread rapidly and outcompete native species. Examples include the Asian carp in North American waterways and the cane toad in Australia.\n\nClimate change is increasingly recognized as a major threat to biodiversity. Rising temperatures are forcing species to migrate to cooler areas, disrupting ecosystems. Coral reefs, which support approximately 25% of all marine species, are particularly vulnerable to warming oceans. The Great Barrier Reef has experienced several mass bleaching events in recent years.\n\nConservation efforts are underway around the world. Protected areas, which now cover approximately 17% of the Earth's land surface, help preserve habitats and species. Breeding programs for endangered species, such as the giant panda and the California condor, have shown success. However, these efforts need to be scaled up significantly to address the magnitude of the crisis.",
+        "questions": [
+          {
+            "id": "r28",
+            "content": "How many times faster are species going extinct than the natural rate?",
+            "options": [
+              "A) 100 times",
+              "B) 500 times",
+              "C) 1,000 times",
+              "D) 10,000 times"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'species are going extinct at 1,000 times the natural background rate'."
+          },
+          {
+            "id": "r29",
+            "content": "By how much have wildlife populations declined since 1970?",
+            "options": [
+              "A) 30%",
+              "B) 50%",
+              "C) 69%",
+              "D) 85%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'wildlife populations have declined by an average of 69% since 1970'."
+          },
+          {
+            "id": "r30",
+            "content": "What percentage of global fish stocks are overfished?",
+            "options": [
+              "A) 15%",
+              "B) 25%",
+              "C) 34%",
+              "D) 50%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'approximately 34% of global fish stocks are overfished'."
+          },
+          {
+            "id": "r31",
+            "content": "How much plastic enters the oceans each year?",
+            "options": [
+              "A) 2 million tons",
+              "B) 5 million tons",
+              "C) 8 million tons",
+              "D) 15 million tons"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'an estimated 8 million tons of plastic entering the oceans each year'."
+          },
+          {
+            "id": "r32",
+            "content": "What percentage of marine species do coral reefs support?",
+            "options": [
+              "A) 10%",
+              "B) 15%",
+              "C) 25%",
+              "D) 40%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Coral reefs, which support approximately 25% of all marine species'."
+          },
+          {
+            "id": "r33",
+            "content": "How much of the Amazon rainforest has been lost?",
+            "options": [
+              "A) 5%",
+              "B) 10%",
+              "C) 17%",
+              "D) 25%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The Amazon rainforest... has lost about 17% of its forest cover'."
+          },
+          {
+            "id": "r34",
+            "content": "What percentage of Earth's land is covered by protected areas?",
+            "options": [
+              "A) 5%",
+              "B) 10%",
+              "C) 17%",
+              "D) 25%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Protected areas, which now cover approximately 17% of the Earth's land surface'."
+          },
+          {
+            "id": "r35",
+            "content": "Climate change is not a threat to biodiversity.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'Climate change is increasingly recognized as a major threat to biodiversity'."
+          },
+          {
+            "id": "r36",
+            "content": "The Great Barrier Reef has experienced mass bleaching.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'The Great Barrier Reef has experienced several mass bleaching events'."
+          },
+          {
+            "id": "r37",
+            "content": "Breeding programs have been unsuccessful.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'Breeding programs for endangered species... have shown success'."
+          },
+          {
+            "id": "r38",
+            "content": "Invasive species have natural predators in new environments.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'These species often have no natural predators in their new environments'."
+          },
+          {
+            "id": "r39",
+            "content": "What is the main driver of biodiversity loss?",
+            "options": [
+              "A) Only climate change",
+              "B) Only pollution",
+              "C) Multiple factors including habitat destruction, overexploitation, and climate change",
+              "D) Only invasive species"
+            ],
+            "answer": "C",
+            "explanation": "The passage lists 'habitat destruction, overexploitation, pollution, invasive species, and climate change' as main drivers."
+          },
+          {
+            "id": "r40",
+            "content": "What is the author's tone toward biodiversity loss?",
+            "options": [
+              "A) Optimistic",
+              "B) Indifferent",
+              "C) Concerned but hopeful about conservation efforts",
+              "D) Completely pessimistic"
+            ],
+            "answer": "C",
+            "explanation": "The author describes the crisis as serious but notes 'Conservation efforts are underway' and some have 'shown success'."
+          }
+        ]
+      },
+      {
+        "type": "writing",
+        "title": "Writing",
+        "prompt": "Some of the methods used in advertising are unethical and unacceptable in today's society.\n\nTo what extent do you agree with this view?\n\nWrite at least 250 words.",
+        "word_limit": 250,
+        "sample_answer": "Advertising is an omnipresent feature of modern life, and I strongly agree that many advertising methods used today are unethical and unacceptable.\n\nFirstly, advertising is increasingly intrusive. Advertisements appear on television, the internet, social media, and even on mobile phones via SMS. This constant bombardment leaves consumers with little choice but to be exposed to commercial messages, which many find annoying and disrespectful of their personal space.\n\nSecondly, advertising often encourages people to buy products they neither need nor can afford. This is particularly harmful when targeted at children and young people, who may pressure their parents into making unnecessary purchases. The rise of influencer marketing has made this problem worse, as young people often cannot distinguish between genuine recommendations and paid promotions.\n\nFurthermore, some industries continue to advertise harmful products. While tobacco advertising has been banned in many countries, alcohol advertising remains largely unrestricted despite its potential to encourage excessive consumption and underage drinking.\n\nIn conclusion, the unethical methods used in advertising — from intrusive techniques to targeting vulnerable groups — are unacceptable in today's society. Stronger regulations are needed to protect consumers from these practices.",
+        "scoring_rubric": [
+          {
+            "level": 9,
+            "description": "Fully developed position",
+            "score_range": "Band 9"
+          },
+          {
+            "level": 7,
+            "description": "Clear position",
+            "score_range": "Band 7-8"
+          },
+          {
+            "level": 5,
+            "description": "Underdeveloped",
+            "score_range": "Band 5-6"
+          },
+          {
+            "level": 3,
+            "description": "Unclear",
+            "score_range": "Band 3-4"
+          },
+          {
+            "level": 1,
+            "description": "Fails",
+            "score_range": "Band 1-2"
+          }
+        ],
+        "questions": [
+          {
+            "id": "w1",
+            "type": "writing",
+            "content": "Task 2",
+            "options": [
+              "A) Writing task"
+            ],
+            "answer": "W",
+            "explanation": "See sample answer."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ielts-2024-03",
+    "exam_type": "ielts",
+    "year": 2024,
+    "month": 3,
+    "session": 1,
+    "title": "2024年3月 IELTS Academic",
+    "sections": [
+      {
+        "type": "reading",
+        "title": "Reading Passage 1 — The New Space Race",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "The New Space Race\n\nThe 21st century has witnessed a remarkable transformation in space exploration. While the 20th century was dominated by government agencies like NASA and the Soviet space program, the new era is increasingly driven by private companies. SpaceX, Blue Origin, and Virgin Galactic are leading this commercial revolution, fundamentally changing how humanity approaches space.\n\nSpaceX, founded by Elon Musk in 2002, has achieved several historic milestones. In 2020, it became the first private company to send astronauts to the International Space Station. The company's reusable rocket technology has dramatically reduced the cost of space travel. A Falcon 9 launch now costs approximately $62 million, compared to $1.5 billion for the Space Shuttle.\n\nThe ultimate goal of many private space companies is to make humanity a multi-planetary species. SpaceX's Starship rocket is designed to carry up to 100 passengers to Mars. The company plans to establish a permanent human settlement on Mars by 2050. However, the challenges are immense. The journey to Mars takes approximately seven months, and astronauts would face radiation exposure, muscle atrophy, and psychological isolation.\n\nSpace tourism is another growing sector. Companies like Virgin Galactic and Blue Origin offer suborbital flights to wealthy customers. In July 2021, Richard Branson flew to the edge of space aboard Virgin Galactic's SpaceShipTwo. Just nine days later, Jeff Bezos flew on Blue Origin's New Shepard rocket.\n\nThe scientific benefits of space exploration are well documented. Satellites help us monitor climate change, predict natural disasters, and improve telecommunications. The International Space Station has been a laboratory for experiments that could not be conducted on Earth.\n\nCritics argue that the billions spent on space exploration could be better used to solve problems on Earth. However, proponents counter that space technology has led to numerous innovations that benefit everyday life, from memory foam to water purification systems.",
+        "questions": [
+          {
+            "id": "r1",
+            "content": "What has SpaceX pioneered?",
+            "options": [
+              "A) Nuclear propulsion",
+              "B) Reusable rocket technology",
+              "C) Solar-powered spacecraft",
+              "D) Artificial gravity"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'The company's reusable rocket technology has dramatically reduced the cost of space travel'."
+          },
+          {
+            "id": "r2",
+            "content": "How much does a Falcon 9 launch cost?",
+            "options": [
+              "A) $6 million",
+              "B) $62 million",
+              "C) $620 million",
+              "D) $1.5 billion"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'A Falcon 9 launch now costs approximately $62 million'."
+          },
+          {
+            "id": "r3",
+            "content": "When does SpaceX plan to establish a Mars settlement?",
+            "options": [
+              "A) 2030",
+              "B) 2040",
+              "C) 2050",
+              "D) 2100"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The company plans to establish a permanent human settlement on Mars by 2050'."
+          },
+          {
+            "id": "r4",
+            "content": "How long does the journey to Mars take?",
+            "options": [
+              "A) Three months",
+              "B) Five months",
+              "C) Seven months",
+              "D) Twelve months"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The journey to Mars takes approximately seven months'."
+          },
+          {
+            "id": "r5",
+            "content": "When did Richard Branson fly to space?",
+            "options": [
+              "A) June 2021",
+              "B) July 2021",
+              "C) August 2021",
+              "D) September 2021"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'In July 2021, Richard Branson flew to the edge of space'."
+          },
+          {
+            "id": "r6",
+            "content": "What rocket did Jeff Bezos fly on?",
+            "options": [
+              "A) Falcon 9",
+              "B) Starship",
+              "C) SpaceShipTwo",
+              "D) New Shepard"
+            ],
+            "answer": "D",
+            "explanation": "The passage states 'Jeff Bezos flew on Blue Origin's New Shepard rocket'."
+          },
+          {
+            "id": "r7",
+            "content": "SpaceX was the first company to send astronauts to space.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - SpaceX was 'the first private company' to send astronauts to the ISS."
+          },
+          {
+            "id": "r8",
+            "content": "The Space Shuttle was cheaper than the Falcon 9.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The Space Shuttle cost $1.5 billion vs Falcon 9's $62 million."
+          },
+          {
+            "id": "r9",
+            "content": "Space tourism is currently affordable for most people.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage says it 'could eventually become affordable', implying NOT currently."
+          },
+          {
+            "id": "r10",
+            "content": "Satellites help monitor climate change.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'Satellites help us monitor climate change'."
+          },
+          {
+            "id": "r11",
+            "content": "The author's tone toward space exploration is...",
+            "options": [
+              "A) Critical",
+              "B) Neutral",
+              "C) Optimistic",
+              "D) Pessimistic"
+            ],
+            "answer": "C",
+            "explanation": "The author presents space exploration positively, noting innovations and benefits."
+          },
+          {
+            "id": "r12",
+            "content": "What is the main challenge of Mars travel?",
+            "options": [
+              "A) Cost only",
+              "B) Radiation, muscle atrophy, and psychological isolation",
+              "C) Lack of fuel",
+              "D) Too much gravity"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'astronauts would face radiation exposure, muscle atrophy, and psychological isolation'."
+          },
+          {
+            "id": "r13",
+            "content": "How many passengers can Starship carry?",
+            "options": [
+              "A) 10",
+              "B) 50",
+              "C) 100",
+              "D) 500"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'SpaceX's Starship rocket is designed to carry up to 100 passengers to Mars'."
+          },
+          {
+            "id": "r14",
+            "content": "Critics argue space money should be used to...",
+            "options": [
+              "A) Build more rockets",
+              "B) Solve problems on Earth",
+              "C) Fund education",
+              "D) Reduce taxes"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Critics argue that the billions spent on space exploration could be better used to solve problems on Earth'."
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "title": "Reading Passage 2 — The Psychology of Happiness",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "The Psychology of Happiness\n\nWhat makes people happy? This question has fascinated philosophers for centuries, but it is only in recent decades that psychologists have begun to study happiness scientifically. The field of positive psychology, which emerged in the late 1990s, has produced fascinating insights into the nature of happiness and well-being.\n\nResearch has consistently shown that money does buy happiness, but only up to a point. A landmark study by Daniel Kahneman and Angus Deaton found that emotional well-being increases with income up to about $75,000 per year, after which it plateaus. This suggests that while financial security is important for happiness, excessive wealth does not necessarily lead to greater well-being.\n\nRelationships are perhaps the strongest predictor of happiness. The Harvard Study of Adult Development, which has tracked participants for over 80 years, found that the quality of relationships is the single most important factor in determining happiness and longevity. People with strong social connections are happier, healthier, and live longer than those who are isolated.\n\nGratitude is another powerful predictor of happiness. Research by Robert Emmons and Michael McCullough found that people who regularly practice gratitude — by keeping a gratitude journal, for example — experience higher levels of positive emotions, feel more alive, and are more helpful to others. Gratitude shifts focus from what is lacking to what is present.\n\nPhysical exercise is also strongly linked to happiness. Studies have shown that regular exercise can be as effective as antidepressant medication in treating mild to moderate depression. Exercise releases endorphins, reduces stress hormones, and improves sleep quality.\n\nHowever, the pursuit of happiness can sometimes be counterproductive. Research by Iris Mauss found that the more people value happiness, the lonelier they feel. This paradox suggests that happiness is best achieved indirectly, as a byproduct of meaningful activities and relationships, rather than as a goal in itself.\n\nMindfulness and meditation have also been shown to increase happiness. Regular meditation practice can reduce stress, improve emotional regulation, and increase feelings of well-being. The growing popularity of mindfulness apps and meditation retreats reflects the increasing recognition of these benefits.",
+        "questions": [
+          {
+            "id": "r15",
+            "content": "When did positive psychology emerge?",
+            "options": [
+              "A) 1950s",
+              "B) 1970s",
+              "C) Late 1990s",
+              "D) 2010s"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The field of positive psychology, which emerged in the late 1990s'."
+          },
+          {
+            "id": "r16",
+            "content": "At what income level does emotional well-being plateau?",
+            "options": [
+              "A) $50,000",
+              "B) $75,000",
+              "C) $100,000",
+              "D) $150,000"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'emotional well-being increases with income up to about $75,000 per year, after which it plateaus'."
+          },
+          {
+            "id": "r17",
+            "content": "What is the strongest predictor of happiness?",
+            "options": [
+              "A) Money",
+              "B) Career success",
+              "C) Relationships",
+              "D) Physical health"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Relationships are perhaps the strongest predictor of happiness'."
+          },
+          {
+            "id": "r18",
+            "content": "How long has the Harvard Study tracked participants?",
+            "options": [
+              "A) 20 years",
+              "B) 40 years",
+              "C) 60 years",
+              "D) Over 80 years"
+            ],
+            "answer": "D",
+            "explanation": "The passage states 'The Harvard Study of Adult Development, which has tracked participants for over 80 years'."
+          },
+          {
+            "id": "r19",
+            "content": "What does gratitude shift focus from?",
+            "options": [
+              "A) Past to future",
+              "B) What is lacking to what is present",
+              "C) Self to others",
+              "D) Work to leisure"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Gratitude shifts focus from what is lacking to what is present'."
+          },
+          {
+            "id": "r20",
+            "content": "Exercise can be as effective as...",
+            "options": [
+              "A) Surgery",
+              "B) Antidepressant medication",
+              "C) Therapy",
+              "D) Meditation"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'regular exercise can be as effective as antidepressant medication in treating mild to moderate depression'."
+          },
+          {
+            "id": "r21",
+            "content": "What paradox does Iris Mauss describe?",
+            "options": [
+              "A) Money makes people unhappy",
+              "B) The more people value happiness, the lonelier they feel",
+              "C) Exercise causes depression",
+              "D) Relationships cause stress"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'the more people value happiness, the lonelier they feel'."
+          },
+          {
+            "id": "r22",
+            "content": "Money always leads to greater happiness.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'excessive wealth does not necessarily lead to greater well-being'."
+          },
+          {
+            "id": "r23",
+            "content": "People with strong social connections live longer.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'People with strong social connections are happier, healthier, and live longer'."
+          },
+          {
+            "id": "r24",
+            "content": "Mindfulness apps are becoming less popular.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'The growing popularity of mindfulness apps'."
+          },
+          {
+            "id": "r25",
+            "content": "Gratitude journals have no effect on happiness.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states people who practice gratitude 'experience higher levels of positive emotions'."
+          },
+          {
+            "id": "r26",
+            "content": "What is the main finding about money and happiness?",
+            "options": [
+              "A) Money always makes people happy",
+              "B) Money has no effect on happiness",
+              "C) Money buys happiness only up to a point",
+              "D) Only poor people are happy"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'money does buy happiness, but only up to a point'."
+          },
+          {
+            "id": "r27",
+            "content": "Happiness is best achieved...",
+            "options": [
+              "A) By pursuing it directly",
+              "B) As a byproduct of meaningful activities",
+              "C) By earning more money",
+              "D) By avoiding relationships"
+            ],
+            "answer": "B",
+            "explanation": "The passage suggests happiness 'is best achieved indirectly, as a byproduct of meaningful activities and relationships'."
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "title": "Reading Passage 3 — The Fashion Industry's Environmental Impact",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "The Fashion Industry's Environmental Impact\n\nThe fashion industry is one of the most polluting industries in the world. It accounts for approximately 10% of global carbon emissions and is the second-largest consumer of water. The production of a single cotton t-shirt requires about 2,700 liters of water — enough for one person to drink for 2.5 years.\n\nFast fashion, which refers to the rapid production of cheap, trendy clothing, has accelerated the industry's environmental impact. Brands like Zara and H&M produce new collections every few weeks, encouraging consumers to buy more and discard clothing quickly. The average consumer now buys 60% more clothing than they did 15 years ago, but keeps each item for half as long.\n\nTextile waste is a growing problem. In the United States alone, approximately 11 million tons of textile waste end up in landfills each year. Synthetic fabrics, which are made from petroleum, can take hundreds of years to decompose. Even natural fibers like cotton release methane, a potent greenhouse gas, as they break down in landfills.\n\nThe production of clothing also contributes to water pollution. The dyeing process uses toxic chemicals that are often discharged into rivers and streams. The Citarum River in Indonesia, which supplies water to over 30 million people, is one of the most polluted rivers in the world due to textile manufacturing.\n\nSustainable fashion is emerging as an alternative to the fast fashion model. This includes using organic and recycled materials, reducing waste through better design, and promoting circular economy principles where clothing is reused, repaired, and recycled. Brands like Patagonia and Eileen Fisher have pioneered sustainable practices.\n\nConsumer behavior is also changing. The secondhand clothing market is growing rapidly, with platforms like ThredUp and Poshmark making it easier to buy and sell used clothing. Rental services for special occasion clothing are also gaining popularity.\n\nHowever, the transition to sustainable fashion faces challenges. Sustainable clothing is often more expensive than fast fashion, making it less accessible to lower-income consumers. Additionally, the infrastructure for recycling clothing is still limited in many countries.\n\nThe fashion industry must fundamentally change its practices to address its environmental impact. This requires collaboration between brands, consumers, and governments to create a more sustainable and circular fashion system.",
+        "questions": [
+          {
+            "id": "r28",
+            "content": "What percentage of global carbon emissions does fashion account for?",
+            "options": [
+              "A) 5%",
+              "B) 10%",
+              "C) 15%",
+              "D) 20%"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'It accounts for approximately 10% of global carbon emissions'."
+          },
+          {
+            "id": "r29",
+            "content": "How much water does a single cotton t-shirt require?",
+            "options": [
+              "A) 500 liters",
+              "B) 1,000 liters",
+              "C) 2,700 liters",
+              "D) 5,000 liters"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The production of a single cotton t-shirt requires about 2,700 liters of water'."
+          },
+          {
+            "id": "r30",
+            "content": "How much more clothing does the average consumer buy compared to 15 years ago?",
+            "options": [
+              "A) 20% more",
+              "B) 40% more",
+              "C) 60% more",
+              "D) 100% more"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The average consumer now buys 60% more clothing than they did 15 years ago'."
+          },
+          {
+            "id": "r31",
+            "content": "How much textile waste ends up in US landfills each year?",
+            "options": [
+              "A) 5 million tons",
+              "B) 8 million tons",
+              "C) 11 million tons",
+              "D) 15 million tons"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'approximately 11 million tons of textile waste end up in landfills each year'."
+          },
+          {
+            "id": "r32",
+            "content": "What river is mentioned as one of the most polluted due to textile manufacturing?",
+            "options": [
+              "A) Nile",
+              "B) Ganges",
+              "C) Citarum",
+              "D) Yangtze"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The Citarum River in Indonesia... is one of the most polluted rivers in the world due to textile manufacturing'."
+          },
+          {
+            "id": "r33",
+            "content": "What brands have pioneered sustainable practices?",
+            "options": [
+              "A) Zara and H&M",
+              "B) Nike and Adidas",
+              "C) Patagonia and Eileen Fisher",
+              "D) Gucci and Prada"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Brands like Patagonia and Eileen Fisher have pioneered sustainable practices'."
+          },
+          {
+            "id": "r34",
+            "content": "What is a challenge of sustainable fashion?",
+            "options": [
+              "A) It is too cheap",
+              "B) It is often more expensive than fast fashion",
+              "C) It is not available",
+              "D) It is not stylish"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Sustainable clothing is often more expensive than fast fashion'."
+          },
+          {
+            "id": "r35",
+            "content": "Synthetic fabrics can take hundreds of years to decompose.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'Synthetic fabrics... can take hundreds of years to decompose'."
+          },
+          {
+            "id": "r36",
+            "content": "The secondhand clothing market is declining.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'The secondhand clothing market is growing rapidly'."
+          },
+          {
+            "id": "r37",
+            "content": "Cotton releases methane as it decomposes.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'Even natural fibers like cotton release methane... as they break down'."
+          },
+          {
+            "id": "r38",
+            "content": "The fashion industry is the largest consumer of water.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states it is 'the second-largest consumer of water'."
+          },
+          {
+            "id": "r39",
+            "content": "What is fast fashion?",
+            "options": [
+              "A) Expensive designer clothing",
+              "B) Rapid production of cheap, trendy clothing",
+              "C) Sustainable clothing",
+              "D) Vintage clothing"
+            ],
+            "answer": "B",
+            "explanation": "The passage defines fast fashion as 'the rapid production of cheap, trendy clothing'."
+          },
+          {
+            "id": "r40",
+            "content": "What is the main solution proposed in this passage?",
+            "options": [
+              "A) Ban all fashion",
+              "B) Only buy expensive clothing",
+              "C) Collaboration between brands, consumers, and governments for sustainability",
+              "D) Stop buying clothes entirely"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'This requires collaboration between brands, consumers, and governments to create a more sustainable and circular fashion system'."
+          }
+        ]
+      },
+      {
+        "type": "writing",
+        "title": "Writing",
+        "prompt": "Government investment in the arts, such as music and theatre, is a waste of money. Governments must invest this money in public services instead.\n\nTo what extent do you agree with this statement?\n\nWrite at least 250 words.",
+        "word_limit": 250,
+        "sample_answer": "The question of whether government funding should prioritize public services over the arts is a contentious issue. While I understand the argument for investing in essential services, I believe that the arts also deserve public funding.\n\nThose who oppose arts funding argue that healthcare, education, and infrastructure should take precedence. These services directly affect people's quality of life, and underfunding them can have serious consequences. For example, inadequate healthcare funding leads to longer waiting times and poorer outcomes for patients.\n\nHowever, the arts play a vital role in society that should not be underestimated. Museums, theaters, and galleries enrich cultural life and attract tourism, generating economic benefits. Moreover, arts education develops creativity and critical thinking skills that are valuable in the modern workforce.\n\nIn conclusion, while public services should certainly be well-funded, this should not come at the complete expense of the arts. A balanced approach that invests in both would benefit society as a whole.",
+        "scoring_rubric": [
+          {
+            "level": 9,
+            "description": "Fully developed position",
+            "score_range": "Band 9"
+          },
+          {
+            "level": 7,
+            "description": "Clear position",
+            "score_range": "Band 7-8"
+          },
+          {
+            "level": 5,
+            "description": "Underdeveloped",
+            "score_range": "Band 5-6"
+          },
+          {
+            "level": 3,
+            "description": "Unclear",
+            "score_range": "Band 3-4"
+          },
+          {
+            "level": 1,
+            "description": "Fails",
+            "score_range": "Band 1-2"
+          }
+        ],
+        "questions": [
+          {
+            "id": "w1",
+            "type": "writing",
+            "content": "Task 2",
+            "options": [
+              "A) Writing task"
+            ],
+            "answer": "W",
+            "explanation": "See sample answer."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ielts-2024-05",
+    "exam_type": "ielts",
+    "year": 2024,
+    "month": 5,
+    "session": 1,
+    "title": "2024年5月 IELTS Academic",
+    "sections": [
+      {
+        "type": "reading",
+        "title": "Reading Passage 1 — Ethics of Artificial Intelligence",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "Ethics of Artificial Intelligence\n\nAs artificial intelligence becomes increasingly integrated into society, ethical concerns about its development and use have intensified. From autonomous vehicles to facial recognition systems, AI technologies raise fundamental questions about privacy, bias, accountability, and the nature of human decision-making.\n\nOne of the most pressing ethical concerns is algorithmic bias. AI systems learn from data, and if that data reflects existing social biases, the AI will perpetuate and even amplify those biases. For example, studies have shown that facial recognition systems are significantly less accurate at identifying people with darker skin tones. This has serious implications for law enforcement and security applications.\n\nPrivacy is another major concern. AI-powered surveillance systems can track individuals' movements, analyze their behavior, and predict their actions. In China, a social credit system uses AI to monitor citizens and assign them scores based on their behavior. While proponents argue this improves social order, critics say it creates a surveillance state that violates fundamental rights.\n\nThe use of AI in autonomous weapons raises perhaps the most serious ethical questions. Lethal autonomous weapons systems, sometimes called 'killer robots,' can select and engage targets without human intervention. The Campaign to Stop Killer Robots, supported by numerous Nobel laureates and AI researchers, calls for a ban on these systems.\n\nAccountability is another challenge. When an AI system makes a mistake, who is responsible? If an autonomous vehicle causes an accident, is the manufacturer, the programmer, or the owner liable? Current legal frameworks are not equipped to handle these questions.\n\nThe impact of AI on employment also raises ethical concerns. While AI has the potential to create new jobs, it also threatens to automate many existing roles. This could lead to significant job displacement and exacerbate income inequality.\n\nDespite these concerns, many argue that the benefits of AI outweigh the risks. AI has the potential to revolutionize healthcare, education, and scientific research. The challenge is to develop AI in a way that maximizes its benefits while minimizing its risks. This requires collaboration between technologists, ethicists, policymakers, and the public.",
+        "questions": [
+          {
+            "id": "r1",
+            "content": "What is one of the most pressing ethical concerns about AI?",
+            "options": [
+              "A) Cost",
+              "B) Speed",
+              "C) Algorithmic bias",
+              "D) Size"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'One of the most pressing ethical concerns is algorithmic bias'."
+          },
+          {
+            "id": "r2",
+            "content": "What problem do facial recognition systems have?",
+            "options": [
+              "A) They are too expensive",
+              "B) They are less accurate with darker skin tones",
+              "C) They are too slow",
+              "D) They are too large"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'facial recognition systems are significantly less accurate at identifying people with darker skin tones'."
+          },
+          {
+            "id": "r3",
+            "content": "What does China's social credit system use?",
+            "options": [
+              "A) Human observers",
+              "B) Paper records",
+              "C) AI to monitor citizens",
+              "D) Traditional methods"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'a social credit system uses AI to monitor citizens'."
+          },
+          {
+            "id": "r4",
+            "content": "What are lethal autonomous weapons systems sometimes called?",
+            "options": [
+              "A) Smart bombs",
+              "B) Killer robots",
+              "C) Drones",
+              "D) Missiles"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Lethal autonomous weapons systems, sometimes called killer robots'."
+          },
+          {
+            "id": "r5",
+            "content": "When an AI makes a mistake, who is responsible?",
+            "options": [
+              "A) Always the manufacturer",
+              "B) Always the user",
+              "C) This is unclear",
+              "D) Always the programmer"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Current legal frameworks are not equipped to handle these questions'."
+          },
+          {
+            "id": "r6",
+            "content": "AI has the potential to revolutionize...",
+            "options": [
+              "A) Only healthcare",
+              "B) Only education",
+              "C) Healthcare, education, and scientific research",
+              "D) Only entertainment"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'AI has the potential to revolutionize healthcare, education, and scientific research'."
+          },
+          {
+            "id": "r7",
+            "content": "Algorithmic bias occurs when AI systems...",
+            "options": [
+              "A) Are too expensive",
+              "B) Learn from biased data",
+              "C) Are too slow",
+              "D) Are too large"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'AI systems learn from data, and if that data reflects existing social biases, the AI will perpetuate and even amplify those biases'."
+          },
+          {
+            "id": "r8",
+            "content": "The Campaign to Stop Killer Robots is supported by...",
+            "options": [
+              "A) Only governments",
+              "B) Nobel laureates and AI researchers",
+              "C) Only military leaders",
+              "D) Only scientists"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'supported by numerous Nobel laureates and AI researchers'."
+          },
+          {
+            "id": "r9",
+            "content": "AI surveillance can track movements and predict actions.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'AI-powered surveillance systems can track individuals' movements, analyze their behavior, and predict their actions'."
+          },
+          {
+            "id": "r10",
+            "content": "Autonomous weapons require human intervention to fire.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states they 'can select and engage targets without human intervention'."
+          },
+          {
+            "id": "r11",
+            "content": "AI will only create jobs, not eliminate any.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states AI 'threatens to automate many existing roles' and 'could lead to significant job displacement'."
+          },
+          {
+            "id": "r12",
+            "content": "The social credit system improves social order.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "C",
+            "explanation": "NOT GIVEN - The passage says 'proponents argue this improves social order' but doesn't confirm it."
+          },
+          {
+            "id": "r13",
+            "content": "What is needed to develop AI responsibly?",
+            "options": [
+              "A) Only technology",
+              "B) Only government regulation",
+              "C) Collaboration between technologists, ethicists, policymakers, and the public",
+              "D) Only market forces"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'This requires collaboration between technologists, ethicists, policymakers, and the public'."
+          },
+          {
+            "id": "r14",
+            "content": "What is the main ethical concern about autonomous weapons?",
+            "options": [
+              "A) They are too expensive",
+              "B) They can kill without human intervention",
+              "C) They are too slow",
+              "D) They are not accurate"
+            ],
+            "answer": "B",
+            "explanation": "The passage states they 'can select and engage targets without human intervention'."
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "title": "Reading Passage 2 — Ocean Conservation",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "Ocean Conservation: Protecting Our Blue Planet\n\nOceans cover approximately 71% of the Earth's surface and contain 97% of the planet's water. They regulate the climate, produce oxygen, and provide food for billions of people. However, human activities are threatening ocean health at an unprecedented rate.\n\nOverfishing is one of the most serious threats to ocean ecosystems. The Food and Agriculture Organization estimates that approximately 34% of global fish stocks are overfished, meaning they are being harvested faster than they can reproduce. This has devastating consequences for marine ecosystems and the communities that depend on fishing for food and livelihoods.\n\nPlastic pollution is another critical issue. An estimated 8 million tons of plastic enter the oceans each year, harming marine life through ingestion and entanglement. The Great Pacific Garbage Patch, a massive collection of floating plastic debris, covers an area approximately twice the size of Texas. Microplastics, tiny particles of plastic less than 5mm in size, have been found in the deepest ocean trenches and in the tissues of marine animals.\n\nOcean acidification, caused by the absorption of carbon dioxide from the atmosphere, is threatening marine ecosystems. The oceans have become approximately 30% more acidic since the Industrial Revolution. This increased acidity makes it harder for shellfish and coral to build their shells and skeletons, threatening the entire marine food chain.\n\nCoral reefs, which support approximately 25% of all marine species, are particularly vulnerable to climate change. Rising ocean temperatures cause coral bleaching, a phenomenon where corals expel the algae that give them color and nutrition. The Great Barrier Reef has experienced several mass bleaching events in recent years.\n\nMarine protected areas (MPAs) are one tool for ocean conservation. These areas restrict human activities like fishing and mining to protect marine ecosystems. Currently, approximately 8% of the ocean is covered by MPAs, but scientists recommend protecting at least 30% by 2030.\n\nSustainable fishing practices are also essential. This includes setting catch limits based on scientific data, reducing bycatch (the unintentional capture of non-target species), and eliminating harmful fishing practices like bottom trawling.\n\nThe health of the oceans is essential for human survival. Protecting them requires global cooperation and a commitment to sustainable practices.",
+        "questions": [
+          {
+            "id": "r15",
+            "content": "What percentage of Earth's surface do oceans cover?",
+            "options": [
+              "A) 50%",
+              "B) 60%",
+              "C) 71%",
+              "D) 85%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Oceans cover approximately 71% of the Earth's surface'."
+          },
+          {
+            "id": "r16",
+            "content": "What percentage of global fish stocks are overfished?",
+            "options": [
+              "A) 15%",
+              "B) 25%",
+              "C) 34%",
+              "D) 50%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'approximately 34% of global fish stocks are overfished'."
+          },
+          {
+            "id": "r17",
+            "content": "How much plastic enters the oceans each year?",
+            "options": [
+              "A) 2 million tons",
+              "B) 5 million tons",
+              "C) 8 million tons",
+              "D) 15 million tons"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'An estimated 8 million tons of plastic enter the oceans each year'."
+          },
+          {
+            "id": "r18",
+            "content": "How large is the Great Pacific Garbage Patch?",
+            "options": [
+              "A) The size of Hawaii",
+              "B) The size of California",
+              "C) Twice the size of Texas",
+              "D) The size of Europe"
+            ],
+            "answer": "C",
+            "explanation": "The passage states it 'covers an area approximately twice the size of Texas'."
+          },
+          {
+            "id": "r19",
+            "content": "How much more acidic have the oceans become?",
+            "options": [
+              "A) 10%",
+              "B) 20%",
+              "C) 30%",
+              "D) 50%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The oceans have become approximately 30% more acidic since the Industrial Revolution'."
+          },
+          {
+            "id": "r20",
+            "content": "What percentage of marine species do coral reefs support?",
+            "options": [
+              "A) 10%",
+              "B) 15%",
+              "C) 25%",
+              "D) 40%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Coral reefs, which support approximately 25% of all marine species'."
+          },
+          {
+            "id": "r21",
+            "content": "What percentage of the ocean is currently covered by MPAs?",
+            "options": [
+              "A) 3%",
+              "B) 5%",
+              "C) 8%",
+              "D) 15%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'Currently, approximately 8% of the ocean is covered by MPAs'."
+          },
+          {
+            "id": "r22",
+            "content": "What do scientists recommend for MPAs by 2030?",
+            "options": [
+              "A) 10%",
+              "B) 20%",
+              "C) 30%",
+              "D) 50%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'scientists recommend protecting at least 30% by 2030'."
+          },
+          {
+            "id": "r23",
+            "content": "Microplastics have been found in ocean trenches.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'Microplastics... have been found in the deepest ocean trenches'."
+          },
+          {
+            "id": "r24",
+            "content": "Ocean acidification helps shellfish build shells.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'This increased acidity makes it harder for shellfish and coral to build their shells'."
+          },
+          {
+            "id": "r25",
+            "content": "The Great Barrier Reef has not experienced bleaching.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'The Great Barrier Reef has experienced several mass bleaching events'."
+          },
+          {
+            "id": "r26",
+            "content": "Overfishing means harvesting faster than fish can reproduce.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage defines overfishing as 'being harvested faster than they can reproduce'."
+          },
+          {
+            "id": "r27",
+            "content": "What is the main threat to ocean ecosystems?",
+            "options": [
+              "A) Only overfishing",
+              "B) Only pollution",
+              "C) Multiple threats including overfishing, pollution, and acidification",
+              "D) Only climate change"
+            ],
+            "answer": "C",
+            "explanation": "The passage discusses overfishing, plastic pollution, ocean acidification, and climate change as threats."
+          }
+        ]
+      },
+      {
+        "type": "reading",
+        "title": "Reading Passage 3 — The Evolution of Remote Work",
+        "subtype": "careful_reading",
+        "instruction": "Read the passage and answer the questions below. Choose the correct letter A, B, C or D.",
+        "passage": "The Evolution of Remote Work\n\nThe COVID-19 pandemic accelerated a trend that had been slowly building for decades: the shift toward remote working. Before the pandemic, only about 5% of full-time employees in the United States worked from home. By April 2020, that number had surged to over 60%. Even as offices have reopened, remote and hybrid working arrangements have become permanent features of the modern workplace.\n\nThe benefits of remote working are well documented. Employees save time and money on commuting, enjoy greater flexibility in managing their work-life balance, and often report higher job satisfaction. Employers benefit from reduced office space costs, access to a wider talent pool, and increased productivity.\n\nHowever, remote working also presents significant challenges. Social isolation is a major concern, as employees miss the informal interactions and sense of community that come from working in an office. Mental health issues, including loneliness and burnout, have increased among remote workers.\n\nCommunication and collaboration can also be more difficult in a remote environment. While video conferencing tools like Zoom and Microsoft Teams have made it easier to stay connected, they cannot fully replace the spontaneity and richness of face-to-face interactions.\n\nThe future of work is likely to be hybrid, with employees splitting their time between the office and home. This approach combines the benefits of both arrangements while mitigating their drawbacks. Companies are redesigning their offices to focus on collaboration and social interaction, rather than individual work.\n\nHowever, the shift to remote and hybrid working has also raised concerns about equity. Not all jobs can be done remotely, creating a divide between knowledge workers who can work from home and essential workers who cannot.\n\nDespite these challenges, the trend toward remote work appears irreversible. Companies that embrace this change and develop effective remote work policies will be better positioned to attract and retain talent in the competitive job market.",
+        "questions": [
+          {
+            "id": "r28",
+            "content": "What percentage of US employees worked from home before the pandemic?",
+            "options": [
+              "A) 2%",
+              "B) 5%",
+              "C) 15%",
+              "D) 25%"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Before the pandemic, only about 5% of full-time employees in the United States worked from home'."
+          },
+          {
+            "id": "r29",
+            "content": "By April 2020, what percentage worked from home?",
+            "options": [
+              "A) 20%",
+              "B) 40%",
+              "C) Over 60%",
+              "D) 80%"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'By April 2020, that number had surged to over 60%'."
+          },
+          {
+            "id": "r30",
+            "content": "What is a major challenge of remote working?",
+            "options": [
+              "A) Higher costs",
+              "B) Social isolation",
+              "C) Less flexibility",
+              "D) Lower productivity"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Social isolation is a major concern'."
+          },
+          {
+            "id": "r31",
+            "content": "What is the likely future of work?",
+            "options": [
+              "A) Fully remote",
+              "B) Fully office-based",
+              "C) Hybrid",
+              "D) No work"
+            ],
+            "answer": "C",
+            "explanation": "The passage states 'The future of work is likely to be hybrid'."
+          },
+          {
+            "id": "r32",
+            "content": "How are companies redesigning offices?",
+            "options": [
+              "A) For individual work",
+              "B) For collaboration and social interaction",
+              "C) For storage",
+              "D) For entertainment"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Companies are redesigning their offices to focus on collaboration and social interaction'."
+          },
+          {
+            "id": "r33",
+            "content": "What equity concern does remote working raise?",
+            "options": [
+              "A) Salary differences",
+              "B) Divide between knowledge and essential workers",
+              "C) Gender discrimination",
+              "D) Age discrimination"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Not all jobs can be done remotely, creating a divide between knowledge workers who can work from home and essential workers who cannot'."
+          },
+          {
+            "id": "r34",
+            "content": "Remote working was invented during the pandemic.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage says the pandemic 'accelerated a trend that had been slowly building for decades'."
+          },
+          {
+            "id": "r35",
+            "content": "Video conferencing fully replaces face-to-face interaction.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'they cannot fully replace the spontaneity and richness of face-to-face interactions'."
+          },
+          {
+            "id": "r36",
+            "content": "Remote workers always earn less than office workers.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "C",
+            "explanation": "NOT GIVEN - The passage doesn't compare salaries."
+          },
+          {
+            "id": "r37",
+            "content": "The trend toward remote work appears irreversible.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "A",
+            "explanation": "TRUE - The passage states 'the trend toward remote work appears irreversible'."
+          },
+          {
+            "id": "r38",
+            "content": "What benefit do employers get from remote work?",
+            "options": [
+              "A) Higher salaries",
+              "B) Reduced office space costs",
+              "C) More meetings",
+              "D) Less productivity"
+            ],
+            "answer": "B",
+            "explanation": "The passage states 'Employers benefit from reduced office space costs'."
+          },
+          {
+            "id": "r39",
+            "content": "Mental health issues have decreased among remote workers.",
+            "options": [
+              "A) TRUE",
+              "B) FALSE",
+              "C) NOT GIVEN"
+            ],
+            "answer": "B",
+            "explanation": "FALSE - The passage states 'Mental health issues, including loneliness and burnout, have increased among remote workers'."
+          },
+          {
+            "id": "r40",
+            "content": "What is the main message of this passage?",
+            "options": [
+              "A) Remote work is perfect",
+              "B) Remote work has both benefits and challenges",
+              "C) Office work is better",
+              "D) Remote work should be banned"
+            ],
+            "answer": "B",
+            "explanation": "The passage discusses both the benefits and challenges of remote work throughout."
+          }
+        ]
+      },
+      {
+        "type": "writing",
+        "title": "Writing",
+        "prompt": "The graph below shows the number of tourists visiting three different countries between 2000 and 2020.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.",
+        "word_limit": 150,
+        "sample_answer": "The line graph illustrates the number of tourists visiting three countries over a twenty-year period from 2000 to 2020.\n\nOverall, all three countries experienced an increase in tourist numbers, with Country A showing the most dramatic growth. In 2000, Country A received approximately 10 million tourists, which rose steadily to around 45 million by 2020. Country B started at 20 million and climbed to about 35 million. Country C had the most stable growth, rising from 15 million to 25 million over the same period.\n\nIn conclusion, Country A emerged as the most popular destination by 2020, having overtaken both other countries during the period shown.",
+        "scoring_rubric": [
+          {
+            "level": 9,
+            "description": "Fully addresses all requirements",
+            "score_range": "Band 9"
+          },
+          {
+            "level": 7,
+            "description": "Clear overview",
+            "score_range": "Band 7-8"
+          },
+          {
+            "level": 5,
+            "description": "Adequate",
+            "score_range": "Band 5-6"
+          },
+          {
+            "level": 3,
+            "description": "Partial",
+            "score_range": "Band 3-4"
+          },
+          {
+            "level": 1,
+            "description": "Fails",
+            "score_range": "Band 1-2"
+          }
+        ],
+        "questions": [
+          {
+            "id": "w1",
+            "type": "writing",
+            "content": "Task 1",
+            "options": [
+              "A) Writing task"
+            ],
+            "answer": "W",
+            "explanation": "See sample answer."
+          }
+        ]
+      }
+    ]
   }
 ]
