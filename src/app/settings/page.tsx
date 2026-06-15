@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -88,17 +89,17 @@ export default function SettingsPage() {
       {/* Header */}
       <header className="border-b border-border px-6 py-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <span className="text-xl">🎯</span>
             <span className="font-bold text-sm">PrepEng</span>
-          </a>
+          </Link>
           <Badge variant="outline">设置</Badge>
         </div>
       </header>
 
       <main className="p-6 max-w-2xl mx-auto space-y-6">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold">⚙️ API 设置</h1>
+          <h1 className="text-2xl font-bold">⚙️ 设置</h1>
           <p className="text-muted-foreground">
             配置 AI 接口，用于写作批改、翻译批改等功能。
             支持任何 OpenAI 兼容接口（DeepSeek、Moonshot、硅基流动等）。
